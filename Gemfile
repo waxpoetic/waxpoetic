@@ -22,6 +22,7 @@ gem 'jquery-rails',     '2.2.2'
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
+  gem 'annotate'
 end
 
 group :development, :test do

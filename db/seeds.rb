@@ -12,16 +12,17 @@ require 'active_record/fixtures'
 # data in one place, and reduce the amount of duplication throughout the
 # codebase.
 
-Rails.application.config.active_record.seed_tables.each do |table|
-  ActiveRecord::Fixtures.create_fixtures "spec/fixtures/#{table}.yml"
-end
+#Rails.application.config.active_record.seed_tables.each do |table|
+#  ActiveRecord::Fixtures.create_fixtures "spec/fixtures/#{table}.yml"
+#end
 
-=begin
 # In case you need to create objects manually, do it after fixtures are
 # loaded in.
 User.create \
   email: 'admin@example.com',
   password: 'admin123',
-  password_confirmation: 'admin123'
+  password_confirmation: 'admin123',
   remember_me: true
-=end
+
+Spree::Core::Engine.load_seed if defined?(Spree::Core)
+Spree::Auth::Engine.load_seed if defined?(Spree::Auth)

@@ -43,4 +43,10 @@ RSpec.configure do |config|
 
   # Give fixture files access to all tests.
   config.include FixtureFiles
+
+  # Easy validation testing.
+  config.extend TestValidations, :type => :model
+
+  # Always preload all fixture methods.
+  config.global_fixtures = :all
 end

@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Release, :type => :model do
-  REQUIRED_ATTRS = %w(name released_on description catalog_number)
+  let(:wonder_bars) { artists :wonder_bars }
 
   subject do
     Release.new \
       name: "Falling In Love EP",
+      artist: wonder_bars,
       released_on: 1.day.ago.to_date,
       description: %(
         An EP from The Wonder Bars!
@@ -19,14 +20,9 @@ RSpec.describe Release, :type => :model do
       cover: files('cover_image.png')
   end
 
+  test_validations_with %w(name released_on description catalog_number)
+
   it "represents a release for sale" do
     expect(subject).to be_valid
-  end
-
-  REQUIRED_ATTRS.each do |attr|
-    it "must have :#{attr} set" do
-      subject.send "#{attr}=", nil
-      expect(subject).to_not be_valid
-    end
   end
 end

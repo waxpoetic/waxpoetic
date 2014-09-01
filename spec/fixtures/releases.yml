@@ -1,0 +1,7 @@
+falling_in_love:
+  name: "Falling In Love"
+  released_on: <%= Date.today %>
+  description: "A lovely EP"
+  catalog_number: "WXP003"
+  price: 2.49
+  artist: wonder_bars

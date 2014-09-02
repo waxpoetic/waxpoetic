@@ -28,5 +28,12 @@ module WaxPoetic
 
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+    # File storage location for Fog and CarrierWave.
+    config.file_store = if Rails.env.production?
+      :fog
+    else
+      :file
+    end
   end
 end

@@ -24,6 +24,9 @@ group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'annotate'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-chruby'
 end
 
 group :development, :test do

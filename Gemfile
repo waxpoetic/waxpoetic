@@ -19,6 +19,7 @@ gem 'fog'
 gem 'spree', '~> 2.3'
 gem 'high_voltage'
 gem 'haml-rails'
+gem 'draper'
 
 group :development do
   gem 'meta_request'

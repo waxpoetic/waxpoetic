@@ -1,6 +1,3 @@
-namespace :doc do
-end
-
 begin
   require 'annotate'
 
@@ -23,9 +20,9 @@ begin
       'exclude_factories'    => "true",
       'ignore_model_sub_dir' => "false",
       'skip_on_db_migrate'   => "false",
-      'format_bare'          => "false",
+      'format_bare'          => "true",
       'format_rdoc'          => "false",
-      'format_markdown'      => "true",
+      'format_markdown'      => "false",
       'sort'                 => "false",
       'force'                => "false",
       'trace'                => "false",

@@ -3,17 +3,13 @@ class Subscriber < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, email: true
 end
 
-# ## Schema Information
+# == Schema Information
 #
-# Table name: `subscribers`
+# Table name: subscribers
 #
-# ### Columns
-#
-# Name              | Type               | Attributes
-# ----------------- | ------------------ | ---------------------------
-# **`id`**          | `integer`          | `not null, primary key`
-# **`name`**        | `string(255)`      |
-# **`email`**       | `string(255)`      |
-# **`created_at`**  | `datetime`         |
-# **`updated_at`**  | `datetime`         |
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  email      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
 #

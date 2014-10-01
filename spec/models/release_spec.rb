@@ -1,27 +1,22 @@
-# ## Schema Information
+# == Schema Information
 #
-# Table name: `releases`
+# Table name: releases
 #
-# ### Columns
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  artist_id      :integer
+#  released_on    :datetime
+#  cover          :string(255)
+#  description    :text
+#  catalog_number :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  price          :decimal(19, 2)
+#  package        :string(255)
 #
-# Name                  | Type               | Attributes
-# --------------------- | ------------------ | ---------------------------
-# **`id`**              | `integer`          | `not null, primary key`
-# **`name`**            | `string(255)`      |
-# **`artist_id`**       | `integer`          |
-# **`released_on`**     | `datetime`         |
-# **`cover`**           | `string(255)`      |
-# **`description`**     | `text`             |
-# **`catalog_number`**  | `string(255)`      |
-# **`created_at`**      | `datetime`         |
-# **`updated_at`**      | `datetime`         |
-# **`price`**           | `decimal(19, 2)`   |
-# **`package`**         | `string(255)`      |
+# Indexes
 #
-# ### Indexes
-#
-# * `index_releases_on_artist_id`:
-#     * **`artist_id`**
+#  index_releases_on_artist_id  (artist_id)
 #
 
 require 'rails_helper'

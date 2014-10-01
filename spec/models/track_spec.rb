@@ -1,22 +1,17 @@
-# ## Schema Information
+# == Schema Information
 #
-# Table name: `tracks`
+# Table name: tracks
 #
-# ### Columns
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  release_id :integer
+#  price      :decimal(19, 2)
+#  created_at :datetime
+#  updated_at :datetime
 #
-# Name              | Type               | Attributes
-# ----------------- | ------------------ | ---------------------------
-# **`id`**          | `integer`          | `not null, primary key`
-# **`name`**        | `string(255)`      |
-# **`release_id`**  | `integer`          |
-# **`price`**       | `decimal(19, 2)`   |
-# **`created_at`**  | `datetime`         |
-# **`updated_at`**  | `datetime`         |
+# Indexes
 #
-# ### Indexes
-#
-# * `index_tracks_on_release_id`:
-#     * **`release_id`**
+#  index_tracks_on_release_id  (release_id)
 #
 
 require 'rails_helper'

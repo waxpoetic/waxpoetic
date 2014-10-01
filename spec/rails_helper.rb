@@ -51,6 +51,10 @@ RSpec.configure do |config|
   # Always preload all fixture methods.
   config.global_fixtures = :all
 
+  # Email testing
   config.include EmailSpec::Helpers, :type => :mailer
   config.include EmailSpec::Matchers, :type => :mailer
+
+  # Devise session testing
+  config.include Devise::TestHelpers, :type => :controller
 end

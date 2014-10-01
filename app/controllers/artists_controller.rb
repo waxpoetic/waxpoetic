@@ -1,8 +1,10 @@
 class ArtistsController < ApplicationController
   respond_to :html
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   expose :artists, :attributes => :search_params, :only => [:index]
-  expose :artist, :attributes => :edit_params, :except => [:index]
+  expose :artist, :except => [:index]
 
   def index
     respond_with artists
@@ -30,6 +32,11 @@ class ArtistsController < ApplicationController
   end
 
   def destroy
+    if artist.destroy
+      redirect_to artists_path, notice: "Artist deleted."
+    else
+      redirect_to artists_path, alert: "Error deleting artist."
+    end
   end
 
   private
@@ -38,6 +45,6 @@ class ArtistsController < ApplicationController
   end
 
   def edit_params
-    params.permit :name, :bio, :avatar
+    params.require(:artist).permit :name, :bio, :avatar
   end
 end

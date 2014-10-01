@@ -18,3 +18,24 @@ class Track < ActiveRecord::Base
     self.price ||= DEFAULT_PRICE
   end
 end
+
+# ## Schema Information
+#
+# Table name: `tracks`
+#
+# ### Columns
+#
+# Name              | Type               | Attributes
+# ----------------- | ------------------ | ---------------------------
+# **`id`**          | `integer`          | `not null, primary key`
+# **`name`**        | `string(255)`      |
+# **`release_id`**  | `integer`          |
+# **`price`**       | `decimal(19, 2)`   |
+# **`created_at`**  | `datetime`         |
+# **`updated_at`**  | `datetime`         |
+#
+# ### Indexes
+#
+# * `index_tracks_on_release_id`:
+#     * **`release_id`**
+#

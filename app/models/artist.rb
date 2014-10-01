@@ -6,3 +6,19 @@ class Artist < ActiveRecord::Base
 
   mount_uploader :avatar, ImageUploader
 end
+
+# ## Schema Information
+#
+# Table name: `artists`
+#
+# ### Columns
+#
+# Name              | Type               | Attributes
+# ----------------- | ------------------ | ---------------------------
+# **`id`**          | `integer`          | `not null, primary key`
+# **`name`**        | `string(255)`      |
+# **`bio`**         | `text`             |
+# **`avatar`**      | `string(255)`      |
+# **`created_at`**  | `datetime`         |
+# **`updated_at`**  | `datetime`         |
+#

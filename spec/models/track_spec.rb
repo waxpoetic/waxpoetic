@@ -1,3 +1,24 @@
+# ## Schema Information
+#
+# Table name: `tracks`
+#
+# ### Columns
+#
+# Name              | Type               | Attributes
+# ----------------- | ------------------ | ---------------------------
+# **`id`**          | `integer`          | `not null, primary key`
+# **`name`**        | `string(255)`      |
+# **`release_id`**  | `integer`          |
+# **`price`**       | `decimal(19, 2)`   |
+# **`created_at`**  | `datetime`         |
+# **`updated_at`**  | `datetime`         |
+#
+# ### Indexes
+#
+# * `index_tracks_on_release_id`:
+#     * **`release_id`**
+#
+
 require 'rails_helper'
 
 RSpec.describe Track, :type => :model do

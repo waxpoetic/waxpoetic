@@ -1,5 +1,3 @@
-require 'define_product_from_release'
-
 # Release catalog of the record label, sorted by artist.
 
 class Release < ActiveRecord::Base
@@ -17,27 +15,21 @@ class Release < ActiveRecord::Base
   validates :price, presence: true
   validates :artist, presence: true
 
-  after_create :define_product,
-               :package_into_zip
+  after_create :create_product_and_variants,
+               :create_and_upload_package,
+               :send_promotional_emails
 
   mount_uploader :cover, ImageUploader
   mount_uploader :package, PackageUploader
 
-  # Calculated permalink which also forms a kind-of unique ID for now.
-  def permalink
-    [
-      artist.name.parameterize,
-      name.parameterize
-    ].join '-'
-  end
-
   delegate :variants, :to => :product
 
-  def spree_params
+  # Attributes given to the Spree::Product when created.
+  def product_attributes
     {
-      name: "#{artist.name} - #{name}",
+      name: self.decorate.title,
       description: description,
-      permalink: permalink,
+      permalink: self.decorate.permalink,
       available_on: released_on,
       meta_description: description
     }
@@ -48,11 +40,15 @@ class Release < ActiveRecord::Base
     self.price ||= tracks.sum(:price)
   end
 
-  def define_product
-    DefineProductFromRelease.perform self
+  def create_product_and_variants
+    CreateReleaseProduct.enqueue self
   end
 
-  def package_into_zip
+  def create_package
     PackageRelease.enqueue self
+  end
+
+  def send_promotional_emails
+    PromoteRelease.enqueue self if released_on == Date.today
   end
 end

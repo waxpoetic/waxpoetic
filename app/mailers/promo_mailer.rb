@@ -1,14 +1,13 @@
 # Sends emails to people on the promo list
 class PromoMailer < ActionMailer::Base
-  default from: "promo@waxpoeticrecords.com"
+  FROM_EMAIL = "promo@waxpoeticrecords.com"
+  default from: FROM_EMAIL
 
-  def new_release(release)
+  def new_release(subscriber, release)
     @release = release.decorate
+    @subscriber = subscriber.decorate
+    @subject_line = "'#{@release.title}' just dropped on Wax Poetic!"
 
-    Subscriber.all.decorate.each do |subscriber|
-      mail \
-        to: subscriber.address
-        subject: "'#{release.title}' just dropped on Wax Poetic!"
-    end
+    mail to: @subscriber.address, subject: @subject_line
   end
 end

@@ -1,0 +1,2 @@
+class ArtistAuthorizer < ApplicationAuthorizer
+end

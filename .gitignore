@@ -28,3 +28,5 @@ public/system/*
 coverage/
 spec/tmp/*
 
+# Bundler
+/vendor/bundle

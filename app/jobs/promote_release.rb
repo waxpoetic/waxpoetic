@@ -1,7 +1,9 @@
-class FindReleasesToPromote < ActiveJob::Base
-  def perform
-    Release.not_promoted.each do |release|
-      PromoMailer.new_release(release).deliver_later
+class PromoteRelease < ActiveJob::Base
+  def perform(release)
+    Rails.logger.warn "There were no emails sent" if Subscriber.all.empty?
+
+    Subscriber.all.each do |subscriber|
+      PromoMailer.new_release(subscriber, release).deliver
     end
   end
 end

@@ -5,17 +5,6 @@ require 'active_model'
 class DefineProductFromRelease
   include ActiveModel::Model
 
-  # The type of variants we'll be creating alongside this product.
-  VARIANTS = %w(mp3 wav ose)
-
-  # The amount of money the initially set price is bumped for
-  # high-quality releases, delivered in WAV format.
-  WAV_BUMP = 0.59
-
-  # The amount of money the initially set price is bumped for
-  # open-source releases, delivered in ZIP format.
-  OSE_BUMP = 10.00
-
   attr_accessor :release
   attr_reader :product
 

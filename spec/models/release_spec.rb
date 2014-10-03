@@ -41,7 +41,12 @@ RSpec.describe Release, :type => :model do
       cover: files('cover_image.png')
   end
 
-  test_validations_with %w(name released_on description catalog_number)
+  test_validations_with %w(
+    name
+    released_on
+    description
+    catalog_number
+  )
 
   it "represents a release for sale" do
     expect(subject).to be_valid

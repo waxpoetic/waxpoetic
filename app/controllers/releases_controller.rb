@@ -25,4 +25,8 @@ class ReleasesController < ApplicationController
   def search_params
     params.permit :name, :released_on, :catalog_number, :price
   end
+
+  def edit_params
+    params.require(:release).permit :name, :artist_id, :released_on, :description, :catalog_number, :cover
+  end
 end

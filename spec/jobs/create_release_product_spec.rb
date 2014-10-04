@@ -17,8 +17,4 @@ RSpec.describe CreateReleaseProduct, :type => :job do
     expect(subject.release.product).to be_present
     expect(subject.release.product).to eq(subject.product)
   end
-
-  xit "creates product variants" do
-    expect(CreateProductVariants).to receive(:enqueue)
-  end
 end

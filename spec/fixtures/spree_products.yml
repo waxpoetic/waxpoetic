@@ -1,0 +1,4 @@
+give_her_that_rnd:
+  name: 'Give Her That R&D'
+  available_on: <%= Date.today %>
+  slug: 'give-her-that-rnd'

@@ -5,3 +5,12 @@ falling_in_love:
   catalog_number: "WXP003"
   price: 2.49
   artist: wonder_bars
+
+give_her_that_rnd:
+  name: "Give Her That R&D"
+  released_on: <%= Date.today %>
+  description: "A lovely EP"
+  catalog_number: "WXP005"
+  price: 9.99
+  artist: rnd
+  product: spree_give_her_that_rnd

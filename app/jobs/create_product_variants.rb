@@ -1,22 +1,25 @@
 class CreateProductVariants < ActiveJob::Base
+  attr_reader :product
+
   # The type of variants we'll be creating alongside this product.
   VARIANTS = %w(MP3 WAV OSE)
 
   # The amount of money the initially set price is bumped for
-  # high-quality releases, delivered in WAV format.
-  WAV_BUMP = 0.59
-
-  # The amount of money the initially set price is bumped for
-  # open-source releases, delivered in ZIP format.
-  OSE_BUMP = 10.00
+  # variant releases, such as high-quality or open-source releases.
+  BUMPS = {
+    'WAV' => 0.59,
+    'OSE' => 10.00
+  }
 
   def perform(product)
-    VARIANTS.each_with_index do |index, variant|
+    @product = product
+    VARIANTS.each_with_index do |variant, index|
       variant = product.variants.build(
         sku: sku_for(product, variant),
-        price: price_of(product.price, variant),
+        price: price_of(release_of(product).price, variant),
         position: index,
-        option_values: option_values_for(variant)
+        option_values: option_values_for(variant),
+        is_master: (variant == 'MP3')
       )
 
       unless variant.save
@@ -27,7 +30,8 @@ class CreateProductVariants < ActiveJob::Base
 
   private
   def price_of(base_price, variant)
-    base_price + const_get("#{variant}_BUMP")
+    return base_price unless BUMPS[variant].present?
+    base_price + BUMPS[variant]
   end
 
   def sku_for(product, variant)
@@ -40,11 +44,10 @@ class CreateProductVariants < ActiveJob::Base
 
   def option_values_for(variant)
     [
-      {
+      Spree::OptionValue.new(
         name: "#{variant} format",
         presentation: variant,
-        option_type_name: 'format'
-      }
+      )
     ]
   end
 end

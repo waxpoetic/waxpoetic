@@ -1,0 +1,19 @@
+<header>
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1>
+          <%= link_to image_tag('logo.png'), root_path %>
+        </h1>
+      </li>
+    </ul>
+
+    <section class="top-bar-section" id="links">
+      <ul>
+        <li><%= link_to 'Artists', artists_path %></li>
+        <li><%= link_to 'Releases', releases_path %></li>
+        <li><%= link_to 'Shop', store_path %></li>
+      </ul>
+    </section>
+  </nav>
+</header>

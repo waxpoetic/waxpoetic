@@ -12,17 +12,12 @@ class CreateProductVariants < ActiveJob::Base
 
   def perform(product)
     VARIANTS.each_with_index do |index, variant|
-      variant = product.variants.build \
+      variant = product.variants.build(
         sku: sku_for(product, variant),
         price: price_of(product.price, variant),
-        position: index
-        option_values: [
-          {
-            name: "#{variant} format",
-            presentation: variant
-            option_type_name: 'format'
-          }
-        ]
+        position: index,
+        option_values: option_values_for(variant)
+      )
 
       unless variant.save
         logger.error "Variant did not save: #{variant.errors.full_messages.join(', ')}"
@@ -41,5 +36,15 @@ class CreateProductVariants < ActiveJob::Base
 
   def release_of(product)
     Release.where(product_id: product.id).first
+  end
+
+  def option_values_for(variant)
+    [
+      {
+        name: "#{variant} format",
+        presentation: variant,
+        option_type_name: 'format'
+      }
+    ]
   end
 end

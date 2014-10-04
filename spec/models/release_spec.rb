@@ -13,10 +13,12 @@
 #  updated_at     :datetime
 #  price          :decimal(19, 2)
 #  package        :string(255)
+#  product_id     :integer
 #
 # Indexes
 #
-#  index_releases_on_artist_id  (artist_id)
+#  index_releases_on_artist_id   (artist_id)
+#  index_releases_on_product_id  (product_id)
 #
 
 require 'rails_helper'

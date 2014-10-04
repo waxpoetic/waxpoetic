@@ -12,9 +12,9 @@ require 'active_record/fixtures'
 # data in one place, and reduce the amount of duplication throughout the
 # codebase.
 
-#Rails.application.config.active_record.seed_tables.each do |table|
-#  ActiveRecord::Fixtures.create_fixtures "spec/fixtures/#{table}.yml"
-#end
+Rails.configuration.seed_tables.each do |table|
+  ActiveRecord::Fixtures.create_fixtures "spec/fixtures/#{table}.yml"
+end
 
 # In case you need to create objects manually, do it after fixtures are
 # loaded in.

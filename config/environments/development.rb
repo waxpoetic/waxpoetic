@@ -32,6 +32,10 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  # Ensure developers don't need to be working the queue to see jobs
+  # perform.
+  config.queue_adapter = :inline
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

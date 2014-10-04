@@ -2,7 +2,7 @@
 
 class Release < ActiveRecord::Base
   belongs_to :artist
-  belongs_to :product
+  belongs_to :product, class_name: 'Spree::Product'
 
   has_many :tracks
 
@@ -16,7 +16,7 @@ class Release < ActiveRecord::Base
   validates :artist, presence: true
 
   after_create :create_product_and_variants,
-               :create_and_upload_package,
+               :create_package,
                :send_promotional_emails
 
   mount_uploader :cover, ImageUploader
@@ -29,10 +29,17 @@ class Release < ActiveRecord::Base
     {
       name: self.decorate.title,
       description: description,
-      permalink: self.decorate.permalink,
       available_on: released_on,
-      meta_description: description
+      meta_description: description,
+      price: price,
+      shipping_category: shipping_category
     }
+  end
+
+  # Spree's shipping category, used to define a Spree::Product.
+  # Required, and we always set it to "Default".
+  def shipping_category
+    @shipcat ||= Spree::ShippingCategory.find_by_name 'Default'
   end
 
   private
@@ -68,8 +75,10 @@ end
 #  updated_at     :datetime
 #  price          :decimal(19, 2)
 #  package        :string(255)
+#  product_id     :integer
 #
 # Indexes
 #
-#  index_releases_on_artist_id  (artist_id)
+#  index_releases_on_artist_id   (artist_id)
+#  index_releases_on_product_id  (product_id)
 #

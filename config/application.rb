@@ -35,5 +35,12 @@ module WaxPoetic
     else
       :file
     end
+
+    # The backend queueing system ActiveJob uses, configured in the
+    # active_job initializer.
+    config.queue_adapter = :sidekiq
+
+    # Static data to seed into the DB in all environments.
+    config.seed_tables = %w(spree_shipping_categories)
   end
 end

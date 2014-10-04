@@ -1,6 +1,11 @@
+# Create Spree products for the Release so it can be sold on the online
+# store.
 class CreateReleaseProduct < ActiveJob::Base
+  attr_accessor :release, :product
+
   def perform(release)
-    product = Spree::Product.new release.product_attributes
+    @release = release
+    @product = Spree::Product.new release.product_attributes
 
     if product.save
       release.update_attributes product: product

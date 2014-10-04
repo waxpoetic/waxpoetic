@@ -8,6 +8,7 @@
 #  price      :decimal(19, 2)
 #  created_at :datetime
 #  updated_at :datetime
+#  file       :string(255)
 #
 # Indexes
 #

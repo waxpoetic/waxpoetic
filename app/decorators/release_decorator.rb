@@ -5,4 +5,8 @@ class ReleaseDecorator < Draper::Decorator
   def title
     "#{artist.name} - #{name}"
   end
+
+  def filename
+    "#{name}".parameterize
+  end
 end

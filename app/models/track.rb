@@ -13,6 +13,8 @@ class Track < ActiveRecord::Base
   validates :release, presence: true
   validates :price, presence: true
 
+  mount_uploader :file, MusicUploader
+
   private
   def ensure_price
     self.price ||= DEFAULT_PRICE
@@ -29,6 +31,7 @@ end
 #  price      :decimal(19, 2)
 #  created_at :datetime
 #  updated_at :datetime
+#  file       :string(255)
 #
 # Indexes
 #

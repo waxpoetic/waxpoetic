@@ -1,14 +1,21 @@
 # Store stuff on Fog in production.
 CarrierWave.configure do |config|
-  config.storage = :fog
-  config.fog_credentials = {
-    provider: 'AWS',
-    aws_access_key_id: Rails.application.secrets.aws[:access_key_id],
-    aws_secret_access_key: Rails.application.secrets.aws[:secret_access_key],
-  }
-  config.fog_directory  = 'files.waxpoeticrecords.com'
-  config.fog_public     = false
-end if Rails.env.production?
+  config.storage = if Rails.env.production?
+    :fog
+  else
+    :file
+  end
+  config.enable_processing = Rails.env.production?
+  if Rails.env.production?
+    config.fog_credentials = {
+      provider: 'AWS',
+      aws_access_key_id: Rails.application.secrets.aws[:access_key_id],
+      aws_secret_access_key: Rails.application.secrets.aws[:secret_access_key],
+    }
+    config.fog_directory  = 'files.waxpoeticrecords.com'
+    config.fog_public     = false
+  end
+end
 
 module CarrierWave
   module Uploader

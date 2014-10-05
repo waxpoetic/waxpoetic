@@ -616,14 +616,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Unauthenticated artist/release routes
-  resources :artists, only: %w(index show)
-  resources :releases, only: %w(index show)
-
-  # Adminstration of artists, releases and the shop
-  namespace :admin do
-    root to: 'high_voltage/pages#show', id: 'admin'
-    resources :artists
-    resources :releases
+  resources :artists do
+    resources :releases, only: %w(index)
   end
 
   # This line mounts Spree's routes at the root of your application.
@@ -633,6 +627,6 @@ Rails.application.routes.draw do
   mount Spree::Core::Engine, :at => '/store'
 
   # Static pages
-  get '/info/:id' => 'high_voltage/pages#show'
+  get '/:id' => 'high_voltage/pages#show'
   root to: 'high_voltage/pages#show', id: 'home'
 end

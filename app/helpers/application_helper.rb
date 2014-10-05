@@ -10,9 +10,14 @@ module ApplicationHelper
     content_tag :li, content, nav_item_options
   end
 
+  # Test whether the current user is logged in and an admin.
+  def admin_present?
+    current_user.present? && current_user.admin?
+  end
+
   private
   def dropdown?
-    { :class => 'has-dropdown' } if current_user.admin?
+    { :class => 'has-dropdown' } if admin_present?
   end
 
   def dropdown_for(route, text)

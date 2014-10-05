@@ -39,8 +39,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'email_spec'
+  gem 'rspec-rails', require: false
+  gem 'email_spec', require: false
+  gem 'capybara', require: false
+  gem 'poltergeist', require: false
 end
 
 group :production do

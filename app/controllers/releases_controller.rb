@@ -1,10 +1,16 @@
 class ReleasesController < ApplicationController
   respond_to :html
-  before_action :find_artist
+
+  expose :artist, :finder_parameter => :artist_id
+  expose :releases, :ancestor => :artist, :attributes => :search_params, :only => %w(index)
+  expose :release, :ancestor => :artist, :attributes => :edit_params, :only => %w(show)
 
   def index
-    @releases = @artist.releases.where search_params
-    respond_with @releases
+    respond_with releases
+  end
+
+  def show
+    respond_with release
   end
 
   def new
@@ -24,10 +30,6 @@ class ReleasesController < ApplicationController
   end
 
   private
-  def find_artist
-    @artist = Artist.find params[:artist_id]
-  end
-
   def search_params
     params.permit :name, :released_on, :catalog_number, :price
   end

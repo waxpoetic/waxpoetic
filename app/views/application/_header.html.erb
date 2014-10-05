@@ -10,9 +10,9 @@
 
     <section class="top-bar-section" id="links">
       <ul>
-        <li><%= link_to 'Artists', artists_path %></li>
-        <li><%= link_to 'Releases', releases_path %></li>
-        <li><%= link_to 'Shop', store_path %></li>
+        <%= nav_item :artists %>
+        <%= nav_item :releases %>
+        <%= nav_item :store, 'Shop' %>
       </ul>
     </section>
   </nav>

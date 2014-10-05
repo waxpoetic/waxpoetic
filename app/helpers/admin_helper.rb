@@ -5,10 +5,10 @@ module AdminHelper
   end
 
   def new_resource_path(route)
-    send "new_#{route}_path"
+    send "new_#{route.to_s.singularize}_path"
   end
 
   def edit_resource_path(route, model)
-    send "edit_#{route}_path", model
+    send "edit_#{route.to_s.singularize}_path", model
   end
 end

@@ -616,9 +616,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Unauthenticated artist/release routes
-  resources :artists do
-    resources :releases, only: %w(index)
-  end
+  resources :artists
+  resources :releases
 
   # This line mounts Spree's routes at the root of your application.
   # This means, any requests to URLs such as /products, will go to

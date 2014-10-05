@@ -22,6 +22,7 @@ gem 'draper'
 gem 'email_validator'
 gem 'authority'
 gem 'decent_exposure'
+gem 'redcarpet'
 
 group :development do
   gem 'meta_request'

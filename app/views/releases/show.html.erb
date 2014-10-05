@@ -1,0 +1,32 @@
+<div class="release">
+  <%= title @release.title %>
+
+  <h2 class="artist">
+    by <%= link_to @release.artist.name, @release.artist %>
+  </h2>
+
+  <table class="properties">
+    <tr>
+      <th>Released On:</th>
+      <td><%= @release.date %></td>
+    </tr>
+    <tr>
+      <th>Catalog Number:</th>
+      <td><%= @release.catalog_number %></td>
+    </tr>
+  </table>
+
+  <div class="tracks">
+    <h3>Track Listing</h3>
+
+    <ol type="1">
+      <% @release.tracks.by_track_number.each do |track| %>
+        <li><%= track.name %></li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="description">
+    <%= @release.description %>
+  </div>
+</div>

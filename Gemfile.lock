@@ -278,6 +278,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.0.0)
+    redcarpet (3.1.2)
     redis (3.1.0)
     redis-actionpack (4.0.0)
       actionpack (~> 4)
@@ -516,6 +517,7 @@ DEPENDENCIES
   quiet_assets
   rack-cache
   rails (~> 4.1)
+  redcarpet
   redis-rails
   redis-session-store
   rspec-rails

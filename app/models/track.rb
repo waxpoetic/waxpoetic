@@ -6,18 +6,30 @@ class Track < ActiveRecord::Base
 
   has_one :artist, :through => :release
 
-  before_validation :ensure_price
+  before_validation :ensure_price, :ensure_number
 
   validates :name, presence: true
   validates :artist, presence: true
   validates :release, presence: true
   validates :price, presence: true
+  validates :number, presence: true
 
   mount_uploader :file, MusicUploader
+
+  scope :by_track_number, -> { order :number }
 
   private
   def ensure_price
     self.price ||= DEFAULT_PRICE
+  end
+
+  def ensure_number
+    self.number ||= last_track_number + 1
+  end
+
+  def last_track_number
+    return 0 unless release.present?
+    release.tracks.by_track_number.try(:number).to_i
   end
 end
 
@@ -32,6 +44,7 @@ end
 #  created_at :datetime
 #  updated_at :datetime
 #  file       :string(255)
+#  number     :integer
 #
 # Indexes
 #

@@ -9,6 +9,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  file       :string(255)
+#  number     :integer
 #
 # Indexes
 #

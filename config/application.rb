@@ -42,5 +42,8 @@ module WaxPoetic
 
     # Static data to seed into the DB in all environments.
     config.seed_tables = %w(spree_shipping_categories)
+
+    # Use S3 on staging and production.
+    config.use_s3 = Rails.env =~ /production|staging/
   end
 end

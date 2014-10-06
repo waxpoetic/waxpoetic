@@ -40,8 +40,8 @@ Rails.application.configure do
   # Use Nginx sendfile header
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
-  # TODO: The whole site should be HTTPS.
-  #config.force_ssl = true
+  # Ensure we're always connected over SSL
+  config.force_ssl = true
 
   # Serve assets from a CDN
   config.action_controller.asset_host = "//assets.waxpoeticrecords.com"

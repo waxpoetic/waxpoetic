@@ -10,10 +10,16 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
+  config.action_controller.perform_caching = true
 
-  # Disable the cache
-  config.action_controller.perform_caching = false
-  config.action_dispatch.rack_cache = false
+  # Use Redis to store the "HTTP-level" Rack::Cache
+  config.action_dispatch.rack_cache = true
+
+  # Store the Rails.cache in Redis
+  config.cache_store = :redis_store
+
+  # Store the session in Redis
+  config.session_store = :redis_store
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
@@ -34,8 +40,11 @@ Rails.application.configure do
   # Use Nginx sendfile header
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
-  # TODO: The whole site should be HTTPS.
-  #config.force_ssl = true
+  # Ensure we're always connected over SSL
+  config.force_ssl = true
+
+  # Serve assets from a CDN
+  config.action_controller.asset_host = "//assets.waxpoeticrecords.com"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

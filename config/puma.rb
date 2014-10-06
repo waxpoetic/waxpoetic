@@ -15,10 +15,8 @@ directory "#{APP_ROOT}/current"
 environment RAILS_ENV
 pidfile "#{APP_ROOT}/shared/pids/puma.pid"
 state_path "#{APP_ROOT}/shared/pids/puma.state"
-stdout_redirect "#{APP_ROOT}/shared/log/puma.access.log", "#{APP_ROOT}/shared/log/puma.error.log", true
 threads MIN_THREADS, MAX_THREADS
 bind "unix://#{APP_ROOT}/shared/pids/puma.sock"
-#ssl_bind '127.0.0.1', '9292', { key: path_to_key, cert: path_to_cert }
 tag 'waxpoetic'
 
 # Cluster configuration

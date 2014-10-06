@@ -13,6 +13,10 @@
     <p>
       Copyright &copy; 2012-2014 Wax Poetic Music, LLC.<br>
       All Rights Reserved.<br>
+      <% if user_signed_in? %>
+        You are logged in as <strong><%= current_user.email %></strong>.<br>
+        <%= link_to 'Log Out', '/logout' %>
+      <% end %>
     </p>
     <div class="badges row">
       <%= image_tag 'truste.png', alt: 'TRUSTe', class: 'badge' %>

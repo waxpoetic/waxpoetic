@@ -16,6 +16,9 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  is_admin               :boolean          default(FALSE)
+#  spree_api_key          :string(48)
+#  ship_address_id        :integer
+#  bill_address_id        :integer
 #
 # Indexes
 #

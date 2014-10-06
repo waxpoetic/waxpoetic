@@ -16,7 +16,7 @@ ActiveRecord::Fixtures.create_fixtures "spec/fixtures", Rails.configuration.seed
 
 # In case you need to create objects manually, do it after fixtures are
 # loaded in.
-User.create Rails.application.secrets.admin_user
+User.create Rails.application.secrets.admin_user.merge(is_admin: true)
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)

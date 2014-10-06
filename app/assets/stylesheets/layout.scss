@@ -1,0 +1,30 @@
+header {
+  img.logo {
+    height: 50px;
+  }
+}
+
+section.page {
+  min-height: 600px;
+}
+
+footer {
+  background: $aluminum;
+  color: $charcoal;
+
+  a {
+    color: $oil;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .copyright {
+    text-align: center;
+  }
+}

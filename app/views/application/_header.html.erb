@@ -3,16 +3,16 @@
     <ul class="title-area">
       <li class="name">
         <h1>
-          <%= link_to image_tag('logo.png'), root_path %>
+          <%= link_to image_tag(Spree::Config[:logo], class: 'logo'), root_path %>
         </h1>
       </li>
     </ul>
 
     <section class="top-bar-section" id="links">
-      <ul>
-        <%= nav_item :artists %>
+      <ul class="right">
+       <%= nav_item :artists %>
         <%= nav_item :releases %>
-        <%= nav_item :spree, 'Shop' %>
+        <%= nav_item :store, 'Shop' %>
       </ul>
     </section>
   </nav>

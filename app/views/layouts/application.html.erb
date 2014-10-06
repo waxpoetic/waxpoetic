@@ -13,7 +13,7 @@
 
   <body>
     <%= render 'header' %>
-    <%= yield %>
+    <%= content_tag :section, yield, :id => controller.controller_name, class: 'page row' %>
     <%= render 'footer' %>
     <%= javascript_include_tag "application" %>
   </body>

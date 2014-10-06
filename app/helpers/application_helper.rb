@@ -1,7 +1,7 @@
 module ApplicationHelper
   def nav_item(route, text=nil)
     text ||= route.to_s.titleize
-    link = link_to text, send("#{route}_path")
+    link = link_to text, "/#{route}"
 
     content = if admin_signed_in?
       link.concat nav_item_dropdown_for(route, text)

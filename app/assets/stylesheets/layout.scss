@@ -8,6 +8,10 @@ header {
 
 section.page {
   min-height: 545px;
+
+  .elevator-pitch {
+    font-size: 24px;
+  }
 }
 
 footer {
@@ -19,5 +23,9 @@ footer {
 
   .copyright {
     text-align: right;
+  }
+
+  .badge {
+    height: 50px;
   }
 }

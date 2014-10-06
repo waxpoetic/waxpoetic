@@ -2,13 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#releases {
-  .gallery {
-    #empty {
-      font-size: 24px;
-      font-style: italic;
-      text-align: center;
-      margin-top: 100px;
-    }
+.gallery {
+  #empty {
+    font-size: 24px;
+    font-style: italic;
+    text-align: center;
+    margin-top: 100px;
   }
 }

@@ -2,29 +2,22 @@ header {
   img.logo {
     height: 50px;
   }
+
+  margin-bottom: 15px;
 }
 
 section.page {
-  min-height: 600px;
+  min-height: 545px;
 }
 
 footer {
-  background: $aluminum;
-  color: $charcoal;
-
-  a {
-    color: $oil;
-
-    &:hover {
-      color: $white;
-    }
-  }
+  background: #EEE;
 
   ul {
     list-style: none;
   }
 
   .copyright {
-    text-align: center;
+    text-align: right;
   }
 }

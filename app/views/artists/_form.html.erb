@@ -1,0 +1,22 @@
+<%= form_for artist do |f| %>
+  <div class="row">
+    <div class="large-3 columns"><%= f.label :name %>
+    <div class="large-9 columns"><%= f.text_field :name %>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns"><%= f.label :bio %>
+    <div class="large-9 columns"><%= f.text_area :bio %>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns"><%= f.label :avatar, "Cover Photo" %>
+    <div class="large-9 columns"><%= f.file_field :avatar %>
+  </div>
+
+  <div class="controls row">
+    <div class="large-12 columns">
+      <%= f.submit 'Save', class: 'button' %>
+    </div>
+  </div>
+<% end %>

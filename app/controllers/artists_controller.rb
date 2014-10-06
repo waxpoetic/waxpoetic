@@ -14,6 +14,10 @@ class ArtistsController < ApplicationController
     respond_with artist
   end
 
+  def new
+    respond_with Artist.new
+  end
+
   def create
     @artist = Artist.new edit_params
 

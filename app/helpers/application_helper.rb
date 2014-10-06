@@ -23,8 +23,15 @@ module ApplicationHelper
   end
 
   def nav_item_dropdown_for(route, text)
-    render 'admin_dropdown', \
-      route_name: route,
-      resource_name: text
+    partial = if has_dropdown? route
+      "#{route}_dropdown"
+    else
+      'admin_dropdown'
+    end
+    render partial, route_name: route, resource_name: text
+  end
+
+  def has_dropdown?(route)
+    File.exist? "#{Rails.root}/app/views/application/_#{route}_dropdown.html.erb"
   end
 end

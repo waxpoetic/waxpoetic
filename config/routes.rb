@@ -626,6 +626,6 @@ Rails.application.routes.draw do
   mount Spree::Core::Engine, :at => '/store'
 
   # Static pages
-  get '/:id' => 'high_voltage/pages#show'
+  get '/:id' => 'high_voltage/pages#show', :as => :static_page
   root to: 'high_voltage/pages#show', id: 'home'
 end

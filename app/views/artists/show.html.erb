@@ -1,0 +1,13 @@
+<%= title artist.name %>
+
+<div class="row">
+  <div class="large-6 columns">
+    <%= artist.photo %>
+  </div>
+
+  <div class="large-6 columns">
+    <%= artist.bio %>
+  </div>
+</div>
+
+<%= render 'controls', resource: artist %>

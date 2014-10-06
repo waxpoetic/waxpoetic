@@ -1,0 +1,10 @@
+<% kind = resource.model.class.name.pluralize.underscore %>
+<% if admin_signed_in? %>
+  <div class="row controls">
+    <div class="large-8 columns">&nbsp;</div>
+    <div class="large-4 columns">
+      <%= link_to 'Edit', "/#{kind}/#{resource.id}/edit", class: 'small button secondary' %>
+      <%= link_to 'Delete', "/#{kind}/#{resource.id}", method: :delete, class: 'small button alert' %>
+    </div>
+  </div>
+<% end %>

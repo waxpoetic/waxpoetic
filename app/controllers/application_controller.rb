@@ -1,3 +1,5 @@
+require 'decorated_strong_parameters_strategy'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -6,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
   decent_configuration do
-    strategy DecentExposure::StrongParametersStrategy
+    strategy DecoratedStrongParametersStrategy
   end
 
   protected

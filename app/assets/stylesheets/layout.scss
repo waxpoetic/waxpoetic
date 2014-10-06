@@ -4,6 +4,15 @@ header {
   }
 
   margin-bottom: 15px;
+
+  .flash {
+    margin-top: 15px;
+  }
+
+  #loading {
+    margin-top: 10px;
+    display: none;
+  }
 }
 
 section.page {

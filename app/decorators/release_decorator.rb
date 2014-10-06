@@ -16,4 +16,8 @@ class ReleaseDecorator < Draper::Decorator
   def description
     h.markdown model.description
   end
+
+  def date
+    model.released_on.strftime '%B %e, %Y'
+  end
 end

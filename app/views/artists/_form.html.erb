@@ -1,21 +1,34 @@
 <%= form_for artist do |f| %>
   <div class="row">
-    <div class="large-3 columns"><%= f.label :name %>
-    <div class="large-9 columns"><%= f.text_field :name %>
+    <div class="large-3 columns">
+      <%= f.label :name %>
+    </div>
+    <div class="large-9 columns">
+      <%= f.text_field :name %>
+    </div>
   </div>
 
   <div class="row">
-    <div class="large-3 columns"><%= f.label :bio %>
-    <div class="large-9 columns"><%= f.text_area :bio %>
+    <div class="large-3 columns">
+      <%= f.label :bio %>
+    </div>
+    <div class="large-9 columns">
+      <%= f.text_area :bio %>
+    </div>
   </div>
 
   <div class="row">
-    <div class="large-3 columns"><%= f.label :avatar, "Cover Photo" %>
-    <div class="large-9 columns"><%= f.file_field :avatar %>
+    <div class="large-3 columns">
+      <%= f.label :avatar, "Cover Photo" %>
+    </div>
+    <div class="large-9 columns">
+      <%= f.file_field :avatar, class: 'button secondary' %>
+    </div>
   </div>
 
   <div class="controls row">
-    <div class="large-12 columns">
+    <div class="large-3 columns">&nbsp;</div>
+    <div class="large-9 columns">
       <%= f.submit 'Save', class: 'button' %>
     </div>
   </div>

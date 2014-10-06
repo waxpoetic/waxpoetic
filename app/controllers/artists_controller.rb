@@ -15,7 +15,7 @@ class ArtistsController < ApplicationController
   end
 
   def new
-    respond_with Artist.new
+    render :new
   end
 
   def create

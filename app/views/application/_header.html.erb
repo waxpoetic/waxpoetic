@@ -8,6 +8,10 @@
       </li>
     </ul>
 
+    <section class="top-bar-section">
+      <ul><li><%= image_tag 'spinner.gif', id: 'loading' %></li></ul>
+    </section>
+
     <section class="top-bar-section" id="links">
       <ul class="right">
        <%= nav_item :artists %>
@@ -16,4 +20,6 @@
       </ul>
     </section>
   </nav>
+
+  <%= render 'flash' if flash.any? %>
 </header>

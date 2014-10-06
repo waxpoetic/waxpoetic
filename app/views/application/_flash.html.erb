@@ -1,0 +1,8 @@
+<div class="flash">
+  <% flash.each do |type, message| %>
+    <div data-alert class="<%= type %> alert-box">
+      <%= message %>
+      <%= link_to '&times;'.html_safe, '#', class: 'close' %>
+    </div>
+  <% end %>
+</div>

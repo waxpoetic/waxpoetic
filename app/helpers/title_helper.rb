@@ -1,6 +1,6 @@
 module TitleHelper
   def title_tag
-    content_tag :title, title_text
+    content_tag :title, title_text.html_safe
   end
 
   def title(new_title="")

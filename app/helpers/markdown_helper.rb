@@ -1,7 +1,7 @@
 module MarkdownHelper
   # Render markdown.
   def markdown(text)
-    markdown_parser.render text
+    markdown_parser.render(text).html_safe
   end
 
   private

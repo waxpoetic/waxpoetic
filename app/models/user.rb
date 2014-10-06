@@ -6,8 +6,15 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { where is_admin: true }
 
+  after_create :assign_admin_roles, :if => :admin?
+
   def admin?
     !!is_admin
+  end
+
+  private
+  def assign_admin_roles
+    self.spree_roles << Spree::Role.find_or_create_by(name: "admin")
   end
 end
 

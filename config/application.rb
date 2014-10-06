@@ -46,5 +46,9 @@ module WaxPoetic
     # Use S3 on staging and production.
     config.use_s3 = Rails.env =~ /production|staging/
     config.bucket = 'files.waxpoeticrecords.com'
+
+    # By default, just use the cookie to store sessions
+    config.session_key = '_wax_poetic_sessions'
+    config.session_store :cookie_store, key: config.session_key
   end
 end

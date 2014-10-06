@@ -13,13 +13,21 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   # Use Redis to store the "HTTP-level" Rack::Cache
-  config.action_dispatch.rack_cache = true
+  config.action_dispatch.rack_cache = :redis_store, {
+    entitystore: "#{config.redis_url}/0/wax_poetic_rack_entities",
+    metastore: "#{config.redis_url}/0/wax_poetic_rack_metadata",
+  }
 
   # Store the Rails.cache in Redis
-  config.cache_store = :redis_store
+  config.cache_store = :redis_store, \
+    "#{config.redis_url}/1/wax_poetic_rails_cache",
+    expires_in: 90.minutes
 
   # Store the session in Redis
-  config.session_store = :redis_store
+  config.session_store :redis_store, key: config.session_key, redis: {
+    db: 2,
+    namespace: 'wax_poetic:session:'
+  }
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false

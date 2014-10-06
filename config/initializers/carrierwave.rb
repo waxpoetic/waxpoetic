@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
       aws_access_key_id: Rails.application.secrets.aws[:access_key_id],
       aws_secret_access_key: Rails.application.secrets.aws[:secret_access_key],
     }
-    config.fog_directory  = 'files.waxpoeticrecords.com'
+    config.fog_directory  = Rails.configuration.bucket
     config.fog_public     = false
   else
     config.storage = :file

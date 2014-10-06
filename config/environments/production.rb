@@ -44,7 +44,7 @@ Rails.application.configure do
   config.force_ssl = true
 
   # Serve assets from a CDN
-  config.action_controller.asset_host = "//assets.waxpoeticrecords.com"
+  config.action_controller.asset_host = "//#{config.bucket}/assets"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

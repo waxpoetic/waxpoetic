@@ -45,5 +45,6 @@ module WaxPoetic
 
     # Use S3 on staging and production.
     config.use_s3 = Rails.env =~ /production|staging/
+    config.bucket = 'files.waxpoeticrecords.com'
   end
 end

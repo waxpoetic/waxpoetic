@@ -20,4 +20,12 @@ class ReleaseDecorator < Draper::Decorator
   def date
     model.released_on.strftime '%B %e, %Y'
   end
+
+  def photo
+    h.image_tag model.cover.url, alt: 'Cover Art'
+  end
+
+  def thumbnail
+    h.image_tag model.cover.thumbnail.url, alt: title
+  end
 end

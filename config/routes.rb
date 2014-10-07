@@ -613,7 +613,7 @@
 
 Rails.application.routes.draw do
   # User Authentication
-  devise_for :users, skip: [:sessions]
+  devise_for :users
 
   # Unauthenticated artist/release routes
   resources :artists

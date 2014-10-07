@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def not_found
     render 'errors/not_found', status: 404 and return
   end
+
+  def error_msg(model, message="could not be saved")
+    "#{model.class.name.titleize} #{message}: #{model.errors.full_messages.join(', ')}"
+  end
 end

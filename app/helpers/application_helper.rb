@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def flash_class_for(flash_type)
+    case flash_type
+    when 'notice'
+      'success'
+    else
+      flash_type
+    end
+  end
+
   def nav_item(route, text=nil, always_show_dropdown: false)
     text ||= route.to_s.titleize
     link = link_to text, "/#{route}"

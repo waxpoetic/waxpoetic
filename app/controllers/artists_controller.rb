@@ -3,7 +3,6 @@ class ArtistsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
 
-  expose :artists, :attributes => :search_params, :only => [:index]
   expose :artist, :only => [:show]
 
   def index
@@ -24,7 +23,7 @@ class ArtistsController < ApplicationController
     if @artist.save
       respond_with @artist, notice: "New artist saved."
     else
-      redirect_to :new, alert: "Artist could not be saved."
+      redirect_to new_artist_path, alert: error_msg(@artist)
     end
   end
 
@@ -32,9 +31,9 @@ class ArtistsController < ApplicationController
     @artist = Artist.find params[:id]
 
     if @artist.update_attributes(edit_params)
-      respond_with @artist, notice: "New artist saved."
+      respond_with @artist, notice: "Artist saved."
     else
-      redirect_to :edit, alert: "Artist could not be saved."
+      redirect_to edit_artist_path(@artist), alert: error_msg(@artist)
     end
   end
 
@@ -44,9 +43,16 @@ class ArtistsController < ApplicationController
     if @artist.destroy
       redirect_to :artists, notice: "Artist deleted."
     else
-      redirect_to :artists, alert: "Error deleting artist."
+      redirect_to :artists, alert: error_msg(@artist, 'could not be deleted')
     end
   end
+
+  def artists
+    @artists ||= Artist.where(search_params).map do |artist|
+      artist.decorate
+    end
+  end
+  helper_method :artists
 
   private
   def search_params

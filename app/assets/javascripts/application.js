@@ -4,5 +4,6 @@
 //= require jquery.turbolinks
 //= require artists
 //= require releases
-//= require turbolinks
 //= require layout
+//= require spree/frontend/all
+//= require turbolinks

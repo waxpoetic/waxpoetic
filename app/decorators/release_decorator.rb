@@ -17,15 +17,18 @@ class ReleaseDecorator < Draper::Decorator
     h.markdown model.description
   end
 
+  # Formatted release date.
   def date
     model.released_on.strftime '%B %e, %Y'
   end
 
+  # <img> tag for the full size cover photo.
   def photo
     h.image_tag model.cover.url, alt: 'Cover Art'
   end
 
+  # <img> tag for the thumbnailed cover photo.
   def thumbnail
-    h.image_tag model.cover.thumbnail.url, alt: title
+    h.image_tag model.cover.thumb.url, alt: title
   end
 end

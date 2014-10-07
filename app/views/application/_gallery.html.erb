@@ -1,9 +1,11 @@
 <div class="gallery">
-  <% if resources.any? %>
-    <%= render resources %>
-  <% else %>
-    <div id="empty" class="large-12 columns">
-      No results.
-    </div>
-  <% end %>
+  <div class="row" id="resources">
+    <% if resources.any? %>
+      <%= render resources %>
+    <% else %>
+      <div id="empty" class="large-12 columns">
+        No results.
+      </div>
+    <% end %>
+  </div>
 </div>

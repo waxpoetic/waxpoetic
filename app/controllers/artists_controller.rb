@@ -1,9 +1,9 @@
 class ArtistsController < ApplicationController
   respond_to :html
 
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, except: %w(index show)
 
-  expose :artist, :only => [:show]
+  expose :artist, only: %w(show)
 
   def index
     respond_with artists
@@ -15,6 +15,10 @@ class ArtistsController < ApplicationController
 
   def new
     render :new
+  end
+
+  def edit
+    render :edit
   end
 
   def create

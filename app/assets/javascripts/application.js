@@ -1,9 +1,9 @@
 //= require jquery
 //= require jquery_ujs
+//= require spree/frontend/all
 //= require foundation
 //= require jquery.turbolinks
 //= require artists
 //= require releases
 //= require layout
-//= require spree/frontend/all
 //= require turbolinks

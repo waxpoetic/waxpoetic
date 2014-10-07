@@ -11,6 +11,12 @@ module ApplicationHelper
     content_tag :li, content, nav_item_options
   end
 
+  def dropdown_item(name, route, options={})
+    content_tag :li do
+      link_to name, route, options
+    end
+  end
+
   # Test whether the current user is logged in and an admin.
   def admin_signed_in?
     user_signed_in? && current_user.admin? rescue false

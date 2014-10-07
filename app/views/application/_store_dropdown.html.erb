@@ -1,7 +1,7 @@
 <ul class="dropdown">
-  <%= dropdown_item 'Releases', '/store/products/releases' %>
-  <%= dropdown_item 'Merchandise', '/store/products/merch' %>
-  <%= dropdown_item 'My Account', "/users/#{current_user.id}/edit" if user_signed_in? %>
-  <%= dropdown_item 'Sign In', '/users/sign_in' unless user_signed_in? %>
-  <%= dropdown_item 'Store Admin', '/store/admin', target: '_blank' if admin_signed_in? %>
+  <%= nav_dropdown_item 'Releases', '/store/products/releases' %>
+  <%= nav_dropdown_item 'Merchandise', '/store/products/merch' %>
+  <%= nav_dropdown_item 'My Account', "/users/#{current_user.id}/edit" if user_signed_in? %>
+  <%= nav_dropdown_item 'Sign In', '/users/sign_in' unless user_signed_in? %>
+  <%= nav_dropdown_item 'Store Admin', '/store/admin', target: '_blank' if admin_signed_in? %>
 </ul>

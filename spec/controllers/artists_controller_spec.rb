@@ -6,7 +6,7 @@ RSpec.describe ArtistsController, :type => :controller do
   let(:avatar) { File.open("#{Rails.root}/spec/fixtures/files/avatar.jpg") }
 
   it "views a list of all artists" do
-    get :index, name: artist.name
+    get :index
     expect(response).to be_success
     expect(controller.artists).to_not be_empty
   end
@@ -16,6 +16,13 @@ RSpec.describe ArtistsController, :type => :controller do
     expect(response).to be_success
     expect(controller.artists).to include(artist)
   end
+
+  it "returns an empty set when name can't be found" do
+    get :index, name: 'not-an-artist-name'
+    expect(response).to be_success
+    expect(controller.artists).to be_empty
+  end
+
 
   it "views a single artist" do
     get :show, id: artist.id

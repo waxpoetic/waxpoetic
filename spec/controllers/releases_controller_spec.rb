@@ -16,8 +16,8 @@ RSpec.describe ReleasesController, :type => :controller do
     }
 
     expect(response).to be_redirect
-    expect(assigns(:release)).to be_valid
-    expect(assigns(:release)).to be_persisted
+    expect(controller.release).to be_valid
+    expect(controller.release).to be_persisted
     expect(response).to redirect_to(release_path(assigns(:release)))
   end
 end

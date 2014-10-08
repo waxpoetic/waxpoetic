@@ -3,6 +3,7 @@ class ArtistsController < ApplicationController
 
   before_action :authenticate_user!, except: %w(index show)
 
+  expose(:artists) { Artist.where(search_params) }
   expose :artist, only: %w(show)
 
   def index
@@ -50,13 +51,6 @@ class ArtistsController < ApplicationController
       redirect_to :artists, alert: error_msg(@artist, 'could not be deleted')
     end
   end
-
-  def artists
-    @artists ||= Artist.where(search_params).map do |artist|
-      artist.decorate
-    end
-  end
-  helper_method :artists
 
   private
   def search_params

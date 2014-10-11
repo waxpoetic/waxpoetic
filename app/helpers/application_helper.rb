@@ -13,4 +13,13 @@ module ApplicationHelper
   def admin_signed_in?
     user_signed_in? && current_user.admin? rescue false
   end
+
+  # The HTML properties used for the `<section>` tag available on every
+  # page. Marks the current controller.
+  def page_tag_properties
+    {
+      id: controller.controller_name,
+      class: 'page row'
+    }
+  end
 end

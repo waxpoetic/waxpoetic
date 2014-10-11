@@ -26,7 +26,7 @@ class ReleasesController < ApplicationController
     if release.save
       respond_with release, notice: "New release added."
     else
-      redirect_to new_release_path, alert: error_msg(@release, "couldn't be added")
+      redirect_to new_release_path, alert: error_msg(release, "couldn't be added")
     end
   end
 

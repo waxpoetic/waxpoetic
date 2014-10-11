@@ -7,9 +7,10 @@ require 'rspec/rails'
 
 require 'email_spec'
 
-require 'capybara/rails'
-require 'capybara/rspec'
-require 'capybara/poltergeist'
+# TODO: Re-enable when we have capybara specs again..
+#require 'capybara/rails'
+#require 'capybara/rspec'
+#require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -66,5 +67,6 @@ RSpec.configure do |config|
 
   # Use Poltergeist and PhantomJS to run front-end tests that include
   # JavaScript.
-  Capybara.javascript_driver = :poltergeist
+  # TODO: Re-enable when we have Capybara specs again
+  #Capybara.javascript_driver = :poltergeist
 end

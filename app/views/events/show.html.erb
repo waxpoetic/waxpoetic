@@ -1,0 +1,23 @@
+<div id="event" data-long="<%= event.longitude %>" data-lat="<%= event.latitude %>">
+  <div class="flyer row">
+    <%= event.flyer_tag %>
+    <div class="title">$<%= title event.name %></div>
+  </div>
+  <div class="info row">
+    <div class="large-9 columns">
+      <%= event.description %>
+    </div>
+    <div class="large-3 columns">
+      <div class="time row">
+        <%= event.time %>
+      </div>
+      <div class="location row">
+        <h3><%= event.location %></h3>
+        <div class="map"></div>
+      </div>
+      <div class="tickets row">
+        <%= event.buy_tickets_button %>
+      </div>
+    </div>
+  </div>
+</div>

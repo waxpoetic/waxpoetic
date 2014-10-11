@@ -1,0 +1,8 @@
+come_correct:
+  name: "Come Correct"
+  location: "Philadelphia, PA"
+  description: "Who rocks the party that rocks the part-ay"
+  latitude: 70.6
+  longitude: 34.4
+  ticket_price: 25.00
+  starts_at: <%= Time.now %>

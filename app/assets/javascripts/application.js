@@ -6,7 +6,9 @@
 //= require jquery_nested_form
 //= require jquery.livepreview
 //= require marked
+//= require jquery.googlemap
 //= require artists
 //= require releases
+//= require events
 //= require layout
 //= require turbolinks

@@ -33,7 +33,7 @@ RSpec.describe Track, :type => :model do
       price: 1.49
   end
 
-  test_validations_with %w(name artist release)
+  test_validations_for %w(name artist release)
 
   it "automatically sets the price" do
     subject.price = nil

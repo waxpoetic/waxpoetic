@@ -18,7 +18,7 @@ RSpec.describe Subscriber, :type => :model do
     expect(subject).to be_valid
   end
 
-  test_validations_with %w(name email)
+  test_validations_for %w(name email)
 
   it "must have a valid email" do
     subject.email = 'not a real email'

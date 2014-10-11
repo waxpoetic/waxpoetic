@@ -45,7 +45,7 @@ RSpec.describe Release, :type => :model do
       image: files('image_image.png')
   end
 
-  test_validations_with %w(
+  test_validations_for %w(
     name
     released_on
     description

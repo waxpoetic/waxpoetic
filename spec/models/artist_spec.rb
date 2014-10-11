@@ -25,5 +25,5 @@ RSpec.describe Artist, :type => :model do
     expect(subject).to be_valid
   end
 
-  test_validations_with %w(name bio)
+  test_validations_for %w(name bio)
 end

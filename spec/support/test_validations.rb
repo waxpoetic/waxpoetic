@@ -1,5 +1,5 @@
 module TestValidations
-  def test_validations_with(required_attrs)
+  def test_validations_for(required_attrs)
     required_attrs.each do |attr|
       it "must have :#{attr} set" do
         subject.send "#{attr}=", nil

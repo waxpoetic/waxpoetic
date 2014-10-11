@@ -1,8 +1,6 @@
 class EventDecorator < Draper::Decorator
   delegate_all
 
-  DATE_DISPLAY = '%A, %B %e, %Y at %l:%M %p'
-
   def description
     h.markdown description
   end
@@ -34,7 +32,7 @@ class EventDecorator < Draper::Decorator
 
   [:starts_at, :ends_at].each do |date_method|
     define_method date_method do
-      model.send(date_method).strftime DATE_DISPLAY
+      model.send(date_method).strftime '%A, %B %e, %Y at %l:%M %p'
     end
   end
 end

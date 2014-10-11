@@ -21,6 +21,8 @@ gem 'sidekiq'
 gem 'aws-sdk', '~> 1.27'
 gem 'mini_magick'
 gem 'fog'
+gem 'geocoder'
+
 gem 'soundcloud'
 gem 'bitly'
 gem 'haml-rails'

@@ -318,6 +318,7 @@ GEM
       sass (>= 3.2.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    geocoder (1.2.5)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     haml (4.0.5)
@@ -629,6 +630,7 @@ DEPENDENCIES
   fog
   foundation-rails
   friendly_id
+  geocoder
   haml-rails
   high_voltage
   jquery-turbolinks

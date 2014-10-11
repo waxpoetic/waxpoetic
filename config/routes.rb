@@ -612,6 +612,8 @@
 #
 
 Rails.application.routes.draw do
+  resources :events
+
   # User Authentication
   devise_for :users
   devise_scope :user do

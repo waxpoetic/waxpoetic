@@ -53,4 +53,25 @@ RSpec.describe Release, :type => :model do
   it "represents a release for sale" do
     expect(subject).to be_valid
   end
+
+  it "exposes certain attributes to create a Spree::Product" do
+    expect(subject.product_attributes).to be_present
+    expect(subject.product_attributes.keys).to eq([
+      :name,
+      :description,
+      :available_on,
+      :meta_description,
+      :price,
+      :shipping_category
+    ])
+  end
+
+  it "builds a Spree::Image from the uploaded cover" do
+    expect(subject.cover_image).to be_a Spree::Image
+  end
+
+  it "should use the default shipping category" do
+    expect(subject.shipping_category).to be_present
+    expect(subject.shipping_category.name).to eq('Default')
+  end
 end

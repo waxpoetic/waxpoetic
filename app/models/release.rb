@@ -36,6 +36,14 @@ class Release < ActiveRecord::Base
     }
   end
 
+  # The Spree::Image comprised of our cover photo.
+  def cover_image
+    Spree::Image.new \
+      attachment: cover.file,
+      alt: self.decorate.title,
+      viewable: self
+  end
+
   # Spree's shipping category, used to define a Spree::Product.
   # Required, and we always set it to "Default".
   def shipping_category

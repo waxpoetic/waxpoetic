@@ -1,32 +1,24 @@
-class Ticket
-  include ActiveModel::Model
+class Ticket < ActiveRecord::Base
+  belongs_to :event
+  belongs_to :order
 
-  attr_accessor :event, :order
-  attr_reader :pkpass
+  has_one :user, :through => :order
 
   validates :event, presence: true
   validates :order, presence: true
 
-  # Build and save a new Ticket as a PKPass.
-  def self.create(attrs={})
-    ticket = new(attrs)
-    ticket.save
-    ticket
-  end
+  after_create :notify_user, :generate_barcode
 
-  # Save this Ticket immediately.
-  def save
-    valid? and upload and notify
-  end
+  mount_uploader :barcode, ImageUploader
 
   # The ticket number is calculated using the given event.id and
   # order.id.
   def number
-    "#{event.id}-#{order.id}"
+    @number ||= "#{event.id}-#{order.id}"
   end
 
-  # Passbook attributes for this ticket, in Ruby.
-  def attributes
+  # Passbook attributes for this Ticket.
+  def passbook_attributes
     {
       "formatVersion" => 1,
       "passTypeIdentifier" => "pass.com.waxpoeticrecords.event_ticket",
@@ -48,26 +40,17 @@ class Ticket
     }
   end
 
-  # Passbook attributes for this ticket, in JSON.
-  def to_json
-    attributes.to_json
-  end
-
   # A compiled PKPass archive of this Ticket.
   def pkpass
-    @pkpass ||= Passbook::PKPass.new to_json
+    @pkpass ||= Passbook::PKPass.new passbook_attributes.to_json
   end
 
   private
-  def upload
-    uploader.store! pkpass.file
+  def notify_user
+    UserMailer.ticket_available(user).deliver
   end
 
-  def notify
-    UserMailer.ticket_available(order.user).deliver
-  end
-
-  def uploader
-    TicketUploader.new
+  def generate_barcode
+    GenerateBarcode.enqueue self
   end
 end

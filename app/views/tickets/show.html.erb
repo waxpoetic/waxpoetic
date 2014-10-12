@@ -1,0 +1,13 @@
+<div id="ticket">
+  <div class="title row">
+    <%= title "Your ticket for '#{event.name}'" %>
+  </div>
+
+  <div class="barcode row">
+    <%= image_tag ticket.barcode, alt: event.name %>
+  </div>
+
+  <div class="event row">
+    <%= render event %>
+  </div>
+</div>

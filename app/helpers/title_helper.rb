@@ -3,9 +3,11 @@ module TitleHelper
     content_tag :title, title_text.html_safe
   end
 
-  def title(new_title="")
+  def title(new_title="", cosmetic: nil)
     content_for :title, new_title
-    content_tag :h1, new_title
+    content_tag :h1, class: 'title' do
+      cosmetic || new_title
+    end
   end
 
   private

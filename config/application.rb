@@ -1,6 +1,9 @@
+$LOAD_PATH << File.expand_path('../lib', __FILE__)
+
 require File.expand_path('../boot', __FILE__)
 
 require "rails/all"
+require "wax_poetic"
 
 # Require the gems listed in Gemfile
 Bundler.require :default, Rails.env
@@ -24,28 +27,18 @@ module WaxPoetic
     config.time_zone = 'Eastern Time (US & Canada)'
 
     # Tables to seed when running `db:seed`.
-    config.seed_tables = %w(artists releases)
+    config.wax_poetic.seed_tables = %w(artists releases spree_shipping_categories)
 
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-    # File storage location for Fog and CarrierWave.
-    config.file_store = if Rails.env.production?
-      :fog
-    else
-      :file
-    end
-
     # The backend queueing system ActiveJob uses, configured in the
     # active_job initializer.
-    config.queue_adapter = :sidekiq
-
-    # Static data to seed into the DB in all environments.
-    config.seed_tables = %w(spree_shipping_categories)
+    config.active_job.queue_adapter = :sidekiq
 
     # Use S3 on staging and production.
-    config.use_s3 = Rails.env =~ /production|staging/
-    config.bucket = 'files.waxpoeticrecords.com'
+    config.wax_poetic.live = Rails.env =~ /production|staging/
+    config.wax_poetic.s3_bucket = 'files.waxpoeticrecords.com'
 
     # By default, just use the cookie to store sessions
     config.session_key = '_wax_poetic_sessions'

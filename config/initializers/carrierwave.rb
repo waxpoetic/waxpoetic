@@ -1,14 +1,14 @@
 # Store stuff on Fog in production.
 CarrierWave.configure do |config|
-  if Rails.configuration.use_s3
+  if WaxPoetic.live?
     config.storage = :fog
     config.enable_processing = true
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: Rails.application.secrets.aws[:access_key_id],
-      aws_secret_access_key: Rails.application.secrets.aws[:secret_access_key],
+      aws_access_key_id: WaxPoetic.config.aws_key,
+      aws_secret_access_key: WaxPoetic.config.aws_secret,
     }
-    config.fog_directory  = "#{Rails.configuration.bucket}"
+    config.fog_directory  = "#{WaxPoetic.config.s3_bucket}"
     config.fog_public     = false
   else
     config.storage = :file
@@ -20,7 +20,7 @@ module CarrierWave
     class Base
       # Store files according to their model class.
       def store_dir
-        if Rails.configuration.use_s3
+        if WaxPoetic.live?
           default_store_dir
         else
           "uploads/#{default_store_dir}"

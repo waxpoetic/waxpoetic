@@ -2,9 +2,9 @@
 # when we deploy.
 AssetSync.configure do |config|
   config.fog_provider = 'AWS'
-  config.aws_access_key_id = Rails.application.secrets.aws[:access_key_id]
-  config.aws_secret_access_key = Rails.application.secrets.aws[:secret_access_key]
-  config.fog_directory = "#{Rails.configuration.bucket}/assets"
+  config.aws_access_key_id = WaxPoetic.config.aws_key
+  config.aws_secret_access_key = WaxPoetic.config.aws_secret
+  config.fog_directory = "#{WaxPoetic.config.s3_bucket}/assets"
 
   # Invalidate assets on the CDN after uploading
   config.cdn_distribution_id = Rails.application.secrets.cloudfront_id
@@ -16,4 +16,4 @@ AssetSync.configure do |config|
   # Use the Rails generated 'manifest.yml' file to produce the list of files to
   # upload instead of searching the assets directory.
   config.manifest = true
-end if Rails.configuration.use_s3
+end if WaxPoetic.live?

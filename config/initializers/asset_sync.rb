@@ -2,12 +2,12 @@
 # when we deploy.
 AssetSync.configure do |config|
   config.fog_provider = 'AWS'
-  config.aws_access_key_id = WaxPoetic.config.aws_key
-  config.aws_secret_access_key = WaxPoetic.config.aws_secret
+  config.aws_access_key_id = WaxPoetic.secrets.aws[:access_key_id]
+  config.aws_secret_access_key = WaxPoetic.secrets.aws[:secret_access_key]
   config.fog_directory = "#{WaxPoetic.config.s3_bucket}/assets"
 
   # Invalidate assets on the CDN after uploading
-  config.cdn_distribution_id = Rails.application.secrets.cloudfront_id
+  config.cdn_distribution_id = WaxPoetic.secrets.cloudfront_id
   config.invalidate = ['application.js', 'application.css']
 
   # Automatically replace files with their equivalent gzip compressed version

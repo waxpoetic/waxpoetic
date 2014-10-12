@@ -7,6 +7,10 @@ module WaxPoetic
       Rails.configuration.wax_poetic
     end
 
+    def secrets
+      Rails.application.secrets
+    end
+
     def live?
       !!config.live
     end

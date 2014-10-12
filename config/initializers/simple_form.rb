@@ -45,8 +45,25 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: :span, class: :error }
   end
 
+  config.wrappers :foundation, class: :input, hint_class: :field_with_hint, error_class: :error do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label_input
+    b.use :error, wrap_with: { tag: :small }
+
+    # Uncomment the following line to enable hints. 
+    # The line is commented out by default since Foundation
+    # does't provide styles for hints. You will need to provide your own CSS styles for hints.
+    #b.use :hint,  wrap_with: { tag: :span, class: :hint }
+  end
+
+
   # The default wrapper to be used by the FormBuilder.
-  config.default_wrapper = :default
+  config.default_wrapper = :foundation
 
   # Define the way to render check boxes / radio buttons with labels.
   # Defaults to :nested for bootstrap config.
@@ -55,7 +72,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'btn'
+  config.button_class = 'button'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -66,7 +83,7 @@ SimpleForm.setup do |config|
   config.error_notification_tag = :div
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'alert alert-error'
+  config.error_notification_class = 'alert-box alert'
 
   # ID to add for error notification helper.
   # config.error_notification_id = nil
@@ -135,7 +152,7 @@ SimpleForm.setup do |config|
   # config.translate_labels = true
 
   # Automatically discover new inputs in Rails' autoload path.
-  # config.inputs_discovery = true
+  #config.inputs_discovery = true
 
   # Cache SimpleForm inputs discovery
   # config.cache_discovery = !Rails.env.development?

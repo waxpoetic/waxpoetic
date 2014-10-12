@@ -5,6 +5,10 @@ class Artist < ActiveRecord::Base
   validates :bio, presence: true
 
   mount_uploader :avatar, ImageUploader
+
+  def to_label
+    name
+  end
 end
 
 # == Schema Information

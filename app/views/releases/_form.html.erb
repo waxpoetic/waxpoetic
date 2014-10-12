@@ -1,4 +1,14 @@
 <%= simple_form_for release do |f| %>
-  <%= f.inputs :name, :artist, :released_on, :catalog_number, :cover, :description %>
-  <%= f.button :save %>
+  <div class="large-12 columns">
+    <%= f.input :name %>
+    <%= f.association :artist %>
+    <%= f.input :released_on %>
+    <%= f.input :catalog_number %>
+    <%= f.input :cover, :as => :file %>
+    <%= f.input :description, :as => :text %>
+  </div>
+  <div class="buttons">
+    <%= f.button :submit %>
+  </div>
 <% end %>
+

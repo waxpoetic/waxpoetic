@@ -1,3 +1,11 @@
+module Spree
+  class AppConfiguration < Preferences::Configuration
+    preference :site_name,        :string, default: ""
+    preference :site_url,         :string, default: "http://example.com"
+    preference :attachment_path,  :string, default: "/uploads/spree/products/:id/:style/:basename.:extension"
+  end
+end
+
 Spree.config do |config|
   # Configure the store to look just the same as the frontend.
   config.layout = 'application'

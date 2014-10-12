@@ -358,6 +358,9 @@ GEM
       json
       redis (>= 3.0.6)
       redis-namespace (>= 1.3.1)
+    simple_form (3.0.2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.6.0)
     spree (2.3.3)
       spree_api (= 2.3.3)
@@ -493,6 +496,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   sidekiq
+  simple_form
   spree (~> 2.3)
   spree_gateway
   turbolinks

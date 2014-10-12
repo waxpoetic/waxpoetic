@@ -27,6 +27,7 @@ gem 'decent_exposure'
 gem 'redcarpet'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
+gem 'simple_form'
 
 group :development do
   gem 'meta_request'

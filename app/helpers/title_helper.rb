@@ -11,7 +11,7 @@ module TitleHelper
   end
 
   def title_row(text)
-    render 'title', page_title: text
+    render 'title', for_page: text
   end
 
   private

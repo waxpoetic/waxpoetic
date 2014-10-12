@@ -28,6 +28,7 @@ gem 'redcarpet'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'simple_form'
+gem 'soundcloud'
 
 group :development do
   gem 'meta_request'

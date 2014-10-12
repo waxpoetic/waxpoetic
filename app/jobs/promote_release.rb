@@ -1,9 +1,22 @@
 class PromoteRelease < ActiveJob::Base
-  def perform(release)
-    logger.warn "There were no emails sent" if Subscriber.all.empty?
+  attr_reader :release
 
-    Subscriber.all.each do |subscriber|
-      PromoMailer.new_release(subscriber, release).deliver
+  def perform(release)
+    @release = release
+    logger.warn "No promoters configured" if WaxPoetic::Promoter.any?
+
+    WaxPoetic::Promoter.each do |promoter|
+      promoter.promote release, options_for(promoter)
+    end
+  end
+
+  private
+  def options_for(promoter)
+    case promoter
+    when :email
+      { to: Subscriber.all }
+    else
+      {}
     end
   end
 end

@@ -10,7 +10,7 @@ Bundler.require :default, Rails.env
 
 module WaxPoetic
   class Application < Rails::Application
-    # Spree stuff.
+    # Initialize Spree
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
@@ -43,5 +43,14 @@ module WaxPoetic
     # By default, just use the cookie to store sessions
     config.session_key = '_wax_poetic_sessions'
     config.session_store :cookie_store, key: config.session_key
+
+    # Configure where we send promotions.
+    config.wax_poetic.promote_to = []
+
+    # Drain all logs to the same place.
+    config.logger = WaxPoetic.logger
+
+    # Read Redis URL from env config
+    config.redis_url = ENV['REDIS_URL'] || 'redis://localhost:6379'
   end
 end

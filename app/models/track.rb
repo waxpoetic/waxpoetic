@@ -18,6 +18,15 @@ class Track < ActiveRecord::Base
 
   scope :by_track_number, -> { order :number }
 
+  # Attributes given to the Soundcloud API when uploading tracks.
+  def soundcloud_attributes
+    {
+      title: "#{artist.name} - #{name} [#{release.catalog_number}]",
+      asset_data: File.new(file.file),
+      download: false
+    }
+  end
+
   private
   def ensure_price
     self.price ||= DEFAULT_PRICE

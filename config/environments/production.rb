@@ -12,14 +12,17 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Use Redis to store the "HTTP-level" Rack::Cache
-  config.action_dispatch.rack_cache = true
+  # Use Redis to store the "HTTP-level" Rack::Cache.
+  config.action_dispatch.rack_cache = {
+    metastore: "#{config.redis_url}/0/waxpoetic_rack_metadata",
+    entitystore: "#{config.redis_url}/0/waxpoetic_rack_entities"
+  }
 
   # Store the Rails.cache in Redis
-  config.cache_store = :redis_store
+  config.cache_store = :redis_store, "#{config.redis_url}/0/waxpoetic_rails_cache"
 
   # Store the session in Redis
-  config.session_store = :redis_store
+  config.session_store = :redis_store, "#{config.redis_url}/0/waxpoetic_rails_session"
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
@@ -59,12 +62,13 @@ Rails.application.configure do
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
-  # Use a different logger for distributed setups.
-  config.logger = ActiveSupport::TaggedLogging.new Logger.new(STDOUT)
-
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  # Log to syslog in production
+  config.log_tags = ['rails']
+  config.logger = WaxPoetic::Logger.new
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Promote to all social networks and subscribers
+  config.wax_poetic.promote_to = [:email, :soundcloud]
 end

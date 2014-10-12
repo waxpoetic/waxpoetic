@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   pool: 5
 
-development:
+evelopment:
   <<: *default
   database: wax_poetic_development
 
@@ -14,11 +14,13 @@ test:
 staging:
   <<: *default
   database: wax_poetic_staging
+  host: <%= ENV['DATABASE_HOST'] %>
   username: wax_poetic
   password: <%= ENV['DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
   database: wax_poetic_production
+  host: <%= ENV['DATABASE_HOST'] %>
   username: wax_poetic
   password: <%= ENV['DATABASE_PASSWORD'] %>

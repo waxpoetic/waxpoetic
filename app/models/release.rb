@@ -17,7 +17,7 @@ class Release < ActiveRecord::Base
 
   after_commit :create_product_and_variants, :on => :create
   after_commit :create_package, :on => :create
-  after_commit :send_promotional_emails, :on => :create
+  after_commit :promote, :on => :create, :if => :released_today?
 
   mount_uploader :cover, ImageUploader
   mount_uploader :package, PackageUploader
@@ -50,6 +50,14 @@ class Release < ActiveRecord::Base
     @shipcat ||= Spree::ShippingCategory.find_by_name 'Default'
   end
 
+  def promote
+    PromoteRelease.enqueue self
+  end
+
+  def released_today?
+    released_on.to_date == Date.today
+  end
+
   private
   def calculate_price_from_tracks
     self.price ||= tracks.sum(:price)
@@ -61,10 +69,6 @@ class Release < ActiveRecord::Base
 
   def create_package
     PackageRelease.enqueue self
-  end
-
-  def send_promotional_emails
-    PromoteRelease.enqueue self if released_on == Date.today
   end
 end
 

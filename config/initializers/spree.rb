@@ -1,23 +1,10 @@
-module Spree
-  class AppConfiguration < Preferences::Configuration
-    preference :site_name,        :string, default: ""
-    preference :site_url,         :string, default: "http://example.com"
-    preference :attachment_path,  :string, default: "/uploads/spree/products/:id/:style/:basename.:extension"
-  end
-end
-
 Spree.config do |config|
   # Configure the store to look just the same as the frontend.
   config.layout = 'application'
   config.logo = 'logo.jpg'
-  config.site_name = "Wax Poetic Records"
-  config.site_url = "https://www.waxpoeticrecords.com"
 
   # Brand the admin interface as much as possible
   config.admin_interface_logo = 'logo.jpg'
-
-  # Store Spree uploads with the rest of the uploads.
-  config.attachment_path = "/uploads/spree/products/:id/:style/:basename.:extension"
 
   # Upload attachments to Amazon S3 in production & staging
   if WaxPoetic.live?

@@ -47,9 +47,6 @@ module WaxPoetic
     # Configure where we send promotions.
     config.wax_poetic.promote_to = []
 
-    # Drain all logs to the same place.
-    config.logger = WaxPoetic.logger
-
     # Read Redis URL from env config
     config.redis_url = ENV['REDIS_URL'] || 'redis://localhost:6379'
   end

@@ -614,6 +614,11 @@
 Rails.application.routes.draw do
   # User Authentication
   devise_for :users
+  devise_scope :user do
+    get     '/signup' => 'devise/registrations#new'
+    get     '/login'  => 'devise/sessions#new'
+    delete  '/logout' => 'devise/sessions#destroy'
+  end
 
   # Unauthenticated artist/release routes
   resources :artists

@@ -63,8 +63,7 @@ Rails.application.configure do
   config.log_level = :info
 
   # Log to syslog in production
-  config.log_tags = ['rails']
-  config.logger = WaxPoetic::Logger.new
+  config.log_tags = ['rails', :subdomain]
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false

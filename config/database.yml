@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   pool: 5
 
-evelopment:
+development:
   <<: *default
   database: wax_poetic_development
 

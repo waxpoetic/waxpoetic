@@ -15,9 +15,9 @@ class Release < ActiveRecord::Base
   validates :price, presence: true
   validates :artist, presence: true
 
-  after_create :create_product_and_variants,
-               :create_package,
-               :send_promotional_emails
+  after_commit :create_product_and_variants, :on => :create
+  after_commit :create_package, :on => :create
+  after_commit :send_promotional_emails, :on => :create
 
   mount_uploader :cover, ImageUploader
   mount_uploader :package, PackageUploader

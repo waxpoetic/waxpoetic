@@ -25,8 +25,10 @@ log/*
 tmp/*
 db/*.sqlite3
 public/uploads
+public/spree
 coverage/
 spec/tmp/*
+
 
 # Bundler
 /vendor/bundle

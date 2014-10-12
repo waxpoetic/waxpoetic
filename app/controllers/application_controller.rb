@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   # Configure DecentExposure to utilize StrongParameters and decorate
   # all models it returns back.
-  decent_configuration { strategy DecoratedStrongParametersStrategy }
+  decent_configuration { strategy WaxPoetic::DecentExposureStrategy }
 
   protected
   # The action rendered when a model can't be found.

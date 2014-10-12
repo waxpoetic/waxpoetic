@@ -1,9 +1,13 @@
-<div class="release">
-  <%= title release.title, cosmetic: release.name %>
+<div id="release">
+  <div class="row">
+    <div class="large-6 columns">
+      <%= title release.title, cosmetic: release.name %>
+    </div>
 
-  <h2 class="artist">
-    by <%= link_to release.artist.name, release.artist %>
-  </h2>
+    <div class="large-6 columns">
+      <h2 class="artist">by <%= release.artist_link %></h2>
+    </div>
+  </div>
 
   <div class="row">
     <div class="large-6 columns">

@@ -10,5 +10,6 @@ $(document)
   .on 'page:load', ->
     $('#loading').fadeOut FADE_SPEED
 
-# Enable Zurb Foundation
-jQuery -> $(document).foundation()
+jQuery ->
+  # Enable Zurb Foundation
+  $(document).foundation()

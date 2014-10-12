@@ -1,13 +1,2 @@
-<div class="row">
-  <div class="large-6 columns">
-    <%= title 'Artists' %>
-  </div>
-  <div class="large-6 columns">
-    <%= form_tag artists_path, :method => :get do %>
-      <%= search_field_tag 'name', '', placeholder: 'Search...' %>
-    <% end %>
-  </div>
-</div>
-<div class="row" id="results">
-  <%= render 'gallery', resources: artists %>
-</div>
+<%= title_row "Artists" %>
+<%= gallery_for artists %>

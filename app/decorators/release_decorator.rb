@@ -31,4 +31,8 @@ class ReleaseDecorator < Draper::Decorator
   def thumbnail
     h.image_tag model.cover.thumb.url, alt: title
   end
+
+  def artist_link
+    h.link_to model.artist.name, model.artist
+  end
 end

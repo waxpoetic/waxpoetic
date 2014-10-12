@@ -10,6 +10,10 @@ module TitleHelper
     end
   end
 
+  def title_row(text)
+    render 'title', page_title: text
+  end
+
   private
   def title_text
     if page_has_title?

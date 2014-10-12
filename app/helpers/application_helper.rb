@@ -22,4 +22,8 @@ module ApplicationHelper
       class: 'page row'
     }
   end
+
+  def gallery_for(resources)
+    render 'gallery', resources: resources
+  end
 end

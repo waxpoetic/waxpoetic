@@ -1,35 +1,4 @@
-<%= form_for artist do |f| %>
-  <div class="row">
-    <div class="large-3 columns">
-      <%= f.label :name %>
-    </div>
-    <div class="large-9 columns">
-      <%= f.text_field :name %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-3 columns">
-      <%= f.label :bio %>
-    </div>
-    <div class="large-9 columns">
-      <%= f.text_area :bio %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-3 columns">
-      <%= f.label :avatar, "Cover Photo" %>
-    </div>
-    <div class="large-9 columns">
-      <%= f.file_field :avatar, class: 'button secondary' %>
-    </div>
-  </div>
-
-  <div class="controls row">
-    <div class="large-3 columns">&nbsp;</div>
-    <div class="large-9 columns">
-      <%= f.submit 'Save', class: 'button' %>
-    </div>
-  </div>
+<%= simple_form_for artist do |f| %>
+  <%= f.inputs :name, :artist, :released_on, :catalog_number, :cover, :description %>
+  <%= f.button :save %>
 <% end %>

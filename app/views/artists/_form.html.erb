@@ -1,4 +1,6 @@
 <%= simple_form_for artist do |f| %>
-  <%= f.inputs :name, :artist, :released_on, :catalog_number, :cover, :description %>
-  <%= f.button :save %>
+  <%= f.input :name %>
+  <%= f.input :bio, :as => :preview %>
+  <%= f.input :avatar, label: 'Photo' %>
+  <%= f.button :submit %>
 <% end %>

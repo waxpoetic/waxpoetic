@@ -61,6 +61,21 @@ form.simple_form {
   }
   .input {
     clear: both;
+
+    &.preview {
+      .rendered-html {
+        min-height: 100px;
+        width: 401px;
+        margin-left: 373px;
+        margin-bottom: 15px;
+        padding: 5px;
+        border: 1px solid #CCC;
+
+        .empty {
+          color: #CCC;
+        }
+      }
+    }
   }
   .buttons {
     text-align: center;

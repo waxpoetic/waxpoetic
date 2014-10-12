@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
   before_action :authenticate_user!, except: %w(index show)
 
   expose :artists, only: %w(index) do
-    Artist.where search_params
+    Artist.where(search_params).decorate
   end
 
   expose :artist, except: %w(index)

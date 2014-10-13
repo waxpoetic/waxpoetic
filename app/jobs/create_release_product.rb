@@ -48,7 +48,7 @@ class CreateReleaseProduct < ActiveJob::Base
 
   def metadata
     Release::PRODUCT_METADATA.map do |field|
-      { property_name: field.titleize, value: release[field] }
+      { property_name: field.titleize, value: release.send(field) }
     end
   end
 end

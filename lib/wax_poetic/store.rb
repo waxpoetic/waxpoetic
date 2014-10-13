@@ -1,12 +1,10 @@
-require 'wax_poetic/store/payment_gateway'
-
 module WaxPoetic
   # Code for Spree-related tasks that need to be run on seed as well as
   # in tasks.
   module Store
     class << self
       def load_seed
-        configure_store and generate_products and define_payment_method
+        configure_store and generate_products
         puts "seeded the waxpoetic online store"
       end
 
@@ -25,15 +23,6 @@ module WaxPoetic
           release.save
           release.sell!
         end
-      end
-
-      def define_payment_method
-        Stripe::PaymentMethod.create payment_gateway.params
-      end
-
-      private
-      def payment_gateway
-        PaymentGateway.fetch
       end
     end
   end

@@ -1,0 +1,34 @@
+bogus:
+  name: Bogus
+  description: A mock payment gateway for development and testing
+  active: <%= (Rails.env =~ /development|test/) ? 'true' : 'false' %>
+  environment: <%= Rails.env %>
+  display_on: Both
+  auto_capture: false
+  type: Spree::Gateway::Bogus
+
+stripe_test:
+  name: Stripe (test)
+  description: The test payment gateway
+  active: <%= Rails.env.staging? %>
+  environment: staging
+  display_on: Both
+  auto_capture: false
+  type: Spree::Gateway::StripeGateway
+  preferences:
+    preferred_secret_key: <%= WaxPoetic.secrets.stripe_secret_key %>
+    preferred_publishable_key: <%= WaxPoetic.secrets.stripe_publishable_key %>
+    preferred_test_mode: true
+
+stripe_live:
+  name: Stripe (live)
+  description: The live payment gateway
+  active: <%= Rails.env.production? %>
+  environment: production
+  display_on: Both
+  auto_capture: false
+  type: Spree::Gateway::StripeGateway
+  preferences:
+    preferred_secret_key: <%= WaxPoetic.secrets.stripe_secret_key %>
+    preferred_publishable_key: <%= WaxPoetic.secrets.stripe_publishable_key %>
+    preferred_test_mode: false

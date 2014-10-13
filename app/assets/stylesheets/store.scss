@@ -1,0 +1,58 @@
+// Overrides for the Spree store, this is so its Bootstrap-driven CSS
+// will work properly with Foundation's grid system.
+
+#store {
+  .columns {
+    &.six {
+      @extend .large-4;
+
+      &.alpha {
+        margin-top: 36px;
+      }
+    }
+
+    &.ten {
+      @extend .large-8;
+    }
+
+    &.five {
+      @extend .large-6;
+
+      &.omega {
+        @extend .row;
+      }
+    }
+  }
+
+  #product-description {
+    h1.product-title {
+      margin-left: 13px;
+    }
+
+    div[itemprop="description"] {
+      margin-left: 15px;
+      min-height: 250px;
+    }
+  }
+
+  #product-variants {
+    text-align: left;
+    width: 70%;
+
+    ul {
+      list-style: none;
+
+      li {
+        clear: both;
+      }
+
+      input, label {
+        font-size: 12px;
+      }
+
+      label {
+        margin-left: 15px;
+      }
+    }
+  }
+}

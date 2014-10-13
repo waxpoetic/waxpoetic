@@ -39,7 +39,7 @@ RSpec.describe Release, :type => :model do
         1. Falling In Love
         2. I Love My Country
       ),
-      catalog_number: "WXP003",
+      catalog_number: "WXP999",
       cover: files('cover_image.png')
   end
 
@@ -52,6 +52,11 @@ RSpec.describe Release, :type => :model do
 
   it "represents a release for sale" do
     expect(subject).to be_valid
+  end
+
+  it "must have a unique catalog number" do
+    subject.catalog_number = wonder_bars.releases.first.catalog_numbers
+    expect(subject).to_not be_valid
   end
 
   it "exposes certain attributes to create a Spree::Product" do

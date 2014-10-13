@@ -10,7 +10,7 @@ class CreateReleaseProduct < ActiveJob::Base
     if saved?
       logger.info "Product and Release saved"
 
-      if product.images.create(image_attributes)
+      if copy_image && save_metadata
         logger.info "Image created. Creating variants."
         CreateProductVariants.enqueue product
       else
@@ -35,5 +35,20 @@ class CreateReleaseProduct < ActiveJob::Base
       alt: release.decorate.title,
       viewable: release
     }
+  end
+
+  private
+  def copy_image
+    product.images.create(image_attributes)
+  end
+
+  def save_metadata
+    product.update_attributes product_properties_attributes: metadata
+  end
+
+  def metadata
+    Release::PRODUCT_METADATA.map do |field|
+      { property_name: field.titleize, value: release[field] }
+    end
   end
 end

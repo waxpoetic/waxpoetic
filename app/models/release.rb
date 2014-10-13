@@ -4,6 +4,8 @@ class Release < ActiveRecord::Base
   belongs_to :artist
   belongs_to :product, class_name: 'Spree::Product'
 
+  PRODUCT_METADATA = %w(catalog_number released_on)
+
   has_many :tracks
 
   before_validation :calculate_price_from_tracks

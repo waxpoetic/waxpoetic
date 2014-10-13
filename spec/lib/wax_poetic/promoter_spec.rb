@@ -25,7 +25,7 @@ module WaxPoetic
 
     it "saves all given attributes as a hash on init" do
       expect(subject.attributes).to be_a(Hash)
-      expect(subject.attributes[:credentials).to eq("my-only-credential")
+      expect(subject.attributes[:credentials]).to eq("my-only-credential")
     end
 
     it "raises error when 'promote!' is not implemented" do

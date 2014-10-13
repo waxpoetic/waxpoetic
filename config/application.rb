@@ -26,8 +26,11 @@ module WaxPoetic
     # Use EST as our local time zone. (UTC is default).
     config.time_zone = 'Eastern Time (US & Canada)'
 
-    # Tables to seed when running `db:seed`.
-    config.wax_poetic.seed_tables = %w(artists releases spree_shipping_categories)
+    # Tables to seed from fixtures when running `db:seed`.
+    config.wax_poetic.seed_tables = %w(
+      artists releases spree_shipping_categories spree_taxonomies
+      spree_taxons spree_option_types spree_option_values
+    )
 
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }

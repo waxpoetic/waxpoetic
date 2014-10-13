@@ -1,0 +1,17 @@
+mp3:
+  id: 1
+  option_type_id: 1
+  name: mp3
+  presentation: MP3 (Compressed Audio)
+
+wav:
+  id: 2
+  option_type_id: 1
+  name: wav
+  presentation: WAV (PCM Audio)
+
+ose:
+  id: 3
+  option_type_id: 1
+  name: OSE
+  presentation: Open-Source Edition (PCM Audio)

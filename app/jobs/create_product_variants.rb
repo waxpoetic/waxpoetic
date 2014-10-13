@@ -5,6 +5,7 @@ class CreateProductVariants < ActiveJob::Base
   # The amount of money the initially set price is bumped for
   # variant releases, such as high-quality or open-source releases.
   BUMPS = {
+    'MP3' => 0, # mp3s are the master price (the lowest)
     'WAV' => 0.59,
     'OSE' => 10.00
   }
@@ -14,9 +15,7 @@ class CreateProductVariants < ActiveJob::Base
       product_variant = product.variants.build(
         sku: sku_for(product, variant),
         price: price_of(release_of(product).price, variant),
-        position: index,
-        option_values: format_option.option_values.where(name: variant),
-        is_master: (variant == 'MP3')
+        option_values: format_option.option_values.where(name: variant)
       )
 
       if product_variant.save
@@ -28,9 +27,8 @@ class CreateProductVariants < ActiveJob::Base
   end
 
   private
-  def price_of(base_price, variant)
-    return base_price unless BUMPS[variant].present?
-    base_price + BUMPS[variant]
+  def price_of(master_price, variant)
+    master_price + BUMPS[variant]
   end
 
   def sku_for(product, variant)

@@ -54,6 +54,7 @@ class ReleaseDecorator < Draper::Decorator
 
   # The entire product description.
   def full_description
+    return description unless model.tracks.any?
     description + "<h3>Track List</h3>\n".html_safe + track_list
   end
 

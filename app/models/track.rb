@@ -16,7 +16,7 @@ class Track < ActiveRecord::Base
 
   mount_uploader :file, MusicUploader
 
-  scope :by_track_number, -> { order :number }
+  scope :by_number, -> { order :number }
 
   # Attributes given to the Soundcloud API when uploading tracks.
   def soundcloud_attributes
@@ -38,7 +38,7 @@ class Track < ActiveRecord::Base
 
   def last_track_number
     return 0 unless release.present?
-    release.tracks.by_track_number.try(:number).to_i
+    release.tracks.by_number.try(:number).to_i
   end
 end
 

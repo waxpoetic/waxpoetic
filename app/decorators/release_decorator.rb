@@ -59,7 +59,7 @@ class ReleaseDecorator < Draper::Decorator
 
   private
   def tracks_as_text
-    model.tracks.reduce '' do |list, track|
+    model.tracks.by_number.reduce '' do |list, track|
       list << "#{track.number}. #{track.decorate.title}\n"
     end
   end

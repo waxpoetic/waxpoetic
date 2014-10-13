@@ -6,7 +6,7 @@ class Release < ActiveRecord::Base
 
   PRODUCT_METADATA = %w(catalog_number released_on)
 
-  has_many :tracks, :order => 'number DESC'
+  has_many :tracks
 
   before_validation :calculate_price_from_tracks
 

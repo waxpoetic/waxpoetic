@@ -25,11 +25,7 @@
       <div class="tracks">
         <h3>Track Listing</h3>
 
-        <ol type="1">
-          <% release.tracks.by_track_number.each do |track| %>
-            <li><%= track.name %></li>
-          <% end %>
-        </ol>
+        <%= release.track_list %>
       </div>
     </div>
 

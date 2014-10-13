@@ -32,15 +32,35 @@ class ReleaseDecorator < Draper::Decorator
     h.image_tag model.cover.thumb.url, alt: title
   end
 
+  # Link to this release's artist.
   def artist_link
     h.link_to model.artist.name, model.artist
   end
 
+  # The cover image when seeded.
   def seed_cover_file
     File.new "#{Rails.root}/tmp/images/#{model.name.parameterize}.jpg"
   end
 
+  # Show this release date beautifully.
   def released_on
     model.released_on.strftime '%A %B %e, %Y'
+  end
+
+  # All tracks, in order, output as HTML.
+  def track_list
+    h.markdown tracks_as_text
+  end
+
+  # The entire product description.
+  def full_description
+    description + "<h3>Track List</h3>\n".html_safe + track_list
+  end
+
+  private
+  def tracks_as_text
+    model.tracks.reduce '' do |list, track|
+      list << "#{track.number}. #{track.decorate.title}\n"
+    end
   end
 end

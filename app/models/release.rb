@@ -6,7 +6,7 @@ class Release < ActiveRecord::Base
 
   PRODUCT_METADATA = %w(catalog_number released_on)
 
-  has_many :tracks
+  has_many :tracks, :order => 'number DESC'
 
   before_validation :calculate_price_from_tracks
 
@@ -52,8 +52,8 @@ class Release < ActiveRecord::Base
   # Attributes given to the Spree::Product when created.
   def product_attributes
     {
-      name: self.decorate.title,
-      description: description,
+      name: decorate.title,
+      description: decorate.full_description,
       available_on: released_on,
       meta_description: description,
       price: price,

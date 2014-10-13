@@ -1,6 +1,4 @@
 class CreateProductVariants < ActiveJob::Base
-  attr_reader :product
-
   # The type of variants we'll be creating alongside this product.
   VARIANTS = %w(MP3 WAV OSE)
 
@@ -12,18 +10,19 @@ class CreateProductVariants < ActiveJob::Base
   }
 
   def perform(product)
-    @product = product
     VARIANTS.each_with_index do |variant, index|
-      variant = product.variants.build(
+      product_variant = product.variants.build(
         sku: sku_for(product, variant),
         price: price_of(release_of(product).price, variant),
         position: index,
-        option_values: option_values_for(variant),
+        option_values: format_option.option_values.where(name: variant),
         is_master: (variant == 'MP3')
       )
 
-      unless variant.save
-        logger.error "Variant did not save: #{variant.errors.full_messages.join(', ')}"
+      if product_variant.save
+        logger.info "Saved variant for Product #{product.id}"
+      else
+        logger.error "Variant did not save: #{product_variant.errors.full_messages.join(', ')}"
       end
     end
   end
@@ -42,12 +41,7 @@ class CreateProductVariants < ActiveJob::Base
     Release.where(product_id: product.id).first
   end
 
-  def option_values_for(variant)
-    [
-      Spree::OptionValue.new(
-        name: "#{variant} format",
-        presentation: variant,
-      )
-    ]
+  def format_option
+    Spree::OptionType.find_by_name 'format'
   end
 end

@@ -1,1 +1,18 @@
-<h1>New Release</h1>
+<div id="title">
+  <h1><%= @artist.name %> just released something!</h1>
+</div>
+
+<div id="description">
+  <%= @release.description %>
+</div>
+
+<div id="tracks">
+  <h2>Download Now!</h2>
+  <ol type="1">
+  <% @release.tracks.each do |track| %>
+    <li><%= link_to track.title, track.short_url, target: '_blank' %></li>
+  <% end %>
+  </ol>
+</div>
+
+<%= image_tag 'logo.jpg', alt: 'Wax Poetic Records' %>

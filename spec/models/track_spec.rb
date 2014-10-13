@@ -10,6 +10,7 @@
 #  updated_at :datetime
 #  file       :string(255)
 #  number     :integer
+#  short_url  :string(255)
 #
 # Indexes
 #

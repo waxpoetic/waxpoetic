@@ -18,6 +18,8 @@ class Track < ActiveRecord::Base
 
   scope :by_number, -> { order :number }
 
+  after_create :generate_short_url
+
   # Attributes given to the Soundcloud API when uploading tracks.
   def soundcloud_attributes
     {
@@ -25,6 +27,10 @@ class Track < ActiveRecord::Base
       asset_data: File.new(file.file),
       download: false
     }
+  end
+
+  def uri
+    URI.parse short_url
   end
 
   private
@@ -40,6 +46,10 @@ class Track < ActiveRecord::Base
     return 0 unless release.present?
     release.tracks.by_number.try(:number).to_i
   end
+
+  def generate_short_url
+    GenerateTrackLink.enqueue self
+  end
 end
 
 # == Schema Information
@@ -54,6 +64,7 @@ end
 #  updated_at :datetime
 #  file       :string(255)
 #  number     :integer
+#  short_url  :string(255)
 #
 # Indexes
 #

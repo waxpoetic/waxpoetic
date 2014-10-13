@@ -29,3 +29,9 @@ Spree.user_class = 'User'
 Rails.application.config.to_prepare do
   require_dependency 'spree/authentication_helpers'
 end
+
+# Simplify checkout flow to disable delivery and address steps.
+Spree::Order.class_eval do
+  remove_checkout_step :address
+  remove_checkout_step :delivery
+end

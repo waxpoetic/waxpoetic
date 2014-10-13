@@ -30,7 +30,7 @@ module WaxPoetic
     config.wax_poetic.seed_tables = %w(
       artists releases spree_shipping_categories spree_taxonomies
       spree_taxons spree_option_types spree_option_values
-      spree_payment_methods
+      spree_payment_methods spree_trackers
     )
 
     # Use localhost as mail server (for Devise)

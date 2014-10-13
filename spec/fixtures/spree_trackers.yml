@@ -1,0 +1,9 @@
+staging:
+  active: <%= Rails.env.staging? %>
+  environment: staging
+  analytics_id: <%= WaxPoetic.secrets.google_analytics_id %>
+
+production:
+  active: <%= Rails.env.production? %>
+  environment: production
+  analytics_id: <%= WaxPoetic.secrets.google_analytics_id %>

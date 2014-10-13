@@ -13,7 +13,7 @@ class Release < ActiveRecord::Base
   validates :name, presence: true
   validates :released_on, presence: true
   validates :description, presence: true
-  validates :catalog_number, presence: true
+  validates :catalog_number, presence: true, uniqueness: true
   validates :price, presence: true
   validates :artist, presence: true
 

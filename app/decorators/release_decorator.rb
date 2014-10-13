@@ -35,4 +35,12 @@ class ReleaseDecorator < Draper::Decorator
   def artist_link
     h.link_to model.artist.name, model.artist
   end
+
+  def seed_cover_file
+    File.new "#{Rails.root}/tmp/images/#{model.name.parameterize}.jpg"
+  end
+
+  def released_on
+    model.released_on.strftime '%A %B %e, %Y'
+  end
 end

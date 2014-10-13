@@ -18,6 +18,10 @@ Spree.config do |config|
   config.allow_ssl_in_production = true
   config.allow_ssl_in_staging = false
   config.allow_ssl_in_development_and_test = false
+
+  # Until we begin selling merchandise, we don't need to track inventory
+  # levels in the online store.
+  config.track_inventory_levels = false
 end
 
 # Use the same User model as the admin panel

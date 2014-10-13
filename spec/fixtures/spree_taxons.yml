@@ -1,0 +1,8 @@
+release:
+  id: 1
+  name: Release
+  taxonomy_id: 1
+merch:
+  id: 2
+  name: Merchandise
+  taxonomy_id: 1

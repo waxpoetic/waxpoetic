@@ -15,14 +15,37 @@ class Release < ActiveRecord::Base
   validates :price, presence: true
   validates :artist, presence: true
 
-  after_commit :create_product_and_variants, :on => :create
-  after_commit :create_package, :on => :create
-  after_commit :promote, :on => :create, :if => :released_today?
+  after_commit :sell!, :on => :create
+  after_commit :package!, :on => :create
+  after_commit :promote!, :on => :create, :if => :released_today?
 
   mount_uploader :cover, ImageUploader
   mount_uploader :package, PackageUploader
 
   delegate :variants, :to => :product
+
+  # "Orphan" releases which have no corresponding Spree::Product record.
+  scope :without_product, -> { where product_id: nil }
+
+  # Create the Spree::Product for this Release and begin selling it on
+  # the online store. Note that this will *actually* begin selling
+  # whenever the `available_on` date is met, which is set to the
+  # `released_on` method of this Release record.
+  def sell!
+    CreateReleaseProduct.enqueue self
+  end
+
+  # Generate and upload ZIP packages to the CDN that contain this
+  # Release and its Tracks.
+  def package!
+    PackageRelease.enqueue self
+  end
+
+  # Send promotional emails for this Release, upload its Tracks to
+  # Soundcloud, and spam various social networks with the link.
+  def promote!
+    PromoteRelease.enqueue self
+  end
 
   # Attributes given to the Spree::Product when created.
   def product_attributes
@@ -50,9 +73,6 @@ class Release < ActiveRecord::Base
     @shipcat ||= Spree::ShippingCategory.find_by_name 'Default'
   end
 
-  def promote
-    PromoteRelease.enqueue self
-  end
 
   def released_today?
     released_on.to_date == Date.today
@@ -61,14 +81,6 @@ class Release < ActiveRecord::Base
   private
   def calculate_price_from_tracks
     self.price ||= tracks.sum(:price)
-  end
-
-  def create_product_and_variants
-    CreateReleaseProduct.enqueue self
-  end
-
-  def create_package
-    PackageRelease.enqueue self
   end
 end
 

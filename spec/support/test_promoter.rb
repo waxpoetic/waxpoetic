@@ -7,6 +7,7 @@ class TestPromoter < WaxPoetic::Promoter
 
   def promote!(release, options={})
     @promoted_releases << release
+    true
   end
 
   def reload!

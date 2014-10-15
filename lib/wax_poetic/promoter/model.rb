@@ -49,7 +49,7 @@ module WaxPoetic
       end
 
       def driver_class_name
-        "#{driver.to_s.classify}Promoter"
+        "#{driver_client_name.to_s.classify}Promoter"
       end
     end
   end

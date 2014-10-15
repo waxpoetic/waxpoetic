@@ -8,11 +8,27 @@ RSpec.describe SoundcloudPromoter, :type => :promoter do
     }
   end
 
+  let :success do
+    double 'Soundcloud::Response', :success? => true
+  end
+
+  let :params do
+    {:title=>"The Wonder Bars - After Hours [WXP003]", :asset_data=>nil, :download=>false}
+  end
+
+  before do
+    client = double 'Soundcloud'
+    allow(client).to receive(:get).with('/me').and_return success
+    allow(client).to receive(:post).with('/me/tracks', :track => params).and_return success
+    allow(subject).to receive(:soundcloud).and_return client
+  end
+
   let :release do
     releases :falling_in_love
   end
 
   it "validates soundcloud credentials" do
+    expect(subject).to be_connected
     expect(subject).to be_valid
   end
 

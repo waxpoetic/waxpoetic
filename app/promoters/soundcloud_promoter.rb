@@ -6,8 +6,9 @@ class SoundcloudPromoter < WaxPoetic::Promoter
   # Enumerate through each Track and upload it to Wax Poetic's
   # Soundcloud account.
   def promote!(release, options={})
-    release.tracks.each do |track|
+    release.tracks.all? do |track|
       response = upload track
+
       if response.success?
         logger.info "'#{track}' has been uploaded to Soundcloud"
         true

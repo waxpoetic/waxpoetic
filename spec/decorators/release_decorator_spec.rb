@@ -22,7 +22,7 @@ RSpec.describe ReleaseDecorator, :type => :decorator do
 
   it "combines description and track list" do
     expect(subject.full_description).to eq(
-      description + "<h3>Track List</h3>\n".html_safe + track_list
+      subject.description + "<h3>Track List</h3>\n".html_safe + subject.track_list
     )
   end
 
@@ -46,7 +46,7 @@ RSpec.describe ReleaseDecorator, :type => :decorator do
 
   it "renders markdown-driven track listing as text" do
     expect(subject.track_list).to_not be_empty
-    expect(subject.track_list).to match(%r(<h3>Track List</h3>))
-    expect(subject.track_list).to include("1. The Wonder Bars - Falling In Love\n")
+    expect(subject.track_list).to include('(<ol>')
+    expect(subject.track_list).to include("<li>The Wonder Bars - Falling In Love</li>")
   end
 end

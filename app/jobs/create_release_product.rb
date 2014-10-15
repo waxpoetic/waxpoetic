@@ -31,7 +31,7 @@ class CreateReleaseProduct < ActiveJob::Base
 
   def image_attributes
     {
-      attachment: File.new(release.cover.file.file),
+      attachment: File.new(release.cover.file),
       alt: release.decorate.title,
       viewable: release
     }

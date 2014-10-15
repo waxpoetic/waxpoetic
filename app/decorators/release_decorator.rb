@@ -57,6 +57,11 @@ class ReleaseDecorator < Draper::Decorator
     markdown tracks_as_text
   end
 
+  def cover_file
+    return unless model.cover.present?
+    File.new model.cover.file
+  end
+
 
   private
   def tracks_as_text

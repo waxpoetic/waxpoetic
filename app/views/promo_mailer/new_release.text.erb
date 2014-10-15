@@ -4,7 +4,7 @@
 
 TRACKS:
 
-<% @release.tracks.each do |track| %>
+<% @release.tracks.map(&:decorate).each do |track| %>
   <%= track.number %>. <%= track.title %> (<%= track.short_url %>)
 <% end %>
 

@@ -8,11 +8,8 @@ module WaxPoetic
   class DecentExposureStrategy < DecentExposure::StrongParametersStrategy
     # Decorate all non-persisting methods.
     def resource
-      if controller.action_name == 'create'
-        super
-      else
-        super.decorate
-      end
+      return super if controller.action_name == 'create'
+      super.decorate
     end
   end
 end

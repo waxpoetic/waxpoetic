@@ -30,6 +30,7 @@ gem 'turbolinks'
 gem 'simple_form'
 gem 'soundcloud'
 gem 'bitly'
+gem 'responders'
 
 group :development do
   gem 'meta_request'

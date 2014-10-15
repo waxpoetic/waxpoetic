@@ -3,11 +3,10 @@ class ArtistsController < ApplicationController
 
   before_action :authenticate_user!, except: %w(index show)
 
-  expose :artists, only: %w(index) do
+  expose :artists, :only => %w(index) do
     Artist.where(search_params).decorate
   end
-
-  expose :artist, except: %w(index)
+  expose :artist, :attributes => :edit_params, :except => %w(create index)
 
   def index
     respond_with artists
@@ -26,10 +25,12 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    if artist.save
-      respond_with artist, notice: "New artist saved."
+    @artist = Artist.new edit_params
+
+    if @artist.save
+      respond_with @artist
     else
-      redirect_to new_artist_path, alert: error_msg(artist)
+      redirect_to new_artist_path
     end
   end
 

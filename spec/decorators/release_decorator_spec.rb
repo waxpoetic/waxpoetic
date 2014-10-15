@@ -41,12 +41,12 @@ RSpec.describe ReleaseDecorator, :type => :decorator do
   end
 
   it "links to the artist" do
-    expect(subject.artist_link).to match(%r(\A<a href="#{artists_path(subject.artist)}"))
+    expect(subject.artist_link).to match(%r(\A<a href="/artists/#{subject.artist.id}"))
   end
 
   it "renders markdown-driven track listing as text" do
     expect(subject.track_list).to_not be_empty
-    expect(subject.track_list).to include('(<ol>')
-    expect(subject.track_list).to include("<li>The Wonder Bars - Falling In Love</li>")
+    expect(subject.track_list).to include('<ol>')
+    expect(subject.track_list).to include("<li>The Wonder Bars - After Hours</li>")
   end
 end

@@ -1,3 +1,15 @@
 en:
   gallery:
     empty: "No results."
+
+  flash:
+    actions:
+      create:
+        notice: "Saved new %{resource_name}."
+        alert: "%{resource_name} could not be saved."
+      update:
+        notice: "%{resource_name} saved."
+        alert: "%{resource_name} could not be saved."
+      destroy:
+        notice: "%{resource_name} has been deleted."
+        alert: "%{resource_name} could not be deleted."

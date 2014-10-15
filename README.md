@@ -6,6 +6,20 @@ catalog for browsing more details on each of our releases (including buy
 links). There's also an online store for purchasing copies of each
 release as well as merchandise and event tickets.
 
+## Features
+
+- Artist and Release catalog
+- Online store for merchandise and releases
+- Authentication system for release downloads
+- Email new releases to a private promo list and upload their tracks
+  to Soundcloud.
+
+### Feature Roadmap
+
+- Post new Releases to Twitter, Facebook and Instagram
+- Layout re-design, make it less boring
+- Event ticketing
+
 ## Setup
 
 Check out the [waxpoetic cookbook][cookbook] to set up the application
@@ -38,13 +52,7 @@ Start Foreman to bring up the web server and Sidekiq:
 $ foreman start
 ```
 
-## Development
+You can also run `rake -vT` to view all other command-line tasks for
+this app.
 
-All contributions must include tests and must be given within a pull
-request. Tests should encompass both unit and integration levels, as
-well as acceptance features.
-
-### Feature Roadmap
-
-- Post new Releases to Twitter, Facebook, Soundcloud and Instagram
-- Layout re-design, make it less boring
+[cookbook]: https://github.com/waxpoetic/cookbook

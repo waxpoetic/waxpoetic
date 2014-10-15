@@ -55,7 +55,7 @@ RSpec.describe Release, :type => :model do
   end
 
   it "must have a unique catalog number" do
-    subject.catalog_number = wonder_bars.releases.first.catalog_numbers
+    subject.catalog_number = wonder_bars.releases.first.catalog_number
     expect(subject).to_not be_valid
   end
 

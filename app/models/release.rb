@@ -4,7 +4,7 @@ class Release < ActiveRecord::Base
   belongs_to :artist
   belongs_to :product, class_name: 'Spree::Product'
 
-  PRODUCT_METADATA = %w(catalog_number released_on)
+  PRODUCT_METADATA = %w(catalog_number release_date)
 
   has_many :tracks
 

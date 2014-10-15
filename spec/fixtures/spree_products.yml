@@ -1,4 +1,4 @@
-give_her_that_rnd:
-  name: 'Give Her That R&D'
+spree_shuffle_not:
+  name: 'Research & Development - Shuffle Not'
   available_on: <%= Date.today %>
-  slug: 'give-her-that-rnd'
+  slug: 'research-and-development-shuffle-not'

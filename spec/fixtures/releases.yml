@@ -1,16 +1,17 @@
-falling_in_love:
-  name: "Falling In Love"
+just_the_start:
+  id: 1
+  name: "Just The Start EP"
   released_on: <%= Date.today %>
-  description: "Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends."
-  catalog_number: "WXP003"
+  catalog_number: "WXP001"
   price: 2.49
   artist: wonder_bars
+  description: "Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends."
 
-give_her_that_rnd:
-  name: "Give Her That R&D"
+shuffle_not:
+  name: "Shuffle Not"
   released_on: <%= Date.today %>
-  description: "Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb."
-  catalog_number: "WXP005"
+  catalog_number: "WXP002"
   price: 9.99
   artist: rnd
-  product: spree_give_her_that_rnd
+  product: spree_shuffle_not
+  description: "Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb."

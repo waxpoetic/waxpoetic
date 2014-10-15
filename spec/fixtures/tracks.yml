@@ -1,4 +1,4 @@
 after_hours:
   number: 1
   name: 'After Hours'
-  release: falling_in_love
+  release_id: 1

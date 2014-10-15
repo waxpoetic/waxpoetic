@@ -24,13 +24,9 @@ class Track < ActiveRecord::Base
   def soundcloud_attributes
     {
       title: "#{artist.name} - #{name} [#{release.catalog_number}]",
-      asset_data: File.new(file.file),
+      asset_data: file_handler,
       download: false
     }
-  end
-
-  def uri
-    URI.parse short_url
   end
 
   private
@@ -49,6 +45,11 @@ class Track < ActiveRecord::Base
 
   def generate_short_url
     GenerateTrackLink.enqueue self
+  end
+
+  def file_handler
+    return nil unless file.try(:file)
+    @handler ||= File.new file.file
   end
 end
 

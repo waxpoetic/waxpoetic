@@ -28,6 +28,15 @@ module WaxPoetic
         @logger ||= WaxPoetic::Logger.new tags: [driver_class_name]
       end
 
+      # Test equalization based on the driver param.
+      def ==(other_promoter)
+        driver == other_promoter.driver
+      end
+
+      def credentials
+        @credentials.try :with_indifferent_access
+      end
+
       private
       def client_connected
         unless connected?

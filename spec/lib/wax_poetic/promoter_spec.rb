@@ -29,7 +29,7 @@ module WaxPoetic
     end
 
     it "raises error when 'promote!' is not implemented" do
-      expect(subject.promote!).to raise_error(NoMethodError)
+      expect { subject.promote!(:nothing) }.to raise_error(NoMethodError)
     end
 
     it "finds all promoters from configuration" do
@@ -39,8 +39,8 @@ module WaxPoetic
 
     it "creates a new test_promoter using credentials" do
       expect(test_promoter).to be_a(TestPromoter)
-      expect(test_promoter.credentials).to include(:api_key)
-      expect(test_promoter.credentials).to include(:api_secret)
+      expect(test_promoter.credentials).to include('api_key')
+      expect(test_promoter.credentials).to include('secret_key')
     end
 
     it "promotes release when 'promote!' is implemented" do

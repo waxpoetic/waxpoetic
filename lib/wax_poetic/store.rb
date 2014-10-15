@@ -19,10 +19,15 @@ module WaxPoetic
 
       def generate_products
         Release.without_product.each do |release|
-          release.cover.store! release.decorate.seed_cover_file
+          release.cover.store! cover_file_for(release)
           release.save
           release.sell!
         end
+      end
+
+      private
+      def cover_file_for(release)
+        File.new "#{Rails.root}/tmp/images/#{release.name.parameterize}.jpg"
       end
     end
   end

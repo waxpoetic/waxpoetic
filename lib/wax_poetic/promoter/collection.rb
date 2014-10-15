@@ -22,7 +22,7 @@ module WaxPoetic
 
       private
       def credentials_for(driver)
-        WaxPoetic.secrets.send(driver) || {}
+        WaxPoetic.secrets[driver] || {}
       end
     end
   end

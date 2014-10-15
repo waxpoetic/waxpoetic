@@ -20,14 +20,14 @@
 require 'rails_helper'
 
 RSpec.describe Track, :type => :model do
-  let(:wonder_bars) { artists :wonder_bars }
-  let(:just_the_start) { releases :just_the_start }
+  let(:artist) { artists :wonder_bars }
+  let(:release) { releases :just_the_start }
 
   subject do
     Track.new \
       name: "Falling In Love",
-      artist: wonder_bars,
-      release: falling_in_love,
+      artist: artist,
+      release: release,
       price: 1.49
   end
 

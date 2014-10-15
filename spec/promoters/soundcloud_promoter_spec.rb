@@ -13,7 +13,11 @@ RSpec.describe SoundcloudPromoter, :type => :promoter do
   end
 
   let :params do
-    {:title=>"The Wonder Bars - After Hours [WXP003]", :asset_data=>nil, :download=>false}
+    {
+      title: "The Wonder Bars - After Hours [WXP001]",
+      asset_data: nil,
+      download: false
+    }
   end
 
   before do

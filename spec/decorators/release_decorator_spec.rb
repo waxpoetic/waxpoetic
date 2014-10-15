@@ -15,4 +15,38 @@ RSpec.describe ReleaseDecorator, :type => :decorator do
   it "renders description in markdown" do
     expect(subject.description).to include('<p>')
   end
+
+  it "filters html tags from description" do
+    expect(subject.text_description).to_not include('<p>')
+  end
+
+  it "combines description and track list" do
+    expect(subject.full_description).to eq(
+      description + "<h3>Track List</h3>\n".html_safe + track_list
+    )
+  end
+
+  it "formats release date" do
+    expect(subject.date).to eq(release.released_on.strftime('%B %e, %Y'))
+  end
+
+  it "builds img tag for full-size cover photo" do
+    expect(subject.photo).to match(/\A<img/)
+    expect(subject.photo).to match(/alt="Cover Art"/)
+  end
+
+  it "builds img tag for cover thumbnail" do
+    expect(subject.thumbnail).to match(/\A<img/)
+    expect(subject.thumbnail).to match(/alt="#{subject.title}"/)
+  end
+
+  it "links to the artist" do
+    expect(subject.artist_link).to match(%r(\A<a href="#{artists_path(subject.artist)}"))
+  end
+
+  it "renders markdown-driven track listing as text" do
+    expect(subject.track_list).to_not be_empty
+    expect(subject.track_list).to match(%r(<h3>Track List</h3>))
+    expect(subject.track_list).to include("1. The Wonder Bars - Falling In Love\n")
+  end
 end

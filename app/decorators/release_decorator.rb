@@ -1,5 +1,7 @@
 # View-level decorations for Release objects.
 class ReleaseDecorator < Draper::Decorator
+  include MarkdownHelper
+
   delegate_all
 
   # Always display this release as #{ARTIST} - #{NAME}.
@@ -14,13 +16,26 @@ class ReleaseDecorator < Draper::Decorator
 
   # Render the description as entered in by the user to Markdown.
   def description
-    h.markdown model.description
+    markdown model.description
+  end
+
+  # Filter out HTML tags from the description for text-based email
+  # clients.
+  def text_description
+    h.strip_tags description
+  end
+
+  # The entire product description.
+  def full_description
+    return description unless model.tracks.any?
+    description + "<h3>Track List</h3>\n".html_safe + track_list
   end
 
   # Formatted release date.
   def date
     model.released_on.strftime '%B %e, %Y'
   end
+  alias release_date date
 
   # <img> tag for the full size cover photo.
   def photo
@@ -37,31 +52,16 @@ class ReleaseDecorator < Draper::Decorator
     h.link_to model.artist.name, model.artist
   end
 
-  # The cover image when seeded.
-  def seed_cover_file
-    File.new "#{Rails.root}/tmp/images/#{model.name.parameterize}.jpg"
-  end
-
-  # Show this release date beautifully.
-  def released_on
-    model.released_on.strftime '%A %B %e, %Y'
-  end
-
   # All tracks, in order, output as HTML.
   def track_list
-    h.markdown tracks_as_text
+    markdown tracks_as_text
   end
 
-  # The entire product description.
-  def full_description
-    return description unless model.tracks.any?
-    description + "<h3>Track List</h3>\n".html_safe + track_list
-  end
 
   private
   def tracks_as_text
-    model.tracks.by_number.reduce '' do |list, track|
-      list << "#{track.number}. #{track.decorate.title}\n"
+    model.tracks.by_number.map(&:decorate).reduce '' do |list, track|
+      list << %(#{track.numbered_title}\n)
     end
   end
 end

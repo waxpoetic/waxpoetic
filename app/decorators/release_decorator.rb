@@ -62,6 +62,21 @@ class ReleaseDecorator < Draper::Decorator
     File.new model.cover.file
   end
 
+  def product_path
+    "/store/products/#{release.product.name.parameterize}"
+  end
+
+  def price
+    h.number_to_currency model.price
+  end
+
+  def buy_button
+    h.link_to "Buy Release (#{price})", product_path, class: 'button success'
+  end
+
+  def page_title
+    "#{release.name} by #{artist_link}".html_safe
+  end
 
   private
   def tracks_as_text

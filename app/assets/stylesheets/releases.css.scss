@@ -1,12 +1,9 @@
-// Place all the styles related to the releases controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.gallery {
-  #empty {
-    font-size: 24px;
-    font-style: italic;
-    text-align: center;
-    margin-top: 100px;
+#release {
+  .buttons {
+    margin-top: 26px;
+    text-align: right;
+  }
+  .description {
+    margin-top: 10px;
   }
 }

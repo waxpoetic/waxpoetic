@@ -7,11 +7,11 @@ class ReleasesController < ApplicationController
   expose :release, :attributes => :edit_params, :except => %w(index)
 
   def index
-    respond_with releases
+    respond_with releases.decorate
   end
 
   def show
-    respond_with release
+    respond_with release.decorate
   end
 
   def new
@@ -24,7 +24,7 @@ class ReleasesController < ApplicationController
 
   def create
     if release.save
-      respond_with release, notice: "New release added."
+      respond_with release.decorate, notice: "New release added."
     else
       redirect_to new_release_path, alert: error_msg(release)
     end
@@ -32,7 +32,7 @@ class ReleasesController < ApplicationController
 
   def update
     if release.update_attributes(edit_params)
-      respond_with release, notice: "Release saved."
+      respond_with release.decorate, notice: "Release saved."
     else
       redirect_to new_release_path, alert: error_msg(release)
     end
@@ -41,9 +41,9 @@ class ReleasesController < ApplicationController
 
   def destroy
     if release.destroy
-      respond_with release, notice: "Deleted release."
+      respond_with release.decorate, notice: "Deleted release."
     else
-      respond_with release, alert: error_msg(release, "could not be deleted")
+      respond_with release.decorate, alert: error_msg(release, "could not be deleted")
     end
   end
 

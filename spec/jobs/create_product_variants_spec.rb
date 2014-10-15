@@ -33,12 +33,4 @@ RSpec.describe CreateProductVariants, :type => :job do
     expect(sku).to match(/\AWXP/)
     expect(sku).to match(/MP3\Z/)
   end
-
-  xit "finds the release record for this product" do
-    expect(subject.send(:release_of, product)).to be_present
-  end
-
-  xit "saves each variant" do
-    expect(product.variants).to_not be_empty
-  end
 end

@@ -4,16 +4,16 @@ class ArtistsController < ApplicationController
   before_action :authenticate_user!, except: %w(index show)
 
   expose :artists, :only => %w(index) do
-    Artist.where(search_params).decorate
+    Artist.where search_params
   end
-  expose :artist, :attributes => :edit_params, :except => %w(create index)
+  expose :artist, :attributes => :edit_params, :except => %w(index)
 
   def index
-    respond_with artists
+    respond_with artists.decorate
   end
 
   def show
-    respond_with artist
+    respond_with artist.decorate
   end
 
   def new
@@ -25,10 +25,8 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    @artist = Artist.new edit_params
-
-    if @artist.save
-      respond_with @artist
+    if artist.save
+      respond_with artist.decorate
     else
       redirect_to new_artist_path
     end
@@ -36,18 +34,15 @@ class ArtistsController < ApplicationController
 
   def update
     if artist.update_attributes(edit_params)
-      respond_with artist, notice: "Artist saved."
+      respond_with artist.decorate
     else
-      redirect_to edit_artist_path(artist), alert: error_msg(artist)
+      redirect_to edit_artist_path(artist)
     end
   end
 
   def destroy
-    if artist.destroy
-      redirect_to :artists, notice: "Artist deleted."
-    else
-      redirect_to :artists, alert: error_msg(artist, 'could not be deleted')
-    end
+    artist.destroy
+    redirect_to artists_path
   end
 
   private

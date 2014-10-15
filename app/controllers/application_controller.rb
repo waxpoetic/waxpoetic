@@ -6,5 +6,5 @@ class ApplicationController < ActionController::Base
 
   # Configure DecentExposure to utilize StrongParameters and decorate
   # all models it returns back.
-  decent_configuration { strategy WaxPoetic::DecentExposureStrategy }
+  decent_configuration { strategy DecentExposure::StrongParametersStrategy }
 end

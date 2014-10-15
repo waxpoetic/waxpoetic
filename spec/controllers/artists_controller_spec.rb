@@ -40,8 +40,8 @@ RSpec.describe ArtistsController, :type => :controller do
     it "creates a new artist" do
       post :create, artist: { name: 'an artist', bio: 'whatever', avatar: avatar }
       expect(response).to be_redirect
-      expect(assigns(:artist)).to be_valid
-      expect(assigns(:artist)).to be_persisted
+      expect(controller.artist).to be_valid
+      expect(controller.artist).to be_persisted
     end
 
     it "updates an existing artist" do

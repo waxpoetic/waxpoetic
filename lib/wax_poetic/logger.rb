@@ -13,7 +13,7 @@ module WaxPoetic
     # log messages are prepended with that tag string.
     def initialize(tags: nil)
       @tags = tags || []
-      @base = ActiveSupport::Logger.new(STDOUT)
+      @base = ActiveSupport::Logger.new path
       @logger = ActiveSupport::TaggedLogging.new @base
     end
 
@@ -28,6 +28,14 @@ module WaxPoetic
         end
       else
         logger.send method, *arguments
+      end
+    end
+
+    def path
+      if Rails.env.test?
+        '/dev/null'
+      else
+        STDOUT
       end
     end
 

@@ -1,4 +1,3 @@
-require 'wax_poetic/decent_exposure_strategy'
 require 'wax_poetic/promoter'
 require 'wax_poetic/logger'
 require 'wax_poetic/railtie'

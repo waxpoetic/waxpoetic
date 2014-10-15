@@ -29,8 +29,7 @@ Install dependencies and stand up the database:
 
 ```bash
 $ bundle install
-$ export RAILS_ENV=staging
-$ rake db:schema:load db:seed
+$ rake db:setup
 ```
 
 Start Foreman to bring up the web server and Sidekiq:

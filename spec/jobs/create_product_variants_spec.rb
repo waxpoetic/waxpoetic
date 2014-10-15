@@ -33,10 +33,6 @@ RSpec.describe CreateProductVariants, :type => :job do
     expect(subject.send(:release_of, product)).to be_present
   end
 
-  it "calculates option values for the variant" do
-    expect(subject.send(:option_values_for, 'MP3')).to_not be_empty
-  end
-
   it "saves each variant" do
     expect(subject.product.variants).to_not be_empty
   end

@@ -11,6 +11,6 @@ RSpec.describe TitleHelper, :type => :helper do
   end
 
   it "renders the title tag and an <h1> with a page title when set" do
-    expect(helper.title('Page')).to eq("<h1>Page</h1>")
+    expect(helper.title('Page')).to eq(%(<h1 class="title">Page</h1>))
   end
 end

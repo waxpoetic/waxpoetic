@@ -12,7 +12,7 @@ module WaxPoetic
     end
 
     let :release do
-      releases :falling_in_love
+      releases :just_the_start
     end
 
     it "validates credentials" do

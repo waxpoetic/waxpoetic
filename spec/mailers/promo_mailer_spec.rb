@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe PromoMailer, :type => :mailer do
-  let(:release) { releases :falling_in_love }
+  let(:release) { releases :just_the_start }
   let(:subscriber) { subscribers :example }
 
   it "sends the new release email" do

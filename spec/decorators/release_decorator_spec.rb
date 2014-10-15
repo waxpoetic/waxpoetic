@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ReleaseDecorator, :type => :decorator do
-  let(:release) { releases :falling_in_love }
+  let(:release) { releases :just_the_start }
   subject { ReleaseDecorator.new release }
 
   it "renders title from artist and name" do

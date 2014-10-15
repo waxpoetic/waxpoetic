@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PackageRelease, :type => :job do
-  let(:release) { releases :falling_in_love }
+  let(:release) { releases :just_the_start }
   let(:track) do
     double 'Track', \
       :file => double('MusicUploader', :path => 'track.wav')

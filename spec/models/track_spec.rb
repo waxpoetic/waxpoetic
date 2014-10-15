@@ -21,7 +21,7 @@ require 'rails_helper'
 
 RSpec.describe Track, :type => :model do
   let(:wonder_bars) { artists :wonder_bars }
-  let(:falling_in_love) { releases :falling_in_love }
+  let(:just_the_start) { releases :just_the_start }
 
   subject do
     Track.new \

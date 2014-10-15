@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CreateProductVariants, :type => :job do
-  let(:release) { releases :give_her_that_rnd }
+  let(:release) { releases :shuffle_not }
   let :product do
     Spree::Product.new price: 1.00
   end

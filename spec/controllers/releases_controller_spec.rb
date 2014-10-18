@@ -24,7 +24,7 @@ RSpec.describe ReleasesController, :type => :controller do
   end
 
   before do
-    allow(CreateReleaseProduct).to receive(:enqueue).and_return true
+    allow(CreateProduct).to receive(:enqueue).and_return true
     allow(PackageRelease).to receive(:enqueue).and_return true
   end
 

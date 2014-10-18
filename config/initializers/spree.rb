@@ -42,3 +42,12 @@ Dir["app/models/*.rb"].map { |filepath|
 }.each do |klass|
   klass.prepend Saleable
 end
+
+# A hack for decorators so they always have a default shipping category
+module Draper
+  class Decorator
+    def default_shipping_category
+      Spree::ShippingCategory.find_by_name 'Default'
+    end
+  end
+end

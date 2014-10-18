@@ -12,6 +12,8 @@ module Saleable
     :meta_description => :description,
     :available_on => :created_at,
     :image => :image,
+    :price => :price,
+    :shipping_category => :default_shipping_category,
     :metadata => []
   }
 
@@ -64,7 +66,9 @@ module Saleable
 
   # Find the mapped product attribute for the given Spree key.
   def product_attribute_for(key)
-    decorate.send self.class.product_attr_mappings[key]
+    decorate.send self.class.product_attr_mappings[key.to_sym]
+  rescue
+    binding.pry
   end
 
   protected

@@ -23,7 +23,7 @@ class Release < ActiveRecord::Base
 
   accepts_nested_attributes_for :tracks
 
-  mount_uploader :cover, ReleaseImageUploader
+  mount_uploader :image, ReleaseImageUploader
   mount_uploader :package, PackageUploader
   mount_uploader :open_source_package, PackageUploader
 
@@ -85,7 +85,7 @@ end
 #  name                :string(255)
 #  artist_id           :integer
 #  released_on         :datetime
-#  cover               :string(255)
+#  image               :string(255)
 #  description         :text
 #  catalog_number      :string(255)
 #  created_at          :datetime

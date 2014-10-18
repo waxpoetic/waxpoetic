@@ -55,4 +55,12 @@
       }
     }
   }
+
+  #add-to-cart-button {
+    @extend .success;
+  }
+
+  .price {
+    color: #368a55;
+  }
 }

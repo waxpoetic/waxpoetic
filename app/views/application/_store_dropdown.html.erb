@@ -1,11 +1,4 @@
 <ul class="dropdown">
-  <%= nav_dropdown_item 'Releases', '/store/products/releases' %>
-  <%= nav_dropdown_item 'Merchandise', '/store/products/merch' %>
   <%= nav_dropdown_item 'My Account', "/users/#{current_user.id}/edit" if user_signed_in? %>
-  <%=
-    nav_dropdown_item 'Sign In', '/login', data: {
-      reveal_ajax: true, reveal_id: 'lightbox', no_turbolinks: true
-    } unless user_signed_in?
-  %>
   <%= nav_dropdown_item 'Store Admin', '/store/admin', target: '_blank' if admin_signed_in? %>
 </ul>

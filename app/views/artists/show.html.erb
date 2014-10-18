@@ -2,12 +2,12 @@
 
 <div class="row">
   <div class="large-6 columns">
-    <%= artist.photo %>
+    <%= artist.decorate.photo %>
   </div>
 
   <div class="large-6 columns">
-    <%= artist.bio %>
+    <%= artist.decorate.bio %>
   </div>
 </div>
 
-<%= render 'controls', resource: artist %>
+<%= render 'controls', resource: artist if admin_signed_in? %>

@@ -1,10 +1,24 @@
 module ApplicationHelper
-  SPREE_CONTROLLERS = %w(
-    products
-  )
+  # Controllers that are thought of as the '#store' in the page ID.
+  SPREE_CONTROLLERS = %w(products)
 
   # Return the product's file URL.
   def download_path(product)
+  end
+
+  # Configure a link_to to open in a reveal lightbox.
+  def reveal_link_to(name, route, options={})
+    link_to name, route, options.merge(
+      data: {
+        reveal_ajax: true,
+        reveal_id: 'lightbox',
+        no_turbolinks: true
+      }
+    )
+  end
+
+  def destroy_link_to(name, route, options={})
+    link_to name, route, options.merge(:method => :delete)
   end
 
   # Return the name of the CSS class for the given flash message type.

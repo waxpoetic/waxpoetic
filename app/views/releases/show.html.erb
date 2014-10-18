@@ -38,4 +38,4 @@
   </div>
 </div>
 
-<%= render 'controls', resource: release.decorate %>
+<%= render 'controls', resource: release.decorate if admin_signed_in? %>

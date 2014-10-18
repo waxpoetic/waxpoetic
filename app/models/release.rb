@@ -22,7 +22,7 @@ class Release < ActiveRecord::Base
 
   accepts_nested_attributes_for :tracks
 
-  mount_uploader :cover, ImageUploader
+  mount_uploader :cover, ReleaseImageUploader
   mount_uploader :package, PackageUploader
   mount_uploader :open_source_package, PackageUploader
 
@@ -36,9 +36,7 @@ class Release < ActiveRecord::Base
 
   delegate :variants, :to => :product
 
-  # "Orphan" releases which have no corresponding Spree::Product record.
-  scope :without_product, -> { where product_id: nil }
-
+  scope :latest, -> { order :released_on }
 
   # Generate and upload ZIP packages to the CDN that contain this
   # Release and its Tracks.

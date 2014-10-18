@@ -505,6 +505,7 @@ DEPENDENCIES
   email_validator
   fog
   foundation-rails
+  friendly_id
   haml-rails
   high_voltage
   jquery-turbolinks

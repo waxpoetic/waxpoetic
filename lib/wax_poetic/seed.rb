@@ -21,13 +21,13 @@ module WaxPoetic
         Release.without_product.each do |release|
           release.cover.store! cover_file_for(release)
           release.save
-          release.send :generate_product
+          release.create_product
         end
       end
 
       def generate_artist_images
-        Artist.each do |artist|
-          artist.photo.store! cover_file_for(artist)
+        Artist.all.each do |artist|
+          artist.avatar.store! cover_file_for(artist)
           artist.save
         end
       end

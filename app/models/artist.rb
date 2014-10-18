@@ -6,7 +6,7 @@ class Artist < ActiveRecord::Base
   validates :name, presence: true
   validates :bio, presence: true
 
-  mount_uploader :avatar, ImageUploader
+  mount_uploader :avatar, ArtistImageUploader
 
   friendly_id :name
 

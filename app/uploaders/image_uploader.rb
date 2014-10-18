@@ -6,8 +6,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg png)
   end
-
-  version :thumb do
-    process :resize_to_fill => [240, 240]
-  end
 end

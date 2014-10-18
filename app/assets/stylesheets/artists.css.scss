@@ -12,3 +12,11 @@
     }
   }
 }
+
+#artist {
+  .header {
+    min-height: 240px;
+    min-width: 480px;
+  }
+  h1 { display: none; }
+}

@@ -27,6 +27,8 @@ module Saleable
     cattr_accessor :product_attr_mappings
     belongs_to :product, class_name: 'Spree::Product'
     after_commit :create_product, :on => :create
+    scope :without_product, -> { where product_id: nil }
+    scope :with_product, -> { where.not product_id: nil }
   end
 
   module ClassMethods
@@ -71,7 +73,6 @@ module Saleable
     binding.pry
   end
 
-  protected
   # Create the Spree::Product for this model and begin selling it on
   # the online store. Note that this will *actually* begin selling
   # whenever the `available_on` date is met.

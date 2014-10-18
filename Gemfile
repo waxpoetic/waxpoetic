@@ -31,6 +31,7 @@ gem 'simple_form'
 gem 'soundcloud'
 gem 'bitly'
 gem 'responders'
+gem 'friendly_id'
 
 group :development do
   gem 'meta_request'

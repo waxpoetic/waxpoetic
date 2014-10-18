@@ -18,16 +18,18 @@ module WaxPoetic
       end
 
       def generate_products
-        Release.without_product.each do |release|
-          release.cover.store! cover_file_for(release)
-          release.save
-          release.create_product
+        WaxPoetic.saleables.each do |model|
+          model.without_product.each do |record|
+            record.image.store! cover_file_for(release) if record.respond_to? :image
+            record.save
+            record.create_product
+          end
         end
       end
 
       def generate_artist_images
         Artist.all.each do |artist|
-          artist.avatar.store! cover_file_for(artist)
+          artist.image.store! cover_file_for(artist)
           artist.save
         end
       end

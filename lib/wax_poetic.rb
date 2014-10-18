@@ -30,5 +30,9 @@ module WaxPoetic
     def logger
       @logger ||= WaxPoetic::Logger.new
     end
+
+    def saleables
+      [Release, Track]
+    end
   end
 end

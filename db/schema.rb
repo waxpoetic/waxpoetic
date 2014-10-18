@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141020014639) do
   create_table "artists", force: true do |t|
     t.string   "name"
     t.text     "bio"
-    t.string   "avatar"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141020014639) do
     t.string   "name"
     t.integer  "artist_id"
     t.datetime "released_on"
-    t.string   "cover"
+    t.string   "image"
     t.text     "description"
     t.string   "catalog_number"
     t.datetime "created_at"

@@ -18,10 +18,11 @@ class Track < ActiveRecord::Base
 
   mount_uploader :file, MusicUploader
 
+  delegate :image, :to => :release
+
   has_product(
     :name => :title,
     :available_on => :release_date,
-    :image => :release_cover,
     :metadata => %w(catalog_number release_date)
   )
 

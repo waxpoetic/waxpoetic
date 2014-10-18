@@ -39,12 +39,12 @@ class ReleaseDecorator < Draper::Decorator
 
   # <img> tag for the full size cover photo.
   def photo
-    h.image_tag model.cover.url, alt: 'Cover Art'
+    h.image_tag model.image.url, alt: 'Cover Art'
   end
 
   # <img> tag for the thumbnailed cover photo.
   def thumbnail
-    h.image_tag model.cover.thumb.url, alt: title
+    h.image_tag model.image.thumb.url, alt: title
   end
 
   # Link to this release's artist.
@@ -58,12 +58,12 @@ class ReleaseDecorator < Draper::Decorator
   end
 
   def cover_file
-    return unless model.cover.present?
-    File.new model.cover.file
+    return unless model.image.present?
+    File.new model.image.file
   end
 
   def product_path
-    "/store/products/#{release.product.name.parameterize}"
+    "/store/products/#{model.product.name.parameterize}"
   end
 
   def price
@@ -71,11 +71,12 @@ class ReleaseDecorator < Draper::Decorator
   end
 
   def buy_button
+    return unless model.product.present?
     h.link_to "Buy Release (#{price})", product_path, class: 'button success'
   end
 
   def page_title
-    "#{release.name} by #{artist_link}".html_safe
+    "#{model.name} by #{artist_link}".html_safe
   end
 
   private

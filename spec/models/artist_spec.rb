@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  bio        :text
-#  avatar     :string(255)
+#  image      :string(255)
 #  created_at :datetime
 #  updated_at :datetime
 #  slug       :string(255)

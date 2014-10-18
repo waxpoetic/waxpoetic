@@ -8,10 +8,10 @@ class ArtistDecorator < Draper::Decorator
   end
 
   def photo
-    h.image_tag model.avatar.title.url, alt: model.name
+    h.image_tag model.image.title.url, alt: model.name
   end
 
   def thumbnail
-    h.image_tag model.avatar.title.url, alt: model.name, class: 'thumbnail'
+    h.image_tag model.image.title.url, alt: model.name, class: 'thumbnail'
   end
 end

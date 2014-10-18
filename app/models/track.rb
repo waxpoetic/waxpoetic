@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+  include Saleable
+
   # This is the price we sell tracks at by default.
   DEFAULT_PRICE = 1.99
 

@@ -1,6 +1,5 @@
 class Artist < ActiveRecord::Base
   extend FriendlyId
-
   has_many :releases
 
   validates :name, presence: true

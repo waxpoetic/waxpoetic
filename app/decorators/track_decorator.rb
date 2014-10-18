@@ -24,7 +24,7 @@ class TrackDecorator < Draper::Decorator
   end
 
   def release_cover
-    model.release.decorate.release_file
+    model.release.decorate.cover_file
   end
 
   def release_date

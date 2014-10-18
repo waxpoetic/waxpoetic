@@ -36,8 +36,9 @@ Spree::Order.class_eval do
   remove_checkout_step :delivery
 end
 
-Dir["#{Rails.root}/app/models/*.rb"].map { |model_filepath|
-  File.basename(model_filepath).gsub(/\.rb\Z/, '').classify
-}.each do |model_class|
-  model_class.constantize.send :include, Saleable
+# Add the has_product DSL.
+Dir["app/models/*.rb"].map { |filepath|
+  File.basename(filepath).gsub(/\.rb\Z/, '').classify.constantize
+}.each do |klass|
+  klass.prepend Saleable
 end

@@ -2,6 +2,7 @@
 
 class Release < ActiveRecord::Base
   extend FriendlyId
+  include Saleable
 
   belongs_to :artist
 
@@ -16,7 +17,6 @@ class Release < ActiveRecord::Base
   validates :price, presence: true
   validates :artist, presence: true
 
-  after_commit :sell!, :on => :create
   after_commit :package!, :on => :create
   after_commit :promote!, :on => :create, :if => :released_today?
 
@@ -39,13 +39,6 @@ class Release < ActiveRecord::Base
   # "Orphan" releases which have no corresponding Spree::Product record.
   scope :without_product, -> { where product_id: nil }
 
-  # Create the Spree::Product for this Release and begin selling it on
-  # the online store. Note that this will *actually* begin selling
-  # whenever the `available_on` date is met, which is set to the
-  # `released_on` method of this Release record.
-  def sell!
-    CreateProduct.enqueue self
-  end
 
   # Generate and upload ZIP packages to the CDN that contain this
   # Release and its Tracks.
@@ -59,10 +52,6 @@ class Release < ActiveRecord::Base
     PromoteRelease.enqueue self
   end
 
-  def release_file
-    File.new release.cover.file.file
-  end
-
   # Spree's shipping category, used to define a Spree::Product.
   # Required, and we always set it to "Default".
   def shipping_category
@@ -74,6 +63,7 @@ class Release < ActiveRecord::Base
   end
 
   protected
+  # Called when CreateProduct has completed its run.
   def after_create_product
     tracks.each do |track|
       CreateProduct.enqueue track
@@ -82,7 +72,7 @@ class Release < ActiveRecord::Base
 
   private
   def calculate_price_from_tracks
-    self.price ||= tracks.sum(:price)
+    self.price ||= tracks.sum :price
   end
 end
 

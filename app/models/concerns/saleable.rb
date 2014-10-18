@@ -1,4 +1,7 @@
-# A model that can be sold in the Wax Poetic online store.
+# A model that can be sold in the Wax Poetic online store. By including
+# this module and specifying `has_product`, you can expect that this
+# object will create itself as a Spree::Product and use the mappings you define
+# as its attributes.
 module Saleable
   extend ActiveSupport::Concern
 
@@ -19,18 +22,19 @@ module Saleable
   )
 
   included do
-    cattr_accessor :product_attr_mappings, :_has_product
+    cattr_accessor :product_attr_mappings
     belongs_to :product, class_name: 'Spree::Product'
+    after_commit :create_product, :on => :create
   end
 
   module ClassMethods
+    # Set up this saleable model's product attribute mappings:
+    #
+    #   has_product :name => :title
+    #
+    # It uses methods on your decorator.
     def has_product(with_attr_mappings={})
-      self._has_product = true
       self.product_attr_mappings = DEFAULT_MAPPINGS.merge(with_attr_mappings)
-    end
-
-    def has_product?
-      !!self._has_product
     end
   end
 
@@ -61,5 +65,13 @@ module Saleable
   # Find the mapped product attribute for the given Spree key.
   def product_attribute_for(key)
     decorate.send self.class.product_attr_mappings[key]
+  end
+
+  protected
+  # Create the Spree::Product for this model and begin selling it on
+  # the online store. Note that this will *actually* begin selling
+  # whenever the `available_on` date is met.
+  def create_product
+    CreateProduct.enqueue self
   end
 end

@@ -4,9 +4,7 @@ class Release < ActiveRecord::Base
   extend FriendlyId
 
   belongs_to :artist
-  belongs_to :product, class_name: 'Spree::Product'
 
-  PRODUCT_METADATA = %w(catalog_number release_date)
 
   has_many :tracks
 
@@ -30,6 +28,12 @@ class Release < ActiveRecord::Base
   mount_uploader :open_source_package, PackageUploader
 
   friendly_id :catalog_number
+  has_product \
+    :name => :title,
+    :description => :full_description,
+    :available_on => :released_on,
+    :image => :cover,
+    :metadata => %w(catalog_number release_date)
 
   delegate :variants, :to => :product
 
@@ -41,7 +45,7 @@ class Release < ActiveRecord::Base
   # whenever the `available_on` date is met, which is set to the
   # `released_on` method of this Release record.
   def sell!
-    CreateReleaseProduct.enqueue self
+    CreateProduct.enqueue self
   end
 
   # Generate and upload ZIP packages to the CDN that contain this
@@ -56,24 +60,8 @@ class Release < ActiveRecord::Base
     PromoteRelease.enqueue self
   end
 
-  # Attributes given to the Spree::Product when created.
-  def product_attributes
-    {
-      name: decorate.title,
-      description: decorate.full_description,
-      available_on: released_on,
-      meta_description: description,
-      price: price,
-      shipping_category: shipping_category
-    }
-  end
-
-  # The Spree::Image comprised of our cover photo.
-  def cover_image
-    Spree::Image.new \
-      attachment: cover.file,
-      alt: self.decorate.title,
-      viewable: self
+  def release_file
+    File.new release.cover.file.file
   end
 
   # Spree's shipping category, used to define a Spree::Product.
@@ -82,9 +70,15 @@ class Release < ActiveRecord::Base
     @shipcat ||= Spree::ShippingCategory.find_by_name 'Default'
   end
 
-
   def released_today?
     released_on.to_date == Date.today
+  end
+
+  protected
+  def after_create_product
+    tracks.each do |track|
+      CreateProduct.enqueue track
+    end
   end
 
   private

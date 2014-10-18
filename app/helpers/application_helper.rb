@@ -3,6 +3,10 @@ module ApplicationHelper
     products
   )
 
+  # Return the product's file URL.
+  def download_path(product)
+  end
+
   # Return the name of the CSS class for the given flash message type.
   def flash_class_for(flash_type)
     case flash_type

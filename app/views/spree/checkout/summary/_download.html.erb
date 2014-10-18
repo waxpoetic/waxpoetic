@@ -1,0 +1,10 @@
+<tr data-hook="item_download">
+  <td>Download Items:</td>
+  <td>
+    <ul>
+    <% @order.products.each do |product| %>
+      <li><%= link_to product.name, product.property(:file_url) %></li>
+    <% end %>
+    </ul>
+  </td>
+</tr>

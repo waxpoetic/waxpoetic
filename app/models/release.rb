@@ -3,6 +3,7 @@
 class Release < ActiveRecord::Base
   extend FriendlyId
   include Saleable
+  extend FriendlyId
 
   belongs_to :artist
 
@@ -33,6 +34,8 @@ class Release < ActiveRecord::Base
     :available_on => :released_on,
     :image => :cover,
     :metadata => %w(catalog_number release_date)
+
+  friendly_id :catalog_number
 
   delegate :variants, :to => :product
 

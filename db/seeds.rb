@@ -22,5 +22,5 @@ User.create Rails.application.secrets.admin_user.merge(is_admin: true)
 Spree::Core::Engine.load_seed if defined? Spree::Core
 Spree::Auth::Engine.load_seed if defined? Spree::Auth
 
-# Configure the Wax Poetic online store.
-WaxPoetic::Store.load_seed
+# Post-seed tasks
+WaxPoetic::Seed.load!

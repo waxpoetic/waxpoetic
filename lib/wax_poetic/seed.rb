@@ -1,11 +1,11 @@
 module WaxPoetic
   # Code for Spree-related tasks that need to be run on seed as well as
   # in tasks.
-  module Store
+  module Seed
     class << self
-      def load_seed
-        configure_store and generate_products
-        puts "seeded the waxpoetic online store"
+      def load!
+        configure_store and generate_products and generate_artist_images
+        puts "seeded waxpoeticrecords.com"
       end
 
       def configure_store
@@ -21,13 +21,20 @@ module WaxPoetic
         Release.without_product.each do |release|
           release.cover.store! cover_file_for(release)
           release.save
-          release.sell!
+          release.send :generate_product
+        end
+      end
+
+      def generate_artist_images
+        Artist.each do |artist|
+          artist.photo.store! cover_file_for(artist)
+          artist.save
         end
       end
 
       private
-      def cover_file_for(release)
-        File.new "#{Rails.root}/tmp/images/#{release.name.parameterize}.jpg"
+      def cover_file_for(model)
+        File.new "#{Rails.root}/tmp/images/#{model.name.parameterize}.jpg"
       end
     end
   end

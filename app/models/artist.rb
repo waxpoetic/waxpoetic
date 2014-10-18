@@ -1,10 +1,14 @@
 class Artist < ActiveRecord::Base
+  extend FriendlyId
+
   has_many :releases
 
   validates :name, presence: true
   validates :bio, presence: true
 
   mount_uploader :avatar, ImageUploader
+
+  friendly_id :name
 
   def to_label
     name
@@ -21,4 +25,5 @@ end
 #  avatar     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  slug       :string(255)
 #

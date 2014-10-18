@@ -14,6 +14,7 @@
 #  price          :decimal(19, 2)
 #  package        :string(255)
 #  product_id     :integer
+#  slug           :string(255)
 #
 # Indexes
 #

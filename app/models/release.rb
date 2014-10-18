@@ -1,6 +1,9 @@
 # Release catalog of the record label, sorted by artist.
 
 class Release < ActiveRecord::Base
+  include Saleable
+  extend FriendlyId
+
   belongs_to :artist
   belongs_to :product, class_name: 'Spree::Product'
 
@@ -23,6 +26,15 @@ class Release < ActiveRecord::Base
 
   mount_uploader :cover, ImageUploader
   mount_uploader :package, PackageUploader
+
+  has_product \
+    :name => :title,
+    :description => :full_description,
+    :available_on => :released_on,
+    :image => :cover,
+    :metadata => %w(catalog_number release_date)
+
+  friendly_id :catalog_number
 
   delegate :variants, :to => :product
 
@@ -102,6 +114,7 @@ end
 #  price          :decimal(19, 2)
 #  package        :string(255)
 #  product_id     :integer
+#  slug           :string(255)
 #
 # Indexes
 #

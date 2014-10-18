@@ -16,6 +16,13 @@ class Track < ActiveRecord::Base
 
   mount_uploader :file, MusicUploader
 
+  has_product(
+    :name => :title,
+    :available_on => :release_date,
+    :image => :release_cover,
+    :metadata => %w(catalog_number release_date)
+  )
+
   scope :by_number, -> { order :number }
 
   after_create :generate_short_url

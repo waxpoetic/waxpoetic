@@ -19,13 +19,18 @@ module Saleable
   )
 
   included do
-    cattr_accessor :product_attr_mappings
+    cattr_accessor :product_attr_mappings, :_has_product
     belongs_to :product, class_name: 'Spree::Product'
   end
 
   module ClassMethods
     def has_product(with_attr_mappings={})
+      self._has_product = true
       self.product_attr_mappings = DEFAULT_MAPPINGS.merge(with_attr_mappings)
+    end
+
+    def has_product?
+      !!self._has_product
     end
   end
 

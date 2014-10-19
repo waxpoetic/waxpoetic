@@ -32,7 +32,7 @@ RSpec.describe ReleasesController, :type => :controller do
     expect(response).to be_redirect
     expect(controller.release).to be_valid
     expect(controller.release).to be_persisted
-    expect(response).to redirect_to(release_path(id: controller.release.id))
+    expect(response).to redirect_to(release_path(id: controller.release.slug))
   end
 
   it "does not create a new release when not logged in" do
@@ -84,7 +84,7 @@ RSpec.describe ReleasesController, :type => :controller do
     sign_in admin
     put :update, id: release.id, release: { name: 'a new name' }
     expect(response).to be_redirect
-    expect(response).to redirect_to(release)
+    expect(response).to redirect_to(release_path(id: release.catalog_number.parameterize))
     expect(controller.release.name).to eq('a new name')
   end
 

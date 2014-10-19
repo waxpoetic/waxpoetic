@@ -1,13 +1,16 @@
 class TicketsController < ApplicationController
-  expose :ticket
+  authenticated_resource :ticket
   expose :event, :ancestor => :ticket
   expose :order, :ancestor => :ticket
 
+  # Render a purchased ticket as HTML (usually the starting point, as a
+  # link from email), as a "pkpass" Passbook object, or as a PDF for
+  # printing.
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html   { respond_with ticket }
       format.pkpass { send_file ticket.pkpass.path, pkpass_file_opts }
-      format.pdf # show.pdf.prawn
+      format.pdf    { render pdf: ticket  }
     end
   end
 

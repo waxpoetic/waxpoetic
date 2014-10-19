@@ -1,7 +1,6 @@
 # Release catalog of the record label, sorted by artist.
 
 class Release < ActiveRecord::Base
-  include Saleable
   extend FriendlyId
 
   belongs_to :artist
@@ -26,13 +25,6 @@ class Release < ActiveRecord::Base
 
   mount_uploader :cover, ImageUploader
   mount_uploader :package, PackageUploader
-
-  has_product \
-    :name => :title,
-    :description => :full_description,
-    :available_on => :released_on,
-    :image => :cover,
-    :metadata => %w(catalog_number release_date)
 
   friendly_id :catalog_number
 

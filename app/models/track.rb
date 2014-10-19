@@ -20,11 +20,10 @@ class Track < ActiveRecord::Base
 
   delegate :image, :to => :release
 
-  has_product(
+  has_product \
     :name => :title,
     :available_on => :release_date,
     :metadata => %w(catalog_number release_date)
-  )
 
   scope :by_number, -> { order :number }
 
@@ -76,8 +75,10 @@ end
 #  file       :string(255)
 #  number     :integer
 #  short_url  :string(255)
+#  product_id :integer
 #
 # Indexes
 #
+#  index_tracks_on_product_id  (product_id)
 #  index_tracks_on_release_id  (release_id)
 #

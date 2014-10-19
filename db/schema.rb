@@ -934,8 +934,10 @@ ActiveRecord::Schema.define(version: 20141020014639) do
     t.string   "file"
     t.integer  "number"
     t.string   "short_url"
+    t.integer  "product_id"
   end
 
+  add_index "tracks", ["product_id"], name: "index_tracks_on_product_id", using: :btree
   add_index "tracks", ["release_id"], name: "index_tracks_on_release_id", using: :btree
 
   create_table "users", force: true do |t|

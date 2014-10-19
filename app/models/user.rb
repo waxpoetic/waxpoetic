@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   after_create :assign_admin_roles, :if => :is_admin
+  after_create :generate_aws_credentials
 
   # Test if this user has the admin role assigned to it.
   def admin?
@@ -16,6 +17,10 @@ class User < ActiveRecord::Base
   private
   def assign_admin_roles
     self.spree_roles << Spree::Role.find_or_create_by(name: "admin")
+  end
+
+  def generate_aws_credentials
+    GenerateAWSCredentials.enqueue self
   end
 end
 

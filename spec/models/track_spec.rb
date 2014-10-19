@@ -11,9 +11,11 @@
 #  file       :string(255)
 #  number     :integer
 #  short_url  :string(255)
+#  product_id :integer
 #
 # Indexes
 #
+#  index_tracks_on_product_id  (product_id)
 #  index_tracks_on_release_id  (release_id)
 #
 

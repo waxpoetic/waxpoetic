@@ -34,13 +34,11 @@ end
 Spree::Order.class_eval do
   remove_checkout_step :address
   remove_checkout_step :delivery
-end
+  insert_checkout_step :authenticate_download, :before => :confirm
 
-# Add the has_product DSL.
-Dir["app/models/*.rb"].map { |filepath|
-  File.basename(filepath).gsub(/\.rb\Z/, '').classify.constantize
-}.each do |klass|
-  klass.prepend Saleable
+  def authenticate_download
+    AuthenticateDownloads.enqueue self
+  end
 end
 
 # A hack for decorators so they always have a default shipping category

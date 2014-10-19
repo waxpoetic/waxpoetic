@@ -3,7 +3,7 @@ class PromoteRelease < ActiveJob::Base
 
   def perform(release)
     @release = release
-    logger.warn "No promoters configured" if WaxPoetic::Promoter.any?
+    logger.warn "No promoters configured" unless WaxPoetic::Promoter.any?
 
     WaxPoetic::Promoter.each do |promoter|
       promoter.promote release, options_for(promoter)

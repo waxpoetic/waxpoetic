@@ -24,8 +24,8 @@ class Release < ActiveRecord::Base
   accepts_nested_attributes_for :tracks
 
   mount_uploader :image, ReleaseImageUploader
-  mount_uploader :package, PackageUploader
   mount_uploader :open_source_package, PackageUploader
+  mount_uploader :file, PackageUploader
 
   friendly_id :catalog_number
   has_product \
@@ -91,7 +91,7 @@ end
 #  created_at          :datetime
 #  updated_at          :datetime
 #  price               :decimal(19, 2)
-#  package             :string(255)
+#  file                :string(255)
 #  product_id          :integer
 #  slug                :string(255)
 #  open_source_package :string(255)

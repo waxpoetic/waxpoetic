@@ -3,7 +3,7 @@
   <td>
     <ul>
     <% @order.products.each do |product| %>
-      <li><%= link_to product.name, product.property(:file_url) %></li>
+      <li><%= download_link_to product %></li>
     <% end %>
     </ul>
   </td>

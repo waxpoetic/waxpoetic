@@ -20,7 +20,7 @@ module WaxPoetic
       def generate_products
         WaxPoetic.saleables.each do |model|
           model.without_product.each do |record|
-            record.image.store! cover_file_for(release) if record.respond_to? :image
+            record.image.store! cover_file_for(record) if record.respond_to? :image
             record.save
             record.create_product
           end

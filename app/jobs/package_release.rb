@@ -9,7 +9,7 @@ class PackageRelease < ActiveJob::Base
     package_destination = package_path_of release.decorate.filename
 
     sh "tar -czf #{package_destination} #{track_sources}"
-    release.package.store! package_destination
+    release.file.store! package_destination
 
     logger.info "Release '#{release.name}' has been packaged and uploaded."
   end

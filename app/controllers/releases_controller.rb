@@ -1,17 +1,15 @@
 class ReleasesController < ApplicationController
-  respond_to :html
-
-  before_action :authenticate_user!, except: %w(index show)
-
-  expose :releases, :attributes => :search_params, :only => %w(index)
-  expose :release, :attributes => :edit_params, :except => %w(index)
+  authenticated_resource :release do
+    search :name, :released_on, :catalog_number, :price, :artist_id
+    modify :name, :artist_id, :released_on, :description, :catalog_number, :cover
+  end
 
   def index
-    respond_with releases.decorate
+    respond_with releases
   end
 
   def show
-    respond_with release.decorate
+    respond_with release
   end
 
   def new
@@ -23,28 +21,18 @@ class ReleasesController < ApplicationController
   end
 
   def create
-    if release.save
-      respond_with release.decorate, notice: "New release added."
-    else
-      redirect_to new_release_path, alert: error_msg(release)
-    end
+    release.save
+    respond_with release
   end
 
   def update
-    if release.update_attributes(edit_params)
-      respond_with release.decorate, notice: "Release saved."
-    else
-      redirect_to new_release_path, alert: error_msg(release)
-    end
+    release.update_attributes(edit_params)
+    respond_with release
   end
 
-
   def destroy
-    if release.destroy
-      respond_with release.decorate, notice: "Deleted release."
-    else
-      respond_with release.decorate, alert: error_msg(release, "could not be deleted")
-    end
+    release.destroy
+    respond_with release
   end
 
   private

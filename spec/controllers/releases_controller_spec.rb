@@ -50,6 +50,12 @@ RSpec.describe ReleasesController, :type => :controller do
     expect(controller.releases).to include(release)
   end
 
+  it "returns an empty set when no results are found" do
+    get :index, name: 'not a release'
+    expect(response).to be_success
+    expect(controller.releases).to be_empty
+  end
+
   it "views a single release" do
     get :show, id: release.id
     expect(response).to be_success

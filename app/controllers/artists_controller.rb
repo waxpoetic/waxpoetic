@@ -1,19 +1,12 @@
 class ArtistsController < ApplicationController
-  respond_to :html
-
-  before_action :authenticate_user!, except: %w(index show)
-
-  expose :artists, :only => %w(index) do
-    Artist.where search_params
-  end
-  expose :artist, :attributes => :edit_params, :except => %w(index)
+  authenticated_resource :artist
 
   def index
-    respond_with artists.decorate
+    respond_with artists
   end
 
   def show
-    respond_with artist.decorate
+    respond_with artist
   end
 
   def new
@@ -25,19 +18,13 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    if artist.save
-      respond_with artist.decorate
-    else
-      redirect_to new_artist_path
-    end
+    artist.save
+    respond_with artist
   end
 
   def update
-    if artist.update_attributes(edit_params)
-      respond_with artist.decorate
-    else
-      redirect_to edit_artist_path(artist)
-    end
+    artist.update_attributes(edit_params)
+    respond_with artist
   end
 
   def destroy

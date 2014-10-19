@@ -1,10 +1,22 @@
 # Global controller interface, methods here are active throughout the
 # application.
 class ApplicationController < ActionController::Base
-  include Errors
-  include Ajax
+  # When a controller uses the `authenticated_resource` macro, it will
+  # set up the controller as a standard authenticated RESTful resource
+  # for this application. This also sets up the DecentExposure
+  # configuration for our controllers.
+  include AuthenticatedResource
 
-  # Configure DecentExposure to utilize StrongParameters and decorate
-  # all models it returns back.
-  decent_configuration { strategy DecentExposure::StrongParametersStrategy }
+  # Prevent CSRF attacks by raising an exception.
+  protect_from_forgery :with => :exception
+
+  # Determine whether to render the layout based on whether the current
+  # request was made with the XmlHttpRequest object in JavaScript.
+  layout :use_layout?
+
+  private
+  def use_layout?
+    return false if request.xhr?
+    'application'
+  end
 end

@@ -17,10 +17,10 @@ module AuthenticatedResource
   extend ActiveSupport::Concern
 
   included do
-    cattr_accessor :_search_params,
-                   :_edit_params,
-                   :_singleton_resource,
-                   :_collection_resource
+    class_attribute :_search_params
+    class_attribute :_edit_params
+    class_attribute :_singleton_resource
+    class_attribute :_collection_resource
 
     decent_configuration do
       strategy DecentExposure::StrongParametersStrategy
@@ -63,10 +63,10 @@ module AuthenticatedResource
   end
 
   def search_params
-    params.permit self._search_params
+    params.permit self.class._search_params
   end
 
   def edit_params
-    params.require(self._singleton_resource).permit self._edit_params
+    params.require(self.class._singleton_resource).permit self._edit_params
   end
 end

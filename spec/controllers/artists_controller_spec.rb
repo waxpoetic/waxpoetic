@@ -5,6 +5,12 @@ RSpec.describe ArtistsController, :type => :controller do
   let(:user) { users :admin }
   let(:avatar) { File.open("#{Rails.root}/spec/fixtures/files/avatar.jpg") }
 
+
+  it "has the correct resources" do
+    expect(controller.class._singleton_resource).to eq(:artist)
+    expect(controller.class._collection_resource).to eq(:artists)
+  end
+
   it "views a list of all artists" do
     get :index
     expect(response).to be_success

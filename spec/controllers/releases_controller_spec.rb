@@ -20,6 +20,11 @@ RSpec.describe ReleasesController, :type => :controller do
     allow(PackageRelease).to receive(:enqueue).and_return true
   end
 
+  it "has the correct resources" do
+    expect(controller.class._singleton_resource).to eq(:release)
+    expect(controller.class._collection_resource).to eq(:releases)
+  end
+
   it "creates a new release after signing in" do
     sign_in admin
     post :create, release: release_params

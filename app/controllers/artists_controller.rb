@@ -1,5 +1,8 @@
 class ArtistsController < ApplicationController
-  authenticated_resource :artist
+  authenticated_resource :artist do
+    search :name
+    modify :name, :bio, :avatar
+  end
 
   def index
     respond_with artists
@@ -30,14 +33,5 @@ class ArtistsController < ApplicationController
   def destroy
     artist.destroy
     redirect_to artists_path
-  end
-
-  private
-  def search_params
-    params.permit :name
-  end
-
-  def edit_params
-    params.require(:artist).permit :name, :bio, :avatar
   end
 end

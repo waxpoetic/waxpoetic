@@ -34,14 +34,4 @@ class ReleasesController < ApplicationController
     release.destroy
     respond_with release
   end
-
-  private
-  def search_params
-    params.permit :name, :released_on, :catalog_number, :price, :artist_id
-  end
-
-  def edit_params
-    params.require(:release).permit \
-      :name, :artist_id, :released_on, :description, :catalog_number, :cover
-  end
 end

@@ -1,6 +1,0 @@
-<%= f.input :number, value: track.try(:number) %>
-<%= f.input :name, value: track.try(:name) %>
-<%= f.input :price, value: track.try(:value) %>
-<%= f.input :file, :as => :file, :value => track.try(:file) %>
-
-<%= link_to 'Remove', "#release-track-#{Date.now}", class: 'remove button alert' %>

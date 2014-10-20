@@ -16,11 +16,6 @@ module ApplicationHelper
     end
   end
 
-  def new_item_button(name)
-    title = name.to_s.titleize
-    link_to "New #{title}", send("new_#{name}_path"), class: 'button'
-  end
-
   # Configure a link_to to open in a reveal lightbox.
   def reveal_link_to(name, route, options={})
     link_to name, route, options.merge(

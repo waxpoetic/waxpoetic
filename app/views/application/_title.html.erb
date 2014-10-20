@@ -1,5 +1,10 @@
 <div class="row">
-  <div class="large-12 columns">
+  <div class="large-10 columns">
     <%= title for_page %>
   </div>
+<% if admin_signed_in? %>
+  <div class="large-2 columns new-item">
+    <%= admin_controls for_page, resource: resource_if_available %>
+  </div>
+<% end %>
 </div>

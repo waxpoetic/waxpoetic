@@ -5,6 +5,7 @@
     </div>
     <div class="large-3 columns buttons">
       <%= release.decorate.buy_button %>
+      <%= admin_controls 'Releases', resource: release %>
     </div>
   </div>
 
@@ -37,5 +38,3 @@
     <%= release.decorate.description %>
   </div>
 </div>
-
-<%= render 'controls', resource: release.decorate if admin_signed_in? %>

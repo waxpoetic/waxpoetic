@@ -1,4 +1,4 @@
-<%= simple_form_for release do |f| %>
+<%= simple_nested_form_for release do |f| %>
   <div class="large-12 columns">
     <fieldset id="release-metadata">
       <legend>Release Metadata</legend>
@@ -14,20 +14,28 @@
     <fieldset id="release-tracks">
       <legend>Track List</legend>
 
-      <div class="list">
-        <% f.simple_fields_for :tracks do |track_form| %>
-          <% release.tracks.each do |track| %>
-            <div class="release-track" id="release-track-<%= track.id %>">
-              <%= render 'track_fields', f: track_form, track: track %>
-            </div>
-          <% end %>
-          <div id="release-track-template">
-            <%= render 'track_fields', f: track_form %>
+      <div class="row">
+        <div class="large-12 columns">
+          <%=
+            f.link_to_add 'Add Track', :tracks, \
+              class: 'button secondary',
+              data: { target: '#track-fields' }
+           %>
+      </div>
+
+
+      <div class="row" id="track-fields">
+        <% f.simple_fields_for :tracks do |tf| %>
+          <%= tf.input :number %>
+          <%= tf.input :name %>
+          <%= tf.input :price %>
+          <%= tf.input :file, :as => :file %>
+          <%= tf.input :_destroy, :as => :hidden %>
+          <div class="right">
+            <%= link_to 'Remove', '#', class: 'remove button alert' %>
           </div>
         <% end %>
       </div>
-
-      <%= link_to 'Add Track', '#', id: 'add-track', class: 'button' %>
     </fieldset>
   </div>
   <div class="buttons">

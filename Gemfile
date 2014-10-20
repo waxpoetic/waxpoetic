@@ -32,6 +32,7 @@ gem 'soundcloud'
 gem 'bitly'
 gem 'responders'
 gem 'friendly_id'
+gem 'nested_form'
 
 group :development do
   gem 'meta_request'

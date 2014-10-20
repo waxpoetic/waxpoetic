@@ -28,6 +28,7 @@ class Track < ActiveRecord::Base
   scope :by_number, -> { order :number }
 
   after_create :generate_short_url
+  after_create :transcode_to_mp3
 
   # Attributes given to the Soundcloud API when uploading tracks.
   def soundcloud_attributes
@@ -59,6 +60,10 @@ class Track < ActiveRecord::Base
   def file_handler
     return nil unless file.try(:file)
     @handler ||= File.new file.file
+  end
+
+  def transcode_to_mp3
+    Transcode.enqueue file.path
   end
 end
 

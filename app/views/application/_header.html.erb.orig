@@ -8,19 +8,27 @@
       </li>
     </ul>
 
+    <section class="top-bar-section">
+      <ul><li><%= image_tag 'spinner.gif', id: 'loading' %></li></ul>
+    </section>
+
     <section class="top-bar-section" id="links">
       <ul class="right">
         <%= nav_item :artists %>
         <%= nav_item :releases %>
+<<<<<<< HEAD
         <li class="has-dropdown">
-          <%= link_to 'shop', '/store' %>
+          <%= link_to 'Shop', '/store' %>
 
           <ul class="dropdown">
-            <li><%= link_to "cart", '/store/cart' %></li>
-            <li><%= link_to "my account", '/store/orders' %></li>
+            <li><%= link_to "Cart", '/store/cart' %></li>
+            <li><%= link_to "My Account", '/store/orders' %></li>
           </ul>
         </li>
+=======
         <%= nav_item :events %>
+        <%= nav_item :store, 'Shop', always_show_dropdown: true %>
+>>>>>>> Add events link
       </ul>
     </section>
   </nav>

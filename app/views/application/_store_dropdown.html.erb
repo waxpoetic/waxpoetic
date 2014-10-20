@@ -1,4 +1,0 @@
-<ul class="dropdown">
-  <%= nav_dropdown_item 'My Account', "/users/#{current_user.id}/edit" if user_signed_in? %>
-  <%= nav_dropdown_item 'Store Admin', '/store/admin', target: '_blank' if admin_signed_in? %>
-</ul>

@@ -1,3 +1,4 @@
+# A single episode of the podcast.
 class Podcast < ActiveRecord::Base
   before_validation :assign_number, :on => :create
 
@@ -6,6 +7,8 @@ class Podcast < ActiveRecord::Base
   validates :number, presence: true, uniqueness: true
 
   mount_uploader :enclosure, MusicUploader
+
+  scope :by_number, -> { order :number }
 
   private
   def assign_number

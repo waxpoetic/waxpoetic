@@ -1,11 +1,34 @@
 <%= simple_form_for release do |f| %>
   <div class="large-12 columns">
-    <%= f.input :name %>
-    <%= f.association :artist %>
-    <%= f.input :released_on %>
-    <%= f.input :catalog_number %>
-    <%= f.input :cover, :as => :file %>
-    <%= f.input :description, :as => :preview %>
+    <fieldset id="release-metadata">
+      <legend>Release Metadata</legend>
+
+      <%= f.input :name %>
+      <%= f.association :artist %>
+      <%= f.input :released_on %>
+      <%= f.input :catalog_number %>
+      <%= f.input :cover, :as => :file %>
+      <%= f.input :description, :as => :preview %>
+    </fieldset>
+
+    <fieldset id="release-tracks">
+      <legend>Track List</legend>
+
+      <div class="list">
+        <% f.simple_fields_for :tracks do |track_form| %>
+          <% release.tracks.each do |track| %>
+            <div class="release-track" id="release-track-<%= track.id %>">
+              <%= render 'track_fields', f: track_form, track: track %>
+            </div>
+          <% end %>
+          <div id="release-track-template">
+            <%= render 'track_fields', f: track_form %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= link_to 'Add Track', '#', id: 'add-track', class: 'button' %>
+    </fieldset>
   </div>
   <div class="buttons">
     <%= f.button :submit %>

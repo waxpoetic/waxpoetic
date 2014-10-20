@@ -11,7 +11,15 @@ RSpec.describe ReleasesController, :type => :controller do
       description: "hello i am the description",
       catalog_number: "WXP666",
       cover: files('cover_image.png'),
-      artist_id: wonderbars.id
+      artist_id: wonderbars.id,
+      tracks_params: [
+        {
+          name: 'track 1',
+          file: File.new('spec/fixtures/files/track.wav'),
+          price: '1.99',
+          number: 1
+        }
+      ]
     }
   end
 

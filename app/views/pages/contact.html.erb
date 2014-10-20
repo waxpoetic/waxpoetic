@@ -1,1 +1,35 @@
 <%= title 'Contact Us' %>
+
+<h2>By Email</h2>
+
+<ul>
+  <li>Send us demos at <%= mail_to 'music@waxpoeticrecords.com' %></li>
+  <li>Book our artists by messaging <%= mail_to 'artists@waxpoeticrecords.com' %></li>
+</ul>
+
+<h2>By Snail Mail</h2>
+
+<p>
+  We are located at the following address:
+  <br><br>
+  <strong>Wax Poetic Records</strong><br>
+  P.O. Box 14934<br>
+  Philadelphia, PA 19145
+</p>
+
+<h2>By Phone:</h2>
+
+<p>Call us up! Our business line is <strong>(215) 555-5555</strong>.</p>
+<p>You can also fax us at <strong>(215) 555-5556</strong>.</p>
+
+<h2>On Social Media:</h2>
+
+<p>
+  We're very responsive and love to be chatted up on social media!
+</p>
+
+<ul>
+  <li><%= link_to 'Follow us on Twitter', 'http://twitter.com/waxpoeticrecords' %>
+  <li><%= link_to 'Follow us on Soundcloud', 'http://soundcloud.com/waxpoeticrecords' %>
+  <li><%= link_to 'Like us on Facebook', 'http://facebook.com/waxpoeticrecords' %>
+</ul>

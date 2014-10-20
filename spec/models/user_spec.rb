@@ -44,7 +44,7 @@ RSpec.describe User, :type => :model do
   end
 
   it "can have admin rights changed on it" do
-    subject.is_admin = true
+    allow(subject).to receive(:has_spree_role?).with('admin').and_return true
     expect(subject).to be_admin
   end
 end

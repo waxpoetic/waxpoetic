@@ -5,6 +5,7 @@ RSpec.describe ArtistsController, :type => :controller do
   let(:user) { users :admin }
   let(:avatar) { File.open("#{Rails.root}/spec/fixtures/files/avatar.jpg") }
 
+  before { allow(user).to receive(:admin?).and_return true }
 
   it "has the correct resources" do
     expect(controller.class._singleton_resource).to eq(:artist)

@@ -1,10 +1,10 @@
 <div id="release">
   <div class="row">
     <div class="large-9 columns">
-      <%= title release.title, cosmetic: release.page_title %>
+      <%= title release.decorate.title, cosmetic: release.decorate.page_title %>
     </div>
     <div class="large-3 columns buttons">
-      <%= release.buy_button %>
+      <%= release.decorate.buy_button %>
     </div>
   </div>
 
@@ -13,7 +13,7 @@
       <table class="properties">
         <tr>
           <th>Released On:</th>
-          <td><%= release.date %></td>
+          <td><%= release.decorate.date %></td>
         </tr>
         <tr>
           <th>Catalog Number:</th>
@@ -24,18 +24,18 @@
       <div class="tracks">
         <h3>Track Listing</h3>
 
-        <%= release.track_list %>
+        <%= release.decorate.track_list %>
       </div>
     </div>
 
     <div class="large-6 columns">
-      <%= release.photo %>
+      <%= release.decorate.photo %>
     </div>
   </div>
 
   <div class="description">
-    <%= release.description %>
+    <%= release.decorate.description %>
   </div>
 </div>
 
-<%= render 'controls', resource: release %>
+<%= render 'controls', resource: release.decorate %>

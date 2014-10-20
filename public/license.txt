@@ -505,7 +505,7 @@
 	include a
 	
 	You should have received a copy of the WAX General Public License along
-	with this work. If you have not, please visit <http://waxpoetic.com/license>.
+	with this work. If you have not, please visit <http://waxpoeticrecords.com/license>.
 	-----------------------------------------------------------------------------
 	
 	
@@ -513,13 +513,3 @@
 	licensed under it into your open-source work without prior permission and
 	consideration of the other artists involved as well as their recording and
 	publishing representatives.
-
-
-
-George W. Scott
-President
-TalenTactics LLC
-610 862 0525
-
-
-

@@ -31,3 +31,6 @@ jQuery ->
   $(document).foundation()
 
   $('.input.preview').livePreview()
+
+  if $('#license').length
+    $.get '/license.txt', (response) -> $('#license').html(response)

@@ -2,8 +2,9 @@ module ApplicationHelper
   # Controllers that are thought of as the '#store' in the page ID.
   SPREE_CONTROLLERS = %w(products)
 
-  # Return the product's file URL.
-  def download_path(product)
+  # Return the product's file URL. Only works on Spree.
+  def download
+    Download.find_by_order_id @order.id
   end
 
   # Configure a link_to to open in a reveal lightbox.

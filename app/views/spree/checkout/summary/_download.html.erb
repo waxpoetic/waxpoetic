@@ -2,8 +2,8 @@
   <td>Download Items:</td>
   <td>
     <ul>
-    <% @order.products.each do |product| %>
-      <li><%= download_link_to product %></li>
+    <% download.product_resources.each do |resource| %>
+      <li><%= link_to resource.decorate.title, download.url_for(resource) %></li>
     <% end %>
     </ul>
   </td>

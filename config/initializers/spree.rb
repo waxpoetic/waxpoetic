@@ -37,7 +37,7 @@ Spree::Order.class_eval do
   insert_checkout_step :authenticate_download, :before => :confirm
 
   def authenticate_download
-    AuthenticateDownloads.enqueue self
+    Download.create order: self
   end
 end
 

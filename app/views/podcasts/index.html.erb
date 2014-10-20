@@ -1,12 +1,21 @@
 <%= title 'Podcast' %>
 
 <div class="info row">
-  <p>
-    <strong>Wax Poetic Radio</strong> is our monthly installment featuring the latest
-    Wax Poetic music and other tracks from the electronic music community.
-  </p>
+  <div class="large-12 columns">
+    <p>
+      <strong>Wax Poetic Radio</strong> is our monthly installment featuring the latest
+      Wax Poetic music and other tracks from the electronic music community.
+    </p>
+  </div>
 </div>
 
 <div class="episodes row">
-  <%= render podcasts.by_number %>
+  <div class="large-12 columns">
+    <% if podcasts.any? %>
+      <h2>Episodes</h2>
+      <%= render podcasts.by_number %>
+    <% else %>
+      <h2 class="empty">No episodes posted. Stay tuned!</h2>
+    <% end %>
+  </div>
 </div>

@@ -23,8 +23,11 @@ class Release < ActiveRecord::Base
   after_commit :package!, :on => :create
   after_commit :promote!, :on => :create, :if => :released_today?
 
+  accepts_nested_attributes_for :tracks
+
   mount_uploader :cover, ImageUploader
   mount_uploader :package, PackageUploader
+  mount_uploader :open_source_package, PackageUploader
 
   friendly_id :catalog_number
 
@@ -94,19 +97,20 @@ end
 #
 # Table name: releases
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)
-#  artist_id      :integer
-#  released_on    :datetime
-#  cover          :string(255)
-#  description    :text
-#  catalog_number :string(255)
-#  created_at     :datetime
-#  updated_at     :datetime
-#  price          :decimal(19, 2)
-#  package        :string(255)
-#  product_id     :integer
-#  slug           :string(255)
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  artist_id           :integer
+#  released_on         :datetime
+#  cover               :string(255)
+#  description         :text
+#  catalog_number      :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  price               :decimal(19, 2)
+#  package             :string(255)
+#  product_id          :integer
+#  slug                :string(255)
+#  open_source_package :string(255)
 #
 # Indexes
 #

@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
   authenticated_resource :artist do
     search :name
-    modify :name, :bio, :avatar
+    modify :name, :bio, :image
   end
 
   def index

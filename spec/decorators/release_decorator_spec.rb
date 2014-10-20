@@ -30,12 +30,12 @@ RSpec.describe ReleaseDecorator, :type => :decorator do
     expect(subject.date).to eq(release.released_on.strftime('%B %e, %Y'))
   end
 
-  it "builds img tag for full-size cover photo" do
+  it "builds img tag for full-size image photo" do
     expect(subject.photo).to match(/\A<img/)
     expect(subject.photo).to match(/alt="Cover Art"/)
   end
 
-  it "builds img tag for cover thumbnail" do
+  it "builds img tag for image thumbnail" do
     expect(subject.thumbnail).to match(/\A<img/)
     expect(subject.thumbnail).to match(/alt="#{subject.title}"/)
   end

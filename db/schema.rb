@@ -38,15 +38,6 @@ ActiveRecord::Schema.define(version: 20141020014639) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "podcasts", force: true do |t|
-    t.string   "name"
-    t.string   "enclosure"
-    t.text     "description"
-    t.integer  "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "releases", force: true do |t|
     t.string   "name"
     t.integer  "artist_id"
@@ -57,7 +48,7 @@ ActiveRecord::Schema.define(version: 20141020014639) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "price",               precision: 19, scale: 2
-    t.string   "package"
+    t.string   "file"
     t.integer  "product_id"
     t.string   "slug"
     t.string   "open_source_package"

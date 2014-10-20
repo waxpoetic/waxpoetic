@@ -1,3 +1,3 @@
 class ArtistSerializer < ActiveModel::Serializer
-  attributes :id, :name, :bio, :avatar
+  attributes :id, :name, :bio, :image
 end

@@ -23,8 +23,8 @@ class TrackDecorator < Draper::Decorator
     model.short_url || model.file.url || 'http://test.host/no-url.wav'
   end
 
-  def release_cover
-    model.release.decorate.cover_file
+  def release_image
+    model.release.decorate.image_file
   end
 
   def release_date

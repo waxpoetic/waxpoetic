@@ -18,7 +18,7 @@ RSpec.describe Artist, :type => :model do
     Artist.new \
       name: "The Wonder Bars",
       bio: "A house band from Philadelphia",
-      avatar: files('avatar.png')
+      image: files('image.png')
   end
 
   it "represents a signed artist on the label" do

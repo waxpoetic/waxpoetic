@@ -6,13 +6,13 @@
 #  name                :string(255)
 #  artist_id           :integer
 #  released_on         :datetime
-#  cover               :string(255)
+#  image               :string(255)
 #  description         :text
 #  catalog_number      :string(255)
 #  created_at          :datetime
 #  updated_at          :datetime
 #  price               :decimal(19, 2)
-#  package             :string(255)
+#  file                :string(255)
 #  product_id          :integer
 #  slug                :string(255)
 #  open_source_package :string(255)
@@ -42,7 +42,7 @@ RSpec.describe Release, :type => :model do
         2. I Love My Country
       ),
       catalog_number: "WXP999",
-      cover: files('cover_image.png')
+      image: files('image_image.png')
   end
 
   test_validations_with %w(

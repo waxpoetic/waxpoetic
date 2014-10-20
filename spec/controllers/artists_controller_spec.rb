@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ArtistsController, :type => :controller do
   let(:artist) { artists :wonder_bars }
   let(:user) { users :admin }
-  let(:avatar) { File.open("#{Rails.root}/spec/fixtures/files/avatar.jpg") }
+  let(:image) { File.open("#{Rails.root}/spec/fixtures/files/image.jpg") }
 
   before { allow(user).to receive(:admin?).and_return true }
 
@@ -45,7 +45,7 @@ RSpec.describe ArtistsController, :type => :controller do
     end
 
     it "creates a new artist" do
-      post :create, artist: { name: 'an artist', bio: 'whatever', avatar: avatar }
+      post :create, artist: { name: 'an artist', bio: 'whatever', image: image }
       expect(response).to be_redirect
       expect(controller.artist).to be_valid
       expect(controller.artist).to be_persisted
@@ -66,7 +66,7 @@ RSpec.describe ArtistsController, :type => :controller do
 
   context "when not logged in" do
     it "does not create a new artist" do
-      post :create, artist: { name: 'an artist', bio: 'whatever', avatar: avatar }
+      post :create, artist: { name: 'an artist', bio: 'whatever', image: image }
       expect(response).to be_redirect
     end
 

@@ -10,7 +10,7 @@ RSpec.describe ReleasesController, :type => :controller do
       released_on: 1.day.ago.to_datetime,
       description: "hello i am the description",
       catalog_number: "WXP666",
-      cover: files('cover_image.png'),
+      image: files('image_image.png'),
       artist_id: wonderbars.id,
       tracks_params: [
         {

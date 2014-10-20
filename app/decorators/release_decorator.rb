@@ -37,12 +37,12 @@ class ReleaseDecorator < Draper::Decorator
   end
   alias release_date date
 
-  # <img> tag for the full size cover photo.
+  # <img> tag for the full size image photo.
   def photo
     h.image_tag model.image.url, alt: 'Cover Art'
   end
 
-  # <img> tag for the thumbnailed cover photo.
+  # <img> tag for the thumbnailed image photo.
   def thumbnail
     h.image_tag model.image.thumb.url, alt: title
   end
@@ -57,7 +57,7 @@ class ReleaseDecorator < Draper::Decorator
     markdown tracks_as_text
   end
 
-  def cover_file
+  def image_file
     return unless model.image.present?
     File.new model.image.file
   end

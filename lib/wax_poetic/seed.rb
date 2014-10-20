@@ -20,7 +20,7 @@ module WaxPoetic
       def generate_products
         WaxPoetic.saleables.each do |model|
           model.without_product.each do |record|
-            record.image.store! cover_file_for(record) if record.respond_to? :image
+            record.image.store! image_file_for(record) if record.respond_to? :image
             record.save
             record.create_product
           end
@@ -29,13 +29,13 @@ module WaxPoetic
 
       def generate_artist_images
         Artist.all.each do |artist|
-          artist.image.store! cover_file_for(artist)
+          artist.image.store! image_file_for(artist)
           artist.save
         end
       end
 
       private
-      def cover_file_for(model)
+      def image_file_for(model)
         File.new "#{Rails.root}/tmp/images/#{model.name.parameterize}.jpg"
       end
     end

@@ -56,8 +56,11 @@ module ApplicationHelper
   end
 
   def page_id
-    if SPREE_CONTROLLERS.include?(controller.controller_name)
+    case
+    when SPREE_CONTROLLERS.include?(controller.controller_name)
       'store'
+    when controller.controller_name == 'podcasts'
+      'podcast'
     else
       controller.controller_name
     end

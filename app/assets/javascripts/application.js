@@ -7,5 +7,6 @@
 //= require marked
 //= require artists
 //= require releases
+//= require podcasts
 //= require layout
 //= require turbolinks

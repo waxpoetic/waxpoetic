@@ -612,6 +612,10 @@
 #
 
 Rails.application.routes.draw do
+  resources :podcasts, except: %w(index show)
+  get '/podcast[.:format]' => 'podcasts#index', :as => :podcast_episodes
+  get '/podcast/episodes/:id' => 'podcasts#show', :as => :podcast_episode
+
   # User Authentication
   devise_for :users
   devise_scope :user do

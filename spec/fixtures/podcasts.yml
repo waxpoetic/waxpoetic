@@ -1,0 +1,5 @@
+one:
+  name: episode one
+  description: "this is the first **episode**"
+  number: 1
+  enclosure: <%= File.new('spec/fixtures/files/podcast.wav') %>

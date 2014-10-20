@@ -1,0 +1,11 @@
+<article id="episode-<%= podcast.number %>" class="episode">
+  <h3><%= podcast.name %></h3>
+
+  <div class="description">
+    <%= podcast.decorate.description %>
+  </div>
+
+  <div class="player">
+    <%= audio_tag podcast.enclosure.url, preload: true, controls: true %>
+  </div>
+</article>

@@ -26,6 +26,7 @@ gem 'redcarpet'
 gem 'simple_form'
 gem 'responders'
 gem 'nested_form'
+gem 'audiojs'
 
 gem 'soundcloud'
 gem 'bitly'

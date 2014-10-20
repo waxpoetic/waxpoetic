@@ -1,15 +1,16 @@
 class User < ActiveRecord::Base
+  attr_accessor :is_admin
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  scope :admins, -> { where is_admin: true }
+  after_create :assign_admin_roles, :if => :is_admin
 
-  after_create :assign_admin_roles, :if => :admin?
-
+  # Test if this user has the admin role assigned to it.
   def admin?
-    !!is_admin
+    has_spree_role? 'admin'
   end
 
   private
@@ -35,7 +36,6 @@ end
 #  last_sign_in_ip        :inet
 #  created_at             :datetime
 #  updated_at             :datetime
-#  is_admin               :boolean          default(FALSE)
 #  spree_api_key          :string(48)
 #  ship_address_id        :integer
 #  bill_address_id        :integer

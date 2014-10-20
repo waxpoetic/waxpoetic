@@ -5,8 +5,7 @@ class ApplicationAuthorizer < Authority::Authorizer
   # method for some other reason (such as ownership). But for now,
   # admins are the only ones that can edit everything.
   #
-  # A sidenote...this also controls readability, which by default
-  # everything is public...
+  # NOTE: This makes all models readable by anyone.
   def self.default(adjective, user)
     return true if adjective == :readable
     user.admin?

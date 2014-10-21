@@ -4,8 +4,16 @@ module WaxPoetic
   module Seed
     class << self
       def load!
-        configure_store and generate_products and generate_artist_images
+        create_admin_user and
+        configure_store and
+        generate_products and
+        generate_artist_images
+
         puts "seeded waxpoeticrecords.com"
+      end
+
+      def create_admin_user
+        User.create Rails.application.secrets.admin_user.merge(is_admin: true)
       end
 
       def configure_store

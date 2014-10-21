@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   after_create :assign_admin_roles, :if => :is_admin
 
+  scope :admins, -> { joins(:spree_roles).where(spree_roles: { name: 'admin' }) }
+
   # Test if this user has the admin role assigned to it.
   def admin?
     has_spree_role? 'admin'

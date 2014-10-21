@@ -7,10 +7,9 @@ require 'rspec/rails'
 
 require 'email_spec'
 
-# TODO: Re-enable when we have capybara specs again..
-#require 'capybara/rails'
-#require 'capybara/rspec'
-#require 'capybara/poltergeist'
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -64,9 +63,19 @@ RSpec.configure do |config|
 
   # Devise session testing
   config.include Devise::TestHelpers, :type => :controller
+  config.include Warden::Test::Helpers, :type => :feature
 
-  # Use Poltergeist and PhantomJS to run front-end tests that include
-  # JavaScript.
-  # TODO: Re-enable when we have Capybara specs again
-  #Capybara.javascript_driver = :poltergeist
+  config.before :type => :feature do
+    Warden.test_mode!
+  end
+
+  config.after :type => :feature do
+    Warden.test_reset!
+  end
+
+  config.before :type => :feature do
+    WaxPoetic::Seed.create_admin_user
+    Capybara.default_driver = :poltergeist
+    Capybara.javascript_driver = :poltergeist
+  end
 end

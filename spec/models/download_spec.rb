@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: downloads
+#
+#  id         :integer          not null, primary key
+#  order_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+# Indexes
+#
+#  index_downloads_on_order_id  (order_id)
+#
+
 require 'rails_helper'
 
 RSpec.describe Download, :type => :model do

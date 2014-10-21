@@ -1,10 +1,12 @@
 <tr data-hook="item_download">
-  <td>Download Items:</td>
-  <td>
-    <ul>
-    <% download.product_resources.each do |resource| %>
-      <li><%= link_to resource.decorate.title, download.url_for(resource) %></li>
-    <% end %>
-    </ul>
-  </td>
+  <% if @order.download.present? %>
+    <td>Download Items:</td>
+    <td>
+      <ul>
+      <% @order.download.product_resources.each do |resource| %>
+        <li><%= link_to resource.title, resource.to_url %></li>
+      <% end %>
+      </ul>
+    </td>
+  <% end %>
 </tr>

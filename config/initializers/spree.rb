@@ -34,10 +34,14 @@ end
 Spree::Order.class_eval do
   remove_checkout_step :address
   remove_checkout_step :delivery
-  insert_checkout_step :authenticate_download, :before => :confirm
+  insert_checkout_step :process_sale, :before => :confirm
 
-  def authenticate_download
+  def process_sale
     Download.create order: self
+  end
+
+  def download
+    Download.find_by_order_id self.id
   end
 end
 

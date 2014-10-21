@@ -51,9 +51,8 @@ end
 group :test do
   gem 'rspec-rails', require: false
   gem 'email_spec', require: false
-  # TODO: Re-enable when we have Capybara specs again.
-  #gem 'capybara', require: false
-  #gem 'poltergeist', require: false
+  gem 'capybara', require: false
+  gem 'poltergeist', require: false
 end
 
 group :production do

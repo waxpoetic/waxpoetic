@@ -4,7 +4,9 @@ require 'aws/sts'
 # Spree::Product this User has purchased. We don't want to have to make
 # IAM users for every user who registers on the site, so we give them
 # temporary access credentials when they ask for it using Amazon's
-# Simple Token Service.
+# Security Token Service. The only real job of this class is to output a
+# fully-qualified URL for the given asset that is accessible to the
+# public for a short amount of time.
 
 class ProductResource
   attr_reader :download
@@ -35,14 +37,16 @@ class ProductResource
   def policy
     policy = AWS::STS::Policy.new
     policy.allow(
-      :resources => ["s3:#{bucket}/uploads/#{filepath}"],
+      :resources => ["s3:#{bucket}/#{filepath}"],
       :actions => :get
     )
     policy
   end
 
   def session
-    sts.new_federated_session "download-#{download.id}", policy: policy
+    sts.new_federated_session "download-#{download.id}", \
+      policy: policy,
+      duration: 1.hour
   end
 
   def credential_params

@@ -14,7 +14,7 @@ class TrackDecorator < Draper::Decorator
 
   # Generate a slug we will use as this track's short URL.
   def slug
-    [artist.name, name].join('-$').parameterize
+    [artist.name, name].join.parameterize
   end
 
   # Show a URL to this Track, either the preferred short URL generated

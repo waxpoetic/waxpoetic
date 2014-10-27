@@ -70,4 +70,7 @@ Rails.application.configure do
 
   # Promote to all social networks and subscribers
   config.wax_poetic.promote_to = [:email, :soundcloud]
+
+  # Use Amazon SES in production to send mails
+  config.action_mailer.delivery_method = :amazon_ses
 end

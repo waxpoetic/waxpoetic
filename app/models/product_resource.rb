@@ -26,27 +26,17 @@ class ProductResource
     "download-#{download.id}"
   end
 
-  def filepath
-    resource.file.path
-  end
-
-  def sts
-    AWS::STS.new
-  end
-
   def policy
-    policy = AWS::STS::Policy.new
-    policy.allow(
-      :resources => ["s3:#{bucket}/#{filepath}"],
-      :actions => :get
-    )
-    policy
+    @policy ||= begin
+      pol = AWS::STS::Policy.new
+      pol.allow get_resource
+      pol
+    end
   end
 
   def session
-    sts.new_federated_session "download-#{download.id}", \
-      policy: policy,
-      duration: 1.hour
+    sts = AWS::STS.new
+    sts.new_federated_session sid, policy: policy, duration: 1.hour
   end
 
   def credential_params
@@ -55,7 +45,14 @@ class ProductResource
     }.join('&')
   end
 
-  def bucket
-    WaxPoetic.config.s3_bucket
+  def sid
+    "download-#{download.id}"
+  end
+
+  def get_resource
+    {
+      :resources => ["s3:#{resource.filepath}"],
+      :actions => :get
+    }
   end
 end

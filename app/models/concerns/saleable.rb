@@ -69,8 +69,6 @@ module Saleable
   # Find the mapped product attribute for the given Spree key.
   def product_attribute_for(key)
     decorate.send self.class.product_attr_mappings[key.to_sym]
-  rescue
-    binding.pry
   end
 
   # Create the Spree::Product for this model and begin selling it on

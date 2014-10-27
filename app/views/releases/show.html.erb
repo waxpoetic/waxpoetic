@@ -5,6 +5,7 @@
     </div>
     <div class="large-3 columns buttons">
       <%= release.decorate.buy_button %>
+      <%= render 'product_form' if user_signed_in? %>
       <%= admin_controls 'Releases', resource: release %>
     </div>
   </div>

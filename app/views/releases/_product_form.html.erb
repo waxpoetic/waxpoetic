@@ -1,0 +1,16 @@
+<ul id="buy">
+  <li>
+    <% release.product.variants.each do |variant| %>
+      <div class="row">
+        <div class="large-1 columns">
+          <%= variant_radio_tag variant  %>
+        </div>
+        <div class="large-11 columns">
+          <%= label_tag variant.name, for: "variant-#{variant.id}" %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= release.decorate.add_to_cart_button  %>
+  </li>
+</ul>

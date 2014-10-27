@@ -7,6 +7,19 @@ module ApplicationHelper
     Download.find_by_order_id @order.id
   end
 
+  def variant_radio_tag(variant)
+    radio_button_tag 'variant_id', "variant-#{variant.id}", \
+      value: variant.id, data: { price: variant.price }
+  end
+
+  def radio_options_for(variant)
+    [
+      'line_items[0][variant_id]',
+      "variant-#{variant.id}",
+      { value: variant.id}
+    ]
+  end
+
   # An `<li>` that wraps an `<a>`, used for rendering nav links that
   # could optionally have a dropdown.
   def nav_item(route, text=nil)

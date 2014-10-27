@@ -72,7 +72,19 @@ class ReleaseDecorator < Draper::Decorator
 
   def buy_button
     return unless model.product.present?
-    h.link_to "Buy Release (#{price})", product_path, class: 'button success'
+    if h.user_signed_in?
+      h.link_to "Buy Release (#{price})", product_path, \
+        class: 'dropdown button success',
+        data: { dropdown: 'buy' },
+        aria: { controls: 'drop', expanded: 'false' },
+        id: 'buy-button'
+    else
+      h.link_to "Buy Release (#{price})", product_path, class: 'button success'
+    end
+  end
+
+  def add_to_cart_button
+    h.link_to "Add to Cart for #{price}", '#' id: 'add-to-cart', class: 'button'
   end
 
   def page_title

@@ -8,7 +8,8 @@ class Transcode < ActiveJob::Base
   # transcoding.
   MP3_320_PRESET_ID = 1351620000001-300010
 
-  def perform(filepath)
+  def perform(track)
+    filepath = "#{WaxPoetic.config.s3_bucket}/#{track.file.path}"
     transcoder.create_job \
       pipeline_id: MP3_320_PRESET_ID,
       input: { key: filepath },

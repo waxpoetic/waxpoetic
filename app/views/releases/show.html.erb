@@ -29,12 +29,14 @@
       </div>
     </div>
 
-    <div class="large-6 columns">
+    <div class="large-6 columns photo">
       <%= release.decorate.photo %>
     </div>
   </div>
 
-  <div class="description">
+  <div class="description row">
     <%= release.decorate.description %>
   </div>
+
+  <%= render 'controls', resource: release if admin_signed_in? %>
 </div>

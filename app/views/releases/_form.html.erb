@@ -5,7 +5,7 @@
 
       <%= f.input :name %>
       <%= f.association :artist %>
-      <%= f.input :released_on %>
+      <%= f.input :released_on, :as => :date %>
       <%= f.input :catalog_number %>
       <%= f.input :image, :as => :file %>
       <%= f.input :description, :as => :preview %>
@@ -22,7 +22,6 @@
               data: { target: '#track-fields' }
            %>
       </div>
-
 
       <div class="row" id="track-fields">
         <% f.simple_fields_for :tracks do |tf| %>

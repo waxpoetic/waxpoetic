@@ -14,6 +14,9 @@ class ApplicationController < ActionController::Base
   # request was made with the XmlHttpRequest object in JavaScript.
   layout :use_layout?
 
+  # Use the FlashResponder and HttpCacheResponder
+  responders :flash, :http_cache
+
   private
   def use_layout?
     return false if request.xhr?

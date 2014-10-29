@@ -4,11 +4,15 @@ module AdminHelper
     send "#{route_name}_path"
   end
 
-  def new_resource_path(route)
-    send "new_#{route.to_s.singularize}_path"
+  def new_resource_path
+    send "new_#{model_name}_path"
   end
 
-  def edit_resource_path(route, model)
-    send "edit_#{route.to_s.singularize}_path", model
+  def edit_resource_path(model)
+    send "edit_#{model_name}_path", model
+  end
+
+  def model_name
+    controller.controller_name.singularize
   end
 end

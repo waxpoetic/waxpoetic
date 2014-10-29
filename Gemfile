@@ -49,7 +49,7 @@ group :test do
   gem 'rspec-rails', require: false
   gem 'email_spec', require: false
   gem 'capybara', require: false
-  gem 'poltergeist', require: false
+  #gem 'poltergeist', require: false
 end
 
 group :production do

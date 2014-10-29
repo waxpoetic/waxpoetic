@@ -1,3 +1,10 @@
+<% if admin_signed_in? %>
+<div class="admin row">
+  <div class="large-12 columns">
+    <%= link_to "New #{model_name.classify}", new_resource_path, class: 'button' %>
+  </div>
+</div>
+<% end %>
 <div class="gallery row">
   <% if resources.any? %>
     <div class="large-12 columns">

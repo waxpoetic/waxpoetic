@@ -479,13 +479,7 @@ DEPENDENCIES
   asset_sync
   authority
   bitly
-<<<<<<< HEAD
-=======
-  capistrano-bundler
-  capistrano-chruby
-  capistrano-rails
   capybara
->>>>>>> Enable Capybara again
   carrierwave
   coffee-rails
   decent_exposure

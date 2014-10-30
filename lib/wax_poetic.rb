@@ -2,6 +2,7 @@ require 'wax_poetic/promoter'
 require 'wax_poetic/logger'
 require 'wax_poetic/railtie'
 require 'wax_poetic/seed'
+require 'wax_poetic/temporary_authentication'
 
 module WaxPoetic
   class << self

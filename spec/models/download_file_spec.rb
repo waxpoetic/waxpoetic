@@ -10,17 +10,30 @@ RSpec.describe DownloadFile, :type => :model do
   end
 
   before do
-    allow(resource.file).to receive(:url).and_return 'http://files.waxpoeticrecords.com/tracks/1/files/track.wav'
+    allow(resource.file).to receive(:url).and_return(
+      'http://files.waxpoeticrecords.com/tracks/1/files/track.wav'
+    )
   end
 
-  subject { DownloadFile.new resource, download }
+  let :variant do
+    FactoryGirl.create :variant
+  end
+
+  subject do
+    DownloadFile.new(
+      download: download,
+      product: variant.product,
+      resource: resource,
+      variant: variant
+    )
+  end
 
   it "returns the title as its name" do
     expect(subject.name).to eq(resource.decorate.title)
   end
 
   it "computes a valid uri" do
-    allow(subject).to receive(:session_credentials).and_return(
+    allow(subject.send(:policy)).to receive(:credentials).and_return(
       session_token: 'token',
       access_key_id: 'key',
       secret_access_key: 'secret'

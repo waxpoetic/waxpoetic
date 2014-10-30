@@ -50,6 +50,7 @@ group :test do
   gem 'email_spec', require: false
   gem 'capybara', require: false
   gem 'poltergeist', require: false
+  gem 'factory_girl_rails'
 end
 
 group :production do

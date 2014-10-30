@@ -17,8 +17,6 @@ class Track < ActiveRecord::Base
   validates :price, presence: true
   validates :number, presence: true
 
-  mount_uploader :file, MusicUploader
-
   delegate :image, :to => :release
 
   has_product \

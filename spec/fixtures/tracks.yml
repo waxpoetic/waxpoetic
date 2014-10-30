@@ -2,3 +2,4 @@ after_hours:
   number: 1
   name: 'After Hours'
   release_id: 1
+  file: <%= File.new 'spec/fixtures/files/track.wav' %>

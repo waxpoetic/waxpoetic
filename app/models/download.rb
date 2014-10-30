@@ -5,7 +5,7 @@
 # downloads again at no extra cost.
 
 class Download < ActiveRecord::Base
-  belongs_to :order
+  belongs_to :order, class_name: 'Spree::Order'
 
   has_one :user, :through => :order
   has_many :products, :through => :order
@@ -16,17 +16,22 @@ class Download < ActiveRecord::Base
   # Since the Spree::Product can't be easily tied back to a Release or
   # Track (blackbox code and all that), we use this method on Download
   # to retrieve what the actual filepath of the resource object is.
-  def product_resources
-    @product_resources ||= products.map { |product|
-      Release.find_by_product_id(product.id) || Track.find_by_product_id(product.id)
+  def files
+    @files ||= products.map { |product|
+      product_resource_for product
     }.select { |result| result.present? }.map do |resource|
-      ProductResource.new(resource, self)
+      DownloadFile.new(resource, self)
     end
   end
 
   private
   def downloadable
-    errors.add :products, "are not downloadable" unless product_resources.any?
+    errors.add :products, "are not downloadable" unless files.any?
+  end
+
+  def product_resource_for(product)
+    Release.find_by_product_id(product.id) ||
+    Track.find_by_product_id(product.id)
   end
 end
 

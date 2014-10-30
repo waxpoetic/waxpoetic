@@ -19,16 +19,8 @@ RSpec.describe Download, :type => :model do
     users :admin
   end
 
-  let :product do
-    double 'Spree::Product', id: 14
-  end
-
-  let :release do
-    double 'Release', product_id: 14, file: double('Uploader', path: 'file.zip')
-  end
-
   let :order do
-    double 'Spree::Order', products: [product], user: user
+    FactoryGirl.create :order, user: user
   end
 
   let :mock_session do

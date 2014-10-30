@@ -8,8 +8,8 @@ require 'aws/sts'
 # fully-qualified URL for the given asset that is accessible to the
 # public for a short amount of time.
 
-class ProductResource
-  attr_reader :download
+class DownloadFile
+  attr_reader :resource, :download
 
   def initialize(from_resource, and_download)
     @resource = from_resource
@@ -18,7 +18,12 @@ class ProductResource
 
   # A temporarily authenticated URL for this product's file resource.
   def to_url
-    [ filepath, credential_params ].join '?'
+    [ resource.file.url, credential_params ].join '?'
+  end
+
+  # Display name of this download.
+  def name
+    resource.decorate.title
   end
 
   private
@@ -40,9 +45,13 @@ class ProductResource
   end
 
   def credential_params
-    session.credentials.map { |key, value|
+    session_credentials.map { |key, value|
       "#{key.to_s.classify}=#{value}"
     }.join('&')
+  end
+
+  def session_credentials
+    session.credentials
   end
 
   def sid
@@ -51,8 +60,8 @@ class ProductResource
 
   def get_resource
     {
-      :resources => ["s3:#{resource.filepath}"],
-      :actions => :get
+      resources: ["arn:aws:s3:::#{resource.filepath}"],
+      actions: ["s3:GetObject"]
     }
   end
 end

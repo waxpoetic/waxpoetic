@@ -20,21 +20,25 @@ RSpec.describe Download, :type => :model do
   end
 
   let :order do
-    FactoryGirl.create :order, user: user
+    FactoryGirl.create :order, user: user, variants: [variant]
   end
 
-  let :mock_session do
-    double 'AWS::STS::FederatedSession', credentials: {
-      aws_access_key_id: 'access-key',
-      aws_secret_access_key: 'secret-key'
-    }
+  let :release do
+    FactoryGirl.create :release, product: product
+  end
+
+  let :variant do
+    FactoryGirl.create :variant
+  end
+
+  let :product do
+    FactoryGirl.create :product, variants: [variant]
   end
 
   subject { Download.new order: order }
 
   before do
-    allow(subject.send(:sts)).to receive(:new_federated_session).and_return mock_session
-    allow(Release).to receive(:find_by_product_id).with(14).and_return release
+    allow(subject).to receive(:product_resource_for).and_return product
   end
 
   it "validates an order is present" do
@@ -45,15 +49,7 @@ RSpec.describe Download, :type => :model do
     expect(subject.user).to eq(user)
   end
 
-  it "uses the products as resources" do
-    expect(subject.products).to include(product)
-  end
-
   it "finds a resource for each product" do
-    expect(subject.product_resources).to include(release)
-  end
-
-  it "generates an authenticated url for a product" do
-    expect(subject.url_for(release)).to_not be_nil
+    expect(subject.files).to_not be_empty
   end
 end

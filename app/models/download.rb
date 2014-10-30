@@ -8,7 +8,6 @@ class Download < ActiveRecord::Base
   belongs_to :order, class_name: 'Spree::Order'
 
   has_one :user, :through => :order
-  has_many :products, :through => :order
 
   validates :order, presence: true
   validate :downloadable
@@ -17,11 +16,15 @@ class Download < ActiveRecord::Base
   # Track (blackbox code and all that), we use this method on Download
   # to retrieve what the actual filepath of the resource object is.
   def files
-    @files ||= products.map { |product|
-      product_resource_for product
-    }.select { |result| result.present? }.map do |resource|
-      DownloadFile.new(resource, self)
-    end
+    @files ||= order.variants.map { |variant|
+      if resource = product_resource_for(variant.product)
+        DownloadFile.new \
+          download: self,
+          product: variant.product,
+          resource: resource,
+          variant: variant
+      end
+    }.select(&:present?)
   end
 
   private

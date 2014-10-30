@@ -9,12 +9,9 @@ require 'aws/sts'
 # public for a short amount of time.
 
 class DownloadFile
-  attr_reader :resource, :download
+  include ActiveModel::Model
 
-  def initialize(from_resource, and_download)
-    @resource = from_resource
-    @download = and_download
-  end
+  attr_accessor :download, :product, :resource, :variant
 
   # A temporarily authenticated URL for this product's file resource.
   def to_url

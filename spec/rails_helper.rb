@@ -9,7 +9,6 @@ require 'email_spec'
 
 require 'capybara/rails'
 require 'capybara/rspec'
-#require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -65,12 +64,12 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include Warden::Test::Helpers, :type => :feature
 
-  config.before :type => :feature do
+  config.before :each, :type => :feature do
     Warden.test_mode!
     WaxPoetic::Seed.create_admin_user
   end
 
-  config.after :type => :feature do
+  config.after :each, :type => :feature do
     Warden.test_reset!
   end
 end

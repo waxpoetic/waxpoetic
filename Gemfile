@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.3'
+ruby '2.1.4'
 
 gem 'rails', '~> 4.1'
 gem 'pg'
@@ -49,7 +49,7 @@ group :test do
   gem 'rspec-rails', require: false
   gem 'email_spec', require: false
   gem 'capybara', require: false
-  #gem 'poltergeist', require: false
+  gem 'poltergeist', require: false
 end
 
 group :production do

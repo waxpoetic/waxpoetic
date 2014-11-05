@@ -59,6 +59,8 @@ module WaxPoetic
       g.factory_girl false
     end
 
+    # Never automount the console. We need to control this due to our
+    # use of wildcard routes in HighVoltage.
     config.web_console.automount = false
   end
 end

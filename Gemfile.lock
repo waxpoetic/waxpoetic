@@ -8,6 +8,7 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.1.6)
       actionpack (= 4.1.6)
@@ -68,8 +69,11 @@ GEM
     authority (3.0.0)
       activesupport (>= 3.0.0)
       rake (>= 0.8.7)
+    autoprefixer-rails (3.1.2.20141016)
+      execjs
     awesome_nested_set (3.0.1)
       activerecord (>= 4.0.0, < 5)
+    awesome_print (1.2.0)
     aws-sdk (1.27.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -177,9 +181,6 @@ GEM
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
-    foundation-rails (5.4.3.0)
-      railties (>= 3.1.0)
-      sass (>= 3.2.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     gyoku (0.4.6)
@@ -312,6 +313,19 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.6)
       sprockets-rails (~> 2.0)
+    rails-assets-fastclick (1.0.3)
+    rails-assets-foundation (5.4.7)
+      rails-assets-fastclick (>= 0.6.11)
+      rails-assets-jquery (>= 2.1.0)
+      rails-assets-jquery-placeholder (~> 2.0.7)
+      rails-assets-jquery.cookie (~> 1.4.0)
+      rails-assets-modernizr (>= 2.7.2)
+    rails-assets-jquery (2.1.1)
+    rails-assets-jquery-placeholder (2.0.8)
+    rails-assets-jquery.cookie (1.4.1)
+      rails-assets-jquery (>= 1.2)
+    rails-assets-marked (0.3.2)
+    rails-assets-modernizr (2.8.3)
     railties (4.1.6)
       actionpack (= 4.1.6)
       activesupport (= 4.1.6)
@@ -482,6 +496,10 @@ GEM
     wasabi (2.5.1)
       httpi (~> 1.0)
       nokogiri (>= 1.4.0)
+    web-console (1.0.4)
+      activemodel (~> 4.0)
+      railties (~> 4.0)
+      sprockets-rails (~> 2.0)
     websocket-driver (0.3.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -496,6 +514,8 @@ DEPENDENCIES
   annotate
   asset_sync
   authority
+  autoprefixer-rails
+  awesome_print
   bitly
   capybara
   carrierwave
@@ -507,7 +527,6 @@ DEPENDENCIES
   email_validator
   factory_girl_rails
   fog
-  foundation-rails
   friendly_id
   haml-rails
   high_voltage
@@ -523,6 +542,9 @@ DEPENDENCIES
   quiet_assets
   rack-cache
   rails (~> 4.1)
+  rails-assets-foundation
+  rails-assets-marked
+  rails-assets-modernizr
   redcarpet
   redis-rails
   responders
@@ -535,3 +557,4 @@ DEPENDENCIES
   spree_gateway
   turbolinks
   uglifier (~> 1.3)
+  web-console

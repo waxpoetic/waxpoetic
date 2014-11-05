@@ -1,43 +1,57 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 ruby '2.1.4'
 
 gem 'rails', '~> 4.1'
+
 gem 'pg'
 gem 'active_model_serializers'
-gem 'puma'
-gem 'activejob'
-gem 'activemodel-globalid', github: 'rails/activemodel-globalid'
-gem 'sidekiq'
-gem 'sass-rails'
-gem 'coffee-rails'
-gem 'foundation-rails'
-gem 'uglifier', '~> 1.3'
 gem 'devise'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'email_validator'
+gem 'friendly_id'
+
 gem 'spree', '~> 2.3'
 gem 'spree_gateway'
+
 gem 'high_voltage'
 gem 'haml-rails'
 gem 'draper'
-gem 'email_validator'
 gem 'authority'
 gem 'decent_exposure'
 gem 'redcarpet'
-gem 'jquery-turbolinks'
-gem 'turbolinks'
 gem 'simple_form'
+gem 'responders'
+gem 'nested_form'
+
 gem 'soundcloud'
 gem 'bitly'
-gem 'responders'
-gem 'friendly_id'
-gem 'nested_form'
+
+gem 'rails-assets-foundation'
+gem 'rails-assets-marked'
+gem 'rails-assets-modernizr'
+gem 'jquery-turbolinks'
+gem 'turbolinks'
+gem 'autoprefixer-rails'
+
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier', '~> 1.3'
+
+gem 'activejob'
+gem 'activemodel-globalid', github: 'rails/activemodel-globalid'
+gem 'sidekiq'
+
+gem 'puma'
 
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'annotate'
+  gem 'web-console'
+  gem 'awesome_print'
 end
 
 group :development, :test do

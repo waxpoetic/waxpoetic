@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Automatically mount the web-console routes to /console
+  config.web_console.automount = true
 end

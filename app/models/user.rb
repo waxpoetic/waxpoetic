@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { joins(:spree_roles).where(spree_roles: { name: 'admin' }) }
 
+  validates :email, presence: true, email: true
+
   # Test if this user has the admin role assigned to it.
   def admin?
     has_spree_role? 'admin'

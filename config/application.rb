@@ -58,5 +58,7 @@ module WaxPoetic
     config.generators do |g|
       g.factory_girl false
     end
+
+    config.web_console.automount = false
   end
 end

@@ -181,6 +181,9 @@ GEM
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
+    foundation-rails (5.4.3.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     gyoku (0.4.6)
@@ -313,17 +316,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.6)
       sprockets-rails (~> 2.0)
-    rails-assets-fastclick (1.0.3)
-    rails-assets-foundation (5.4.7)
-      rails-assets-fastclick (>= 0.6.11)
-      rails-assets-jquery (>= 2.1.0)
-      rails-assets-jquery-placeholder (~> 2.0.7)
-      rails-assets-jquery.cookie (~> 1.4.0)
-      rails-assets-modernizr (>= 2.7.2)
-    rails-assets-jquery (2.1.1)
-    rails-assets-jquery-placeholder (2.0.8)
-    rails-assets-jquery.cookie (1.4.1)
-      rails-assets-jquery (>= 1.2)
     rails-assets-marked (0.3.2)
     rails-assets-modernizr (2.8.3)
     railties (4.1.6)
@@ -527,6 +519,7 @@ DEPENDENCIES
   email_validator
   factory_girl_rails
   fog
+  foundation-rails
   friendly_id
   haml-rails
   high_voltage
@@ -542,7 +535,6 @@ DEPENDENCIES
   quiet_assets
   rack-cache
   rails (~> 4.1)
-  rails-assets-foundation
   rails-assets-marked
   rails-assets-modernizr
   redcarpet

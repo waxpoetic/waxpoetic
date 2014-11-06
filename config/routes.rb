@@ -633,7 +633,7 @@ Rails.application.routes.draw do
   # Unless we're in production (wherein the server is exposed to the
   # general public), mount a web console at /console for access to the
   # Rails app on a programmatic level.
-  mount WebConsole::Engine, :at => '/console' unless Rails.env.production?
+  mount WebConsole::Engine, :at => '/console' if defined? WebConsole
 
   # Static pages
   get '/:id' => 'high_voltage/pages#show', :as => :static_page

@@ -36,6 +36,10 @@ Rails.application.configure do
   # perform.
   config.queue_adapter = :inline
 
+  # Never automount the console. We need to control this due to our
+  # use of wildcard routes in HighVoltage.
+  config.web_console.automount = false
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

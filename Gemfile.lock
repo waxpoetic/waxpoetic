@@ -317,7 +317,6 @@ GEM
       railties (= 4.1.6)
       sprockets-rails (~> 2.0)
     rails-assets-marked (0.3.2)
-    rails-assets-modernizr (2.8.3)
     railties (4.1.6)
       actionpack (= 4.1.6)
       activesupport (= 4.1.6)
@@ -536,7 +535,6 @@ DEPENDENCIES
   rack-cache
   rails (~> 4.1)
   rails-assets-marked
-  rails-assets-modernizr
   redcarpet
   redis-rails
   responders

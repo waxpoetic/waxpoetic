@@ -30,7 +30,6 @@ gem 'soundcloud'
 gem 'bitly'
 
 gem 'rails-assets-marked'
-gem 'rails-assets-modernizr'
 
 gem 'sass-rails'
 gem 'coffee-rails'

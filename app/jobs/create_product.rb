@@ -3,21 +3,11 @@ class CreateProduct < ActiveJob::Base
   attr_reader :product, :saleable
 
   def perform(saleable)
-    unless saleable.class.has_product?
-      logger.error "#{saleable.class.name} is not configured for the store"
-      return
-    end
-
-    saleable.product = Spree::Product.new saleable.product_attributes
-    saleable.product.save
+    saleable.product.create saleable.product_attributes
     saleable.product.images.create saleable.product_image_attributes
-    saleable.product.update_attributes \
-      product_properties_attributes: saleable.product_metadata
-
+    saleable.product.update_attributes product_properties_attributes: saleable.product_metadata
     CreateProductVariants.enqueue saleable.product
-
-    if saleable.respond_to? :after_create_product
-      saleable.send :after_create_product 
-    end
+    #saleable.send :after_create_product
+    saleable.product.present?
   end
 end

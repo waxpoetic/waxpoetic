@@ -40,6 +40,10 @@ module Saleable
     def has_product(with_attr_mappings={})
       self.product_attr_mappings = DEFAULT_MAPPINGS.merge(with_attr_mappings)
     end
+
+    def has_product?
+      true
+    end
   end
 
   # Attributes given to the Spree::Product when created.

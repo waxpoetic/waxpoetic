@@ -4,11 +4,10 @@ module WaxPoetic
   module Seed
     class << self
       def load!
-        create_admin_user and
-        configure_store and
-        generate_products and
+        create_admin_user
+        configure_store
+        generate_products
         generate_artist_images
-
         puts "seeded waxpoeticrecords.com"
       end
 

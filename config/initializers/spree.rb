@@ -32,17 +32,16 @@ end
 
 # Simplify checkout flow to disable delivery and address steps.
 Spree::Order.class_eval do
+  belongs_to :download
   remove_checkout_step :address
   remove_checkout_step :delivery
-  insert_checkout_step :process_sale, :before => :confirm
+  insert_checkout_step :create_download, :before => :confirm
+end
 
-  def process_sale
-    Download.create order: self
-  end
-
-  def download
-    Download.find_by_order_id self.id
-  end
+# Store a reference to the catalog record this product represents within
+# the product table.
+Spree::Product.class_eval do
+  belongs_to :saleable, polymorphic: true
 end
 
 # A hack for decorators so they always have a default shipping category

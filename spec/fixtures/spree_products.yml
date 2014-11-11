@@ -2,3 +2,4 @@ spree_shuffle_not:
   name: 'Research & Development - Shuffle Not'
   available_on: <%= Date.today %>
   slug: 'research-and-development-shuffle-not'
+  saleable: shuffle_not

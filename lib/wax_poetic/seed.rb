@@ -29,7 +29,7 @@ module WaxPoetic
           model.without_product.each do |record|
             record.image.store! image_file_for(record) if record.respond_to? :image
             record.save
-            record.create_product
+            record.enqueue_product_creation
           end
         end
       end

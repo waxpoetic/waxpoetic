@@ -25,8 +25,8 @@ module Saleable
 
   included do
     cattr_accessor :product_attr_mappings
-    belongs_to :product, class_name: 'Spree::Product'
-    after_commit :create_product, :on => :create
+    has_one :product, :as => :saleable, :class_name => 'Spree::Product'
+    after_commit :enqueue_product_creation, :on => :create
     scope :without_product, -> { where product_id: nil }
     scope :with_product, -> { where.not product_id: nil }
   end
@@ -56,18 +56,33 @@ module Saleable
   # Attributes given to the Spree::Image when created.
   def product_image_attributes
     {
-      attachment: product_attribute_for(:image),
+      attachment: image_file,
       alt: product_attribute_for(:name),
       viewable: self
     }
   end
 
+  def image_file
+    File.open temp_image_file_path
+  end
+
+  def temp_image_file_path
+    product_attribute_for(:image).file.file
+  end
+
   # Reduce the given array of metadata mappings into a hash suitable for
   # the metadata params field.
   def product_metadata
-    self.class.product_attr_mappings[:metadata].reduce({}) do |hash, field|
-      hash.merge property_name: field.titleize, value: decorate.send(field)
+    metadata_mappings.each_with_index.reduce({}) do |hash, (field,index)|
+      hash.merge index.to_s => {
+        property_name: field.titleize,
+        value: decorate.send(field)
+      }
     end
+  end
+
+  def metadata_mappings
+    self.class.product_attr_mappings[:metadata]
   end
 
   # Find the mapped product attribute for the given Spree key.
@@ -78,7 +93,12 @@ module Saleable
   # Create the Spree::Product for this model and begin selling it on
   # the online store. Note that this will *actually* begin selling
   # whenever the `available_on` date is met.
-  def create_product
+  def enqueue_product_creation
     CreateProduct.enqueue self
+  end
+
+  # Test if the product was created and populated successfully.
+  def has_product?
+    product.present? && product.images.any?
   end
 end

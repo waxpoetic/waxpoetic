@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021230303) do
+ActiveRecord::Schema.define(version: 20141111044756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -310,6 +310,7 @@ ActiveRecord::Schema.define(version: 20141021230303) do
     t.boolean  "confirmation_delivered",                                     default: false
     t.boolean  "considered_risky",                                           default: false
     t.string   "guest_token"
+    t.integer  "download_id"
   end
 
   add_index "spree_orders", ["approver_id"], name: "index_spree_orders_on_approver_id", using: :btree
@@ -318,6 +319,7 @@ ActiveRecord::Schema.define(version: 20141021230303) do
   add_index "spree_orders", ["confirmation_delivered"], name: "index_spree_orders_on_confirmation_delivered", using: :btree
   add_index "spree_orders", ["considered_risky"], name: "index_spree_orders_on_considered_risky", using: :btree
   add_index "spree_orders", ["created_by_id"], name: "index_spree_orders_on_created_by_id", using: :btree
+  add_index "spree_orders", ["download_id"], name: "index_spree_orders_on_download_id", using: :btree
   add_index "spree_orders", ["number"], name: "index_spree_orders_on_number", using: :btree
   add_index "spree_orders", ["ship_address_id"], name: "index_spree_orders_on_ship_address_id", using: :btree
   add_index "spree_orders", ["shipping_method_id"], name: "index_spree_orders_on_shipping_method_id", using: :btree
@@ -432,11 +434,14 @@ ActiveRecord::Schema.define(version: 20141021230303) do
     t.integer  "shipping_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "saleable_id"
+    t.string   "saleable_type"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
   add_index "spree_products", ["deleted_at"], name: "index_spree_products_on_deleted_at", using: :btree
   add_index "spree_products", ["name"], name: "index_spree_products_on_name", using: :btree
+  add_index "spree_products", ["saleable_id", "saleable_type"], name: "index_spree_products_on_saleable_id_and_saleable_type", using: :btree
   add_index "spree_products", ["shipping_category_id"], name: "index_spree_products_on_shipping_category_id", using: :btree
   add_index "spree_products", ["slug"], name: "index_spree_products_on_slug", using: :btree
   add_index "spree_products", ["slug"], name: "permalink_idx_unique", unique: true, using: :btree

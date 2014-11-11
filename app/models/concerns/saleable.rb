@@ -26,9 +26,10 @@ module Saleable
   included do
     cattr_accessor :product_attr_mappings
     has_one :product, :as => :saleable, :class_name => 'Spree::Product'
-    after_commit :enqueue_product_creation, :on => :create
+    after_commit :copy_to_product, :on => :create
     scope :without_product, -> { where product_id: nil }
     scope :with_product, -> { where.not product_id: nil }
+    define_model_callbacks :create_product
   end
 
   module ClassMethods
@@ -93,8 +94,10 @@ module Saleable
   # Create the Spree::Product for this model and begin selling it on
   # the online store. Note that this will *actually* begin selling
   # whenever the `available_on` date is met.
-  def enqueue_product_creation
-    CreateProduct.enqueue self
+  def copy_to_product
+    run_callbacks :create_product do
+      CreateProduct.enqueue self
+    end
   end
 
   # Test if the product was created and populated successfully.

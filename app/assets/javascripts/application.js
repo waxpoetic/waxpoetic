@@ -2,10 +2,11 @@
 //= require jquery_ujs
 //= require spree/frontend/all
 //= require foundation
+//= require marked
 //= require jquery.turbolinks
 //= require jquery_nested_form
-//= require marked
-//= require artists
-//= require releases
-//= require layout
+//= require jquery.preview
+//= require jquery.undo
+//= require jquery.turboload
+//= require waxpoetic
 //= require turbolinks

@@ -26,7 +26,7 @@ module Saleable
   included do
     cattr_accessor :product_attr_mappings
     has_one :product, :as => :saleable, :class_name => 'Spree::Product'
-    after_commit :copy_to_product, :on => :create
+    after_commit :copy_to_product, :unless => :has_product?
     scope :without_product, -> { where product_id: nil }
     scope :with_product, -> { where.not product_id: nil }
     define_model_callbacks :create_product

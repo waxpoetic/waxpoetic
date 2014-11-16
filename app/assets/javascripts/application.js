@@ -5,6 +5,7 @@
 //= require jquery.turbolinks
 //= require jquery_nested_form
 //= require marked
+//= require slick
 //= require artists
 //= require releases
 //= require layout

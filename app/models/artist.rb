@@ -3,6 +3,7 @@ class Artist < ActiveRecord::Base
   include Authority::Abilities
 
   has_many :releases
+  has_many :photos
 
   validates :name, presence: true
   validates :bio, presence: true
@@ -13,6 +14,10 @@ class Artist < ActiveRecord::Base
 
   def to_label
     name
+  end
+
+  def latest(assocation)
+    send(association).latest.limit 5
   end
 end
 

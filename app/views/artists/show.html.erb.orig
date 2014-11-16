@@ -14,8 +14,15 @@
       <div class="releases row">
         <h2>Latest Releases</h2>
 
+<<<<<<< HEAD
+      <ul>
+      <% artist.releases.latest.limit(5).each do |release| %>
+        <li><%= link_to release.name, release %></li>
+      <% end %>
+      </ul>
+=======
         <ul class="clearing-thumbs">
-        <% artist.releases.latest.limit(5).each do |release| %>
+        <% artist.releases.each do |release| %>
           <li><%= link_to release.decorate.thumbnail, release %></li>
         <% end %>
         </ul>
@@ -25,11 +32,12 @@
         <h2>Latest Photos</h2>
 
         <ul class="clearing-thumbs" data-clearing>
-        <% artist.photos.latest.limit(5).each do |photo| %>
+        <% artist.photos.each do |release| %>
           <li><%= link_to photo.decorate.thumbnail, photo %></li>
         <% end %>
         </ul>
       </div>
+>>>>>>> Get started on photo gallery component
     </div>
   </div>
 

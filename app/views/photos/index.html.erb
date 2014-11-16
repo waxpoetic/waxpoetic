@@ -1,0 +1,23 @@
+<%= title "Photos of #{artist.name}" %>
+
+<table>
+  <thead>
+    <tr>
+      <td>Photo</td>
+      <td>Caption</td>
+      <td><%= link_to 'Upload', new_artist_photo_path(artist), class: 'button success' %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% photos.each do |photo| %>
+    <tr>
+      <td><%= photo.decorate.thumbnail %></td>
+      <td><%= photo.caption %></td>
+      <td>
+        <%= link_to 'Edit', edit_artist_photo_path(artist, photo), class: 'button' %>
+        <%= link_to 'Destroy', artist_photo_path(artist, photo), :method => :delete, :confirm => 'Are you sure?', :class => 'button alert' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

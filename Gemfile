@@ -31,6 +31,7 @@ gem 'soundcloud'
 gem 'bitly'
 
 gem 'rails-assets-marked'
+gem 'rails-assets-slick-carousel'
 
 gem 'sass-rails'
 gem 'coffee-rails'
@@ -39,6 +40,7 @@ gem 'turbolinks'
 gem 'foundation-rails'
 gem 'jquery-turbolinks'
 gem 'autoprefixer-rails'
+gem 'jquery-slick-rails'
 
 gem 'activejob'
 gem 'activemodel-globalid', github: 'rails/activemodel-globalid'

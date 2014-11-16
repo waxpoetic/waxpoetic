@@ -35,7 +35,7 @@ class Release < ActiveRecord::Base
 
   delegate :variants, :to => :product
 
-  scope :latest, -> { order :released_on }
+  scope :latest, -> { |num| order(:released_on).limit(num) }
 
   # Generate and upload ZIP packages to the CDN that contain this
   # Release and its Tracks.

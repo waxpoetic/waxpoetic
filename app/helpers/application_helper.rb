@@ -2,6 +2,12 @@ module ApplicationHelper
   # Controllers that are thought of as the '#store' in the page ID.
   SPREE_CONTROLLERS = %w(products)
 
+  # Helper for Slick's data-lazy img tags. Allows images to be
+  # lazy-loaded.
+  def lazy_image_tag(src, opts={})
+    tag :img, opts.merge(data: { lazy: image_path(src) })
+  end
+
   # Return the product's file URL. Only works on Spree.
   def download
     Download.find_by_order_id @order.id

@@ -1,0 +1,4 @@
+<%= simple_form_for photo, class: 'photo_form' do |f| %>
+  <%= f.input :file, :label => 'Image File', :type => :multi_file %>
+  <%= f.input :caption %>
+<% end %>

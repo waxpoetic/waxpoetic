@@ -43,7 +43,7 @@ module ApplicationHelper
 
   # Test whether the current user is logged in and an admin.
   def admin_signed_in?
-    user_signed_in? && current_user.admin? rescue false
+    user_signed_in? && current_user.try(:admin?)
   end
 
   # The HTML properties used for the `<section>` tag available on every

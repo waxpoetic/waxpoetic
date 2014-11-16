@@ -1,5 +1,6 @@
 <div id="artist">
   <%= title artist.name %>
+
   <div class="header row">
     <div class="photo"><%= artist.decorate.photo %></div>
   </div>
@@ -17,7 +18,8 @@
         <li><%= link_to release.name, release %></li>
       <% end %>
       </ul>
+    </div>
   </div>
 
-  <%= render 'controls', resource: artist if admin_signed_in? %>
+  <%= admin_controls 'Artists', resource: artist if admin_signed_in? %>
 </div>

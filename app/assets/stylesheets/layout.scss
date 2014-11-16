@@ -101,3 +101,11 @@ form.simple_form {
     margin-top: 100px;
   }
 }
+
+.admin.controls.row {
+  background: darken(#fff, 10%);
+
+  .button {
+    margin-top: 6px;
+  }
+}

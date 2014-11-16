@@ -72,7 +72,7 @@ class ReleaseDecorator < Draper::Decorator
 
   def buy_button
     return unless model.product.present?
-    h.link_to "Buy Release (#{price})", product_path, class: 'button success'
+    h.link_to "Buy Release (#{price})", product_path, class: 'buy button success'
   end
 
   def page_title

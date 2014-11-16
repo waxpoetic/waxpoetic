@@ -17,7 +17,7 @@ module ControlsHelper
     when 'index'
       new_item_button for_kind
     when 'show'
-      render 'controls', resource: resource
+      render 'controls', resource: resource, kind: for_kind
     end
   end
 

@@ -5,8 +5,8 @@ CarrierWave.configure do |config|
     config.enable_processing = true
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: WaxPoetic.secrets.aws[:access_key_id],
-      aws_secret_access_key: WaxPoetic.secrets.aws[:secret_access_key],
+      aws_access_key_id: WaxPoetic.secrets.aws['access_key_id'],
+      aws_secret_access_key: WaxPoetic.secrets.aws['secret_access_key'],
     }
     config.fog_directory  = "#{WaxPoetic.config.s3_bucket}"
     config.fog_public     = false

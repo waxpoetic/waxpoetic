@@ -10,8 +10,8 @@ Spree.config do |config|
   if WaxPoetic.live?
     config.use_s3 = true
     config.s3_bucket = WaxPoetic.config.s3_bucket
-    config.s3_access_key = WaxPoetic.secrets.aws[:access_key_id]
-    config.s3_secret = WaxPoetic.secrets.aws[:secret_access_key]
+    config.s3_access_key = WaxPoetic.secrets.aws['access_key_id']
+    config.s3_secret = WaxPoetic.secrets.aws['secret_access_key']
   end
 
   # Only force SSL in production.

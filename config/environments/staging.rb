@@ -19,9 +19,9 @@ Rails.application.configure do
   }
 
   # Store the Rails.cache in Redis
-  config.cache_store = :redis_store, \
-    "#{config.redis_url}/1/wax_poetic_rails_cache",
+  config.cache_store = :redis_store, "#{config.redis_url}/1/wax_poetic_rails_cache", {
     expires_in: 90.minutes
+  }
 
   # Store the session in Redis
   config.session_store :redis_store, key: config.session_key, redis: {

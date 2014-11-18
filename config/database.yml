@@ -15,12 +15,12 @@ staging:
   <<: *default
   database: wax_poetic_staging
   host: <%= ENV['DATABASE_HOST'] %>
-  username: wax_poetic
+  username: waxpoetic
   password: <%= ENV['DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
   database: wax_poetic_production
   host: <%= ENV['DATABASE_HOST'] %>
-  username: wax_poetic
+  username: waxpoetic
   password: <%= ENV['DATABASE_PASSWORD'] %>

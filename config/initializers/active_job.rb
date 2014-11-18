@@ -1,8 +1,13 @@
 require 'active_job'
+require 'wax_poetic'
 
 # Set ActiveJob's queue adapter.
 
-ActiveJob::Base.queue_adapter = Rails.configuration.queue_adapter
+ActiveJob::Base.queue_adapter = if WaxPoetic.live?
+  :sidekiq
+else
+  :inline
+end
 
 module ActiveJob
   class Base

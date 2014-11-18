@@ -347,6 +347,9 @@ GEM
       redis-actionpack (~> 4)
       redis-activesupport (~> 4)
       redis-store (~> 1.1.0)
+    redis-session-store (0.8.0)
+      actionpack (>= 3, < 5)
+      redis
     redis-store (1.1.4)
       redis (>= 2.2)
     request_store (1.0.8)
@@ -537,6 +540,7 @@ DEPENDENCIES
   rails-assets-marked
   redcarpet
   redis-rails
+  redis-session-store
   responders
   rspec-rails
   sass-rails

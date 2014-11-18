@@ -69,5 +69,6 @@ end
 group :production do
   gem 'rack-cache'
   gem 'redis-rails'
+  gem 'redis-session-store'
   gem 'asset_sync'
 end

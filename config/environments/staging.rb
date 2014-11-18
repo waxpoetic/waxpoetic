@@ -24,7 +24,7 @@ Rails.application.configure do
   }
 
   # Store the session in Redis
-  config.session_store :redis_store, key: config.session_key, redis: {
+  config.session_store :redis_session_store, key: config.session_key, redis: {
     db: 2,
     namespace: 'wax_poetic:session:'
   }

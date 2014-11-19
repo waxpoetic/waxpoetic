@@ -9,10 +9,7 @@ module WaxPoetic
       # sets up the Spree store, and fills it in with products based on
       # the saleable items in our whitelisted fixture data.
       def load!
-        create_admin_user
-        configure_store
-        generate_products
-        generate_artist_images
+        create_admin_user and configure_store
         puts "seeded #{I18n.t('store.url')}"
       end
 

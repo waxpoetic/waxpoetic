@@ -66,7 +66,7 @@ group :test do
   gem 'factory_girl_rails'
 end
 
-group :production do
+group :staging, :production do
   gem 'rack-cache'
   gem 'redis-rails'
   gem 'redis-session-store'

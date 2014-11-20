@@ -5,7 +5,7 @@ Spree.config do |config|
 
   # Brand the admin interface as much as possible
   config.admin_interface_logo = 'logo.jpg'
-
+=begin
   # Upload attachments to Amazon S3 in production & staging
   if WaxPoetic.live?
     config.use_s3 = true
@@ -13,7 +13,7 @@ Spree.config do |config|
     config.s3_access_key = WaxPoetic.secrets.aws['access_key_id']
     config.s3_secret = WaxPoetic.secrets.aws['secret_access_key']
   end
-
+=end
   # Only force SSL in production.
   config.allow_ssl_in_production = true
   config.allow_ssl_in_staging = false

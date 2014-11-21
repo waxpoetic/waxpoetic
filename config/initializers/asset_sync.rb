@@ -4,7 +4,7 @@ AssetSync.configure do |config|
   config.fog_provider = 'AWS'
   config.aws_access_key_id = WaxPoetic.secrets.aws['access_key_id']
   config.aws_secret_access_key = WaxPoetic.secrets.aws['secret_access_key']
-  config.fog_directory = "#{WaxPoetic.config.s3_bucket}/assets"
+  config.fog_directory = WaxPoetic.config.s3_bucket
 
   # Invalidate assets on the CDN after uploading
   config.cdn_distribution_id = WaxPoetic.secrets.cloudfront_id

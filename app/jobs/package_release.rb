@@ -1,7 +1,6 @@
 # Package a release up with `tar` and upload it to the 
 class PackageRelease < ActiveJob::Base
   attr_reader :release
-  attr_reader :last_command if Rails.env.test?
 
   def perform(release)
     @release = release
@@ -26,11 +25,7 @@ class PackageRelease < ActiveJob::Base
   end
 
   def sh(command)
-    if Rails.env.test?
-      @last_command = command
-      true
-    else
-      `#{command}` && $?.success?
-    end
+    return true if Rails.env.test?
+    `#{command}` && $?.success?
   end
 end

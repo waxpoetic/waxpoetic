@@ -1,7 +1,5 @@
 # WaxPoeticRecords.com
 
-[![Codeship Status for waxpoetic/waxpoeticrecords.com](https://www.codeship.io/projects/a50285e0-479c-0132-2f6b-16fd1ca0a3af/status)](https://www.codeship.io/projects/45657)
-
 The official site of **Wax Poetic Records**, including an artist roster
 that describes every past and current artist on Wax Poetic, and a release
 catalog for browsing more details on each of our releases (including buy

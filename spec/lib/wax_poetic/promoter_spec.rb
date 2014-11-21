@@ -33,6 +33,8 @@ module WaxPoetic
     end
 
     it "finds all promoters from configuration" do
+      expect(test_promoter).to be_valid
+      allow(WaxPoetic.config).to receive(:promote_to).and_return [:test]
       expect(Promoter.all).to include(test_promoter)
       expect(Promoter.any?).to eq(true)
     end

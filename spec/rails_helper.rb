@@ -9,6 +9,7 @@ require 'email_spec'
 
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'factory_girl'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -64,9 +65,13 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include Warden::Test::Helpers, :type => :feature
 
+  config.before :all do
+    FactoryGirl.reload
+  end
+
   config.before :each, :type => :feature do
     Warden.test_mode!
-    WaxPoetic::Seed.create_admin_user
+    WaxPoetic::Seed.send :create_admin_user
   end
 
   config.after :each, :type => :feature do

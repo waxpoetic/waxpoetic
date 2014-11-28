@@ -18,4 +18,4 @@ stripe:
   preferences:
     preferred_secret_key: <%= WaxPoetic.secrets.stripe_secret_key %>
     preferred_publishable_key: <%= WaxPoetic.secrets.stripe_publishable_key %>
-    preferred_test_mode: <%= Rails.env.production? : 'true' : 'false' %>
+    preferred_test_mode: <%= Rails.env.production? ? 'true' : 'false' %>

@@ -7,28 +7,15 @@ bogus:
   auto_capture: false
   type: Spree::Gateway::Bogus
 
-stripe_test:
-  name: Stripe (test)
+stripe:
+  name: Credit Card
   description: The test payment gateway
-  active: <%= Rails.env.staging? %>
-  environment: staging
+  active: <%= (Rails.env =~ /development|test/) ? 'false' : 'true' %>
+  environment: <%= Rails.env %>
   display_on: Both
   auto_capture: false
   type: Spree::Gateway::StripeGateway
   preferences:
     preferred_secret_key: <%= WaxPoetic.secrets.stripe_secret_key %>
     preferred_publishable_key: <%= WaxPoetic.secrets.stripe_publishable_key %>
-    preferred_test_mode: true
-
-stripe_live:
-  name: Stripe (live)
-  description: The live payment gateway
-  active: <%= Rails.env.production? %>
-  environment: production
-  display_on: Both
-  auto_capture: false
-  type: Spree::Gateway::StripeGateway
-  preferences:
-    preferred_secret_key: <%= WaxPoetic.secrets.stripe_secret_key %>
-    preferred_publishable_key: <%= WaxPoetic.secrets.stripe_publishable_key %>
-    preferred_test_mode: false
+    preferred_test_mode: <%= Rails.env.production? : 'true' : 'false' %>

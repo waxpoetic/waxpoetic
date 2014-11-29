@@ -1,5 +1,5 @@
 class ReleasesController < ApplicationController
-  authenticated_resource :release do
+  resource :release do
     search :name, :released_on, :catalog_number, :price, :artist_id
 
     modify :name, :artist_id, :released_on, :description,

@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  authenticated_resource :artist do
+  resource :artist do
     search :name
     modify :name, :bio, :image
   end

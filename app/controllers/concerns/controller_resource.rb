@@ -1,19 +1,19 @@
 # A single macro that combines all controller-level macros we use for
 # the front-end of this application. Simply use the
-# `authenticated_resource :resource_name` macro in your controller class
+# `resource :resource_name` macro in your controller class
 # to make it work.
 #
 # Example:
 #
 #   class ArtistsController < ApplicationController
-#     authenticated_resource :artist
+#     resource :artist
 #
 #     def index
 #       respond_with artists
 #     end
 #   end
 #
-module AuthenticatedResource
+module ControllerResource
   extend ActiveSupport::Concern
 
   included do
@@ -22,16 +22,20 @@ module AuthenticatedResource
     class_attribute :_singleton_resource
     class_attribute :_collection_resource
 
+    # Use the StrongParameters strategy
     decent_configuration do
       strategy DecentExposure::StrongParametersStrategy
       attributes :edit_params
       except %w(index)
     end
+
+    # Use the FlashResponder and HttpCacheResponder
+    responders :flash, :http_cache
   end
 
   module ClassMethods
     # Initialize this controller as an authenticated resource.
-    def authenticated_resource(name=nil, &block)
+    def resource(name=nil, &block)
       name = self.name.gsub(/Controller/, '').tableize if name.nil?
       self._singleton_resource = name.to_s.singularize.to_sym
       self._collection_resource = name.to_s.pluralize.to_sym

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe AuthenticatedResource, :type => :controller_concern do
+RSpec.describe ControllerResource, :type => :controller_concern do
   class MockController < ActionController::Base
     include AuthenticatedResource
 
-    authenticated_resource :model do
+    resource :model do
       search :name
       modify :name, :password
     end

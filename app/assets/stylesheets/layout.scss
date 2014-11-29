@@ -49,28 +49,41 @@ footer {
   }
 }
 
-form.simple_form {
-  .input {
-    width: 75%;
-  }
+#new_user {
   label {
-    float: left;
-    font-weight: bold;
-    font-size: 24px;
-    text-align: right;
-    display: block;
-    width: 200px;
-  }
-  input,select,textarea {
-    float: right;
-    width: 400px;
-
-    &.date {
-      width: 133px;
+    input[type="checkbox"] {
+      margin: 13px 12px 17px 0;
     }
   }
+
+  .form-actions {
+    text-align: right;
+  }
+}
+
+.page form.simple_form {
   .input {
+    width: 75%;
     clear: both;
+
+    label {
+      float: left;
+      font-weight: bold;
+      font-size: 24px;
+      text-align: right;
+      display: block;
+      width: 200px;
+
+    }
+    input,select,textarea {
+      float: left;
+      margin-left: 15px;
+      width: 400px;
+
+      &.date {
+        width: 133px;
+      }
+    }
 
     &.preview {
       .rendered-html {

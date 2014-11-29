@@ -16,7 +16,14 @@
       <ul class="right">
         <%= nav_item :artists %>
         <%= nav_item :releases %>
-        <%= nav_item :store, 'Shop' %>
+        <li class="has-dropdown">
+          <%= link_to 'Shop', '/store' %>
+
+          <ul class="dropdown">
+            <li><%= link_to "Cart", '/store/cart' %></li>
+            <li><%= link_to "My Account", '/store/orders' %></li>
+          </ul>
+        </li>
       </ul>
     </section>
   </nav>

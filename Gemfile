@@ -51,6 +51,7 @@ group :development do
   gem 'annotate'
   gem 'web-console'
   gem 'awesome_print'
+  gem 'spring'
 end
 
 group :development, :test do

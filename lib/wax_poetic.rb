@@ -32,8 +32,9 @@ module WaxPoetic
       @logger ||= WaxPoetic::Logger.new
     end
 
-    def saleables
-      [Release, Track]
+    # Model classes which are part of the Wax Poetic catalog.
+    def catalog_models
+      [Artist, Release, Track]
     end
   end
 end

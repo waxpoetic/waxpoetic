@@ -39,5 +39,5 @@
     </div>
   </div>
 
-  <%= admin_controls 'Releases', resource: release %>
+  <%= admin_controls 'Releases', resource: release if admin_signed_in? %>
 </div>

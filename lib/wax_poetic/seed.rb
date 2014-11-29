@@ -10,7 +10,7 @@ module WaxPoetic
       # the saleable items in our whitelisted fixture data.
       def load!
         create_admin_user and configure_store
-        generate_products and generate_images unless WaxPoetic.live?
+        generate_images unless WaxPoetic.live?
         puts "seeded #{I18n.t('store.url')}"
       end
 
@@ -33,20 +33,12 @@ module WaxPoetic
 
       # Ensure the image exists then just run model callbacks to ensure
       # the product gets generated.
-      def generate_products
-        WaxPoetic.saleables.each do |model|
-          model.without_product.each do |record|
+      def generate_images
+        WaxPoetic.catalog_models.each do |model|
+          model.all.each do |record|
             record.image.store! image_file_for(record)
             record.save
           end
-        end
-      end
-
-      # Upload artist images from the tmp dir.
-      def generate_images
-        Artist.all.each do |artist|
-          artist.image.store! image_file_for(artist)
-          artist.save
         end
       end
 

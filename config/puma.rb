@@ -2,7 +2,7 @@
 #
 # App server configuration
 
-APP_ROOT = File.expand_path '../../', __FILE__
+APP_ROOT = File.expand_path '../../../../', __FILE__
 RAILS_ENV = ENV['RAILS_ENV'] || 'development'
 
 # Define thread counts, so that we don't need to remember the order in

@@ -10,6 +10,7 @@ module WaxPoetic
       # the saleable items in our whitelisted fixture data.
       def load!
         create_admin_user and configure_store
+        generate_products and generate_images unless WaxPoetic.live?
         puts "seeded #{I18n.t('store.url')}"
       end
 
@@ -42,7 +43,7 @@ module WaxPoetic
       end
 
       # Upload artist images from the tmp dir.
-      def generate_artist_images
+      def generate_images
         Artist.all.each do |artist|
           artist.image.store! image_file_for(artist)
           artist.save

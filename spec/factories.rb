@@ -4,9 +4,13 @@ FactoryGirl.define do
     bio "i am an artist"
   end
 
+  factory :shipping_category, class: 'Spree::ShippingCategory' do
+    name "Default"
+  end
+
   factory :product, class: 'Spree::Product' do
     name "Artist - Release"
-    shipping_category { Spree::ShippingCategory.find_by_name('Default') }
+    shipping_category
     price 1.00
   end
 

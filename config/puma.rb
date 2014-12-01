@@ -17,7 +17,7 @@ environment RAILS_ENV
 pidfile "#{APP_ROOT}/shared/pids/puma.pid"
 state_path "#{APP_ROOT}/shared/pids/puma.state"
 threads MIN_THREADS, MAX_THREADS
-bind "unix://#{APP_ROOT}/shared/pids/puma.sock"
+bind "unix://#{APP_ROOT}/shared/pids/puma.sock?umask=777"
 tag 'waxpoetic'
 
 # Cluster configuration

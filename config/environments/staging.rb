@@ -43,7 +43,7 @@ Rails.application.configure do
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
   # Ensure we're always connected over SSL
-  config.force_ssl = true
+  #config.force_ssl = true
 
   # Simplifed asset host URL so we can use it as a fog directory as well
   config.bucket = 'files.waxpoeticrecords.com/staging'

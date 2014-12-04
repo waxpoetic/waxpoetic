@@ -10,7 +10,7 @@ module WaxPoetic
       # the saleable items in our whitelisted fixture data.
       def load!
         create_admin_user and configure_store
-        generate_images unless WaxPoetic.live?
+        generate_images if Rails.env.development?
         puts "seeded #{I18n.t('store.url')}"
       end
 

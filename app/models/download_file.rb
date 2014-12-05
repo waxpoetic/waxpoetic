@@ -11,6 +11,17 @@ class DownloadFile
   include ActiveModel::Model
 
   attr_accessor :download, :product, :resource, :variant
+  
+  validates :download, presence: true
+  validates :product, presence: true
+  validates :resource, presence: true
+  validates :variant, presence: true
+  
+  def self.create(params)
+    file = new(params)
+    file.valid?
+    file
+  end
 
   # A temporarily authenticated URL for this product's file resource.
   # Combines the temporary policy's query params with the resource's

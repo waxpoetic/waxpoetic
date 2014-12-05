@@ -1,3 +1,5 @@
+require 'active_model'
+require 'wax_poetic/temporary_policy'
 
 # Authenticates a single user to download a given file, keyed by the
 # Spree::Product this User has purchased. We don't want to have to make

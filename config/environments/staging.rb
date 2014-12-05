@@ -45,11 +45,8 @@ Rails.application.configure do
   # Ensure we're always connected over SSL
   #config.force_ssl = true
 
-  # Simplifed asset host URL so we can use it as a fog directory as well
-  config.bucket = 'files.waxpoeticrecords.com/staging'
-
   # Serve assets from a CDN
-  config.action_controller.asset_host = "//#{config.bucket}/assets"
+  config.action_controller.asset_host = "//#{config.wax_poetic.s3_bucket}/assets"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

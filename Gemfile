@@ -65,6 +65,7 @@ group :test do
   gem 'capybara', require: false
   gem 'poltergeist', require: false
   gem 'factory_girl'
+  gem 'simplecov'
 end
 
 group :staging, :production do

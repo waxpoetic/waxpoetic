@@ -18,7 +18,7 @@ require 'simplecov'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-if ENV['COVERAGE']
+if ENV['CI']
   SimpleCov.start 'rails' do
     coverage_dir File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage") if ENV['CIRCLE_ARTIFACTS']
     refuse_coverage_drop

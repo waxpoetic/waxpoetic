@@ -52,6 +52,7 @@ group :development do
   gem 'web-console'
   gem 'awesome_print'
   gem 'spring'
+  #gem 'rubocop'
 end
 
 group :development, :test do

@@ -19,11 +19,6 @@ class Track < ActiveRecord::Base
 
   delegate :image, :to => :release
 
-  has_product \
-    :name => :title,
-    :available_on => :release_date,
-    :metadata => %w(catalog_number release_date)
-
   scope :by_number, -> { order :number }
 
   after_create :generate_short_url

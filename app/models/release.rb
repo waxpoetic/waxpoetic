@@ -1,5 +1,9 @@
-# Release catalog of the record label, sorted by artist.
-
+# Release catalog of the record label, sorted by artist. Release records
+# are used internally to describe our own releases and relay that
+# information to the web site, but this data is also used on creation to
+# populate the +Spree::Product+ record that is created for us in the
+# online store. Changes between the two records after creation are not
+# synchronized at this time.
 class Release < ActiveRecord::Base
   extend FriendlyId
   include Saleable
@@ -26,12 +30,10 @@ class Release < ActiveRecord::Base
   mount_uploader :open_source_package, PackageUploader
   mount_uploader :file, PackageUploader
 
-  friendly_id :catalog_number
   has_product \
     :name => :title,
     :description => :full_description,
     :available_on => :released_on,
-    :image => :image,
     :metadata => %w(catalog_number release_date)
 
   friendly_id :catalog_number
@@ -47,7 +49,8 @@ class Release < ActiveRecord::Base
   end
 
   # Send promotional emails for this Release, upload its Tracks to
-  # Soundcloud, and spam various social networks with the link.
+  # Soundcloud, and spam various social networks with the link. This
+  # is run automatically when Release is +released_today?+
   def promote!
     PromoteRelease.enqueue self
   end
@@ -58,19 +61,15 @@ class Release < ActiveRecord::Base
     @shipcat ||= Spree::ShippingCategory.find_by_name 'Default'
   end
 
+  # Test if the +released_on+ date is equal to today. Used by the
+  # promotion engine to verify whether this Release needs to be
+  # promoted.
   def released_today?
     released_on.to_date == Date.today
   end
 
-  protected
-  # Called when CreateProduct has completed its run.
-  def after_create_product
-    tracks.each do |track|
-      CreateProduct.enqueue track
-    end
-  end
-
   private
+
   def calculate_price_from_tracks
     self.price ||= tracks.sum :price
   end

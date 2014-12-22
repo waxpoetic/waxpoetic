@@ -13,6 +13,7 @@ class CreateProduct < ActiveJob::Base
     if product.save
       UploadProductImage.enqueue saleable
       CreateProductVariants.enqueue product
+      saleable.after_create_product
     end
   end
 end

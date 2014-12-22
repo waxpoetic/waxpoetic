@@ -1,5 +1,7 @@
 # WaxPoeticRecords.com
 
+[!Build Status](https://circleci.com/gh/waxpoetic/waxpoeticrecords.svg?style=shield&circle-token=35ac94efe2fde734480ee6537d629508ef5e80b7)
+
 The official site of **Wax Poetic Records**, including an artist roster
 that describes every past and current artist on Wax Poetic, and a release
 catalog for browsing more details on each of our releases (including buy

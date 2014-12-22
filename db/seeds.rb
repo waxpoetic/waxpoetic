@@ -1,4 +1,4 @@
-require 'active_record/fixture_set'
+require 'active_record/fixtures'
 
 # Automatically loads data from the fixtures directory into the
 # 'development' database. Allows for faster "spin-up" of the database.

@@ -1,3 +1,5 @@
+require 'wax_poetic/product'
+
 # A model that can be sold in the Wax Poetic online store. By including
 # this module and specifying `has_product`, you can expect that this
 # object will create itself as a Spree::Product and use the mappings you define
@@ -22,7 +24,7 @@ module Saleable
 
   # A decorator for the Spree::Product data.
   def productifier
-    productifier.new saleable: self
+    @productifier ||= WaxPoetic::Product.for(self)
   end
 
   # Attributes given to the Spree::Product when created.
@@ -44,11 +46,7 @@ module Saleable
     product.present? && product.images.any?
   end
 
-  private
-
-  def productifier_class
-    "#{self.class_name}Product".constantize
+  def image_filepath
+    image.file.file
   end
-
-
 end

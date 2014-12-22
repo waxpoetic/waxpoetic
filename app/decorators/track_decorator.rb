@@ -30,4 +30,8 @@ class TrackDecorator < Draper::Decorator
   def release_date
     model.release.decorate.released_on
   end
+
+  def catalog_number
+    model.release.catalog_number
+  end
 end

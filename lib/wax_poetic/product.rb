@@ -1,6 +1,12 @@
 require 'active_model'
 
 module WaxPoetic
+  # A base class for product presenter objects. These presenters are
+  # simply for transforming data between a Saleable record (Track,
+  # Release, etc.) and a Spree::Product in an object-oriented way.
+  # Presenters are automatically found by the base class, and if not,
+  # the base class itself is used to provide sane defaults for anything
+  # not pre-configured.
   class Product
     include ActiveModel::Model
 
@@ -19,8 +25,16 @@ module WaxPoetic
     # Public: Add a new metadata field to the hash. Define the attribute that is
     # to be fetched from the saleable record's decorator.
     def self.metadata_field(attr_name)
-      @metadata_fields ||= []
-      @metadata_fields << attr_name
+      self.metadata_fields ||= []
+      self.metadata_fields << attr_name
+    end
+
+    # Public: Fetch a new product presenter for the given saleable record.
+    def self.for(saleable)
+      "#{saleable.class.name}Product".constantize.new(saleable)
+    rescue LoadError
+      logger.warn "#{saleable.class.name}Product presenter not found"
+      Product.new(saleable)
     end
 
     # Public: Use the name of the saleable object.
@@ -47,6 +61,7 @@ module WaxPoetic
 
     # Public: Use the image_file of the saleable object.
     def image
+      return unless saleable.image_filepath.present?
       File.open(saleable.image_filepath)
     end
 
@@ -65,8 +80,8 @@ module WaxPoetic
     def metadata
       self.class.metadata_fields.each_with_index.reduce({}) do |hash, (field,index)|
         hash.merge index.to_s => {
-          property_name: field.titleize,
-          value: saleable.decorate.send(field)
+          property_name: field.to_s.titleize,
+          value: saleable.send(field)
         }
       end
     end
@@ -74,18 +89,27 @@ module WaxPoetic
     # Internal: Hash of attributes passed to the Spree::Product when saved.
     def attributes
       {
-        :name => name,
-        :description => description,
-        :meta_description => description,
-        :available_on => created_at,
-        :image => {
-          attachment: image,
-          alt: name,
-          viewable: saleable
-        },
-        :price => price,
-        :shipping_category => default_shipping_category,
-        :metadata => metadata
+        name: name,
+        description: description,
+        meta_description: meta_description,
+        available_on: available_on,
+        image: image_attributes,
+        price: price,
+        shipping_category: shipping_category,
+        metadata: metadata
+      }
+    end
+
+    private
+
+    # Internal: Hash of attributes that represents the product image.
+    # Used by Paperclip and Spree.
+    def image_attributes
+      return {} unless image.present?
+      {
+        attachment: image,
+        alt: name,
+        viewable: saleable
       }
     end
   end

@@ -57,9 +57,9 @@ class ReleaseDecorator < Draper::Decorator
     markdown tracks_as_text
   end
 
-  def image_file
+  def image_filepath
     return unless model.image.present?
-    File.new model.image.file
+    File.new model.image_filepath
   end
 
   def product_path

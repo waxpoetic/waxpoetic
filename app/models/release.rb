@@ -30,12 +30,6 @@ class Release < ActiveRecord::Base
   mount_uploader :open_source_package, PackageUploader
   mount_uploader :file, PackageUploader
 
-  has_product \
-    :name => :title,
-    :description => :full_description,
-    :available_on => :released_on,
-    :metadata => %w(catalog_number release_date)
-
   friendly_id :catalog_number
 
   delegate :variants, :to => :product

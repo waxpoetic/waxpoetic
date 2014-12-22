@@ -5,7 +5,7 @@ class ReleaseProduct < WaxPoetic::Product
   metadata_field :release_date
 
   def name
-    saleable.decorate.title
+    saleable.title
   end
 
   def description

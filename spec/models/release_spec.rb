@@ -63,13 +63,15 @@ RSpec.describe Release, :type => :model do
 
   it "exposes certain attributes to create a Spree::Product" do
     expect(subject.product_attributes).to be_present
-    expect(subject.product_attributes.keys).to eq(%w(
+    expect(subject.product_attributes.stringify_keys.keys).to eq(%w(
       name
       description
       meta_description
       available_on
-      shipping_category
+      image
       price
+      shipping_category
+      metadata
     ))
   end
 

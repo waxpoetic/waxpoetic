@@ -14,6 +14,14 @@ module WaxPoetic
 
     class SaleableRecordDecorator < Draper::Decorator
       delegate_all
+
+      def catalog_number
+        'WXP-007'
+      end
+
+      def release_date
+        Date.today
+      end
     end
 
     let :saleable do
@@ -60,6 +68,18 @@ module WaxPoetic
 
     it "builds a hash of metadata based on the metadata_field macros" do
       Product.metadata_field :catalog_number
+      property_names = subject.metadata.map do |key, hash|
+        hash[:property_name]
+      end
+
+      expect(Product.metadata_fields).to include(:catalog_number)
+      expect(property_names).to include('Catalog Number')
+    end
+
+    it "finds the proper presenter for the given saleable" do
+      release = releases :just_the_start
+      presenter = Product.for(release)
+      expect(presenter.class.name).to eq('ReleaseProduct')
     end
   end
 end

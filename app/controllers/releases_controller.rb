@@ -4,6 +4,7 @@
 # purchase new releases. While all users can view releases, only admins
 # may edit them. Admin buttons appear on each release's show page.
 class ReleasesController < ApplicationController
+  respond_to :html
   resource :release do
     search :name, :released_on, :catalog_number, :price, :artist_id
 

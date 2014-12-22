@@ -5,8 +5,6 @@ RSpec.describe ArtistsController, :type => :controller do
   let(:user) { users :admin }
   let(:image) { File.open("#{Rails.root}/spec/fixtures/files/image.jpg") }
 
-  before { allow(user).to receive(:admin?).and_return true }
-
   it "has the correct resources" do
     expect(controller.class._singleton_resource).to eq(:artist)
     expect(controller.class._collection_resource).to eq(:artists)
@@ -30,7 +28,6 @@ RSpec.describe ArtistsController, :type => :controller do
     expect(controller.artists).to be_empty
   end
 
-
   it "views a single artist" do
     get :show, id: artist.id
     expect(response).to be_success
@@ -38,14 +35,20 @@ RSpec.describe ArtistsController, :type => :controller do
   end
 
   context "when a user is signed in" do
-    before { sign_in user }
+    before do
+      sign_in user
+    end
 
     it "is using an admin user" do
+      expect(user.spree_roles).to_not be_empty
+      expect(user.spree_roles).to include(Spree::Role.find_by_name('admin'))
+      expect(user).to have_spree_role('admin')
       expect(user).to be_admin
     end
 
     it "creates a new artist" do
       post :create, artist: { name: 'an artist', bio: 'whatever', image: image }
+      expect(response.code).to eq('302')
       expect(response).to be_redirect
       expect(controller.artist).to be_valid
       expect(controller.artist).to be_persisted

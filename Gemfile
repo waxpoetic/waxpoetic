@@ -12,7 +12,7 @@ gem 'fog'
 gem 'mini_magick'
 gem 'email_validator'
 gem 'friendly_id'
-gem 'controller_resources'
+gem 'controller_resources', github: 'tubbo/controller_resources', branch: 'master'
 
 gem 'spree', '~> 2.3'
 gem 'spree_gateway'

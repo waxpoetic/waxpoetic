@@ -24,6 +24,8 @@ RSpec.describe ReleasesController, :type => :controller do
   end
 
   before do
+    admin.spree_roles << Spree::Role.find_or_create_by(name: "admin")
+    admin.save
     allow(CreateProduct).to receive(:enqueue).and_return true
     allow(PackageRelease).to receive(:enqueue).and_return true
   end

@@ -6,6 +6,16 @@ GIT
       activemodel (>= 4.1.0)
       activesupport (>= 4.1.0)
 
+GIT
+  remote: git://github.com/tubbo/controller_resources.git
+  revision: ebe01b55e1e81dc992e8652e8fe2d486870afb30
+  branch: master
+  specs:
+    controller_resources (0.0.4)
+      decent_exposure
+      rails (>= 4.0.0)
+      responders
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -527,6 +537,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails
+  controller_resources!
   decent_exposure
   devise
   draper

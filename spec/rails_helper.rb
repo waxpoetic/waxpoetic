@@ -71,7 +71,6 @@ RSpec.configure do |config|
 
   config.before :each, :type => :feature do
     Warden.test_mode!
-    WaxPoetic::Seed.send :create_admin_user
   end
 
   config.after :each, :type => :feature do

@@ -7,6 +7,7 @@
 class Release < ActiveRecord::Base
   extend FriendlyId
   include Saleable
+  include Authority::Abilities
 
   belongs_to :artist
 

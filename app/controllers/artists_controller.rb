@@ -6,6 +6,7 @@
 # use the rest of the HTTP API. Admin buttons appear on each artist's
 # show page.
 class ArtistsController < ApplicationController
+  respond_to :html
   resource :artist do
     search :name
     modify :name, :bio, :image

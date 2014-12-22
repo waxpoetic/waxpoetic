@@ -2,14 +2,16 @@
 # Devise and Warden, which are the authentication engines we delegate to
 # when we need to protect certain functions of the site.
 class User < ActiveRecord::Base
+  include Authority::UserAbilities
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  scope :admins, -> { joins(:spree_roles).where(spree_roles: { name: 'admin' }) }
-
   validates :email, presence: true, email: true
+
+  scope :admins, -> { joins(:spree_roles).where(spree_roles: { name: 'admin' }) }
 
   # Create a new admin user by assigning it the 'admin' role in Spree.
   # We use this role to identify admin users in the frontend catalog app

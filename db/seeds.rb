@@ -1,4 +1,4 @@
-require 'active_record/fixtures'
+require 'active_record/fixture_set'
 
 # Automatically loads data from the fixtures directory into the
 # 'development' database. Allows for faster "spin-up" of the database.
@@ -14,7 +14,7 @@ require 'active_record/fixtures'
 
 ActiveRecord::Base.transaction do
   # Build as many objects as we can from fixtures.
-  ActiveRecord::Fixtures.create_fixtures "spec/fixtures", WaxPoetic.config.seed_tables
+  ActiveRecord::FixtureSet.create_fixtures "spec/fixtures", WaxPoetic.config.seed_tables
 
   # Stand up Spree data.
   Spree::Core::Engine.load_seed if defined? Spree::Core

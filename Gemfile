@@ -12,6 +12,7 @@ gem 'fog'
 gem 'mini_magick'
 gem 'email_validator'
 gem 'friendly_id'
+gem 'controller_resources'
 
 gem 'spree', '~> 2.3'
 gem 'spree_gateway'

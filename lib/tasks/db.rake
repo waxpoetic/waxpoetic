@@ -10,11 +10,10 @@ namespace :db do
     options = 'HEADER FORMAT csv'
 
     %w(artists releases).each do |table|
-      filename = "#{Rails.root}/db/data/#{table}.csv"
+      filename = "#{Rails.root}/tmp/#{table}.csv"
       classic.execute "COPY #{table} TO '#{filename}' WITH #{options};"
       ActiveRecord::Base.connection.execute %(
-        CREATE TABLE classic_#{table};
-        COPY classic_#{table} FROM '#{filename}' WITH #{options};
+        COPY #{table} FROM '#{filename}' WITH #{options};
       )
     end
   end

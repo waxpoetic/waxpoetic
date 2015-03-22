@@ -44,11 +44,9 @@ module WaxPoetic
 
       private
       def image_file_for(model)
-        File.new path_to_jpg(model.name.parameterize)
-      end
-
-      def path_to_jpg(filename)
-        "#{Rails.root}/tmp/images/#{filename}.jpg"
+        filename = model.name.parameterize
+        image_path = "#{Rails.root}/tmp/images/#{filename}.jpg"
+        File.new(image_path) if File.exist? image_path
       end
     end
   end

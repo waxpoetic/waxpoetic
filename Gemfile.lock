@@ -582,7 +582,7 @@ DEPENDENCIES
   quiet_assets
   rack-cache
   rails (~> 4.1)
-  rails-assets-marked
+  rails-assets-marked!
   redcarpet
   redis-rails
   redis-session-store

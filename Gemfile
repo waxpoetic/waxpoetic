@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
-ruby '2.1.4'
 
 gem 'rails', '~> 4.1'
 
@@ -31,7 +29,9 @@ gem 'nested_form'
 gem 'soundcloud'
 gem 'bitly'
 
-gem 'rails-assets-marked'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-marked'
+end
 
 gem 'sass-rails'
 gem 'coffee-rails'

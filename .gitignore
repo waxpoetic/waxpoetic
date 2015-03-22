@@ -33,3 +33,6 @@ spec/tmp/*
 # Bundler
 /vendor/bundle
 .bundle
+
+# CTags
+tags

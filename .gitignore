@@ -34,5 +34,6 @@ spec/tmp/*
 /vendor/bundle
 .bundle
 
-# CTags
+# Local developer config
 tags
+.env

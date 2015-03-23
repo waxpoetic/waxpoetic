@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Editing and creating artists" do
   let :artist do
-    artists :wonder_bars
+    artists :the_wonder_bars
   end
 
   scenario "must log in when defining a new artist" do

@@ -22,8 +22,8 @@
 require 'rails_helper'
 
 RSpec.describe Track, :type => :model do
-  let(:artist) { artists :wonder_bars }
-  let(:release) { releases :just_the_start }
+  let(:artist) { artists :the_wonder_bars }
+  let(:release) { releases :just_the_start_ep }
 
   subject do
     Track.new \

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe ReleasesController, :type => :controller do
   let(:admin) { users :admin }
-  let(:wonderbars) { artists :wonder_bars }
-  let(:release) { releases :just_the_start }
+  let(:wonderbars) { artists :the_wonder_bars }
+  let(:release) { releases :just_the_start_ep }
   let :release_params do
     {
       name: "Rites Of Spring EP",

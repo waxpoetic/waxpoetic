@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ReleaseProduct, :type => :product do
-  let(:release) { releases :just_the_start }
+  let(:release) { releases :just_the_start_ep }
   subject { ReleaseProduct.new(release) }
 
   it "builds metadata fields for catalog number and release date" do

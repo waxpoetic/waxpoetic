@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Viewing release details" do
   let :release do
-    releases :just_the_start
+    releases :just_the_start_ep
   end
 
   scenario "as a regular user" do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ArtistsController, :type => :controller do
-  let(:artist) { artists :wonder_bars }
+  let(:artist) { artists :the_wonder_bars }
   let(:user) { users :admin }
   let(:image) { File.open("#{Rails.root}/spec/fixtures/files/image.jpg") }
 

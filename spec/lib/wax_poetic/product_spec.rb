@@ -77,7 +77,7 @@ module WaxPoetic
     end
 
     it "finds the proper presenter for the given saleable" do
-      release = releases :just_the_start
+      release = releases :just_the_start_ep
       presenter = Product.for(release)
       expect(presenter.class.name).to eq('ReleaseProduct')
     end

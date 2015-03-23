@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PackageRelease, :type => :job do
-  let(:release) { releases :just_the_start }
+  let(:release) { releases :just_the_start_ep }
   let(:track) { tracks :after_hours }
 
   subject { PackageRelease }

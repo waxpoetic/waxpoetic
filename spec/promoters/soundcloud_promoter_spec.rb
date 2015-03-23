@@ -28,7 +28,7 @@ RSpec.describe SoundcloudPromoter, :type => :promoter do
   end
 
   let :release do
-    releases :just_the_start
+    releases :just_the_start_ep
   end
 
   it "validates soundcloud credentials" do

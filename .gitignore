@@ -28,6 +28,7 @@ public/uploads
 public/spree
 coverage/
 spec/tmp/*
+db/import/*.csv
 
 
 # Bundler

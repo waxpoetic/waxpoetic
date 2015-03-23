@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Viewing artist details" do
   let :artist do
-    artists :wonder_bars
+    artists :the_wonder_bars
   end
 
   scenario "as a regular user" do

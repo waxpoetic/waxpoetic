@@ -1,7 +1,20 @@
-wonder_bars:
-  name: "The Wonder Bars"
-  bio: "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.\nNow that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass."
-
-rnd:
-  name: "Research & Development"
-  bio: "Look, just because I don't be givin' no man a foot massage don't make it right for Marsellus to throw Antwone into a glass motherfuckin' house, fuckin' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, 'cause I'll kill the motherfucker, know what I'm sayin'?\nWell, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing."
+---
+the_wonder_bars:
+  name: The Wonder Bars
+  bio: "The Wonder Bars are a live House music project from Philadelphia.
+    Their eclectic and danceable blend of funk, soul, samba, jazz, rock and electro
+    styles transcend classification and permeates that invisible vibe through anyone
+    who listens.\n\n- Tom Phoolery, vocals/controllers\r\n- Jules Victor, bass/controllers\r\n-
+    Rob Green, saxophones"
+research_and_development:
+  name: Research and Development
+  bio: "Two years ago, longtime friends [The Architech](http://soundcloud.com/iamthearchitech)
+    and [Tom Phoolery](http://thewonderbars.com) made a pact to begin producing tracks
+    together. Sharing common interests in sound engineering and musical taste, they
+    began making \"experiments\", tracks that touched both on Architech's experiences
+    as a hardcore/jungle DJ as well as Tom's experience fronting a live house band.
+    Together, their influences touch both on the more \"classic\" styles of dance
+    music as well as new developments in the scene. The music they create is reminiscent
+    of a time when electronic music was more melodic, but retains the raw energy that
+    recent technology has empowered us to use in modern music production.\n\n- **The
+    Architech:** programming, drum machines\r\n- **Tom Phoolery:** programming, vocals"

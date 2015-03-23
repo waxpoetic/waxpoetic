@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Editing and creating releases" do
   let :release do
-    releases :just_the_start
+    releases :just_the_start_ep
   end
 
   scenario "must log in when defining a new release" do

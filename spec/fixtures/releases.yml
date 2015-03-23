@@ -1,17 +1,31 @@
-just_the_start:
-  id: 1
-  name: "Just The Start EP"
-  released_on: <%= Date.today %>
-  catalog_number: "WXP001"
-  price: 4.99
-  artist: wonder_bars
-  description: "Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends."
-
+---
+just_the_start_ep:
+  name: Just The Start EP
+  released_on: 2012-07-31
+  catalog_number: WXP001
+  artist: the_wonder_bars
+  description: "\n\nThe debut EP from Philadelphia's premiere live house band! Performing
+    a combination of house, jazz and garage music live (with improvisation), The Wonder
+    Bars have firmly planted themselves into the roots of Philly's diverse electronic
+    music scene. With this debut offering, the world can now experience a taste of
+    what it's like to see this incredible band perform live.\r\n\r\n#### Personnel\r\n\r\n-
+    **Tom Phoolery** vocals, keyboards, programming\r\n- **Aaron Fraint** guitar\r\n-
+    **Jules Victor** bass\r\n- **Rob Green** saxophones\r\n\r\n#### Listen to it\r\n\r\n-
+    **On Beatport:** <http://www.beatport.com/release/just-the-start-ep/949170>\r\n-
+    **On Spotify:** <https://play.spotify.com/artist/2nrkwnQWEqM20n92QC7Cdy>\n\n#
+    Track List\n\n1. Just The Start\r\n2. After Hours"
 shuffle_not:
-  id: 2
-  name: "Shuffle Not"
-  released_on: <%= Date.today %>
-  catalog_number: "WXP002"
-  price: 4.99
-  artist: rnd
-  description: "Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb."
+  name: Shuffle Not
+  released_on: 2013-08-26
+  catalog_number: WXP002F
+  artist: research_and_development
+  description: "\n\nA free download from Research and Development to promote...something...stay
+    tuned!\r\n\r\n#### This is Shuffle Not, our remix of [Suffer Not](https://www.youtube.com/watch?v=5dblnSABZp0)
+    by Submotion Orchestra\r\n\r\nA truly beautiful piece, we never intended to release
+    this version but after much deliberation, tweaking, and secret live performances...we
+    noticed that almost everyone who listened to it really enjoyed the work. The only
+    sample from Suffer Not is the open vocals, everything else has either been re-produced
+    or edited by one of us. After even more deliberation, we decided that all great
+    things in life should be free and gave it to YOU, to download FOR FREE!\r\n\r\nYou
+    can find the download link on this release's **Soundcloud page**: <http://soundcloud.com/resndev/shuffle-not/>
+    \r\n\r\n#### Enjoy!!\n\n# Track List\n\n1. Shuffle Not"

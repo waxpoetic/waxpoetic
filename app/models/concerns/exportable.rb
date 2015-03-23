@@ -2,6 +2,12 @@
 module Exportable
   extend ActiveSupport::Concern
 
+  def self.models
+    ActiveRecord::Base.descendants.select { |model|
+      model.included_modules.include?(Exportable)
+    }.map { |model| model.name.constantize }
+  end
+
   module ClassMethods
     def export_to_fixtures
       File.write fixture_path, fixture_contents.to_yaml
@@ -21,6 +27,6 @@ module Exportable
   end
 
   def yaml_param
-    name.parameterize.underscore
+    self.name.parameterize.underscore
   end
 end

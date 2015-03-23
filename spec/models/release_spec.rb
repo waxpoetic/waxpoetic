@@ -26,7 +26,7 @@
 require 'rails_helper'
 
 RSpec.describe Release, :type => :model do
-  let(:the_wonder_bars) { artists :the_wonder_bars }
+  let(:wonder_bars) { artists :the_wonder_bars }
 
   subject do
     Release.new \

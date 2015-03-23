@@ -2,7 +2,6 @@ bogus:
   name: Bogus
   description: A mock payment gateway for development and testing
   active: <%= (Rails.env =~ /development|test/) ? 'true' : 'false' %>
-  environment: <%= Rails.env %>
   display_on: Both
   auto_capture: false
   type: Spree::Gateway::Bogus
@@ -11,7 +10,6 @@ stripe:
   name: Credit Card
   description: The test payment gateway
   active: <%= (Rails.env =~ /development|test/) ? 'false' : 'true' %>
-  environment: <%= Rails.env %>
   display_on: Both
   auto_capture: false
   type: Spree::Gateway::StripeGateway

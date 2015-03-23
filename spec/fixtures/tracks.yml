@@ -1,5 +1,5 @@
 after_hours:
   number: 1
   name: 'After Hours'
-  release_id: 1
+  release: just_the_start_ep
   file: <%= File.new 'spec/fixtures/files/track.wav' %>

@@ -4,9 +4,10 @@ the_wonder_bars:
   name: The Wonder Bars
   bio: "The Wonder Bars are a live House music project from Philadelphia. Their eclectic
     and danceable blend of funk, soul, samba, jazz, rock and electro styles transcend
-    classification and permeates that invisible vibe through anyone who listens.\r\n\r\n-
-    Tom Phoolery, vocals/controllers\r\n- Jules Victor, bass/controllers\r\n- Rob
-    Green, saxophones"
+    classification and permeate that invisible vibe through anyone who listens.\r\n\r\n
+    - **Tom Phoolery:** vocals, programming\r\n - **Rob Potter:** saxophones\r\n - **Alex
+    the Great:** keyboards, programming\r\n - **Josh the Architech:** controllers\r\n -
+    **DJ HA:** percussion"
   slug: the-wonder-bars
 research_and_development:
   id: 850064779

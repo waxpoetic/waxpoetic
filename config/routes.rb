@@ -630,11 +630,6 @@ Rails.application.routes.draw do
   # here, as Spree relies on it being the default of "spree".
   mount Spree::Core::Engine, :at => '/store'
 
-  # Unless we're in production (wherein the server is exposed to the
-  # general public), mount a web console at /console for access to the
-  # Rails app on a programmatic level.
-  mount WebConsole::Engine, :at => '/console' if defined? WebConsole
-
   # Static pages
   get '/:id' => 'high_voltage/pages#show', :as => :static_page
   root to: 'high_voltage/pages#show', id: 'home'

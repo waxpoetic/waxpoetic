@@ -1,14 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1'
-
-gem 'pg'
-gem 'active_model_serializers'
+# Framework
+gem 'rails', '~> 4.2'
+gem 'spree', github: 'spree/spree'
+gem 'spree_gateway', github: 'spree/spree_gateway'
 gem 'devise'
-gem 'carrierwave'
-gem 'fog'
-gem 'aws-sdk'
-gem 'mini_magick'
 gem 'email_validator'
 gem 'friendly_id'
 gem 'controller_resources'
@@ -17,23 +13,31 @@ gem 'dotenv-rails'
 gem 'spree', '~> 2.4'
 gem 'spree_gateway'
 
+gem 'active_model_serializers'
+gem 'carrierwave'
 gem 'high_voltage'
-gem 'haml-rails'
 gem 'draper'
 gem 'authority'
-gem 'decent_exposure'
 gem 'redcarpet'
 gem 'simple_form'
-gem 'responders'
 gem 'nested_form'
+gem 'controller_resources'
 
+# Services
+gem 'puma'    # web server
+gem 'pg'      # database
+gem 'sidekiq' # background jobs
+
+# Libraries
+gem 'aws-sdk'
+gem 'mini_magick'
+gem 'fog'
 gem 'soundcloud'
 gem 'bitly'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-marked'
-end
-
+# Views
+gem 'haml-rails'
+gem 'rails-assets-marked', source: 'https://rails-assets.org'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier', '~> 1.3'
@@ -42,17 +46,13 @@ gem 'foundation-rails'
 gem 'jquery-turbolinks'
 gem 'autoprefixer-rails'
 
-gem 'activejob'
-gem 'activemodel-globalid', github: 'rails/activemodel-globalid'
-gem 'sidekiq'
-
-gem 'puma'
+# Environment-specific gems
 
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'annotate'
-  gem 'web-console'
+  gem 'web-console', '~> 2.0'
   gem 'awesome_print'
   gem 'spring'
   gem 'rubocop'
@@ -64,10 +64,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', require: false
-  gem 'email_spec', require: false
-  gem 'capybara', require: false
-  gem 'poltergeist', require: false
+  gem 'rspec-rails',  require: false
+  gem 'email_spec',   require: false
+  gem 'capybara',     require: false
+  gem 'poltergeist',  require: false
   gem 'factory_girl'
 end
 

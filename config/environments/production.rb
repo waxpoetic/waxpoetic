@@ -25,7 +25,7 @@ Rails.application.configure do
   config.session_store = :redis_store, "#{config.redis_url}/0/waxpoetic_rails_session"
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_files = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -59,11 +59,8 @@ Rails.application.configure do
   # Disable automatic flushing of the log to improve performance.
   config.autoflush_log = false
 
-  # Set to :debug to see everything in the log.
-  config.log_level = :info
-
   # Log to syslog in production
-  config.log_tags = ['rails', :subdomain]
+  config.log_tags = ['rails']
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false

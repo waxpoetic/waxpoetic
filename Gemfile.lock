@@ -6,16 +6,6 @@ GIT
       activemodel (>= 4.1.0)
       activesupport (>= 4.1.0)
 
-GIT
-  remote: git://github.com/tubbo/controller_resources.git
-  revision: ebe01b55e1e81dc992e8652e8fe2d486870afb30
-  branch: master
-  specs:
-    controller_resources (0.0.4)
-      decent_exposure
-      rails (>= 4.0.0)
-      responders
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -138,6 +128,10 @@ GEM
     colorize (0.7.5)
     columnize (0.8.9)
     connection_pool (2.0.0)
+    controller_resources (0.0.5)
+      decent_exposure
+      rails (>= 4.0.0)
+      responders
     css_parser (1.3.6)
       addressable
     debugger-linecache (1.2.0)
@@ -154,6 +148,9 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dotenv (2.0.0)
+    dotenv-rails (2.0.0)
+      dotenv (= 2.0.0)
     draper (1.3.1)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -617,9 +614,10 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails
-  controller_resources!
+  controller_resources
   decent_exposure
   devise
+  dotenv-rails
   draper
   email_spec
   email_validator

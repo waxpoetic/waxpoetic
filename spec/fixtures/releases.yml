@@ -1,9 +1,9 @@
 ---
 just_the_start_ep:
   name: Just The Start EP
-  released_on: 2012-07-31
-  catalog_number: WXP001
   artist: the_wonder_bars
+  released_on: 2012-07-31 00:00:00.000000000 Z
+  image: 
   description: "\n\nThe debut EP from Philadelphia's premiere live house band! Performing
     a combination of house, jazz and garage music live (with improvisation), The Wonder
     Bars have firmly planted themselves into the roots of Philly's diverse electronic
@@ -14,11 +14,14 @@ just_the_start_ep:
     **On Beatport:** <http://www.beatport.com/release/just-the-start-ep/949170>\r\n-
     **On Spotify:** <https://play.spotify.com/artist/2nrkwnQWEqM20n92QC7Cdy>\n\n#
     Track List\n\n1. Just The Start\r\n2. After Hours"
+  catalog_number: WXP001
+  price: 9.99
+  slug: wxp001
 shuffle_not:
   name: Shuffle Not
-  released_on: 2013-08-26
-  catalog_number: WXP002F
   artist: research_and_development
+  released_on: 2013-08-26 00:00:00.000000000 Z
+  image: 
   description: "\n\nA free download from Research and Development to promote...something...stay
     tuned!\r\n\r\n#### This is Shuffle Not, our remix of [Suffer Not](https://www.youtube.com/watch?v=5dblnSABZp0)
     by Submotion Orchestra\r\n\r\nA truly beautiful piece, we never intended to release
@@ -29,3 +32,6 @@ shuffle_not:
     things in life should be free and gave it to YOU, to download FOR FREE!\r\n\r\nYou
     can find the download link on this release's **Soundcloud page**: <http://soundcloud.com/resndev/shuffle-not/>
     \r\n\r\n#### Enjoy!!\n\n# Track List\n\n1. Shuffle Not"
+  catalog_number: WXP002F
+  price: 9.99
+  slug: wxp002f

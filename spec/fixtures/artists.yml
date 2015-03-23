@@ -1,12 +1,15 @@
 ---
 the_wonder_bars:
+  id: 665411332
   name: The Wonder Bars
-  bio: "The Wonder Bars are a live House music project from Philadelphia.
-    Their eclectic and danceable blend of funk, soul, samba, jazz, rock and electro
-    styles transcend classification and permeates that invisible vibe through anyone
-    who listens.\n\n- Tom Phoolery, vocals/controllers\r\n- Jules Victor, bass/controllers\r\n-
-    Rob Green, saxophones"
+  bio: "The Wonder Bars are a live House music project from Philadelphia. Their eclectic
+    and danceable blend of funk, soul, samba, jazz, rock and electro styles transcend
+    classification and permeates that invisible vibe through anyone who listens.\r\n\r\n-
+    Tom Phoolery, vocals/controllers\r\n- Jules Victor, bass/controllers\r\n- Rob
+    Green, saxophones"
+  slug: the-wonder-bars
 research_and_development:
+  id: 850064779
   name: Research and Development
   bio: "Two years ago, longtime friends [The Architech](http://soundcloud.com/iamthearchitech)
     and [Tom Phoolery](http://thewonderbars.com) made a pact to begin producing tracks
@@ -16,5 +19,7 @@ research_and_development:
     Together, their influences touch both on the more \"classic\" styles of dance
     music as well as new developments in the scene. The music they create is reminiscent
     of a time when electronic music was more melodic, but retains the raw energy that
-    recent technology has empowered us to use in modern music production.\n\n- **The
-    Architech:** programming, drum machines\r\n- **Tom Phoolery:** programming, vocals"
+    recent technology has empowered us to use in modern music production.\r\n\r\n-
+    **The Architech:** programming, drum machines\r\n- **Tom Phoolery:** programming,
+    vocals"
+  slug: research-and-development

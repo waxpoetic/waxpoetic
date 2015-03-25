@@ -19,7 +19,21 @@ jQuery ->
     .on 'page:fetch', ->
       $('.loading').fadeIn FADE_SPEED
     .on 'page:update', ->
-      analytics.page(location.pathname) if analytics?
+      pathname = location.pathname.split('/')[1]
+      title = $('title').text().replace('Wax Poetic Records', '').replace(' | ', '') || 'Home'
+      category = if pathname == 'artists' || pathname == 'releases' || pathname == 'store'
+        pathname
+      else
+        'page'
+      name = if title.toLowerCase() == category
+        "#{title} Index"
+      else
+        title
+
+      if analytics?
+        analytics.page(category, title)
+      else
+        console.log("Page view recorded for '#{title}' (category: #{category})")
     .on 'page:load', ->
       $('.loading').fadeOut FADE_SPEED
 

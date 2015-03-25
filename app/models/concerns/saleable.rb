@@ -37,7 +37,7 @@ module Saleable
   # whenever the `available_on` date is met.
   def copy_to_product
     run_callbacks :create_product do
-      CreateProduct.enqueue self
+      CreateProduct.perform_later self
     end
   end
 

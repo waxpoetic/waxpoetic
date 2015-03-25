@@ -11,8 +11,8 @@ class CreateProduct < ActiveJob::Base
     product = saleable.build_product saleable.product_attributes
 
     if product.save
-      UploadProductImage.enqueue saleable
-      CreateProductVariants.enqueue product
+      UploadProductImage.perform_later saleable
+      CreateProductVariants.perform_later product
       saleable.after_create_product
     end
   end

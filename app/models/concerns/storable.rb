@@ -20,6 +20,6 @@ module Storable
 
   protected
   def start_transcode
-    Transcode.enqueue self
+    Transcode.perform_later self
   end
 end

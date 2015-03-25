@@ -18,13 +18,19 @@ module TitleHelper
   def title_text
     if page_has_title?
       "#{page_title} | #{site_title}"
+    elsif shop_page?
+      "#{shop_title} | #{site_title}"
     else
       site_title
     end
   end
 
   def site_title
-    "Wax Poetic Records"
+    'Wax Poetic Records'
+  end
+
+  def shop_title
+    'Shop'
   end
 
   def page_title
@@ -33,5 +39,9 @@ module TitleHelper
 
   def page_has_title?
     content_for? :title
+  end
+
+  def shop_page?
+    request.env['SCRIPT_NAME'] =~ /store/
   end
 end

@@ -45,7 +45,7 @@ module WaxPoetic
       private
       def image_file_for(model)
         filename = model.name.parameterize
-        image_path = "#{Rails.root}/tmp/images/#{filename}.jpg"
+        image_path = Dir["#{Rails.root}/spec/fixtures/images/#{filename}.*"].first
         File.new(image_path) if File.exist? image_path
       end
     end

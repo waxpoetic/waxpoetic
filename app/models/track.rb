@@ -47,7 +47,7 @@ class Track < ActiveRecord::Base
   end
 
   def generate_short_url
-    GenerateTrackLink.enqueue self
+    GenerateTrackLink.perform_later self
   end
 
   def file_handler

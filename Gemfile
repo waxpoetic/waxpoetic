@@ -41,6 +41,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'awesome_print'
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'rubocop'
 end
 

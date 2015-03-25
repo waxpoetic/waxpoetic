@@ -546,6 +546,8 @@ GEM
       hashie (~> 2.0)
       httmultiparty (~> 0.3.0)
     spring (1.2.0)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -654,6 +656,7 @@ DEPENDENCIES
   spree!
   spree_gateway!
   spring
+  spring-commands-rspec
   turbolinks
   uglifier (~> 1.3)
   web-console (~> 2.0)

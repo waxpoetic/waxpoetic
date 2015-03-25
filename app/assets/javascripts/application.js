@@ -4,6 +4,7 @@
 //= require foundation
 //= require jquery.turbolinks
 //= require jquery_nested_form
+//= require jquery.livepreview
 //= require marked
 //= require artists
 //= require releases

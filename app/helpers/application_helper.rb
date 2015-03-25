@@ -11,9 +11,14 @@ module ApplicationHelper
   # could optionally have a dropdown.
   def nav_item(route, text=nil)
     text ||= route.to_s.titleize
-    content_tag :li do
-      link_to text, "/#{route}"
+    css = 'active' if request.env['PATH_INFO'] =~ /#{route}/
+
+    content_tag :li, class: css do
+      link_to text.downcase, "/#{route}"
     end
+  end
+
+  def current_route
   end
 
   # Configure a link_to to open in a reveal lightbox.

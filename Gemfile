@@ -8,11 +8,6 @@ gem 'devise'
 gem 'email_validator'
 gem 'friendly_id'
 gem 'controller_resources'
-gem 'dotenv-rails'
-
-gem 'spree', '~> 2.4'
-gem 'spree_gateway'
-
 gem 'active_model_serializers'
 gem 'carrierwave'
 gem 'high_voltage'
@@ -21,21 +16,14 @@ gem 'authority'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'nested_form'
-gem 'controller_resources'
-
-# Services
-gem 'puma'    # web server
-gem 'pg'      # database
-gem 'sidekiq' # background jobs
-
-# Libraries
+gem 'puma'
+gem 'pg'
+gem 'sidekiq'
 gem 'aws-sdk'
 gem 'mini_magick'
 gem 'fog'
 gem 'soundcloud'
 gem 'bitly'
-
-# Views
 gem 'haml-rails'
 gem 'rails-assets-marked', source: 'https://rails-assets.org'
 gem 'sass-rails'
@@ -45,8 +33,6 @@ gem 'turbolinks'
 gem 'foundation-rails'
 gem 'jquery-turbolinks'
 gem 'autoprefixer-rails'
-
-# Environment-specific gems
 
 group :development do
   gem 'meta_request'

@@ -16,12 +16,6 @@ module Saleable
     define_model_callbacks :create_product
   end
 
-  module ClassMethods
-    def has_product?
-      true
-    end
-  end
-
   # A decorator for the Spree::Product data.
   def productifier
     @productifier ||= WaxPoetic::Product.for(self)

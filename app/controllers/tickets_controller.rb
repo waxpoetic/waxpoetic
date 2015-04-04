@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  authenticated_resource :ticket
+  resource :ticket
   expose :event, :ancestor => :ticket
   expose :order, :ancestor => :ticket
 

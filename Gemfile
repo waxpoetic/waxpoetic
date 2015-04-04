@@ -22,17 +22,9 @@ gem 'aws-sdk', '~> 1.27'
 gem 'mini_magick'
 gem 'fog'
 gem 'geocoder'
-<<<<<<< HEAD
-
 gem 'soundcloud'
 gem 'bitly'
-gem 'haml-rails'
 gem 'rails-assets-marked', source: 'https://rails-assets.org'
-=======
-gem 'soundcloud'
-gem 'bitly'
-gem 'rails-assets-marked'
->>>>>>> Get ready to merge and remove passbook
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier', '~> 1.3'
@@ -40,13 +32,6 @@ gem 'turbolinks'
 gem 'foundation-rails'
 gem 'jquery-turbolinks'
 gem 'autoprefixer-rails'
-<<<<<<< HEAD
-=======
-gem 'activejob'
-gem 'activemodel-globalid', github: 'rails/activemodel-globalid'
-gem 'sidekiq'
-gem 'puma'
->>>>>>> Get ready to merge and remove passbook
 
 group :development do
   gem 'meta_request'

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  authenticated_resource :event do
+  resource :event do
     search :name, :location, :description, :starts_at, :ends_at, :ticket_price, :latitude, :longitude
     modify :name, :location, :description, :starts_at, :ends_at, :ticket_price
   end

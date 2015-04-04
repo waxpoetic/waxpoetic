@@ -21,4 +21,7 @@
 .release.thumbnail {
   float: left;
   margin-left: 15px;
+  border: 0;
+
+  img { border: 0; }
 }

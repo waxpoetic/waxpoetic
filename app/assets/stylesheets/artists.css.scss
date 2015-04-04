@@ -23,4 +23,9 @@
 
 .artist.thumbnail {
   margin-bottom: 15px;
+  border: 0;
+
+  img {
+    border: 0;
+  }
 }

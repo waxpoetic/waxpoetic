@@ -615,7 +615,7 @@ DEPENDENCIES
   authority
   autoprefixer-rails
   awesome_print
-  aws-sdk
+  aws-sdk (~> 1.27)
   bitly
   capybara
   carrierwave

@@ -64,13 +64,13 @@ RSpec.configure do |config|
   # Devise session testing
   config.include Devise::TestHelpers, :type => :controller
   config.include Warden::Test::Helpers, :type => :feature
-
-  config.before :all do
-    FactoryGirl.reload
+  config.before :suite do
+    Warden.test_mode!
   end
 
-  config.before :each, :type => :feature do
-    Warden.test_mode!
+  config.before :all do
+    User.create_admin Rails.application.secrets.admin_user
+    FactoryGirl.reload
   end
 
   config.after :each, :type => :feature do

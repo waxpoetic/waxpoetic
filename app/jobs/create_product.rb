@@ -8,12 +8,6 @@ class CreateProduct < ActiveJob::Base
   attr_reader :product, :saleable
 
   def perform(saleable)
-    product = saleable.build_product saleable.product_attributes
-
-    if product.save
-      UploadProductImage.perform_later saleable
-      CreateProductVariants.perform_later product
-      saleable.after_create_product
-    end
+    WaxPoetic::Product.create(saleable)
   end
 end

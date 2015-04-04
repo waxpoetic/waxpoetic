@@ -53,10 +53,6 @@ module WaxPoetic
       expect(subject.available_on).to eq(saleable.created_at)
     end
 
-    it "uses the image_filepath method to find the filepath of the image" do
-      expect(subject.image.path).to eq(saleable.image_filepath)
-    end
-
     it "uses the price of the saleable object" do
       expect(subject.price).to eq(saleable.price)
     end

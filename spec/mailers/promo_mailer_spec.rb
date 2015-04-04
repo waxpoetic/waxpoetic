@@ -5,7 +5,7 @@ RSpec.describe PromoMailer, :type => :mailer do
   let(:subscriber) { subscribers :example }
 
   it "sends the new release email" do
-    mail = PromoMailer.new_release(subscriber, release).deliver
+    mail = PromoMailer.new_release(subscriber, release).deliver_now
     mail_subject = "'#{release.decorate.title}' just dropped on Wax Poetic!"
     expect(mail).to have_subject(mail_subject)
     expect(mail).to have_body_text('just released something!')

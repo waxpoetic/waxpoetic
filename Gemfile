@@ -16,7 +16,6 @@ gem 'authority'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'nested_form'
-gem 'puma'
 gem 'pg'
 gem 'sidekiq'
 gem 'aws-sdk'
@@ -63,4 +62,5 @@ group :staging, :production do
   gem 'redis-rails'
   gem 'redis-session-store'
   gem 'asset_sync'
+  gem 'puma'
 end

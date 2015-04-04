@@ -1,5 +1,5 @@
 class PreviewInput < SimpleForm::Inputs::Base
-  def input
+  def input(wrapper_options)
     @builder.text_area(attribute_name).concat(preview)
   end
 

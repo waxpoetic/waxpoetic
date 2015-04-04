@@ -7,17 +7,21 @@ module WaxPoetic
       releases :shuffle_not
     end
 
+    let :product do
+      Product.for release
+    end
+
     let :variant do
       'WAV'
     end
 
     subject do
-      ProductVariant.new saleable: release, variant: variant
+      ProductVariant.new product: product, type: variant
     end
 
     it "stores given params as attributes" do
       expect(subject.saleable).to eq(release)
-      expect(subject.variant).to eq(variant)
+      expect(subject.type).to eq(variant)
     end
 
     it "defines the amount of money the price is bumped" do

@@ -60,23 +60,4 @@ RSpec.describe Release, :type => :model do
     subject.catalog_number = wonder_bars.releases.first.catalog_number
     expect(subject).to_not be_valid
   end
-
-  it "exposes certain attributes to create a Spree::Product" do
-    expect(subject.product_attributes).to be_present
-    expect(subject.product_attributes.stringify_keys.keys).to eq(%w(
-      name
-      description
-      meta_description
-      available_on
-      image
-      price
-      shipping_category
-      metadata
-    ))
-  end
-
-  it "should use the default shipping category" do
-    expect(subject.shipping_category).to be_present
-    expect(subject.shipping_category.name).to eq('Default')
-  end
 end

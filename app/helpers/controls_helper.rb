@@ -11,13 +11,12 @@ module ControlsHelper
     try(:artist) || try(:release)
   end
 
-  def admin_controls(collection_name, model)
-    for_kind = collection_name.singularize
+  def admin_controls(collection_name, resource: nil, kind: collection_name.singularize)
     case controller.action_name
     when 'index'
-      new_item_button for_kind
+      new_item_button kind
     when 'show'
-      render 'controls', resource: for_resource, kind: for_kind
+      render 'controls', resource: resource, kind: kind
     end
   end
 

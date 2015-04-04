@@ -66,10 +66,6 @@ class ReleaseDecorator < Draper::Decorator
     "/store/products/#{model.product.name.parameterize}"
   end
 
-  def price
-    h.number_to_currency model.price
-  end
-
   def buy_button
     return unless model.product.present?
     h.link_to "Buy Release (#{price})", product_path, class: 'buy button success'

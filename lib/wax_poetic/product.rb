@@ -29,13 +29,31 @@ module WaxPoetic
       self.metadata_fields << attr_name
     end
 
+    # Public: Instantiate a Product, which defines and saves a new
+    # Spree::Product from a Saleable object.
+    #
+    # @returns [Boolean]
+    def self.create(saleable)
+      product = new(saleable)
+      product.save
+      product
+    end
+
     # Public: Fetch a new product presenter for the given saleable record.
     def self.for(saleable)
-      "#{saleable.class.name}Product".constantize.new(saleable)
+      "#{saleable.class.name}Product".constantize.create(saleable)
     rescue LoadError
       logger.warn "#{saleable.class.name}Product presenter not found"
       Product.new(saleable)
     end
+
+    # Public: Persist this record to the datbaase.
+    def save
+      valid? && spree_product.save
+    end
+
+    # Public: Check if this record is in the database already.
+    delegate :persisted?, to: :spree_product
 
     # Public: Use the name of the saleable object.
     def name
@@ -59,12 +77,6 @@ module WaxPoetic
       saleable.created_at
     end
 
-    # Public: Use the image_file of the saleable object.
-    def image
-      return unless saleable.image_filepath.present?
-      File.open(saleable.image_filepath)
-    end
-
     # Public: Use the price of the saleable object.
     def price
       saleable.price
@@ -75,8 +87,19 @@ module WaxPoetic
       Spree::ShippingCategory.find_by_name 'Default'
     end
 
-    # Internal: Hash of metadata compiled from each `metadata_field` entry. This
+    # Public: A collection of +WaxPoetic::ProductVariant+ objects which
+    # wrap +Spree::Variant+ objects for the purpose of insertion into
+    # the database with this query via mass-assignment.
+    #
+    # @returns [Array] of ProductVariant objects
+    def variants
+      @variants ||= ProductVariant.from(self)
+    end
+
+    # Deprecated: Hash of metadata compiled from each `metadata_field` entry. This
     # wil be an empty Hash if no metadata_fields were defined.
+    #
+    # TODO: Figure out how we're handling this now.
     def metadata
       self.class.metadata_fields.each_with_index.reduce({}) do |hash, (field,index)|
         hash.merge index.to_s => {
@@ -86,6 +109,10 @@ module WaxPoetic
       end
     end
 
+    def variants
+      @variants ||= ProductVariant.from(self)
+    end
+
     # Internal: Hash of attributes passed to the Spree::Product when saved.
     def attributes
       {
@@ -93,24 +120,12 @@ module WaxPoetic
         description: description,
         meta_description: meta_description,
         available_on: available_on,
-        image: image_attributes,
-        price: price,
-        shipping_category: shipping_category,
-        metadata: metadata
+        shipping_category: shipping_category
       }
     end
 
-    private
-
-    # Internal: Hash of attributes that represents the product image.
-    # Used by Paperclip and Spree.
-    def image_attributes
-      return {} unless image.present?
-      {
-        attachment: image,
-        alt: name,
-        viewable: saleable
-      }
+    def spree_product
+      @spree_product ||= saleable.product || saleable.build_product(attributes)
     end
   end
 end

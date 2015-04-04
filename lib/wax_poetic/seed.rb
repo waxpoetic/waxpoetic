@@ -11,7 +11,7 @@ module WaxPoetic
       def load!
         create_admin_user and configure_store
         generate_images if Rails.env.development?
-        puts "seeded #{I18n.t('store.url')}"
+        puts "seeding #{I18n.t('store.url')}, please wait for inline jobs to finish"
       end
 
       protected

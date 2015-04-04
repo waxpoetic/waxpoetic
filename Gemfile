@@ -39,7 +39,7 @@ group :development do
   gem 'annotate'
   gem 'web-console', '~> 2.0'
   gem 'awesome_print'
-  gem 'spring'
+  gem 'spring', '~> 1.3'
   gem 'spring-commands-rspec'
   gem 'rubocop'
 end

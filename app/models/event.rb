@@ -1,6 +1,10 @@
 # Represents an event that Wax Poetic is putting on. Stores the name,
 # location, ticket price and date the event occurs on.
 class Event < ActiveRecord::Base
+  extend FriendlyId
+  include Authority::Abilities
+  include Saleable
+
   validates :name, presence: true
   validates :location, presence: true
   validates :ticket_price, presence: true
@@ -8,6 +12,8 @@ class Event < ActiveRecord::Base
 
   geocoded_by :location
   after_validation :geocode
+
+  friendly_id :name
 end
 
 # == Schema Information
@@ -15,14 +21,20 @@ end
 # Table name: events
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
+#  name         :string
 #  description  :text
-#  ticket_price :string(255)
-#  location     :string(255)
+#  ticket_price :string
+#  location     :string
 #  latitude     :float
 #  longitude    :float
 #  starts_at    :datetime
 #  ends_at      :datetime
 #  created_at   :datetime
 #  updated_at   :datetime
+#  slug         :string
+#
+# Indexes
+#
+#  index_events_on_latitude   (latitude)
+#  index_events_on_longitude  (longitude)
 #

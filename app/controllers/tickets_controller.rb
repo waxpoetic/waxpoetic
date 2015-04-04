@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  respond_to :html
   resource :ticket
   expose :event, :ancestor => :ticket
   expose :order, :ancestor => :ticket
@@ -7,19 +8,6 @@ class TicketsController < ApplicationController
   # link from email), as a "pkpass" Passbook object, or as a PDF for
   # printing.
   def show
-    respond_to do |format|
-      format.html   { respond_with ticket }
-      format.pkpass { send_file ticket.pkpass.path, pkpass_file_opts }
-      format.pdf    { render pdf: ticket  }
-    end
-  end
-
-  private
-  def pkpass_file_opts
-    {
-      type: 'application/vnd.apple.pkpass',
-      disposition: 'attachment',
-      filename: "pass.pkpass"
-    }
+    respond_with ticket
   end
 end

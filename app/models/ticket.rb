@@ -1,6 +1,6 @@
 class Ticket < ActiveRecord::Base
   belongs_to :event
-  belongs_to :order
+  belongs_to :order, class_name: 'Spree::Order'
 
   has_one :user, :through => :order
 

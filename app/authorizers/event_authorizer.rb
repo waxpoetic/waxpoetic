@@ -1,0 +1,2 @@
+class EventAuthorizer < ApplicationAuthorizer
+end

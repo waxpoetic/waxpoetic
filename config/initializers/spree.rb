@@ -26,20 +26,6 @@ Rails.application.config.to_prepare do
   require_dependency 'spree/authentication_helpers'
 end
 
-# Simplify checkout flow to disable delivery and address steps.
-Spree::Order.class_eval do
-  belongs_to :download
-  remove_checkout_step :address
-  remove_checkout_step :delivery
-  insert_checkout_step :create_download, :before => :confirm
-end
-
-# Store a reference to the catalog record this product represents within
-# the product table.
-Spree::Product.class_eval do
-  belongs_to :saleable, polymorphic: true
-end
-
 # A hack for decorators so they always have a default shipping category
 module Draper
   class Decorator

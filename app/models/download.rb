@@ -16,23 +16,19 @@ class Download < ActiveRecord::Base
   # Track (blackbox code and all that), we use this method on Download
   # to retrieve what the actual filepath of the resource object is.
   def files
-    @files ||= order.variants.map do |variant|
-      DownloadFile.create \
+    @files ||= order.downloadables.each do |variant|
+      DownloadFile.create(
         download: self,
         product: variant.product,
         resource: variant.product.saleable,
         variant: variant
+      )
     end
   end
 
   private
   def downloadable
     errors.add :products, "are not downloadable" unless files.any?
-  end
-
-  def product_resource_for(product)
-    Release.find_by_product_id(product.id) ||
-    Track.find_by_product_id(product.id)
   end
 end
 

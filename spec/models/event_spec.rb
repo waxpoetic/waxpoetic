@@ -3,16 +3,22 @@
 # Table name: events
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
+#  name         :string
 #  description  :text
-#  ticket_price :string(255)
-#  location     :string(255)
+#  ticket_price :string
+#  location     :string
 #  latitude     :float
 #  longitude    :float
 #  starts_at    :datetime
 #  ends_at      :datetime
 #  created_at   :datetime
 #  updated_at   :datetime
+#  slug         :string
+#
+# Indexes
+#
+#  index_events_on_latitude   (latitude)
+#  index_events_on_longitude  (longitude)
 #
 
 require 'rails_helper'

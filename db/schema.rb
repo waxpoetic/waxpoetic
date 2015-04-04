@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323015924) do
+ActiveRecord::Schema.define(version: 20150404221013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,23 @@ ActiveRecord::Schema.define(version: 20150323015924) do
 
   add_index "downloads", ["order_id"], name: "index_downloads_on_order_id", using: :btree
 
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "ticket_price"
+    t.string   "location"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
+
+  add_index "events", ["latitude"], name: "index_events_on_latitude", using: :btree
+  add_index "events", ["longitude"], name: "index_events_on_longitude", using: :btree
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
     t.integer  "sluggable_id",               null: false
@@ -46,20 +63,7 @@ ActiveRecord::Schema.define(version: 20150323015924) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "events", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "ticket_price"
-    t.string   "location"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "releases", force: true do |t|
+  create_table "releases", force: :cascade do |t|
     t.string   "name",                limit: 255
     t.integer  "artist_id"
     t.datetime "released_on"

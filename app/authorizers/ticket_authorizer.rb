@@ -1,0 +1,2 @@
+class TicketAuthorizer < ApplicationAuthorizer
+end

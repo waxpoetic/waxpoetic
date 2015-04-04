@@ -612,7 +612,12 @@
 #
 
 Rails.application.routes.draw do
-  resources :events
+  # Catalog resources
+  resources :artists
+  resources :releases
+  resources :events do
+    resources :tickets, only: %w(index)
+  end
 
   # User Authentication
   devise_for :users
@@ -621,10 +626,6 @@ Rails.application.routes.draw do
     get     '/login'  => 'devise/sessions#new'
     delete  '/logout' => 'devise/sessions#destroy'
   end
-
-  # Unauthenticated artist/release routes
-  resources :artists
-  resources :releases
 
   # This line mounts Spree's routes at the root of your application.
   # This means, any requests to URLs such as /products, will go to

@@ -10,6 +10,8 @@ class Event < ActiveRecord::Base
   validates :ticket_price, presence: true
   validates :starts_at, presence: true
 
+  alias_attribute :price, :ticket_price
+
   geocoded_by :location
   after_validation :geocode
 

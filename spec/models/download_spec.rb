@@ -19,20 +19,20 @@ RSpec.describe Download, :type => :model do
     users :admin
   end
 
-  let :order do
-    FactoryGirl.create :order, user: user, variants: [variant]
-  end
-
   let :release do
-    FactoryGirl.create :release, product: product
-  end
-
-  let :variant do
-    FactoryGirl.create :variant
+    FactoryGirl.create :release
   end
 
   let :product do
-    FactoryGirl.create :product, variants: [variant]
+    FactoryGirl.create :product, saleable: release, variants: [FactoryGirl.create(:variant)]
+  end
+
+  let :variant do
+    product.variants.first
+  end
+
+  let :order do
+    FactoryGirl.create :order, user: user, variants: [variant]
   end
 
   subject { Download.new order: order }

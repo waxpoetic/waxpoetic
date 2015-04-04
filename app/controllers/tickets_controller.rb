@@ -1,13 +1,14 @@
 class TicketsController < ApplicationController
-  respond_to :html
-  resource :ticket
-  expose :event, :ancestor => :ticket
-  expose :order, :ancestor => :ticket
+  respond_to :html, :csv
 
-  # Render a purchased ticket as HTML (usually the starting point, as a
-  # link from email), as a "pkpass" Passbook object, or as a PDF for
-  # printing.
-  def show
-    respond_with ticket
+  expose :event
+  expose :tickets, ancestor: :event, order: :number
+
+  # Show all tickets for this event.
+  def index
+    respond_to do |format|
+      format.html { respond_with tickets }
+      format.csv  { render csv: tickets.to_csv }
+    end
   end
 end

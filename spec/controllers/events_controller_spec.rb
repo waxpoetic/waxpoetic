@@ -38,7 +38,7 @@ RSpec.describe EventsController, :type => :controller do
       expect(controller.event).to be_valid
       expect(controller.event.name).to eq("Come Correct II")
       expect(response).to be_redirect
-      expect(response).to redirect_to(event)
+      expect(response).to redirect_to("http://test.host/events/come-correct-ii")
     end
 
     it "destroys an event" do

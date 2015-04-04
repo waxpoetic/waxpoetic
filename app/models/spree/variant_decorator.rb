@@ -1,5 +1,5 @@
 Spree::Variant.class_eval do
-  def saleable_type
-    product.saleable_type
-  end
+  delegate :saleable_type, to: :product
+  delegate :saleable_id, to: :product
+  delegate :saleable, to: :product
 end

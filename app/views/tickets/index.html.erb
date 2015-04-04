@@ -1,0 +1,20 @@
+<%= title_row "#{event.name} > Tickets" %>
+
+<%= link_to 'Export to Spreadsheet', event_tickets_path(event: event, format: 'csv') %>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Purchased At</th>
+    <th>Number</th>
+  </thead>
+  <tbody>
+    <% tickets.each do |ticket| %>
+      <tr class="ticket" data-id="<%= ticket.id %>">
+        <td><%= ticket.purchaser %></td>
+        <td><%= ticket.created_at %></td>
+        <td><%= ticket.number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

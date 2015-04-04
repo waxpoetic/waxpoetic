@@ -16,4 +16,8 @@ class Ticket < ActiveRecord::Base
   def number
     @number ||= "#{event.id}-#{order.id}"
   end
+
+  def purchaser
+    order.bill_address.full_name
+  end
 end

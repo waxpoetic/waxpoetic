@@ -12,8 +12,8 @@ Spree::Order.class_eval do
 
   # Public: Products associated with this order which can be downloaded.
   def downloadables
-    variants.map do |variant|
-      variant.saleable_type =~ /Release|Track/
+    variants.select do |variant|
+      variant.saleable.class.name =~ /Release|Track/
     end
   end
 

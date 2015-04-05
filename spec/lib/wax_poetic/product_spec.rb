@@ -64,7 +64,7 @@ module WaxPoetic
 
     it "builds a hash of metadata based on the metadata_field macros" do
       Product.metadata_field :catalog_number
-      property_names = subject.metadata.map do |key, hash|
+      property_names = subject.metadata.map do |hash|
         hash[:property_name]
       end
 

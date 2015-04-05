@@ -1,4 +1,5 @@
 require 'active_model'
+require 'wax_poetic/product_variant'
 
 module WaxPoetic
   # A base class for product presenter objects. These presenters are
@@ -13,6 +14,7 @@ module WaxPoetic
     # Internal: A collection of fields that should be lifted from the decorator as
     # metadata for the Spree::Product
     cattr_accessor :metadata_fields
+    self.metadata_fields ||= {}
 
     # The saleable record used to back this PORO.
     attr_reader :saleable
@@ -49,7 +51,7 @@ module WaxPoetic
 
     # Public: Persist this record to the datbaase.
     def save
-      valid? && spree_product.save
+      valid? && create && create_variants && create_properties
     end
 
     # Public: Check if this record is in the database already.
@@ -98,19 +100,13 @@ module WaxPoetic
 
     # Deprecated: Hash of metadata compiled from each `metadata_field` entry. This
     # wil be an empty Hash if no metadata_fields were defined.
-    #
-    # TODO: Figure out how we're handling this now.
     def metadata
-      self.class.metadata_fields.each_with_index.reduce({}) do |hash, (field,index)|
-        hash.merge index.to_s => {
+      self.class.metadata_fields.map do |field|
+        {
           property_name: field.to_s.titleize,
           value: saleable.send(field)
         }
       end
-    end
-
-    def variants
-      @variants ||= ProductVariant.from(self)
     end
 
     # Internal: Hash of attributes passed to the Spree::Product when saved.
@@ -120,12 +116,29 @@ module WaxPoetic
         description: description,
         meta_description: meta_description,
         available_on: available_on,
-        shipping_category: shipping_category
+        shipping_category: shipping_category,
+        price: price
       }
     end
 
     def spree_product
       @spree_product ||= saleable.product || saleable.build_product(attributes)
+    end
+
+    private
+
+    def create
+      spree_product.save
+    end
+
+    def create_variants
+      variants.all? do |product_variant|
+        spree_product.variants.create product_variant.attributes
+      end
+    end
+
+    def create_properties
+      metadata.all? { |property| spree_product.properties.create(property) }
     end
   end
 end

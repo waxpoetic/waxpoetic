@@ -13,7 +13,7 @@ RSpec.describe TrackProduct, :type => :product do
   end
 
   it "builds metadata fields for catalog number and release date" do
-    property_names = subject.metadata.map do |key, hash|
+    property_names = subject.metadata.map do |hash|
       hash[:property_name]
     end
 

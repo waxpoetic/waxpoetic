@@ -1,6 +1,6 @@
 class ReleaseImageUploader < ImageUploader
   version :thumb do
-    process :resize_to_fill => [240, 240]
+    process :resize_to_fit => [240, 240]
   end
 
   version :micro do

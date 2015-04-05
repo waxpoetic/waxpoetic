@@ -70,13 +70,8 @@ module WaxPoetic
         price: price,
         option_values: option_values,
         images: images,
-        is_master: is_master?,
-        product_properties_attributes: product_metadata
+        is_master: is_master?
       }
-    end
-
-    def product_metadata
-      nil
     end
 
     # Internal: Generate the SKU from the catalog number and type of

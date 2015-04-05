@@ -5,7 +5,7 @@ RSpec.describe ReleaseProduct, :type => :product do
   subject { ReleaseProduct.new(release) }
 
   it "builds metadata fields for catalog number and release date" do
-    property_names = subject.metadata.map do |key, hash|
+    property_names = subject.metadata.map do |hash|
       hash[:property_name]
     end
 

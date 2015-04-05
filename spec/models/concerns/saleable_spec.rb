@@ -11,6 +11,7 @@ RSpec.describe Saleable, type: :concern do
       meta_description
       available_on
       shipping_category
+      price
     ))
   end
 

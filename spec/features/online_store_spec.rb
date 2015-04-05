@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "Viewing the online store" do
-  #before { visit '/store' }
+  before { visit '/store' }
 
   scenario "still renders the app layout" do
-    pending 'wtf is going on'
     expect(page).to have_css('header')
     expect(page).to have_css('section.page')
     expect(page).to have_css('footer')

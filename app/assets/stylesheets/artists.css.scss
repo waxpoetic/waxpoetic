@@ -19,6 +19,22 @@
     min-width: 480px;
   }
   h1 { display: none; }
+
+  .bio {
+    margin-top: 50px;
+  }
+
+  .releases {
+    ul {
+      list-style: none;
+      margin-left: 3px;
+
+      li {
+        display: inline-block;
+        margin-right: 15px;
+      }
+    }
+  }
 }
 
 .artist.thumbnail {

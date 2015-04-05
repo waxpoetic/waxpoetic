@@ -15,7 +15,11 @@
 
       <ul>
       <% artist.releases.latest.limit(5).each do |release| %>
-        <li><%= link_to release.name, release %></li>
+        <li>
+          <%= link_to release do %>
+            <%= image_tag release.image.micro.url %>
+          <% end %>
+        </li>
       <% end %>
       </ul>
     </div>

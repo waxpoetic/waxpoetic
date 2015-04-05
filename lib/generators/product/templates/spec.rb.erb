@@ -1,0 +1,11 @@
+require 'rails_helper'
+
+RSpec.describe <%= class_name %>Product, type: :product do
+  let :model do
+    <%= class_name %>.first
+  end
+
+  subject do
+    <%= class_name %>Product.new(saleable: model)
+  end
+end

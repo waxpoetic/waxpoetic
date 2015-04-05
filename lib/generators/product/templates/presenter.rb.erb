@@ -1,0 +1,6 @@
+require 'wax_poetic/product'
+
+class <%= class_name %>Product < WaxPoetic::Product
+  # metadata_field :foo
+  alias_method :<%= file_name %>, :saleable
+end

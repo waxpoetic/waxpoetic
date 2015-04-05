@@ -1,0 +1,9 @@
+Description:
+    Add a new product presenter
+
+Example:
+    rails generate product Ticket
+
+    This will create:
+        app/products/ticket_product.rb
+        spec/products/ticket_product_spec.rb

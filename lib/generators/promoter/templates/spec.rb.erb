@@ -1,0 +1,19 @@
+require 'rails_helper'
+
+RSpec.describe <%= class_name %>Promoter, type: :promoter do
+  let :model do
+    <%= class_name %>.first
+  end
+
+  subject do
+    <%= class_name %>Promoter.new
+  end
+
+  it 'validates attributes' do
+    expect(subject).to be_valid
+  end
+
+  it 'promotes the <%= file_name %>' do
+    expect(subject.promote!(model)).to eq(true)
+  end
+end

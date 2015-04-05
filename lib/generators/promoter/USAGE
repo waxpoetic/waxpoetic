@@ -1,0 +1,10 @@
+Description:
+    Create a new promoter that will be executed whenever a Release or
+    Track is uploaded.
+
+Example:
+    rails generate promoter Twitter
+
+    This will create:
+        app/promoters/twitter_promoter.rb
+        spec/promoters/twitter_promoter_spec.rb

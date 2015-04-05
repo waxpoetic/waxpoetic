@@ -26,9 +26,8 @@ RSpec.describe Subscriber, :type => :model do
     expect(subject).to_not be_valid
   end
 
-  it "must have a unique email" do
-    subject.email = subscribers(:example).email
-
-    expect(subject).to_not be_valid
+  it "backgrounds the task of saving the user to mailchimp" do
+    allow(UserSubscribeJob).to receive(:perform_later).with(subject).and_return true
+    expect(subject.save).to eq(true)
   end
 end

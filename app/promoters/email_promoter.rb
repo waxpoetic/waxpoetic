@@ -3,11 +3,20 @@ require 'wax_poetic/promoter'
 # Send promotional emails to every Subscriber.
 class EmailPromoter < WaxPoetic::Promoter
   def promote!(release, options={})
-    subscribers = options[:to]
-    logger.warn "There were no emails sent" unless subscribers.any?
+    mailchimp.campaigns.create(
+      type: 'regular',
+      options: {
+        list_id: list,
+        subject: "#{release} has just been released!",
+        from_email: 'catalog@waxpoeticrecords.com',
+        from_name: 'Wax Poetic Records',
+      }
+    )
+  end
 
-    subscribers.each do |subscriber|
-      PromoMailer.new_release(subscriber, release).deliver
-    end
+  private
+
+  def mailchimp
+    @mailchimp ||= Gibbon::API.new WaxPoetic.secrets.mailchimp_api_key
   end
 end

@@ -1,15 +1,28 @@
-class Subscriber < ActiveRecord::Base
-  validates :name, presence: true
-  validates :email, presence: true, uniqueness: true, email: true
-end
+# A form object for the subscribe form as well as a presenter to
+# UserSubscribeJob for storing in MailChimp's list.
+class Subscriber
+  include ActiveModel::Model
 
-# == Schema Information
-#
-# Table name: subscribers
-#
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#
+  attr_accessor :name, :email
+
+  validates :name, presence: true
+  validates :email, presence: true, email: true
+
+  alias_method :id, :email
+
+  def self.create(params = {})
+    subscriber = new(params)
+    subscriber.save
+    subscriber
+  end
+
+  def save
+    valid? && subscribe
+  end
+
+  private
+
+  def subscribe
+    UserSubscribeJob.perform_later(self)
+  end
+end

@@ -32,6 +32,7 @@ gem 'turbolinks'
 gem 'foundation-rails'
 gem 'jquery-turbolinks'
 gem 'autoprefixer-rails'
+gem 'gibbon'
 
 group :development do
   gem 'meta_request'

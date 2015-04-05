@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { joins(:spree_roles).where(spree_roles: { name: 'admin' }) }
 
+  after_commit :subscribe_to_mailing_list, on: :create
+
   # Create a new admin user by assigning it the 'admin' role in Spree.
   # We use this role to identify admin users in the frontend catalog app
   # as well.
@@ -27,6 +29,12 @@ class User < ActiveRecord::Base
   # Test if this user has the admin role assigned to it.
   def admin?
     has_spree_role? 'admin'
+  end
+
+  private
+
+  def subscribe_to_mailing_list
+    Subscriber.create name: name, email: email
   end
 end
 

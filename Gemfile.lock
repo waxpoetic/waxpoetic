@@ -328,6 +328,9 @@ GEM
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     geocoder (1.2.8)
+    gibbon (1.1.5)
+      httparty
+      multi_json (>= 1.9.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hashie (2.1.2)
@@ -632,6 +635,7 @@ DEPENDENCIES
   foundation-rails
   friendly_id
   geocoder
+  gibbon
   high_voltage
   jquery-turbolinks
   meta_request

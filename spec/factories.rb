@@ -17,7 +17,7 @@ FactoryGirl.define do
   factory :variant, class: 'Spree::Variant' do
     name "Artist - Release (WAV)"
     price 1.00
-    product
+    cost_price 1.00
   end
 
   factory :release do

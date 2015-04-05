@@ -14,7 +14,7 @@ RSpec.describe TrackProduct, :type => :product do
 
   it "builds metadata fields for catalog number and release date" do
     property_names = subject.metadata.map do |hash|
-      hash[:property_name]
+      hash[:property].name
     end
 
     expect(property_names).to include('Catalog Number')

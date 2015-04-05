@@ -9,12 +9,10 @@ module WaxPoetic
   # the base class itself is used to provide sane defaults for anything
   # not pre-configured.
   class Product
-    include ActiveModel::Model
-
     # Internal: A collection of fields that should be lifted from the decorator as
     # metadata for the Spree::Product
     cattr_accessor :metadata_fields
-    self.metadata_fields ||= {}
+    self.metadata_fields ||= []
 
     # The saleable record used to back this PORO.
     attr_reader :saleable
@@ -27,7 +25,6 @@ module WaxPoetic
     # Public: Add a new metadata field to the hash. Define the attribute that is
     # to be fetched from the saleable record's decorator.
     def self.metadata_field(attr_name)
-      self.metadata_fields ||= []
       self.metadata_fields << attr_name
     end
 
@@ -51,11 +48,12 @@ module WaxPoetic
 
     # Public: Persist this record to the datbaase.
     def save
-      valid? && create && create_variants && create_properties
+      create_product && create_variants && create_properties
     end
 
-    # Public: Check if this record is in the database already.
-    delegate :persisted?, to: :spree_product
+    def persisted?
+      Spree::Product.where(name: name).any?
+    end
 
     # Public: Use the name of the saleable object.
     def name
@@ -103,7 +101,7 @@ module WaxPoetic
     def metadata
       self.class.metadata_fields.map do |field|
         {
-          property_name: field.to_s.titleize,
+          property: property_for(field.to_s.titleize),
           value: saleable.send(field)
         }
       end
@@ -127,7 +125,7 @@ module WaxPoetic
 
     private
 
-    def create
+    def create_product
       spree_product.save
     end
 
@@ -138,7 +136,11 @@ module WaxPoetic
     end
 
     def create_properties
-      metadata.all? { |property| spree_product.properties.create(property) }
+      metadata.all? { |property| spree_product.product_properties.create(property) }
+    end
+
+    def property_for(name)
+      Spree::Property.find_or_create_by name: name
     end
   end
 end

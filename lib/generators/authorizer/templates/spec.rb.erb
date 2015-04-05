@@ -1,0 +1,11 @@
+require 'rails_helper'
+
+RSpec.describe <%= class_name %>Authorizer, type: :authorizer do
+  let :model do
+    <%= class_name %>.first
+  end
+
+  subject do
+    <%= class_name %>Authorizer.new(model)
+  end
+end

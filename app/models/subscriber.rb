@@ -1,15 +1,21 @@
-class Subscriber < ActiveRecord::Base
-  validates :name, presence: true
-  validates :email, presence: true, uniqueness: true, email: true
-end
+class Subscriber
+  include WaxPoetic::Model
 
-# == Schema Information
-#
-# Table name: subscribers
-#
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#
+  attr_accessor :name, :email
+
+  validates :email, presence: true, email: true
+
+  def id
+    email.parameterize
+  end
+
+  def save
+    valid? && subscribe
+  end
+
+  private
+
+  def subscribe
+    SubscribeJob.perform_later self
+  end
+end

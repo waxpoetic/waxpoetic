@@ -61,5 +61,10 @@ module WaxPoetic
 
     # Get ready for the next Rails
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Add MailChimp list ID configuration
+    config.mailchimp = ActiveSupport::OrderedOptions.new
+    config.mailchimp.news_list_id = 12345
+    config.mailchimp.release_list_id = 54321
   end
 end

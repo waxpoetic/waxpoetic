@@ -20,6 +20,6 @@ module Storable
 
   protected
   def start_transcode
-    Transcode.perform_later self
+    TranscodeJob.perform_later self
   end
 end

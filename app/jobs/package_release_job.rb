@@ -1,5 +1,5 @@
 # Package a release up with `tar` and upload it to the 
-class PackageRelease < ActiveJob::Base
+class PackageReleaseJob < ActiveJob::Base
   attr_reader :release
 
   def perform(release)

@@ -2,12 +2,11 @@ require 'active_model'
 require 'wax_poetic/product_variant'
 
 module WaxPoetic
-  # A base class for product presenter objects. These presenters are
-  # simply for transforming data between a Saleable record (Track,
-  # Release, etc.) and a Spree::Product in an object-oriented way.
-  # Presenters are automatically found by the base class, and if not,
-  # the base class itself is used to provide sane defaults for anything
-  # not pre-configured.
+  # Transforms catalog models into a +Spree::Product+ record so they can
+  # be sold in the online store. Typically instantiated by the CreateProduct
+  # job after the successful save of a +Saleable+ model, it presents the
+  # Saleable record's data in a consistent way so it may be saved into
+  # the +Spree::Product+'s table.
   class Product
     # Internal: A collection of fields that should be lifted from the decorator as
     # metadata for the Spree::Product
@@ -51,36 +50,28 @@ module WaxPoetic
       create_product && create_variants && create_properties
     end
 
+    # Public: Tests if there are any +Spree::Product+ records that
+    # already exist for this Saleable model.
     def persisted?
       Spree::Product.where(name: name).any?
     end
 
     # Public: Use the name of the saleable object.
-    def name
-      saleable.name
-    end
+    delegate :name, to: :saleable
 
     # Public: Use the description of the saleable object for the text
     # description
-    def description
-      saleable.description
-    end
+    delegate :description, to: :saleable
 
     # Public: Use the description of the saleable object for a <meta>
     # tag description.
-    def meta_description
-      saleable.description
-    end
+    delegate :meta_description, to: :saleable
 
     # Public: Use the created_at timestamp of the saleable object.
-    def available_on
-      saleable.created_at
-    end
+    delegate :available_on, to: :saleable
 
     # Public: Use the price of the saleable object.
-    def price
-      saleable.price
-    end
+    delegate :price, to: :saleable
 
     # Public: Use the default shipping category in Spree.
     def shipping_category

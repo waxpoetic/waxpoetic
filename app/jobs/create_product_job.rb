@@ -4,7 +4,7 @@
 # gain all of their data. For this reason, Spree::Product and
 # Spree::Variant records are read-only, they can not be updated through
 # the front-end of the app.
-class CreateProduct < ActiveJob::Base
+class CreateProductJob < ActiveJob::Base
   attr_reader :product, :saleable
 
   def perform(saleable)

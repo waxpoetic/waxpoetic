@@ -41,14 +41,14 @@ class Release < ActiveRecord::Base
   # Generate and upload ZIP packages to the CDN that contain this
   # Release and its Tracks.
   def package!
-    PackageRelease.perform_later self
+    PackageReleaseJob.perform_later self
   end
 
   # Send promotional emails for this Release, upload its Tracks to
   # Soundcloud, and spam various social networks with the link. This
   # is run automatically when Release is +released_today?+
   def promote!
-    PromoteRelease.perform_later self
+    PromoteReleaseJob.perform_later self
   end
 
   # Spree's shipping category, used to define a Spree::Product.

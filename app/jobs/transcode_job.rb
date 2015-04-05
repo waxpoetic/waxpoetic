@@ -3,7 +3,7 @@ require 'aws/elastic_transcoder'
 # Transcode a given downloadable music file to MP3. Basically all this
 # job does is perform_later the transcode with ElasticTranscoder.
 
-class Transcode < ActiveJob::Base
+class TranscodeJob < ActiveJob::Base
   # A system preset provided by AWS that enabled MP3 320kbps
   # transcoding.
   MP3_320_PRESET_ID = 1351620000001-300010

@@ -1,4 +1,4 @@
-class PromoteRelease < ActiveJob::Base
+class PromoteReleaseJob < ActiveJob::Base
   attr_reader :release
 
   def perform(release)

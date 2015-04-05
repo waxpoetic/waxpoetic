@@ -1,3 +1,5 @@
+require 'wax_poetic/promoter'
+
 # Send promotional emails to every Subscriber.
 class EmailPromoter < WaxPoetic::Promoter
   def promote!(release, options={})

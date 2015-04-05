@@ -1,5 +1,5 @@
 # Generate a short URL for the Track with Bitly.
-class GenerateTrackLink < ActiveJob::Base
+class GenerateTrackLinkJob < ActiveJob::Base
   attr_reader :track
 
   def perform(track)

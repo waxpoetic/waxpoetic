@@ -5,7 +5,7 @@ class ReleaseProduct < WaxPoetic::Product
   metadata_field :release_date
 
   def name
-    saleable.title
+    [saleable.artist.name, saleable.title].join '-'
   end
 
   def description

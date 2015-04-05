@@ -1,6 +1,13 @@
 GIT
-  remote: git://github.com/spree/spree.git
-  revision: fd87fe6e57f02e960ca4b4e9cc158d85da8c41aa
+  remote: git://github.com/spree/spree_gateway.git
+  revision: 5422b19fdda346dac2d6c45cebcc92e905ee0341
+  specs:
+    spree_gateway (3.0.0.beta)
+      spree_core (~> 3.1.0.beta)
+
+GIT
+  remote: git://github.com/tubbo/spree.git
+  revision: 6668f5c610a72fec8ce8fe82a13fd4c6a80e88c2
   specs:
     spree (3.1.0.beta)
       spree_api (= 3.1.0.beta)
@@ -57,13 +64,6 @@ GIT
       sprockets-rails (~> 2.2)
     spree_sample (3.1.0.beta)
       spree_core (= 3.1.0.beta)
-
-GIT
-  remote: git://github.com/spree/spree_gateway.git
-  revision: 5422b19fdda346dac2d6c45cebcc92e905ee0341
-  specs:
-    spree_gateway (3.0.0.beta)
-      spree_core (~> 3.1.0.beta)
 
 GEM
   remote: https://rubygems.org/

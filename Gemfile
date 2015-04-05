@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Framework
 gem 'rails', '~> 4.2'
-gem 'spree', github: 'spree/spree'
+gem 'spree', github: 'tubbo/spree'
 gem 'spree_gateway', github: 'spree/spree_gateway'
 gem 'devise'
 gem 'email_validator'

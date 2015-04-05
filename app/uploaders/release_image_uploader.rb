@@ -1,4 +1,6 @@
-class ReleaseImageUploader < ImageUploader
+class ReleaseImageUploader < CarrierWave::Uploader::Base
+  include Placeholder
+
   version :thumb do
     process :resize_to_fit => [240, 240]
   end

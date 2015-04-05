@@ -1,0 +1,9 @@
+Description:
+    Adds a monkey patch for an existing class to app/patches
+
+Example:
+    rails generate patch Spree::Order
+
+    This will create:
+        app/patches/spree/order.rb
+        spec/patches/spree/order_spec.rb

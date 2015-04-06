@@ -32,7 +32,7 @@
                   <%= track.name %>
                 </div>
                 <div class="large-4 columns">
-                  <%= link_to 'Preview', track.preview_url, class: 'tiny primary preview button' %>
+                  <%= link_to 'Preview', track.file.preview_url, class: 'tiny primary preview button' %>
                   <%= link_to "Buy (#{track.price})", track.product_path, class: 'tiny success buy button' %>
                 </div>
               </div>

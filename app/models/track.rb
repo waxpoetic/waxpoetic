@@ -5,6 +5,9 @@ class Track < ActiveRecord::Base
   # This is the price we sell tracks at by default.
   DEFAULT_PRICE = 1.99
 
+  # All previews must be this exact length in seconds.
+  PREVIEW_DURATION = 120
+
   belongs_to :release
 
   has_one :artist, :through => :release
@@ -16,6 +19,7 @@ class Track < ActiveRecord::Base
   validates :release, presence: true
   validates :price, presence: true
   validates :number, presence: true
+  validate :preview_within_duration
 
   delegate :image, :to => :release
 
@@ -32,11 +36,18 @@ class Track < ActiveRecord::Base
     }
   end
 
-  def preview_url
-    'http://example.com'
+  private
+
+  def preview_within_duration
+    unless duration == PREVIEW_DURATION
+      errors.add :preview, "can only last for #{PREVIEW_DURATION} seconds"
+    end
   end
 
-  private
+  def duration
+    preview_starts_at + preview_ends_at
+  end
+
   def ensure_price
     self.price ||= DEFAULT_PRICE
   end
@@ -64,16 +75,18 @@ end
 #
 # Table name: tracks
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  release_id :integer
-#  price      :decimal(19, 2)
-#  created_at :datetime
-#  updated_at :datetime
-#  file       :string(255)
-#  number     :integer
-#  short_url  :string(255)
-#  product_id :integer
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  release_id        :integer
+#  price             :decimal(19, 2)
+#  created_at        :datetime
+#  updated_at        :datetime
+#  file              :string(255)
+#  number            :integer
+#  short_url         :string(255)
+#  product_id        :integer
+#  preview_starts_at :integer          default(0)
+#  preview_ends_at   :integer          default(120)
 #
 # Indexes
 #

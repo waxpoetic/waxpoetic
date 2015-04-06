@@ -2,16 +2,18 @@
 #
 # Table name: tracks
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  release_id :integer
-#  price      :decimal(19, 2)
-#  created_at :datetime
-#  updated_at :datetime
-#  file       :string(255)
-#  number     :integer
-#  short_url  :string(255)
-#  product_id :integer
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  release_id        :integer
+#  price             :decimal(19, 2)
+#  created_at        :datetime
+#  updated_at        :datetime
+#  file              :string(255)
+#  number            :integer
+#  short_url         :string(255)
+#  product_id        :integer
+#  preview_starts_at :integer          default(0)
+#  preview_ends_at   :integer          default(120)
 #
 # Indexes
 #
@@ -39,5 +41,10 @@ RSpec.describe Track, :type => :model do
     subject.price = nil
     expect(subject).to be_valid
     expect(subject.price).to eq(Track::DEFAULT_PRICE)
+  end
+
+  it 'fails validation when preview duration is out of bounds' do
+    subject.preview_ends_at = Track::PREVIEW_DURATION*2
+    expect(subject).to_not be_valid
   end
 end

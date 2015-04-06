@@ -3,7 +3,7 @@
     <ul class="title-area">
       <li class="name">
         <h1>
-          <%= link_to image_tag(Spree::Config[:logo], class: 'logo'), '/' %>
+          <%= link_to spree_logo, root_path %>
         </h1>
       </li>
     </ul>
@@ -13,14 +13,12 @@
         <%= nav_item :artists %>
         <%= nav_item :releases %>
         <%= nav_item :events %>
-        <li class="has-dropdown">
-          <%= link_to 'shop', '/store' %>
-
+        <%= nav_item :store, text: 'Shop', class: 'has-dropdown' do %>
           <ul class="dropdown">
             <li><%= link_to "cart", '/store/cart' %></li>
             <li><%= link_to "my account", '/store/orders' %></li>
           </ul>
-        </li>
+        <% end %>
       </ul>
     </section>
   </nav>

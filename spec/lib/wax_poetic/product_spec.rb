@@ -19,6 +19,10 @@ module WaxPoetic
         'WXP-007'
       end
 
+      def available_on
+        Time.now
+      end
+
       def release_date
         Date.today
       end

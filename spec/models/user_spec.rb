@@ -43,6 +43,10 @@ RSpec.describe User, :type => :model do
     expect(subject).to_not be_admin
   end
 
+  it "can be saved to the database" do
+    expect(subject.save).to eq(true)
+  end
+
   it "can have admin rights changed on it" do
     allow(subject).to receive(:has_spree_role?).with('admin').and_return true
     expect(subject).to be_admin

@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   scope :admins, -> { joins(:spree_roles).where(spree_roles: { name: 'admin' }) }
 
-  after_commit :subscribe_to_newsletter
+  after_commit :subscribe_to_newsletter, unless: -> { Rails.env.test? }
 
   # Create a new admin user by assigning it the 'admin' role in Spree.
   # We use this role to identify admin users in the frontend catalog app

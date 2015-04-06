@@ -32,7 +32,7 @@
                   <%= track.name %>
                 </div>
                 <div class="large-4 columns">
-                  <%= link_to_icon :play, 'Preview', track_preview_path(track), class: 'tiny primary preview button' %>
+                  <%= link_to_icon :play, 'Preview', track.preview.url, class: 'tiny primary preview button' %>
                   <%= link_to_icon :cart, "Buy (#{track.price})", track.product_path, class: 'tiny success buy button' %>
                 </div>
               </div>

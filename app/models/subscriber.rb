@@ -27,7 +27,7 @@ class Subscriber
 
   def subscribe!
     list.subscribe(
-      id: list_id,
+      id: list.id,
       email: { email: email },
       double_optin: false,
       merge_options: {
@@ -48,11 +48,7 @@ class Subscriber
     SubscribeJob.perform_later self
   end
 
-  def mailchimp
-    @mailchimp ||= Gibbon::API.new WaxPoetic.secrets.mailchimp_key
-  end
-
   def list
-    @list ||= List.new id: WaxPoetic.config.mailchimp.news_list_id
+    @list ||= List.new id: 1
   end
 end

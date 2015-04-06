@@ -7,18 +7,32 @@ module ApplicationHelper
     Download.find_by_order_id @order.id
   end
 
-  # An `<li>` that wraps an `<a>`, used for rendering nav links that
-  # could optionally have a dropdown.
-  def nav_item(route, text=nil)
-    text ||= route.to_s.titleize
-    css = 'active' if request.env['PATH_INFO'] =~ /#{route}/
-
-    content_tag :li, class: css do
-      link_to text.downcase, "/#{route}"
+  def current?(route)
+    if route == :store
+      current_page? store.root_path
+    else
+      current_page? main_app.send("#{route}_path")
     end
   end
 
-  def current_route
+  # An `<li>` that wraps an `<a>`, used for rendering nav links that
+  # could optionally have a dropdown.
+  def nav_item(route, options = {}, &block)
+    text ||= route.to_s.titleize
+    css = if current? route
+      [options[:class], 'active'].join(' ')
+    else
+      options[:class]
+    end
+    link = link_to text.downcase, "/#{route}"
+
+    content_tag :li, class: css do
+      if block_given?
+        link + capture(&block).html_safe
+      else
+        link.html_safe
+      end
+    end
   end
 
   # Configure a link_to to open in a reveal lightbox.

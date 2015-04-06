@@ -1,5 +1,7 @@
+require 'active_model/model'
+
 class Subscriber
-  include WaxPoetic::Model
+  include ActiveModel::Model
 
   attr_accessor :name, :email
 

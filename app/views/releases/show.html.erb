@@ -1,6 +1,6 @@
 <div id="release">
   <div class="row">
-    <div class="large-9 columns">
+    <div class="large-9 columns release-title">
       <%= title release.decorate.title, cosmetic: release.decorate.page_title %>
     </div>
     <div class="large-3 columns buttons">
@@ -24,7 +24,21 @@
       <div class="tracks">
         <h3>Track Listing</h3>
 
-        <%= release.decorate.track_list %>
+        <ul type="1">
+          <% release.decorate.tracks.each do |track| %>
+            <li>
+              <div class="row">
+                <div class="large-8 columns">
+                  <%= track.name %>
+                </div>
+                <div class="large-4 columns">
+                  <%= link_to_icon :play, 'Preview', track_preview_path(track), class: 'tiny primary preview button' %>
+                  <%= link_to_icon :cart, "Buy (#{track.price})", track.product_path, class: 'tiny success buy button' %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
 

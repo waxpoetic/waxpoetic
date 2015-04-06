@@ -17,10 +17,10 @@
   <body>
     <div class="container">
       <%= render 'header' %>
-      <div class="loading blocker"></div>
-      <div class="loading" id="spinner"><%= image_tag 'spinner.gif' %></div>
       <%= content_tag :section, yield, page_tag_properties %>
       <%= render 'footer' %>
+      <div class="loading blocker"></div>
+      <div class="loading" id="spinner"><%= image_tag 'spinner.gif' %></div>
     </div>
   </body>
 </html>

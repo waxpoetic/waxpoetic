@@ -48,14 +48,15 @@ header {
 
 .loading#spinner {
   display: none;
+  position: fixed;
   z-index: 3;
-  position: relative;
-  top: 200px;
-  left: 550px;
+  left: 47%;
+  top: 46%;
 }
 
 section.page {
   min-height: 545px;
+  margin-top: 50px;
 
   .elevator-pitch {
     font-size: 24px;
@@ -165,5 +166,18 @@ footer {
 
   .button {
     margin-top: 6px;
+  }
+}
+
+#license {
+  margin: 0 auto;
+  max-width: 720px;
+
+  @media screen and (max-width: 720px) {
+    margin: 0;
+    font-size: 0.7rem;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: 0.4rem;
   }
 }

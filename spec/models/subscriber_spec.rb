@@ -18,7 +18,7 @@ RSpec.describe Subscriber, :type => :model do
     expect(subject).to be_valid
   end
 
-  test_validations_for %w(name email)
+  test_validations_for %w(email)
 
   it "must have a valid email" do
     subject.email = 'not a real email'
@@ -26,9 +26,8 @@ RSpec.describe Subscriber, :type => :model do
     expect(subject).to_not be_valid
   end
 
-  it "must have a unique email" do
-    subject.email = subscribers(:example).email
-
-    expect(subject).to_not be_valid
+  it "subscribes the user to the mailing list" do
+    allow(SubscribeJob).to receive(:perform_later).and_return true
+    expect(subject.save).to eq(true)
   end
 end

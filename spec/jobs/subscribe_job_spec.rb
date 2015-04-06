@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe SubscribeJob, type: :job do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "subscribes somone to the newsletter" do
+    SubscribeJob.perform_now subscriber
+    expect(subscriber).to be_persisted
+  end
 end

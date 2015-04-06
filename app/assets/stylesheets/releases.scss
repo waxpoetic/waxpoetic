@@ -1,6 +1,6 @@
 #release {
   .buttons {
-    margin-top: 26px;
+    top: 7px;
     text-align: right;
   }
   .description {
@@ -10,7 +10,9 @@
     font-size: 38px;
   }
   .buy.button {
-    bottom: 5px;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 

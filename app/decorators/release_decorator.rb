@@ -62,6 +62,10 @@ class ReleaseDecorator < Draper::Decorator
     File.new model.image_filepath
   end
 
+  def tracks
+    model.tracks.map(&:decorate)
+  end
+
   def product_path
     "/store/products/#{model.product.name.parameterize}"
   end

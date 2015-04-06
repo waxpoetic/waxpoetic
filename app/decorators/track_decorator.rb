@@ -34,4 +34,8 @@ class TrackDecorator < Draper::Decorator
   def catalog_number
     model.release.catalog_number
   end
+
+  def product_path
+    "/store/products/#{name.parameterize}"
+  end
 end

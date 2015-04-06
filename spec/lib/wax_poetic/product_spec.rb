@@ -20,11 +20,15 @@ module WaxPoetic
       end
 
       def available_on
-        Time.now
+        created_at
       end
 
       def release_date
         Date.today
+      end
+
+      def meta_description
+        description
       end
     end
 

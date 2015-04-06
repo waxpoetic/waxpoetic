@@ -32,6 +32,10 @@ class Track < ActiveRecord::Base
     }
   end
 
+  def preview_url
+    'http://example.com'
+  end
+
   private
   def ensure_price
     self.price ||= DEFAULT_PRICE

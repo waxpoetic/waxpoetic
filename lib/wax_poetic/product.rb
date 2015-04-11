@@ -41,7 +41,7 @@ module WaxPoetic
     def self.for(saleable)
       "#{saleable.class.name}Product".constantize.create(saleable)
     rescue LoadError
-      logger.warn "#{saleable.class.name}Product presenter not found"
+      puts "#{saleable.class.name}Product presenter not found"
       Product.new(saleable)
     end
 
@@ -65,10 +65,14 @@ module WaxPoetic
 
     # Public: Use the description of the saleable object for a <meta>
     # tag description.
-    delegate :meta_description, to: :saleable
+    def meta_description
+      description
+    end
 
     # Public: Use the created_at timestamp of the saleable object.
-    delegate :available_on, to: :saleable
+    def available_on
+      saleable.created_at
+    end
 
     # Public: Use the price of the saleable object.
     delegate :price, to: :saleable

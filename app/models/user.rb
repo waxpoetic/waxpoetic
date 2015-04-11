@@ -58,6 +58,7 @@ end
 #  spree_api_key          :string(48)
 #  ship_address_id        :integer
 #  bill_address_id        :integer
+#  name                   :string
 #
 # Indexes
 #

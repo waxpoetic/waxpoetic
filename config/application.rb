@@ -57,6 +57,10 @@ module WaxPoetic
     # Disable generating factories
     config.generators do |g|
       g.factory_girl false
+      g.test_framework :rspec
+      g.stylesheet_engine :sass
+      g.javascript_engine :coffee
+      g.helper false
     end
 
     # Get ready for the next Rails

@@ -1,3 +1,9 @@
 database:
   override:
-    - bundle exec rake db:setup db:migrate
+    - bin/rake db:setup db:migrate
+test:
+  override:
+    - bin/rspec --format=documentation
+deployment:
+  commands:
+    - bin/rake ci:deploy

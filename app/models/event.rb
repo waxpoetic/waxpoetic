@@ -9,7 +9,6 @@ class Event < ActiveRecord::Base
   validates :location, presence: true
   validates :ticket_price, presence: true
   validates :starts_at, presence: true
-  validates :is_saleable, presence: true
 
   alias_attribute :price, :ticket_price
 
@@ -39,6 +38,7 @@ end
 #  created_at   :datetime
 #  updated_at   :datetime
 #  slug         :string
+#  is_saleable  :boolean          default(TRUE)
 #
 # Indexes
 #

@@ -14,6 +14,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  slug         :string
+#  is_saleable  :boolean          default(TRUE)
 #
 # Indexes
 #

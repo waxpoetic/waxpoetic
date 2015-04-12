@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411192303) do
+ActiveRecord::Schema.define(version: 20150412062625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150411192303) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.boolean  "is_saleable",  default: true
   end
 
   add_index "events", ["latitude"], name: "index_events_on_latitude", using: :btree

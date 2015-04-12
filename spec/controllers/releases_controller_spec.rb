@@ -26,8 +26,8 @@ RSpec.describe ReleasesController, :type => :controller do
   before do
     admin.spree_roles << Spree::Role.find_or_create_by(name: "admin")
     admin.save
-    allow(CreateProduct).to receive(:perform_later).and_return true
-    allow(PackageRelease).to receive(:perform_later).and_return true
+    allow(CreateProductJob).to receive(:perform_later).and_return true
+    allow(PackageReleaseJob).to receive(:perform_later).and_return true
   end
 
   it "has the correct resources" do

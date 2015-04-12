@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git clone git@github.com:waxpoetic/cookbook.git vendor/cookbook;
+cd vendor/cookbook;
+make

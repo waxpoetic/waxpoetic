@@ -10,19 +10,61 @@ class Subscriber
 
   alias_method :id, :email
 
-  def self.create(params = {})
-    subscriber = new(params)
-    subscriber.save
-    subscriber
+  class << self
+    def create(params = {})
+      subscriber = new(params)
+      subscriber.save
+      subscriber
+    end
+
+    def find(email)
+      new(email)
+    end
+
+    def add!(email: nil, name: nil)
+      list.subscribe(
+        list_id: list_id,
+        email: { email: email },
+        options: { 'NAME' => name }
+      )
+    end
+
+    def count
+      list.subscribers.size
+    end
+
+    def list
+      mailchimp.lists
+    end
+
+    private
+
+    def list_id
+      WaxPoetic.secrets.mailchimp_list_id
+    end
+
+    def mailchimp
+      @mailchimp ||= Gibbon::API.new WaxPoetic.secrets.mailchimp_api_key
+    end
   end
 
   def save
     valid? && subscribe
   end
 
+  def persisted?
+    self.class.list.subscribers.any? do |subscriber|
+      subscriber[:email] == email
+    end
+  end
+
+  def attributes
+    { name: name, email: email }
+  end
+
   private
 
   def subscribe
-    UserSubscribeJob.perform_later(self)
+    UserSubscribeJob.perform_later(self) unless persisted?
   end
 end

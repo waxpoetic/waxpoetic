@@ -24,7 +24,7 @@ RSpec.describe Download, :type => :model do
   end
 
   let :product do
-    FactoryGirl.create :product, saleable: release, variants: [FactoryGirl.create(:variant)]
+    FactoryGirl.create :product, variants: [FactoryGirl.create(:variant)]
   end
 
   let :variant do
@@ -38,6 +38,8 @@ RSpec.describe Download, :type => :model do
   subject { Download.new order: order }
 
   before do
+    allow(order).to receive(:downloadables).and_return([variant])
+    allow(product).to receive(:saleable).and_return(release)
     allow(subject).to receive(:product_resource_for).and_return product
   end
 

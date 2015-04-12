@@ -14,6 +14,8 @@ require 'rails_helper'
 RSpec.describe Subscriber, :type => :model do
   subject { Subscriber.new name: 'example', email: 'user@example.com' }
 
+  before { allow(subject).to receive(:persisted?).and_return false }
+
   it "represents a person who wants to know when releases happen" do
     expect(subject).to be_valid
   end

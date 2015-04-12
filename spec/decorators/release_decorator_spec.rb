@@ -20,10 +20,6 @@ RSpec.describe ReleaseDecorator, :type => :decorator do
     expect(subject.text_description).to_not include('<p>')
   end
 
-  it "renders short description" do
-    expect(subject.meta_description).to eq(subject.text_description)
-  end
-
   it "combines description and track list" do
     expect(subject.full_description).to eq(
       subject.description + "<h3>Track List</h3>\n".html_safe + subject.track_list

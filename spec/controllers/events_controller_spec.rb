@@ -8,7 +8,7 @@ RSpec.describe EventsController, :type => :controller do
       name: "Wyld Lyfe",
       ticket_price: 25.00,
       starts_at: 3.days.from_now.to_datetime,
-      location: "The TLA, Philadelphia, PA"
+      location: "Philadelphia, PA"
     }
   end
 

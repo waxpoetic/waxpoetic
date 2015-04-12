@@ -12,6 +12,9 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Read Redis URL from env config
+  config.redis_url = ENV['REDIS_URL'] || 'redis://localhost:6379'
+
   # Use Redis to store the "HTTP-level" Rack::Cache
   config.action_dispatch.rack_cache = true
 
@@ -22,6 +25,9 @@ Rails.application.configure do
 
   # Store the session in Redis
   config.session_store :redis_session_store, key: config.session_key
+
+  # Use Redis to persist background jobs
+  config.active_job.queue_adapter = :sidekiq
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_files = false
@@ -61,8 +67,8 @@ Rails.application.configure do
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
-  # Use a different logger for distributed setups.
-  config.logger = ActiveSupport::TaggedLogging.new Logger.new(STDOUT)
+  # Use a global application logger instance.
+  config.logger = WaxPoetic.logger
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new

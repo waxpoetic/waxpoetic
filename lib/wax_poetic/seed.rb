@@ -5,6 +5,8 @@ module WaxPoetic
   # in tasks.
   module Seed
     class << self
+      CATALOG_MODELS = %w(Artist Release Track)
+
       # Seed the Wax Poetic Records online store. Builds an admin user,
       # sets up the Spree store, and fills it in with products based on
       # the saleable items in our whitelisted fixture data.
@@ -34,7 +36,7 @@ module WaxPoetic
       # Ensure the image exists then just run model callbacks to ensure
       # the product gets generated.
       def generate_images
-        WaxPoetic.catalog_models.each do |model|
+        CATALOG_MODELS.map(&:constantize).each do |model|
           model.all.each do |record|
             record.image.store! image_file_for(record)
             record.save

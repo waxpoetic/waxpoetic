@@ -12,6 +12,9 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Read Redis URL from env config
+  config.redis_url = ENV['REDIS_URL'] || 'redis://localhost:6379'
+
   # Use Redis to store the "HTTP-level" Rack::Cache.
   config.action_dispatch.rack_cache = {
     metastore: "#{config.redis_url}/0/waxpoetic_rack_metadata",
@@ -23,6 +26,9 @@ Rails.application.configure do
 
   # Store the session in Redis
   config.session_store = :redis_store, "#{config.redis_url}/0/waxpoetic_rails_session"
+
+  # Use Redis to persist background jobs
+  config.active_job.queue_adapter = :sidekiq
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_files = false
@@ -70,4 +76,7 @@ Rails.application.configure do
 
   # Use Amazon SES in production to send mails
   config.action_mailer.delivery_method = :amazon_ses
+
+  # Use a global application logger instance.
+  config.logger = WaxPoetic.logger
 end

@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Don't actually perform geocoder API lookups
-  Geocode.configure lookup: :test
+  Geocoder.configure lookup: :test
 
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
@@ -37,8 +37,8 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
-  # Use the test case queue adapter to record performed jobs.
-  config.queue_adapter = :inline
+  # Record performed jobs in testing.
+  config.active_job.queue_adapter = :test
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

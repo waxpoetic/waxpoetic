@@ -32,9 +32,8 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  # Ensure developers don't need to be working the queue to see jobs
-  # perform.
-  config.queue_adapter = :inline
+  # Run jobs inline in development.
+  config.active_job.queue_adapter = :inline
 
   # Never automount the console. We need to control this due to our
   # use of wildcard routes in HighVoltage.

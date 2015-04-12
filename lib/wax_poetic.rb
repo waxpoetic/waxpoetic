@@ -3,8 +3,16 @@ require 'wax_poetic/logger'
 require 'wax_poetic/railtie'
 require 'wax_poetic/seed'
 require 'wax_poetic/temporary_authentication'
+#require 'wax_poetic/deployment'
 
+# The Wax Poetic Records online store.
 module WaxPoetic
+  extend ActiveSupport::Autoload
+
+  autoload :Seed
+  autoload :TemporaryAuthentication
+  autoload :Logger
+
   class << self
     # Configuration specific to WaxPoetic library or application code.
     # Namespaced so as not to pollute the global `config` object, this
@@ -30,11 +38,6 @@ module WaxPoetic
     # Shorthand to the logger for library code.
     def logger
       @logger ||= WaxPoetic::Logger.new
-    end
-
-    # Model classes which are part of the Wax Poetic catalog.
-    def catalog_models
-      [Artist, Release, Track]
     end
   end
 end

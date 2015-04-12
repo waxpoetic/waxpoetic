@@ -19,5 +19,12 @@ module WaxPoetic
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
     end
+
+    # Preload app folders
+    config.after_initialize do |app|
+      %w(overrides patches products promoters).each do |folder|
+        app.config.paths.add "app/#{folder}", eager_load: true
+      end
+    end
   end
 end

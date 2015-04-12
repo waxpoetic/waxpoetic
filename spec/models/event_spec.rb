@@ -34,6 +34,22 @@ RSpec.describe Event, :type => :model do
       starts_at: 1.day.from_now.to_datetime
   end
 
+  before do
+    Geocoder::Lookup::Test.add_stub(
+      "Philadelphia, PA", [
+        {
+          'latitude'     => 40.7143528,
+          'longitude'    => -74.0059731,
+          'address'      => 'Philadelphia, PA, USA',
+          'state'        => 'Pennsylvania',
+          'state_code'   => 'PA',
+          'country'      => 'United States',
+          'country_code' => 'US'
+        }
+      ]
+    )
+  end
+
   test_validations_for %w(name location ticket_price starts_at)
 
   it "geocodes location" do

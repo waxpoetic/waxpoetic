@@ -1,6 +1,3 @@
-require 'active_model'
-require 'wax_poetic/product_variant'
-
 module WaxPoetic
   # Transforms catalog models into a +Spree::Product+ record so they can
   # be sold in the online store. Typically instantiated by the CreateProduct

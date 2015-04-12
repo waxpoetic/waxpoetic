@@ -1,6 +1,3 @@
-require 'active_model'
-require 'wax_poetic/temporary_policy'
-
 # Authenticates a single user to download a given file, keyed by the
 # Spree::Product this User has purchased. We don't want to have to make
 # IAM users for every user who registers on the site, so we give them
@@ -13,12 +10,12 @@ class DownloadFile
   include ActiveModel::Model
 
   attr_accessor :download, :product, :resource, :variant
-  
+
   validates :download, presence: true
   validates :product, presence: true
   validates :resource, presence: true
   validates :variant, presence: true
-  
+
   def self.create(params)
     file = new(params)
     file.valid?

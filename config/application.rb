@@ -26,6 +26,7 @@ module WaxPoetic
   # store. This is where we store global configuration which will not
   # change across environments.
   class Application < Rails::Application
+
     # Use EST as our local time zone. (UTC is default).
     config.time_zone = 'Eastern Time (US & Canada)'
 
@@ -39,8 +40,7 @@ module WaxPoetic
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-    # Use S3 on staging and production.
-    config.wax_poetic.live = Rails.env =~ /production|staging/
+    # Use an S3 bucket to store static assets and uploads.
     config.wax_poetic.s3_bucket = 'files.waxpoeticrecords.com'
 
     # Don't promote anywhere by default.
@@ -62,11 +62,10 @@ module WaxPoetic
       g.helper false
     end
 
-    # Get ready for the next Rails
+    # Get ready for the next Rails.
     config.active_record.raise_in_transactional_callbacks = true
 
-    # Add library code to autoload paths
-    config.autoload_paths << "#{Rails.root}/lib"
-    config.eager_load_paths << "#{Rails.root}/lib"
+    # Eager-load library code.
+    config.eager_load_namespaces << :wax_poetic
   end
 end

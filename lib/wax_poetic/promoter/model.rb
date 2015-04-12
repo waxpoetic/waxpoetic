@@ -25,7 +25,7 @@ module WaxPoetic
       # The logger class for promoter objects. Uses a log tag based on
       # the promoter's class name.
       def logger
-        @logger ||= WaxPoetic::Logger.new tags: [driver_class_name]
+        @logger ||= WaxPoetic.logger
       end
 
       # Test equalization based on the driver param.

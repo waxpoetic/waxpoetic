@@ -1,17 +1,22 @@
-require 'wax_poetic/promoter'
-require 'wax_poetic/logger'
 require 'wax_poetic/railtie'
-require 'wax_poetic/seed'
-require 'wax_poetic/temporary_authentication'
-#require 'wax_poetic/deployment'
 
 # The Wax Poetic Records online store.
 module WaxPoetic
   extend ActiveSupport::Autoload
 
-  autoload :Seed
-  autoload :TemporaryAuthentication
-  autoload :Logger
+  %w(
+    deployment
+    product
+    promoter
+    temporary_authentication
+    logger
+    product_variant
+    promoter
+    seed
+    temporary_policy
+  ).map(&:classify).each do |dependency|
+    autoload dependency.to_sym
+  end
 
   class << self
     # Configuration specific to WaxPoetic library or application code.
@@ -32,12 +37,12 @@ module WaxPoetic
     # for seeing whether we should be connecting to outside services or
     # mocking out their responses in runtime.
     def live?
-      !!config.live
+      Rails.env =~ /production|staging/
     end
 
     # Shorthand to the logger for library code.
     def logger
-      @logger ||= WaxPoetic::Logger.new
+      Rails.logger
     end
   end
 end

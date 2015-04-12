@@ -1,5 +1,3 @@
-require 'wax_poetic/product'
-
 # A model that can be sold in the Wax Poetic online store. By including
 # this module and specifying `has_product`, you can expect that this
 # object will create itself as a Spree::Product and use the mappings you define

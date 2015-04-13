@@ -40,6 +40,10 @@ module WaxPoetic
       valid? && new_record? && deploy
     end
 
+    def persisted?
+      @success || false
+    end
+
     # Return the next version of this app
     #
     # @returns [String]
@@ -54,7 +58,7 @@ module WaxPoetic
     private
 
     def deploy
-      Net::HTTP.post_form(url, build_parameters: {
+      @success = Net::HTTP.post_form(url, build_parameters: {
         'APP_VERSION' => current_version
       }).is_a? Net::HTTPSuccess
     end

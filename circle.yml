@@ -6,7 +6,7 @@
 # Ensure the database is set up before testing
 database:
   override:
-    - ./bin/rake db:setup db:migrate
+    - ./bin/rake db
 
 # Show all test code
 test:

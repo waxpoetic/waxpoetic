@@ -13,8 +13,14 @@ test:
   override:
     - ./bin/rspec --format=documentation
 
-# Only deploy version tags
+# Deploy all pushes to staging which pass tests, and deploy all pushed
+# tags to production.
 deployment:
-  branch: /\Av(\d+)\.(\d+)\.(\d+)\Z/
-  commands:
-    - ./bin/rake ci:deploy
+  staging:
+    branch: master
+    commands:
+      - ./bin/rake ci:deploy DEPLOY_ENV=staging
+  production:
+    branch: /\Av(\d+)\.(\d+)\.(\d+)\Z/
+    commands:
+      - ./bin/rake ci:deploy DEPLOY_ENV=production

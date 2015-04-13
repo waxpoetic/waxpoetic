@@ -43,6 +43,7 @@ group :development do
   gem 'spring', '~> 1.3'
   gem 'spring-commands-rspec'
   gem 'rubocop'
+  gem 'semverse'
 end
 
 group :development, :test do

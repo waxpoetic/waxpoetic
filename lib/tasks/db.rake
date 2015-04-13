@@ -1,5 +1,5 @@
 desc "Set up the database from scratch"
-task :db => %w(db:reset db:migrate db:seed)
+task :db => %w(db:drop db:create db:setup db:migrate db:seed)
 
 namespace :db do
   task :export => :environment do

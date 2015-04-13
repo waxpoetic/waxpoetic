@@ -2,6 +2,11 @@
 # CircleCI configuration
 #
 
+# Only build 'master' for now
+general:
+  branches:
+    only:
+      - master
 
 # Ensure the database is set up before testing
 database:

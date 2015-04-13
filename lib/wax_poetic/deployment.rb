@@ -36,7 +36,7 @@ module WaxPoetic
 
     def create
       response = Net::HTTP.post_form url, build_parameters: {
-        tag: current_tag
+        'APP_VERSION' => current_tag
       }
       response.is_a? Net::HTTPSuccess
     end

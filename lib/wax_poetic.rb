@@ -5,7 +5,6 @@ module WaxPoetic
   extend ActiveSupport::Autoload
 
   %w(
-    deployment
     product
     promoter
     temporary_authentication

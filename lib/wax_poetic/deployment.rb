@@ -14,6 +14,9 @@ module WaxPoetic
     attr_accessor :token
 
     validates :token, presence: true
+    validates :current_tag, presence: {
+      message: 'You may not deploy from a branch.'
+    }
 
     def self.create(token)
       deploy = new token: token
@@ -32,8 +35,17 @@ module WaxPoetic
     private
 
     def create
-      response = Net::HTTP.post_form url
+      response = Net::HTTP.post_form url, build_parameters: {
+        tag: current_tag
+      }
       response.is_a? Net::HTTPSuccess
+    end
+
+    def current_tag
+      @current_tag ||= begin
+        tag = `git name-rev --tags --name-only $(git rev-parse HEAD)`
+        tag == 'undefined' ? nil : tag
+      end
     end
 
     def url

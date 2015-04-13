@@ -24,8 +24,8 @@ deployment:
   staging:
     branch: master
     commands:
-      - ./bin/rake ci:deploy DEPLOY_ENV=staging
+      - ./bin/deploy CHEF_ENV=staging
   production:
     branch: /\Av(\d+)\.(\d+)\.(\d+)\Z/
     commands:
-      - ./bin/rake ci:deploy DEPLOY_ENV=production
+      - ./bin/deploy CHEF_ENV=production

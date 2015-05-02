@@ -38,3 +38,4 @@ db/import/*.csv
 # Local developer config
 tags
 .env
+/vendor/cookbook

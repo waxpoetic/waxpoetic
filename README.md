@@ -24,8 +24,14 @@ release as well as merchandise and event tickets.
 
 ## Setup
 
-Check out the [waxpoetic cookbook][cookbook] to set up the application
-in Chef.
+Install Docker (and potentially Boot2Docker), then run the following
+command to get everything set up:
+
+```bash
+$ make
+```
+
+You should now be able to browse to http://waxpoetic.dev.
 
 ### Requirements
 

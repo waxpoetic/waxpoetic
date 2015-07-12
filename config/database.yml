@@ -2,6 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  host: <%= ENV['WAXPOETIC_DB_1_PORT_5432_TCP_ADDR'] %>
+  port: <%= ENV['WAXPOETIC_DB_1_PORT_5432_TCP_PORT'] %>
 
 development:
   <<: *default
@@ -14,13 +16,9 @@ test:
 staging:
   <<: *default
   database: wax_poetic_staging
-  host: <%= ENV['DATABASE_HOST'] %>
-  username: waxpoetic
-  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
   database: wax_poetic_production
-  host: <%= ENV['DATABASE_HOST'] %>
   username: waxpoetic
   password: <%= ENV['DATABASE_PASSWORD'] %>

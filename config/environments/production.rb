@@ -12,8 +12,6 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Read Redis URL from env config
-  config.redis_url = ENV['REDIS_URL'] || 'redis://localhost:6379'
 
   # Use Redis to store the "HTTP-level" Rack::Cache.
   config.action_dispatch.rack_cache = {

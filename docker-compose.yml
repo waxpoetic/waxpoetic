@@ -1,0 +1,44 @@
+##
+# Services configuration
+##
+
+# "cache" server for redis
+cache:
+  image: redis:3.0
+  ports:
+    - "5678:5678"
+
+# database server running postgresql
+db:
+  image: postgres:9.4
+  ports:
+    - "5432:5432"
+
+# static web server running nginx
+web:
+  image: nginx:1.9
+  ports:
+    - "80:80"
+
+# web application server, running the rails app
+app:
+  build: .
+  command: bin/rails server --port 3000 --binding 0.0.0.0
+  ports:
+    - "3000:3000"
+  links:
+    - db
+    - cache
+    - web
+  volumes:
+    - .:/srv
+
+# a separate sidekiq worker container, also using the rails app
+worker:
+  build: .
+  command: bin/sidekiq -c config/sidekiq.yml
+  links:
+    - db
+    - cache
+  volumes:
+    - .:/srv

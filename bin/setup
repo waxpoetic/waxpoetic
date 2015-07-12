@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+#
+# App build script
+
+def sh(command, description=nil)
+  description ||= command
+  puts "== #{command} =="
+  system command
+end
+
+RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+
+sh "bundle check || bundle install", "Installing dependencies"
+sh "rake db:setup", "Setting up database"
+sh "rake assets:precompile", 'Compiling assets' if RAILS_ENV == 'development'

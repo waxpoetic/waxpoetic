@@ -24,7 +24,8 @@ WORKDIR $APP_HOME
 
 # install dependencies to /srv/vendor/bundle
 ADD Gemfile* $APP_HOME/
-RUN bin/bundle install
+ADD bin/setup* $APP_HOME/
+RUN bin/setup
 
 # install the application codebase
 ADD . $APP_HOME

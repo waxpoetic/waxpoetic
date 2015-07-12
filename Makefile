@@ -2,12 +2,12 @@
 # Build script
 ##
 
-.PHONY: all clean services
+.PHONY: all docker services
 
-all: services
+all: docker services
+
+docker:
+	boot2docker up
 
 services:
 	docker-compose up
-
-clean:
-	docker-compose down

@@ -68,7 +68,7 @@ module WaxPoetic
     # Eager-load library code.
     config.eager_load_namespaces << :wax_poetic
 
-    redis = Rails.application.secrets.redis
-    config.redis_url = "redis://#{redis['host']}:#{redis['port']}"
+    # Always set the Redis URL to a container
+    config.redis_url = Rails.application.secrets.redis_url
   end
 end

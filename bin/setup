@@ -11,5 +11,5 @@ end
 RAILS_ENV = ENV['RAILS_ENV'] || 'development'
 
 sh "bundle check || bundle install", "Installing dependencies"
-sh "rake db:setup", "Setting up database"
-sh "rake assets:precompile", 'Compiling assets' if RAILS_ENV == 'development'
+sh "bin/rake db:setup", "Setting up database"
+sh "bin/rake assets:precompile", 'Compiling assets' if RAILS_ENV == 'development'

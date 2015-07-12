@@ -19,13 +19,9 @@ RUN apt-get install -y nodejs
 
 # set up the working directory at /srv
 ENV APP_HOME /srv
-RUN mkdir $APP_HOME
+RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
-
-# install dependencies to /srv/vendor/bundle
-ADD Gemfile* $APP_HOME/
-ADD bin/setup* $APP_HOME/
-RUN bin/setup
 
 # install the application codebase
 ADD . $APP_HOME
+RUN bin/setup

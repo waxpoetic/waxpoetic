@@ -4,24 +4,34 @@
 
 # "cache" server for redis
 cache:
+  hostname: cache
+  domainname: cache.waxpoeticrecords.com
   image: redis:3.0
   ports:
     - "5678:5678"
 
 # database server running postgresql
 db:
+  hostname: db
+  domainname: db.waxpoeticrecords.com
   image: postgres:9.4
   ports:
     - "5432:5432"
 
 # static web server running nginx
 web:
+  hostname: www
+  domainname: www.waxpoeticrecords.com
   image: nginx:1.9
   ports:
     - "80:80"
+  volumes:
+    - "config/nginx.conf:/etc/nginx/nginx.conf:ro"
 
 # web application server, running the rails app
 app:
+  hostname: app
+  domainname: app.waxpoeticrecords.com
   build: .
   command: bin/rails server --port 3000 --binding 0.0.0.0
   ports:
@@ -35,6 +45,7 @@ app:
 
 # a separate sidekiq worker container, also using the rails app
 worker:
+  hostname: waxpoetic_worker
   build: .
   command: bin/sidekiq -c config/sidekiq.yml
   links:

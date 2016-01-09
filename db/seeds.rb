@@ -14,8 +14,10 @@ require 'active_record/fixtures'
 
 ActiveRecord::Base.transaction do
   # Build as many objects as we can from fixtures.
-  ActiveRecord::FixtureSet.create_fixtures "spec/fixtures", WaxPoetic.config.seed_tables
+  ActiveRecord::FixtureSet.create_fixtures(
+    "spec/fixtures", WaxPoetic.config.seed_tables
+  )
 
-  # Include additional data from flat file configuration.
-  WaxPoetic::Seed.load!
+  # Create admin user
+  User.create WaxPoetic.secrets.admin_user
 end

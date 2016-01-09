@@ -23,13 +23,6 @@ RSpec.describe ReleasesController, :type => :controller do
     }
   end
 
-  before do
-    admin.spree_roles << Spree::Role.find_or_create_by(name: "admin")
-    admin.save
-    allow(CreateProductJob).to receive(:perform_later).and_return true
-    allow(PackageReleaseJob).to receive(:perform_later).and_return true
-  end
-
   it "has the correct resources" do
     expect(controller.class._singleton_resource).to eq(:release)
     expect(controller.class._collection_resource).to eq(:releases)

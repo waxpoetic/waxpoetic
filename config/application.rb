@@ -26,16 +26,14 @@ module WaxPoetic
   # store. This is where we store global configuration which will not
   # change across environments.
   class Application < Rails::Application
+    # Create a namespace for app configuration
+    config.wax_poetic = ActiveSupport::OrderedOptions.new
 
     # Use EST as our local time zone. (UTC is default).
     config.time_zone = 'Eastern Time (US & Canada)'
 
     # Tables to seed from fixtures when running `db:seed`.
-    config.wax_poetic.seed_tables = %w(
-      artists releases spree_shipping_categories spree_taxonomies
-      spree_taxons spree_option_types spree_option_values
-      spree_payment_methods spree_trackers
-    )
+    config.wax_poetic.seed_tables = %w(artists releases)
 
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }

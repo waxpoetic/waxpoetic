@@ -16,10 +16,6 @@ ActiveRecord::Base.transaction do
   # Build as many objects as we can from fixtures.
   ActiveRecord::FixtureSet.create_fixtures "spec/fixtures", WaxPoetic.config.seed_tables
 
-  # Stand up Spree data.
-  Spree::Core::Engine.load_seed if defined? Spree::Core
-  Spree::Auth::Engine.load_seed if defined? Spree::Auth
-
   # Include additional data from flat file configuration.
   WaxPoetic::Seed.load!
 end

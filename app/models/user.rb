@@ -3,7 +3,6 @@
 # when we need to protect certain functions of the site.
 class User < ActiveRecord::Base
   include Authority::UserAbilities
-  include SpreeUserExtensions
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,23 +11,20 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, email: true
 
-  scope :admins, -> { joins(:spree_roles).where(spree_roles: { name: 'admin' }) }
+  scope :admins, -> { where admin: true }
 
   after_commit :subscribe_to_mailing_list, on: :create
 
-  # Create a new admin user by assigning it the 'admin' role in Spree.
+  # Create a new admin user by assigning it the 'admin' role.
   # We use this role to identify admin users in the frontend catalog app
   # as well.
   def self.create_admin(options={})
-    user = create(options)
-    user.spree_roles << Spree::Role.find_or_create_by(name: "admin")
-    user.save
-    user
+    create options.merge(admin: true)
   end
 
   # Test if this user has the admin role assigned to it.
   def admin?
-    has_spree_role? 'admin'
+    !!admin
   end
 
   private

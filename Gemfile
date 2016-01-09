@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 # Framework
 gem 'rails', '~> 4.2'
-gem 'spree', github: 'tubbo/spree'
-gem 'spree_gateway', github: 'spree/spree_gateway'
 gem 'devise'
 gem 'email_validator'
 gem 'friendly_id'
@@ -21,10 +19,8 @@ gem 'sidekiq'
 gem 'aws-sdk', '~> 1.27'
 gem 'mini_magick'
 gem 'fog'
-gem 'geocoder'
 gem 'soundcloud'
 gem 'bitly'
-gem 'rails-assets-marked', source: 'https://rails-assets.org'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier', '~> 1.3'
@@ -34,21 +30,26 @@ gem 'jquery-turbolinks'
 gem 'autoprefixer-rails'
 gem 'gibbon'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-marked'
+end
+
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'annotate'
   gem 'web-console', '~> 2.0'
   gem 'awesome_print'
-  gem 'spring', '~> 1.3'
-  gem 'spring-commands-rspec'
-  gem 'rubocop'
   gem 'semverse'
 end
 
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'spring-commands-sidekiq'
+  gem 'rubocop'
 end
 
 group :test do
@@ -56,7 +57,6 @@ group :test do
   gem 'email_spec',   require: false
   gem 'capybara',     require: false
   gem 'poltergeist',  require: false
-  gem 'factory_girl'
 end
 
 group :staging, :production do

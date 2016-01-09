@@ -1,12 +1,4 @@
 module ApplicationHelper
-  # Controllers that are thought of as the '#store' in the page ID.
-  SPREE_CONTROLLERS = %w(products)
-
-  # Return the product's file URL. Only works on Spree.
-  def download
-    Download.find_by_order_id @order.id
-  end
-
   # An `<li>` that wraps an `<a>`, used for rendering nav links that
   # could optionally have a dropdown.
   def nav_item(route, text=nil)

@@ -40,9 +40,6 @@ RSpec.describe ArtistsController, :type => :controller do
     end
 
     it "is using an admin user" do
-      expect(user.spree_roles).to_not be_empty
-      expect(user.spree_roles).to include(Spree::Role.find_by_name('admin'))
-      expect(user).to have_spree_role('admin')
       expect(user).to be_admin
     end
 

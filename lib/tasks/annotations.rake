@@ -5,7 +5,7 @@ begin
     # You can override any of these by setting an environment variable of the
     # same name.
     Annotate.set_defaults({
-      'position_in_routes'   => "before",
+      'position_in_routes'   => "",
       'position_in_class'    => "after",
       'position_in_test'     => "before",
       'position_in_fixture'  => "before",
@@ -32,5 +32,5 @@ begin
   Annotate.load_tasks
 
   desc "Annotate all models and routes"
-  task :annotations => [:annotate_models, :annotate_routes]
+  task :annotations => [:annotate_models]
 rescue LoadError; end

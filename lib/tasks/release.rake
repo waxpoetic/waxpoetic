@@ -1,5 +1,6 @@
 namespace :release do
   task :bump do |_, args|
+    args.with_defaults level: 'patch'
     system "bin/semver increment #{args[:level]}"
     system %(git commit -am "Release $(bin/semver tag)")
   end
@@ -28,7 +29,7 @@ namespace :release do
   end
 end
 
-desc 'Deploy and release this application'
+desc 'Deploy and release this application (default level: patch)'
 task :release, [:level] => %w(
   release:bump
   release:tag

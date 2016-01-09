@@ -9,9 +9,9 @@ module Storable
 
   # Find the fully-qualified filepath without the protocol.
   def filepath
-    self.file.url.gsub(/\Ahttp:\/\/|https:\/\//, '')
+    file.url.gsub(/\Ahttp:\/\/|https:\/\//, '')
   end
-  alias wav_filepath filepath
+  alias_method :wav_filepath, :filepath
 
   # Change the file extension to MP3.
   def mp3_filepath
@@ -19,6 +19,7 @@ module Storable
   end
 
   protected
+
   def start_transcode
     TranscodeJob.perform_later self
   end

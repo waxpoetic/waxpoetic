@@ -12,7 +12,7 @@ module WaxPoetic
       end
 
       # Enumerate over the promoters.
-      delegate :each, :to => :all
+      delegate :each, to: :all
 
       # Define a new promoter.
       def create(driver)
@@ -21,6 +21,7 @@ module WaxPoetic
       end
 
       private
+
       def credentials_for(driver)
         WaxPoetic.secrets[driver] || {}
       end

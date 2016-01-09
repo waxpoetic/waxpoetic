@@ -1,10 +1,11 @@
 class PreviewInput < SimpleForm::Inputs::Base
-  def input(wrapper_options)
+  def input(_wrapper_options)
     @builder.text_area(attribute_name).concat(preview)
   end
 
   private
+
   def preview
-    %{<div style="clear:both"></div><div class="rendered-html"><div class="empty">Loading preview...</div></div>}.html_safe
+    %(<div style="clear:both"></div><div class="rendered-html"><div class="empty">Loading preview...</div></div>).html_safe
   end
 end

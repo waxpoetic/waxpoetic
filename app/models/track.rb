@@ -1,7 +1,7 @@
 class Track < ActiveRecord::Base
   belongs_to :release
 
-  has_one :artist, :through => :release
+  has_one :artist, through: :release
 
   before_validation :ensure_number
 
@@ -10,7 +10,7 @@ class Track < ActiveRecord::Base
   validates :release, presence: true
   validates :number, presence: true
 
-  delegate :image, :to => :release
+  delegate :image, to: :release
 
   scope :by_number, -> { order :number }
 

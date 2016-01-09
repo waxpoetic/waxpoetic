@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Viewing artist details" do
+RSpec.feature 'Viewing artist details' do
   let :admin do
     User.create_admin(
       email: 'test@example.com',
@@ -13,7 +13,7 @@ RSpec.feature "Viewing artist details" do
     artists :the_wonder_bars
   end
 
-  scenario "as a regular user" do
+  scenario 'as a regular user' do
     visit artist_path(artist)
 
     expect(page).to have_content(artist.name)
@@ -23,8 +23,8 @@ RSpec.feature "Viewing artist details" do
     expect(page).to_not have_content('Delete')
   end
 
-  scenario "as an admin user" do
-    login_as admin, :scope => :user
+  scenario 'as an admin user' do
+    login_as admin, scope: :user
     visit artist_path(artist)
 
     expect(page).to have_content(artist.name)

@@ -11,7 +11,7 @@ module WaxPoetic
     extend Collection
 
     # Ensure all attributes get saved into a Hash.
-    def initialize(attrs={})
+    def initialize(attrs = {})
       run_callbacks :initialize do
         @attributes = attrs.with_indifferent_access
         super
@@ -19,14 +19,14 @@ module WaxPoetic
     end
 
     # This is what is actually called from the API's point of view.
-    def promote(release, options={})
+    def promote(release, options = {})
       return false unless valid?
       promote! release, options
     end
 
     # The base Promoter won't work with `promote!`.
-    def promote!(release, options={})
-      raise NoMethodError, "#{self.class.name} must define the 'promote!' method"
+    def promote!(_release, _options = {})
+      fail NoMethodError, "#{self.class.name} must define the 'promote!' method"
     end
 
     # Override this to fail validation when the client can't be

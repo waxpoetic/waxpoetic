@@ -31,9 +31,9 @@ RSpec.describe UserSubscribeJob, type: :job do
     end
 
     it 'subscribes a user to the mailing list' do
-      expect {
+      expect do
         UserSubscribeJob.perform_now subscriber
-      }.to change {
+      end.to change {
         Subscriber.count
       }.by 1
     end
@@ -46,9 +46,9 @@ RSpec.describe UserSubscribeJob, type: :job do
     end
 
     it 'does nothing but completes the job' do
-      expect {
+      expect do
         UserSubscribeJob.perform_now subscriber
-      }.to_not change {
+      end.to_not change {
         Subscriber.count
       }
     end

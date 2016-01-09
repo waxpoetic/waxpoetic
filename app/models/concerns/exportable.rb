@@ -3,9 +3,9 @@ module Exportable
   extend ActiveSupport::Concern
 
   def self.models
-    ActiveRecord::Base.descendants.select { |model|
+    ActiveRecord::Base.descendants.select do |model|
       model.included_modules.include?(Exportable)
-    }.map { |model| model.name.constantize }
+    end.map { |model| model.name.constantize }
   end
 
   module ClassMethods
@@ -27,6 +27,6 @@ module Exportable
   end
 
   def yaml_param
-    self.name.parameterize.underscore
+    name.parameterize.underscore
   end
 end

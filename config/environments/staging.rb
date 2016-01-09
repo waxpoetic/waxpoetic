@@ -49,7 +49,7 @@ Rails.application.configure do
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
   # Ensure we're always connected over SSL
-  #config.force_ssl = true
+  # config.force_ssl = true
 
   # Serve assets from a CDN
   config.action_controller.asset_host = "//#{config.wax_poetic.s3_bucket}/assets"

@@ -3,7 +3,7 @@ module TitleHelper
     content_tag :title, title_text.html_safe
   end
 
-  def title(new_title="", cosmetic: nil)
+  def title(new_title = '', cosmetic: nil)
     content_for :title, new_title
     content_tag :h1, class: 'title' do
       cosmetic || new_title
@@ -15,6 +15,7 @@ module TitleHelper
   end
 
   private
+
   def title_text
     if page_has_title?
       "#{page_title} | #{site_title}"

@@ -38,9 +38,10 @@ module WaxPoetic
       end
 
       private
+
       def client_connected
         unless connected?
-          errors.add driver_client_name, "client could not connect"
+          errors.add driver_client_name, 'client could not connect'
         end
       end
 

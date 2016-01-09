@@ -21,13 +21,13 @@
 
 require 'rails_helper'
 
-RSpec.describe Track, :type => :model do
+RSpec.describe Track, type: :model do
   let(:artist) { artists :the_wonder_bars }
   let(:release) { releases :just_the_start_ep }
 
   subject do
     Track.new \
-      name: "Falling In Love",
+      name: 'Falling In Love',
       artist: artist,
       release: release,
       price: 1.49
@@ -35,7 +35,7 @@ RSpec.describe Track, :type => :model do
 
   test_validations_for %w(name artist release)
 
-  it "automatically sets the price" do
+  it 'automatically sets the price' do
     subject.price = nil
     expect(subject).to be_valid
     expect(subject.price).to eq(Track::DEFAULT_PRICE)

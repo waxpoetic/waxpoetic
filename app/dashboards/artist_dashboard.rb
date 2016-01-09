@@ -1,10 +1,10 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class ArtistDashboard < Administrate::BaseDashboard
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
-    :updated_at,
+    :updated_at
   ]
 
   # ATTRIBUTE_TYPES
@@ -21,7 +21,7 @@ class ArtistDashboard < Administrate::BaseDashboard
     image: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    slug: Field::String,
+    slug: Field::String
   }
 
   # TABLE_ATTRIBUTES

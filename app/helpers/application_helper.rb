@@ -1,7 +1,7 @@
 module ApplicationHelper
   # An `<li>` that wraps an `<a>`, used for rendering nav links that
   # could optionally have a dropdown.
-  def nav_item(route, text=nil)
+  def nav_item(route, text = nil)
     text ||= route.to_s.titleize
     css = 'active' if request.env['PATH_INFO'] =~ /#{route}/
 
@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   # Configure a link_to to open in a reveal lightbox.
-  def reveal_link_to(name, route, options={})
+  def reveal_link_to(name, route, options = {})
     link_to name, route, options.merge(
       data: {
         reveal_ajax: true,
@@ -24,8 +24,8 @@ module ApplicationHelper
     )
   end
 
-  def destroy_link_to(name, route, options={})
-    link_to name, route, options.merge(:method => :delete)
+  def destroy_link_to(name, route, options = {})
+    link_to name, route, options.merge(method: :delete)
   end
 
   # Return the name of the CSS class for the given flash message type.

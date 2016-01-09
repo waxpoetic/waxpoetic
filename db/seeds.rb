@@ -15,7 +15,7 @@ require 'active_record/fixtures'
 ActiveRecord::Base.transaction do
   # Build as many objects as we can from fixtures.
   ActiveRecord::FixtureSet.create_fixtures(
-    "spec/fixtures", WaxPoetic.config.seed_tables
+    'spec/fixtures', WaxPoetic.config.seed_tables
   )
 
   # Create admin user

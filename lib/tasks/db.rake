@@ -1,8 +1,8 @@
-desc "Set up the database from scratch"
-task :db => %w(db:drop db:create db:setup db:migrate db:seed)
+desc 'Set up the database from scratch'
+task db: %w(db:drop db:create db:setup db:migrate db:seed)
 
 namespace :db do
-  task :export => :environment do
+  task export: :environment do
     Exportable.models.map(&:export_to_fixtures)
   end
 

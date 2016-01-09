@@ -24,4 +24,4 @@ tag 'waxpoetic'
 workers CLUSTER_WORKERS
 prune_bundler true
 worker_timeout 30
-#activate_control_app "unix://#{APP_ROOT}/shared/pids/pumactl.sock", no_token: true
+# activate_control_app "unix://#{APP_ROOT}/shared/pids/pumactl.sock", no_token: true

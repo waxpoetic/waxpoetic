@@ -35,7 +35,7 @@ class ReleaseDecorator < Draper::Decorator
   def date
     model.released_on.strftime '%B %e, %Y'
   end
-  alias release_date date
+  alias_method :release_date, :date
 
   # <img> tag for the full size image photo.
   def photo
@@ -76,6 +76,7 @@ class ReleaseDecorator < Draper::Decorator
   end
 
   private
+
   def tracks_as_text
     model.tracks.by_number.map(&:decorate).reduce '' do |list, track|
       list << %(#{track.numbered_title}\n)

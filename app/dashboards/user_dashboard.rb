@@ -1,10 +1,10 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class UserDashboard < Administrate::BaseDashboard
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
-    :updated_at,
+    :updated_at
   ]
 
   # ATTRIBUTE_TYPES
@@ -30,7 +30,7 @@ class UserDashboard < Administrate::BaseDashboard
     spree_api_key: Field::String,
     ship_address_id: Field::Number,
     bill_address_id: Field::Number,
-    name: Field::String,
+    name: Field::String
   }
 
   # TABLE_ATTRIBUTES

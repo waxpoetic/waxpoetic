@@ -1,10 +1,10 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class TrackDashboard < Administrate::BaseDashboard
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
-    :updated_at,
+    :updated_at
   ]
 
   # ATTRIBUTE_TYPES
@@ -24,7 +24,7 @@ class TrackDashboard < Administrate::BaseDashboard
     file: Field::String,
     number: Field::Number,
     short_url: Field::String,
-    product_id: Field::Number,
+    product_id: Field::Number
   }
 
   # TABLE_ATTRIBUTES

@@ -28,7 +28,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
+RSpec.describe User, type: :model do
   subject do
     User.new \
       email: 'user@example.com',
@@ -36,15 +36,15 @@ RSpec.describe User, :type => :model do
       password_confirmation: 'password1'
   end
 
-  it "authenticates users into the admin console" do
+  it 'authenticates users into the admin console' do
     expect(subject).to be_valid
   end
 
-  it "is not an admin by default" do
+  it 'is not an admin by default' do
     expect(subject).to_not be_admin
   end
 
-  it "can have admin rights changed on it" do
+  it 'can have admin rights changed on it' do
     expect(subject).to be_admin
   end
 end

@@ -14,7 +14,7 @@ class DashboardManifest
     :artists,
     :releases,
     :subscribers,
-    :tracks,
+    :tracks
   ]
 
   # `ROOT_DASHBOARD`

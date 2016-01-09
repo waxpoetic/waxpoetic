@@ -5,6 +5,7 @@ module MarkdownHelper
   end
 
   private
+
   def markdown_parser
     Redcarpet::Markdown.new markdown_renderer, autolink: true
   end

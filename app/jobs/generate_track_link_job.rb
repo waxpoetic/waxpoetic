@@ -8,6 +8,7 @@ class GenerateTrackLinkJob < ActiveJob::Base
   end
 
   private
+
   def short_url_for_track
     Bitly.client.shorten track.url, track.slug
   end

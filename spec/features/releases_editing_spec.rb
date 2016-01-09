@@ -1,29 +1,29 @@
 require 'rails_helper'
 
-RSpec.feature "Editing and creating releases" do
+RSpec.feature 'Editing and creating releases' do
   let :release do
     releases :just_the_start_ep
   end
 
-  scenario "must log in when defining a new release" do
+  scenario 'must log in when defining a new release' do
     visit new_release_path
-    expect(page).to have_content("You need to sign in")
+    expect(page).to have_content('You need to sign in')
   end
 
-  scenario "must log in before editing an release" do
+  scenario 'must log in before editing an release' do
     visit edit_release_path(release)
-    expect(page).to have_content("You need to sign in")
+    expect(page).to have_content('You need to sign in')
   end
 
-  context "when admin logged in" do
+  context 'when admin logged in' do
     before do
-      login_as User.admins.first, :scope => :user
+      login_as User.admins.first, scope: :user
       visit new_release_path
     end
 
-    scenario "creates a new release" do
+    scenario 'creates a new release' do
       within '.new_release' do
-        fill_in 'Name', with: "a new release"
+        fill_in 'Name', with: 'a new release'
         select 'The Wonder Bars', from: 'Artist'
         select 'January', from: 'release_released_on_2i'
         select '3', from: 'release_released_on_3i'
@@ -38,11 +38,11 @@ RSpec.feature "Editing and creating releases" do
       expect(page).to have_content('a new release')
     end
 
-    scenario "updates an existing release" do
-      login_as User.admins.first, :scope => :user
+    scenario 'updates an existing release' do
+      login_as User.admins.first, scope: :user
       visit edit_release_path(release)
 
-      fill_in 'Name', with: "new release name"
+      fill_in 'Name', with: 'new release name'
       click_button 'Update Release'
 
       expect(page).to_not have_css('#flash .alert')

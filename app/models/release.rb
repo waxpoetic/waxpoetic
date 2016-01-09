@@ -18,7 +18,7 @@ class Release < ActiveRecord::Base
 
   friendly_id :catalog_number
 
-  delegate :variants, :to => :product
+  delegate :variants, to: :product
 
   scope :latest, -> { order :released_on }
 

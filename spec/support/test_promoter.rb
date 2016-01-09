@@ -5,7 +5,7 @@ class TestPromoter < WaxPoetic::Promoter
 
   before_initialize :reload!
 
-  def promote!(release, options={})
+  def promote!(release, _options = {})
     @promoted_releases << release
     true
   end

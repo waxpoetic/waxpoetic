@@ -5,7 +5,7 @@ require 'soundcloud'
 class SoundcloudPromoter < WaxPoetic::Promoter
   # Enumerate through each Track and upload it to Wax Poetic's
   # Soundcloud account.
-  def promote!(release, options={})
+  def promote!(release, _options = {})
     release.tracks.all? do |track|
       response = upload track
 
@@ -26,11 +26,13 @@ class SoundcloudPromoter < WaxPoetic::Promoter
   end
 
   protected
+
   def upload(track)
     soundcloud.post '/me/tracks', track: track.soundcloud_attributes
   end
 
   private
+
   def soundcloud
     @soundcloud ||= Soundcloud.new credentials
   end

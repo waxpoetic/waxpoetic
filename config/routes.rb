@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   devise_scope :user do
-    get     '/signup' => 'devise/registrations#new'
-    get     '/login'  => 'devise/sessions#new'
-    delete  '/logout' => 'devise/sessions#destroy'
+    get '/signup' => 'devise/registrations#new'
+    get '/login'  => 'devise/sessions#new'
+    delete '/logout' => 'devise/sessions#destroy'
   end
 
   get '/:id' => 'high_voltage/pages#show', :as => :static_page

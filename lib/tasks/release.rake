@@ -5,25 +5,25 @@ namespace :release do
     system %(git commit -am "Release $(bin/semver tag)")
   end
 
-  task :tag do |_, args|
+  task :tag do |_, _args|
     system %(git tag $(bin/semver tag) -m "Release $(bin/semver tag)")
   end
 
-  task :push do |_, args|
-    system "git push --tags"
+  task :push do |_, _args|
+    system 'git push --tags'
   end
 
-  desc "Release major version"
+  desc 'Release major version'
   task :major do
     Rake::Task['release'].invoke level: 'major'
   end
 
-  desc "Release minor version"
+  desc 'Release minor version'
   task :minor do
     Rake::Task['release'].invoke level: 'minor'
   end
 
-  desc "Release patch version"
+  desc 'Release patch version'
   task :patch do
     Rake::Task['release'].invoke level: 'patch'
   end

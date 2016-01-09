@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subscribers
   # Catalog resources
   resources :artists
   resources :releases

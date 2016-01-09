@@ -1,2 +1,0 @@
-class TicketAuthorizer < ApplicationAuthorizer
-end

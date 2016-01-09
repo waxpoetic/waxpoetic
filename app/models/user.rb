@@ -2,7 +2,6 @@
 # Devise and Warden, which are the authentication engines we delegate to
 # when we need to protect certain functions of the site.
 class User < ActiveRecord::Base
-  include Authority::UserAbilities
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

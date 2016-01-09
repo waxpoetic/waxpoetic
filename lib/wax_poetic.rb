@@ -2,8 +2,8 @@
 module WaxPoetic
   extend ActiveSupport::Autoload
 
-  autoload Promoter
-  autoload Seed
+  autoload :Promoter
+  autoload :Seed
 
   class << self
     # Configuration specific to WaxPoetic library or application code.

@@ -1,9 +1,0 @@
-Description:
-    Generates a new Authority::Authorizer.
-
-Example:
-    rails generate authorizer Artist
-
-    This will create:
-        app/authorizers/artist_authorizer.rb
-        spec/authorizers/artist_authorizer_spec.rb

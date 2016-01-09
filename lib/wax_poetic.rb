@@ -30,5 +30,12 @@ module WaxPoetic
     def logger
       Rails.logger
     end
+
+    # The +SemVer+ object that represents the current version string.
+    #
+    # @return [SemVer]
+    def version
+      @version ||= SemVer.find
+    end
   end
 end

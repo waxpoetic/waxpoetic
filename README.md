@@ -5,56 +5,76 @@
 The official site of **Wax Poetic Records**, including an artist roster
 that describes every past and current artist on Wax Poetic, and a release
 catalog for browsing more details on each of our releases (including buy
-links). There's also an online store for purchasing copies of each
-release as well as merchandise and event tickets.
+links).
 
 ## Features
 
 - Artist and Release catalog
-- Online store for merchandise and releases
-- Authentication system for release downloads
-- Email new releases to a private promo list and upload their tracks
-  to Soundcloud.
+- Automated promotional support for new releases on social media
 
 ### Feature Roadmap
 
 - Post new Releases to Twitter, Facebook and Instagram
 - Layout re-design, make it less boring
-- Event ticketing
 
-## Setup
+## Development
 
-Check out the [waxpoetic cookbook][cookbook] to set up the application
-in Chef.
+To develop on this app, you must have the following installed onto your
+system:
 
-### Requirements
-
-- Ruby 2.1.3
+- Ruby 2.3.0
 - PostgreSQL 9.3 or above
-- PhantomJS (for developers)
+- PhantomJS
 
-### Instructions
+### Setup
 
 Clone this repo down:
 
-```bash
-$ git clone git@github.com:waxpoetic/waxpoeticrecords.com.git
-```
+    git clone git@github.com:waxpoetic/waxpoeticrecords.com.git
 
 Install dependencies and stand up the database:
 
-```bash
-$ bundle install
-$ rake db:setup
-```
+    bundle install
+    rake db:setup
 
-Start Foreman to bring up the web server and Sidekiq:
+Start the Rails server:
 
-```bash
-$ foreman start
-```
+    bin/rails server
 
-You can also run `rake -vT` to view all other command-line tasks for
-this app.
+### Running Tests
 
-[cookbook]: https://github.com/waxpoetic/cookbook
+A passing build is required for all contributions to this repo. Make
+sure the build passes by running tests on your local machine, and fixing
+them if they're broken:
+
+    bin/rake test
+
+You can also run different suites of tests for faster results:
+
+    bin/rake test:units
+    bin/rake test:features
+
+### Deployment
+
+Deployments are performed automatically using Travis CI. All pushes to
+master will be deployed to the staging server at
+http://dev.waxpoeticrecords.com, and all tag pushes will result in a
+deployment to the production site at http://www.waxpoeticrecords.com.
+
+To bump the version number, tag a new release, and deploy it, run the
+following Rake task:
+
+    bin/rake release
+
+You can specify what kind of release you want to deploy:
+
+    bin/rake release:patch
+    bin/rake release:minor
+    bin/rake release:major
+
+## Contributions
+
+We accept contributions in the form of a pull request, and with a
+passing build that adheres to this README and the [CODE OF CONDUCT][].
+
+[CODE OF CONDUCT]: https://github.com/waxpoetic/waxpoeticrecords.com/blob/master/CODE_OF_CONDUCT.md

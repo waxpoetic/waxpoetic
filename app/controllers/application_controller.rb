@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   protect_from_forgery with: :exception
+
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
+  def not_found(exception)
+    logger.error exception.message
+    render :not_found, status: :not_found, error: exception
+  end
 end

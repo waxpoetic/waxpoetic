@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
   end
 
-  resources :subscribers
-  resources :artists do
-    resources :releases
+  resources :subscribers, only: [:new, :create, :show]
+  resources :artists, only: [:index, :show] do
+    resources :releases, only: [:index, :show]
   end
 
   devise_for :users

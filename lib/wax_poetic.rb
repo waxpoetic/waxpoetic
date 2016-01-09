@@ -1,21 +1,9 @@
-require 'wax_poetic/railtie'
-
-# The Wax Poetic Records online store.
+# The Wax Poetic Records official site.
 module WaxPoetic
   extend ActiveSupport::Autoload
 
-  %w(
-    product
-    promoter
-    temporary_authentication
-    logger
-    product_variant
-    promoter
-    seed
-    temporary_policy
-  ).map(&:classify).each do |dependency|
-    autoload dependency.to_sym
-  end
+  autoload Promoter
+  autoload Seed
 
   class << self
     # Configuration specific to WaxPoetic library or application code.

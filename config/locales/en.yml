@@ -1,10 +1,6 @@
 en:
-  store:
-    name: "Wax Poetic Records"
-    description: "An open-source record label with a focus on electronic music."
-    title: "Wax Poetic Records: An open-source record label"
-    keywords: "open-source, record, label"
-    url: "waxpoeticrecords.com"
+  subscribers:
+    thanks: Thanks for signing up!
 
   gallery:
     empty: "No results."

@@ -8,7 +8,7 @@ class SubscribersController < ApplicationController
   def create
     subscriber.attributes = edit_params
     subscriber.save
-    respond_with subscriber, notice: t(:thanks)
+    respond_with subscriber
   end
 
   def show

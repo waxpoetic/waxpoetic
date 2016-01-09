@@ -59,10 +59,6 @@ GEM
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.0)
-    asset_sync (1.1.0)
-      activemodel
-      fog (>= 1.8.0)
-      unf
     ast (2.0.0)
     astrolabe (1.3.0)
       parser (>= 2.2.0.pre.3, < 3.0)
@@ -70,11 +66,6 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
-    aws-sdk (1.64.0)
-      aws-sdk-v1 (= 1.64.0)
-    aws-sdk-v1 (1.64.0)
-      json (~> 1.4)
-      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -95,11 +86,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     cliver (0.3.2)
@@ -382,9 +368,6 @@ GEM
       redis-actionpack (~> 4)
       redis-activesupport (~> 4)
       redis-store (~> 1.1.0)
-    redis-session-store (0.8.0)
-      actionpack (>= 3, < 5)
-      redis
     redis-store (1.1.4)
       redis (>= 2.2)
     request_store (1.1.0)
@@ -422,7 +405,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
     selectize-rails (0.12.1)
-    semverse (1.2.1)
+    semver (1.0.1)
     sidekiq (3.3.3)
       celluloid (>= 0.16.0)
       connection_pool (>= 2.1.1)
@@ -438,8 +421,6 @@ GEM
       httmultiparty (~> 0.3.0)
     spring (1.3.3)
     spring-commands-rspec (1.0.4)
-      spring (>= 0.9.1)
-    spring-commands-sidekiq (1.0.0)
       spring (>= 0.9.1)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -462,9 +443,6 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.6)
     warden (1.2.3)
       rack (>= 1.0)
     web-console (2.1.2)
@@ -486,13 +464,10 @@ DEPENDENCIES
   active_model_serializers
   administrate
   annotate
-  asset_sync
   autoprefixer-rails
   awesome_print
-  aws-sdk (~> 1.27)
   bitly
   capybara
-  carrierwave
   coffee-rails
   controller_resources
   devise
@@ -518,17 +493,15 @@ DEPENDENCIES
   rails-assets-marked!
   redcarpet
   redis-rails
-  redis-session-store
   rspec-rails
   rubocop
   sass-rails
-  semverse
+  semver
   sidekiq
   simple_form
   soundcloud
   spring
   spring-commands-rspec
-  spring-commands-sidekiq
   turbolinks
   uglifier (~> 1.3)
   web-console (~> 2.0)

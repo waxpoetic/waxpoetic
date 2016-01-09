@@ -8,14 +8,11 @@ gem 'friendly_id'
 gem 'controller_resources'
 gem 'active_model_serializers'
 gem 'active_model-jobs'
-gem 'carrierwave'
 gem 'high_voltage'
 gem 'draper'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'pg'
-gem 'sidekiq'
-gem 'aws-sdk', '~> 1.27'
 gem 'mini_magick'
 gem 'fog'
 gem 'soundcloud'
@@ -40,7 +37,7 @@ group :development do
   gem 'annotate'
   gem 'web-console', '~> 2.0'
   gem 'awesome_print'
-  gem 'semverse'
+  gem 'semver'
 end
 
 group :development, :test do
@@ -48,7 +45,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'spring-commands-sidekiq'
   gem 'rubocop'
 end
 
@@ -62,7 +58,6 @@ end
 group :staging, :production do
   gem 'rack-cache'
   gem 'redis-rails'
-  gem 'redis-session-store'
-  gem 'asset_sync'
   gem 'puma'
+  gem 'sidekiq'
 end

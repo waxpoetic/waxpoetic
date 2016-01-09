@@ -2,7 +2,6 @@
 # Devise and Warden, which are the authentication engines we delegate to
 # when we need to protect certain functions of the site.
 class User < ActiveRecord::Base
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,26 +9,9 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, email: true
 
-  scope :admins, -> { where admin: true }
-
-  after_commit :subscribe_to_mailing_list, on: :create
-
-  # Create a new admin user by assigning it the 'admin' role.
-  # We use this role to identify admin users in the frontend catalog app
-  # as well.
-  def self.create_admin(options={})
-    create options.merge(admin: true)
-  end
-
   # Test if this user has the admin role assigned to it.
   def admin?
     !!admin
-  end
-
-  private
-
-  def subscribe_to_mailing_list
-    Subscriber.create name: name, email: email
   end
 end
 

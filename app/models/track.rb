@@ -1,20 +1,13 @@
 class Track < ActiveRecord::Base
-  include Saleable
-  include Storable
-
-  # This is the price we sell tracks at by default.
-  DEFAULT_PRICE = 1.99
-
   belongs_to :release
 
   has_one :artist, :through => :release
 
-  before_validation :ensure_price, :ensure_number
+  before_validation :ensure_number
 
   validates :name, presence: true
   validates :artist, presence: true
   validates :release, presence: true
-  validates :price, presence: true
   validates :number, presence: true
 
   delegate :image, :to => :release
@@ -27,15 +20,13 @@ class Track < ActiveRecord::Base
   def soundcloud_attributes
     {
       title: "#{artist.name} - #{name} [#{release.catalog_number}]",
-      asset_data: file_handler,
-      download: false
+      asset_data: nil, # TODO
+      download: false,
+      private: true
     }
   end
 
   private
-  def ensure_price
-    self.price ||= DEFAULT_PRICE
-  end
 
   def ensure_number
     self.number ||= last_track_number + 1
@@ -48,11 +39,6 @@ class Track < ActiveRecord::Base
 
   def generate_short_url
     GenerateTrackLinkJob.perform_later self
-  end
-
-  def file_handler
-    return nil unless file.try(:file)
-    @handler ||= File.new file.file
   end
 end
 

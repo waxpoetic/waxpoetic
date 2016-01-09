@@ -61,4 +61,5 @@ group :staging, :production do
   gem 'redis-rails'
   gem 'puma'
   gem 'sidekiq'
+  gem 'rails_12factor'
 end

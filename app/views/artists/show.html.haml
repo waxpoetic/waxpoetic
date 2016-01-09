@@ -1,0 +1,15 @@
+#artist
+  = title artist.name
+  .header.row
+    .photo= artist.decorate.photo
+  .content.row
+    .bio.large-8.columns
+      = artist.decorate.bio
+    .releases.large-4.columns
+      %h2 Latest Releases
+      %ul
+        - artist.releases.latest.limit(5).each do |release|
+          %li
+            = link_to release do
+              = image_tag release.image.micro.url
+  = admin_controls 'Artists', resource: artist if admin_signed_in?

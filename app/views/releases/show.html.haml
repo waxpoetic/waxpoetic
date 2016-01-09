@@ -1,0 +1,24 @@
+#release
+  .row
+    .large-9.columns
+      = title release.decorate.title, cosmetic: release.decorate.page_title
+    .large-3.columns.buttons
+      = release.decorate.buy_button
+  .row
+    .large-6.columns
+      %table.properties
+        %tr
+          %th Released On:
+          %td= release.decorate.date
+        %tr
+          %th Catalog Number:
+          %td= release.catalog_number
+      .tracks
+        %h3 Track Listing
+        = release.decorate.track_list
+    .large-6.columns.photo
+      = release.decorate.photo
+  .description.row
+    .large-12.columns
+      = release.decorate.description
+  = admin_controls 'Releases', resource: release if admin_signed_in?

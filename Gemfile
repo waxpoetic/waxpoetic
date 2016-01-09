@@ -26,6 +26,7 @@ gem 'jquery-turbolinks'
 gem 'autoprefixer-rails'
 gem 'gibbon'
 gem 'administrate'
+gem 'haml-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-marked'

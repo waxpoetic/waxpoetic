@@ -1,0 +1,7 @@
+.gallery.row
+  - if resources.any?
+    .large-12.columns
+      = render resources
+  - else
+    #empty.large-12.columns
+      = t 'gallery.empty'

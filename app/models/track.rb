@@ -10,11 +10,13 @@ class Track < ActiveRecord::Base
   validates :release, presence: true
   validates :number, presence: true
 
+  friendly_id :number
+
   delegate :image, to: :release
 
   scope :by_number, -> { order :number }
 
-  after_create :generate_short_url
+  after_create :shorten!
 
   # Attributes given to the Soundcloud API when uploading tracks.
   def soundcloud_attributes
@@ -35,10 +37,6 @@ class Track < ActiveRecord::Base
   def last_track_number
     return 0 unless release.present?
     release.tracks.by_number.try(:number).to_i
-  end
-
-  def generate_short_url
-    GenerateTrackLinkJob.perform_later self
   end
 end
 

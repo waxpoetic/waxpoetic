@@ -2,8 +2,6 @@
 # are used internally to describe our own releases and relay that
 # information to the web site.
 class Release < ActiveRecord::Base
-  extend FriendlyId
-
   belongs_to :artist
 
   has_many :tracks

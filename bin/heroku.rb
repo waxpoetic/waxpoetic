@@ -2,7 +2,7 @@
 # Set this application up for deployment on Heroku.
 #
 
-`heroku create`
+# `heroku create`
 
 %w(
   heroku-postgresql:hobby-dev
@@ -14,9 +14,9 @@
   pingdom:starter
   airbrake:free_heroku
 ).each do |addon|
-  `heroku addons:create #{addon}`
+  `heroku addons:create #{addon} --app waxpoetic-staging`
 end
 
-`heroku buildpacks:add https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks`
+`heroku buildpacks:add https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks --app waxpoetic-staging`
 
-`heroku config:set DEPLOY_TASKS='db:migrate db:index'`
+`heroku config:set DEPLOY_TASKS='db:migrate db:index' --app waxpoetic-staging`

@@ -4,7 +4,8 @@ class ArtistDashboard < Administrate::BaseDashboard
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
-    :updated_at
+    :updated_at,
+    :slug
   ]
 
   # ATTRIBUTE_TYPES
@@ -18,7 +19,7 @@ class ArtistDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     bio: Field::String,
-    image: Field::String,
+    image: Field::Upload,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String

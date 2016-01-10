@@ -4,7 +4,8 @@ class ReleaseDashboard < Administrate::BaseDashboard
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
-    :updated_at
+    :updated_at,
+    :slug
   ]
 
   # ATTRIBUTE_TYPES
@@ -24,11 +25,7 @@ class ReleaseDashboard < Administrate::BaseDashboard
     catalog_number: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    price: Field::String,
-    file: Field::String,
-    product_id: Field::Number,
-    slug: Field::String,
-    open_source_package: Field::String
+    slug: Field::String
   }
 
   # TABLE_ATTRIBUTES

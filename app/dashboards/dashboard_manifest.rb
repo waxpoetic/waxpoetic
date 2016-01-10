@@ -10,11 +10,11 @@ class DashboardManifest
   # Dashboards returned from this method must be Rails models for Administrate
   # to work correctly.
   DASHBOARDS = [
-    :users,
     :artists,
     :releases,
+    :tracks,
     :subscribers,
-    :tracks
+    :users
   ]
 
   # `ROOT_DASHBOARD`
@@ -23,5 +23,5 @@ class DashboardManifest
   #
   # This dashboard will likely be the first page that admins see
   # when they log into the dashboard.
-  ROOT_DASHBOARD = DASHBOARDS.first
+  ROOT_DASHBOARD = :metrics
 end

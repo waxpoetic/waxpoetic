@@ -4,7 +4,9 @@ class TrackDashboard < Administrate::BaseDashboard
   READ_ONLY_ATTRIBUTES = [
     :id,
     :created_at,
-    :updated_at
+    :updated_at,
+    :slug,
+    :short_url
   ]
 
   # ATTRIBUTE_TYPES
@@ -18,13 +20,11 @@ class TrackDashboard < Administrate::BaseDashboard
     artist: Field::HasOne,
     id: Field::Number,
     name: Field::String,
-    price: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     file: Field::String,
     number: Field::Number,
-    short_url: Field::String,
-    product_id: Field::Number
+    short_url: Field::String
   }
 
   # TABLE_ATTRIBUTES

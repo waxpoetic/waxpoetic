@@ -29,27 +29,20 @@ module WaxPoetic
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
 
-    # Create a namespace for app configuration
-    config.wax_poetic = ActiveSupport::OrderedOptions.new
-
     # Use EST as our local time zone. (UTC is default).
     config.time_zone = 'Eastern Time (US & Canada)'
 
     # Tables to seed from fixtures when running `db:seed`.
-    config.wax_poetic.seed_tables = %w(artists releases)
+    config.seed_tables = %w(artists releases)
 
     # Use localhost as mail server (for Devise)
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-    # Use an S3 bucket to store static assets and uploads.
-    config.wax_poetic.s3_bucket = 'files.waxpoeticrecords.com'
-
     # Don't promote anywhere by default.
-    config.wax_poetic.promote_to = []
+    config.promote_to = []
 
     # Store sessions on the client side by default.
-    config.session_key = '_wax_poetic_sessions'
-    config.session_store :cookie_store, key: config.session_key
+    config.session_store :cookie_store, key: '_wax_poetic_sessions'
 
     # Configure generators to use RSpec as a test framework, don't
     # generate separate factory files, and to use SCSS and CoffeeScript
@@ -68,5 +61,8 @@ module WaxPoetic
 
     # Eager-load library code.
     config.eager_load_namespaces << :wax_poetic
+
+    # Use a local domain name by default.
+    config.domain = 'waxpoetic.dev'
   end
 end

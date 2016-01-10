@@ -1,4 +1,10 @@
 Rails.application.configure do
+  # Configure domain to point to staging URL
+  config.domain = 'dev.waxpoeticrecords.com'
+
+  # Cache redis URL
+  redis_url = WaxPoetic.secrets.redis_url
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -12,19 +18,19 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Read Redis URL from env config
-  config.redis_url = ENV['REDIS_URL'] || 'redis://localhost:6379'
-
   # Use Redis to store the "HTTP-level" Rack::Cache
-  config.action_dispatch.rack_cache = true
+  config.action_dispatch.rack_cache = {
+    metastore: "#{redis_url}/0/rack-metastore",
+    entitystore: "#{redis_url}/0/rack-entitystore"
+  }
 
   # Store the Rails.cache in Redis
-  config.cache_store = :redis_store, "#{config.redis_url}/1/waxpoetic_rails_cache", {
+  config.cache_store = :redis_store, "#{redis_url}/0/cache", {
     expires_in: 90.minutes
   }
 
   # Store the session in Redis
-  config.session_store :redis_session_store, key: config.session_key
+  config.session_store :redis_store, servers: "#{redis_url}/0/session"
 
   # Use Redis to persist background jobs
   config.active_job.queue_adapter = :sidekiq
@@ -43,16 +49,9 @@ Rails.application.configure do
   config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.0'
-
-  # Use Nginx sendfile header
-  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
-
-  # Ensure we're always connected over SSL
-  # config.force_ssl = true
-
+  config.assets.version = WaxPoetic.version.format '%M.%m.%p%s'
   # Serve assets from a CDN
-  config.action_controller.asset_host = "//#{config.wax_poetic.s3_bucket}/assets"
+  config.action_controller.asset_host = "files.#{config.domain}"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -67,12 +66,20 @@ Rails.application.configure do
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
-  # Use a global application logger instance.
-  config.logger = WaxPoetic.logger
-
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
-
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.promote_to = [:email, :soundcloud]
+
+  # Configure SMTP Sendgrid settings
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    authentication: :plain,
+    user_name: WaxPoetic.secrets.sendgrid_username,
+    password: WaxPoetic.secrets.sendgrid_password,
+    domain: 'waxpoeticrecords.com',
+    enable_starttls_auto: true
+  }
 end

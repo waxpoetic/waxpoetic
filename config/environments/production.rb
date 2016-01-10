@@ -65,17 +65,13 @@ Rails.application.configure do
   # Disable automatic flushing of the log to improve performance.
   config.autoflush_log = false
 
-  # Log to syslog in production
-  config.log_tags = ['rails']
-
-  # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
   # Promote to all social networks and subscribers
-  config.wax_poetic.promote_to = [:email, :soundcloud]
+  config.promote_to = [:email, :soundcloud]
 
-  # Use Amazon SES in production to send mails
-  config.action_mailer.delivery_method = :amazon_ses
+  # Use Sendgrid in production
+  config.action_mailer.delivery_method = :smtp
 
   # Use a global application logger instance.
   config.logger = WaxPoetic.logger

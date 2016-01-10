@@ -6,7 +6,7 @@ module WaxPoetic
 
       # Return all Promoter objects as a collection.
       def all
-        @promoters ||= WaxPoetic.config.promote_to.map do |driver|
+        @promoters ||= Rails.configuration.promote_to.map do |driver|
           create driver
         end
       end

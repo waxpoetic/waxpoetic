@@ -5,17 +5,14 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  release_id :integer
-#  price      :decimal(19, 2)
 #  created_at :datetime
 #  updated_at :datetime
 #  file       :string(255)
 #  number     :integer
 #  short_url  :string(255)
-#  product_id :integer
 #
 # Indexes
 #
-#  index_tracks_on_product_id  (product_id)
 #  index_tracks_on_release_id  (release_id)
 #
 

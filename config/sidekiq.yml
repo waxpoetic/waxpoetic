@@ -1,2 +1,6 @@
-concurrency: <%= ENV['SIDEKIQ_WORKERS'] || 5 %>
-pidfile: tmp/pids/sidekiq.pid
+:concurrency: 5
+:pidfile: tmp/pids/sidekiq.pid
+staging:
+  :concurrency: 7
+production:
+  :concurrency: 7

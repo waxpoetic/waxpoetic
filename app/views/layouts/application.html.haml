@@ -9,7 +9,7 @@
     = stylesheet_link_tag     'application'
     = favicon_link_tag
     = javascript_include_tag 'vendor/modernizr', 'application'
-    = render 'analytics' if WaxPoetic.live?
+    = render 'analytics' unless Rails.env =~ /development|test/
   %body
     %header
       = render 'header'

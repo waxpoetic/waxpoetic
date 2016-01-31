@@ -1,4 +1,5 @@
 = simple_form_for subscriber do |f|
+  = f.input :artist_id, as: :hidden, value: params[:artist_id]
   = f.input :name
   = f.input :email, as: :email
   = f.button :save

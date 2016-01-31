@@ -12,6 +12,10 @@ class Artist < ActiveRecord::Base
   def to_label
     name
   end
+
+  def page
+    @page ||= Facebook::Page.find facebook_page_id
+  end
 end
 
 # == Schema Information

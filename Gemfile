@@ -28,6 +28,7 @@ gem 'gibbon'
 gem 'administrate'
 gem 'haml-rails'
 gem 'refile'
+gem 'rack-timeout'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-marked'

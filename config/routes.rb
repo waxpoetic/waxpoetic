@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   end
 
   resources :subscribers, only: [:new, :create, :show]
-  resources :artists, only: [:index, :show]
+  resources :artists, only: [:index, :show] do
+    resources :releases, only: [:index]
+    resources :subscribers, only: [:new]
+  end
   resources :releases, only: [:index, :show]
 
   devise_for :users

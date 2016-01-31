@@ -1,16 +1,23 @@
 # WaxPoeticRecords.com
 
-[![Build Status](https://circleci.com/gh/waxpoetic/waxpoeticrecords.com/tree/master.svg?style=svg&circle-token=9ca491303ec9d5ea7d8ba4e01c34855c3ddfac8b)](https://circleci.com/gh/waxpoetic/waxpoeticrecords.com/tree/master)
-
-The official site of **Wax Poetic Records**, including an artist roster
-that describes every past and current artist on Wax Poetic, and a release
-catalog for browsing more details on each of our releases (including buy
-links).
+The official site of **Wax Poetic Records**, an open-source record label
+from Philadelphia. On the surface, this application powers
+http://www.waxpoeticrecords.com and serves a speedy and simple marketing
+site for the label. Powering this front-end is a central repository for
+all information related to the label, including the artist roster,
+release catalog, upcoming events, and social media automation features.
+In addition to the marketing site consuming this backend information,
+it's also provided as an API to power our various band marketing sites
+such as http://www.thewonderbars.com and http://www.rnd.club, which are
+simple front-end apps that call out to this API for information.
 
 ## Features
 
 - Artist and Release catalog
 - Automated promotional support for new releases on social media
+- JSON API for powering additional marketing sites
+- Frontend marketing site powered by [ES6][], [Haml][] and [SCSS][].
+- Events database and artists CMS powered by Facebook
 
 ### Feature Roadmap
 
@@ -78,3 +85,6 @@ We accept contributions in the form of a pull request, and with a
 passing build that adheres to this README and the [CODE OF CONDUCT][].
 
 [CODE OF CONDUCT]: https://github.com/waxpoetic/waxpoeticrecords.com/blob/master/CODE_OF_CONDUCT.md
+[ES6]: http://es6rocks.com
+[Haml]: http://haml-lang.com
+[SCSS]: http:/sass-lang.com

@@ -1,0 +1,7 @@
+language: ruby
+rvm: 2.3.0
+sudo: false
+before_script: ./bin/rake db:setup
+cache: bundler
+# TODO: Deploy to Heroku
+# TODO: Add CodeClimate

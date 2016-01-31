@@ -1,12 +1,6 @@
-desc 'Set up the database from scratch'
-task db: %w(db:drop db:create db:setup db:migrate db:seed)
-
 namespace :db do
+  desc 'Create fixtures from exportable model data'
   task export: :environment do
-    Exportable.models.map(&:export_to_fixtures)
-  end
-
-  task :disconnect do
-    sh %{psql -c "SELECT pid, (SELECT pg_terminate_backend(pid)) as killed from pg_stat_activity WHERE state LIKE 'idle';"}
+    Exportable.models.map(&:to_fixture)
   end
 end

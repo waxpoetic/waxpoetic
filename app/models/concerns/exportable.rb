@@ -9,7 +9,7 @@ module Exportable
   end
 
   module ClassMethods
-    def export_to_fixtures
+    def to_fixture
       File.write fixture_path, fixture_contents.to_yaml
     end
 

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 # Framework
 gem 'rails', '~> 4.2'
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'rubocop'
+  gem 'yard'
 end
 
 group :test do

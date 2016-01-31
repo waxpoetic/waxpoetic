@@ -1,4 +1,5 @@
 class Artist < ActiveRecord::Base
+  extend FriendlyId
   include Exportable
 
   has_many :releases

@@ -11,13 +11,6 @@ test:
   <<: *default
   database: wax_poetic_test
 
-staging:
-  <<: *default
-  database: wax_poetic_staging
-  host: <%= ENV['DATABASE_HOST'] %>
-  username: waxpoetic
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-
 production:
   <<: *default
   database: wax_poetic_production

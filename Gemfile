@@ -26,6 +26,7 @@ gem 'autoprefixer-rails'
 gem 'gibbon'
 gem 'administrate'
 gem 'haml-rails'
+gem 'refile'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-marked'
@@ -61,4 +62,5 @@ group :staging, :production do
   gem 'puma'
   gem 'sidekiq'
   gem 'rails_12factor'
+  gem 'refile-s3'
 end

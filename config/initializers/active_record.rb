@@ -1,7 +1,7 @@
-ActiveSupport.on_load :active_record do
-  ActiveRecord::Base.class_eval do
-    extend FriendlyId
+require 'friendly_id'
+require 'active_model/jobs'
 
-    include ActiveModel::Jobs
-  end
+ActiveSupport.on_load :active_record do
+  # ActiveRecord::Base.extend FriendlyId
+  ActiveRecord::Base.send :include, ActiveModel::Jobs
 end

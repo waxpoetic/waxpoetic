@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     strategy Application::ExposureStrategy
   end
 
-  # Prevent CSRF attacks by raising an exception.
-  protect_from_forgery with: :exception
+  # Prevent CSRF attacks by showing a null session.
+  protect_from_forgery with: :null_session
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 

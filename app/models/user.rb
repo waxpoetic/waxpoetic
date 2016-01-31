@@ -8,11 +8,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, presence: true, email: true
-
-  # Test if this user has the admin role assigned to it.
-  def admin?
-    !!admin
-  end
 end
 
 # == Schema Information
@@ -32,10 +27,6 @@ end
 #  last_sign_in_ip        :inet
 #  created_at             :datetime
 #  updated_at             :datetime
-#  spree_api_key          :string(48)
-#  ship_address_id        :integer
-#  bill_address_id        :integer
-#  name                   :string
 #
 # Indexes
 #

@@ -39,12 +39,4 @@ RSpec.describe User, type: :model do
   it 'authenticates users into the admin console' do
     expect(subject).to be_valid
   end
-
-  it 'is not an admin by default' do
-    expect(subject).to_not be_admin
-  end
-
-  it 'can have admin rights changed on it' do
-    expect(subject).to be_admin
-  end
 end

@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+  extend FriendlyId
+
   belongs_to :release
 
   has_one :artist, through: :release

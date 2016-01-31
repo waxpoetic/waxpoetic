@@ -12,5 +12,9 @@
 #
 
 class ArtistSerializer < ActiveModel::Serializer
-  attributes :id, :name, :bio, :image
+  attributes :id, :name, :bio
+
+  def image
+    Refile.attachment_url model, :image
+  end
 end

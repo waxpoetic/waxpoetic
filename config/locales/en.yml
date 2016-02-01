@@ -1,4 +1,13 @@
 en:
+  application:
+    releases: Releases
+    artists: Artists
+    shop: Shop
+    podcast: Podcast
+    index:
+      welcome: Welcome to Wax Poetic Records
+      elevator_pitch: An open-source record label for the electronic music community.
+      latest_releases: Latest Releases
   subscribers:
     thanks: Thanks for signing up!
 

@@ -46,5 +46,12 @@ module WaxPoetic
 
     # Use a local domain name by default.
     config.domain = 'waxpoetic.dev'
+
+    config.facebook_url = 'https://facebook.com/WaxPoeticRecords'
+    config.twitter_url = 'https://twitter.com/WaxPoeticMusic'
+    config.soundcloud_url = 'https://soundcloud.com/WaxPoeticMusic'
+    config.instagram_url = 'https://instagram.com/WaxPoeticMusic'
+    config.spotify_url = 'https://open.spotify.com/user/WaxPoeticMusic'
+    config.shop_url = 'https://shop.waxpoeticrecords.com'
   end
 end

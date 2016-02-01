@@ -7,7 +7,7 @@ gem 'rack-timeout'
 gem 'rack-canonical-host'
 gem 'pg'
 gem 'devise'
-gem 'administrate'
+gem 'administrate', github: 'thoughtbot/administrate'
 
 # api
 gem 'controller_resources'

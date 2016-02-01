@@ -1,15 +1,7 @@
 # View-level decorations for Artist objects
 class ArtistDecorator < ApplicationDecorator
-  # Bio in Markdown.
+  # Biography written with Trix.
   def bio
-    h.markdown model.bio
-  end
-
-  def photo
-    h.image_tag model.image.title.url, alt: model.name
-  end
-
-  def thumbnail
-    h.image_tag model.image.title.url, alt: model.name, class: 'thumbnail'
+    model.bio.html_safe
   end
 end

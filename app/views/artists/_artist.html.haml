@@ -1,2 +1,3 @@
-.artist.thumbnail
-  = link_to artist.decorate.thumbnail, artist_path(artist), title: artist.name
+%article{ itemid: artist.id, itemscope: true, itemtype: 'https://schema.org/MusicGroup' }
+  = link_to artist, itemprop: 'image', title: artist.name do
+    = attachment_image_tag artist, :image, :cover, alt: artist.name

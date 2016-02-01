@@ -1,15 +1,13 @@
-#artist
-  = title artist.name
-  .header.row
-    .photo= artist.decorate.photo
-  .content.row
-    .bio.large-8.columns
-      = artist.decorate.bio
-    .releases.large-4.columns
-      %h2 Latest Releases
-      %ul
-        - artist.releases.latest.limit(5).each do |release|
-          %li
-            = link_to release do
-              = image_tag release.image.micro.url
-  = admin_controls 'Artists', resource: artist if admin_signed_in?
+- cache artist do
+  %article{ id: 'artist', itemid: artist.id, itemscope: true, itemtype: 'https://schema.org/MusicGroup' }
+    %header
+      %h1{ itemprop: 'name' }= artist.name
+    %main
+      %section.biography{ itemprop: 'biography' }
+        = artist.bio
+      - cache releases do
+        %section.releases
+          %h2 Latest Releases
+          %ul{ itemprop: 'releases' }
+            - releases.latest.first(5).each do |release|
+                = render release

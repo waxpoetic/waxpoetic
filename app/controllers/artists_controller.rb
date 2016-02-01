@@ -4,6 +4,8 @@
 # @api Artists
 class ArtistsController < ApplicationController
   resource :artist
+  delegate :releases, to: :artist
+  helper_method :releases
 
   # Return all artists.
   #

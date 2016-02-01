@@ -4,8 +4,8 @@ class PromoteReleaseJob < ActiveJob::Base
 
   # @param [Release] release
   def perform(release)
-    [ Facebook::Post, Twitter::Tweet ].each do |social_media_post|
-      social_media_post.create release
+    %w(Facebook Twitter).each do |network|
+      "#{network}::Post".constantize.create release
     end
   end
 end

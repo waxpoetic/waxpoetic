@@ -3,9 +3,10 @@ ruby '2.3.0'
 
 # framework
 gem 'rails', '~> 4.2'
+gem 'rack-timeout'
+gem 'rack-canonical-host'
 gem 'pg'
 gem 'devise'
-gem 'rack-timeout'
 gem 'administrate'
 
 # api
@@ -24,6 +25,7 @@ gem 'active_model-jobs'
 gem 'draper'
 gem 'simple_form'
 gem 'haml-rails'
+gem 'title'
 
 # services
 gem 'gibbon'

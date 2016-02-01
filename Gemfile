@@ -1,37 +1,50 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-# Framework
+# framework
 gem 'rails', '~> 4.2'
-gem 'devise'
-gem 'email_validator'
-gem 'friendly_id'
-gem 'controller_resources'
-gem 'active_model_serializers'
-gem 'active_model-jobs'
-gem 'high_voltage'
-gem 'draper'
-gem 'redcarpet'
-gem 'simple_form'
 gem 'pg'
-gem 'mini_magick'
-gem 'soundcloud'
+gem 'devise'
+gem 'rack-timeout'
+gem 'administrate'
+
+# api
+gem 'controller_resources'
+gem 'high_voltage'
+gem 'active_model_serializers'
+gem 'friendly_id'
+
+# models
+gem 'email_validator'
+gem 'refile', require: 'refile/rails'
+gem 'refile-mini_magick', require: 'refile/mini_magick'
+gem 'active_model-jobs'
+
+# views
+gem 'draper'
+gem 'simple_form'
+gem 'haml-rails'
+
+# services
+gem 'gibbon'
+gem 'koala'
 gem 'bitly'
+gem 'soundcloud'
+
+# assets
 gem 'sass-rails'
-gem 'coffee-rails'
-gem 'uglifier', '~> 1.3'
-gem 'turbolinks'
-gem 'foundation-rails'
+gem 'sprockets-es6', github: 'tubbo/sprockets-es6', branch: 'loader'
+gem 'uglifier'
+gem 'turbolinks', github: 'rails/turbolinks'
 gem 'jquery-turbolinks'
 gem 'autoprefixer-rails'
-gem 'gibbon'
-gem 'administrate'
-gem 'haml-rails'
-gem 'refile'
-gem 'rack-timeout'
+gem 'bourbon'
+gem 'bitters'
+gem 'neat'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-marked'
+  gem 'rails-assets-trix'
 end
 
 group :development do
@@ -59,11 +72,11 @@ group :test do
   gem 'poltergeist',  require: false
 end
 
-group :staging, :production do
+group :production do
   gem 'rack-cache'
   gem 'redis-rails'
   gem 'puma'
   gem 'sidekiq'
   gem 'rails_12factor'
-  gem 'refile-s3'
+  gem 'refile-s3', require: 'refile/s3'
 end

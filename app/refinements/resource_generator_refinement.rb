@@ -1,5 +1,3 @@
-require 'rails/generators/rails/resource_generator'
-
 module ResourceGeneratorRefinement
   refine Rails::Generators::ResourceGenerator do
     def generate_policy

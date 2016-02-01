@@ -1,3 +1,4 @@
+# A single track on a given +Release+.
 class Track < ActiveRecord::Base
   extend FriendlyId
 
@@ -7,10 +8,11 @@ class Track < ActiveRecord::Base
 
   before_validation :ensure_number
 
-  validates :name, presence: true
-  validates :artist, presence: true
+  validates :name,    presence: true
   validates :release, presence: true
-  validates :number, presence: true
+  validates :number,  presence: true, numericality: { greater_than: 0 }
+
+  attachment :audio, content_type: ['audio/mp3', 'audio/wav']
 
   friendly_id :number
 
@@ -19,15 +21,13 @@ class Track < ActiveRecord::Base
   scope :by_number, -> { order :number }
 
   after_create :shorten!
+  after_create :upload!
 
-  # Attributes given to the Soundcloud API when uploading tracks.
-  def soundcloud_attributes
-    {
-      title: "#{artist.name} - #{name} [#{release.catalog_number}]",
-      asset_data: nil, # TODO
-      download: false,
-      private: true
-    }
+  # Full title of this song.
+  #
+  # @return [String]
+  def title
+    "#{artist.name} - #{name} [#{release.catalog_number}]"
   end
 
   private

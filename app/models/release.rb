@@ -22,11 +22,20 @@ class Release < ActiveRecord::Base
 
   scope :latest, -> { order :released_on }
 
+  after_create :promote!
+
   # Test if the +released_on+ date is equal to today. Used by the
   # promotion engine to verify whether this Release needs to be
   # promoted.
   def released_today?
     released_on.to_date == Date.today
+  end
+
+  private
+
+  # Promote this +Release+ on the release date.
+  def promote!
+    PromoteReleaseJob.new(self).perform_later wait: released_on
   end
 end
 

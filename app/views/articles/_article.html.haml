@@ -1,0 +1,8 @@
+%article{ itemid: article.id, itemscope: true, itemtype: 'http://schema.org/NewsArticle' }
+  %header
+    .row
+      %h1{ itemprop: 'name' }= article.title
+    .row
+      %time{ rel: article.created_at.to_utc, itemprop: 'dateCreated' }= article.date
+  %main{ itemprop: 'articleBody' }
+    = article.body

@@ -1,23 +1,27 @@
-#release
-  .row
+%article{ id: 'release', itemid: release.id, itemscope: true, itemtype: 'https://schema.org/MusicRelease' }
+  %header.row
     .large-9.columns
       = title release.decorate.title, cosmetic: release.decorate.page_title
     .large-3.columns.buttons
       = release.decorate.buy_button
   .row
     .large-6.columns
-      %table.properties
-        %tr
-          %th Released On:
-          %td= release.decorate.date
-        %tr
-          %th Catalog Number:
-          %td= release.catalog_number
-      .tracks
+      .photo
+        = attachment_image_tag release, :cover, :large
+    .large-6.columns
+      %dl.properties
+        %dt Released On
+        %dd{ itemprop: 'releaseDate' }= release.date
+
+        %dt Catalog Number
+        %dd{ itemprop: 'catalogNumber' }= release.catalog_number
+      %ol.tracks
         %h3 Track Listing
-        = release.decorate.track_list
-    .large-6.columns.photo
-      = release.decorate.photo
+        %p
+          Number of tracks:
+          %span{ itemprop: 'tracks' }= release.tracks.count
+        - release.tracks.each do |track|
+          %li{ itemprop: 'track' }= link_to track.name, track
   .description.row
     .large-12.columns
       = release.decorate.description

@@ -1,7 +1,5 @@
 # View-level decorations for Artist objects
-class ArtistDecorator < Draper::Decorator
-  delegate_all
-
+class ArtistDecorator < ApplicationDecorator
   # Bio in Markdown.
   def bio
     h.markdown model.bio

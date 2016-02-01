@@ -1,5 +1,5 @@
 # Present Track objects for the view.
-class TrackDecorator < Draper::Decorator
+class TrackDecorator < ApplicationDecorator
   delegate_all
 
   # The displayable track name in the UI.
@@ -21,17 +21,5 @@ class TrackDecorator < Draper::Decorator
   # by Bitly or the direct CDN URL.
   def url
     model.short_url || model.file.url || 'http://test.host/no-url.wav'
-  end
-
-  def release_image
-    model.release.decorate.image_file
-  end
-
-  def release_date
-    model.release.decorate.released_on
-  end
-
-  def catalog_number
-    model.release.catalog_number
   end
 end

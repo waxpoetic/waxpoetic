@@ -1,2 +1,3 @@
-= link_to release do
-  = attachment_image_tag release, :cover, :thumbnail
+%section{ itemid: release.id, itemscope: true, itemtype: 'https://schema.org/MusicRelease' }
+  = link_to release, itemprop: 'thumbnailUrl' do
+    = attachment_image_tag release, :cover, :thumbnail

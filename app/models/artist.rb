@@ -8,6 +8,7 @@ class Artist < ActiveRecord::Base
   validates :bio, presence: true
 
   friendly_id :name
+  alias_method :to_s, :name
 
   def to_label
     name

@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     resources :subscribers, only: [:new]
   end
   resources :releases, only: [:index, :show]
-  resources :articles, only: [:index, :show]
+  resources :articles, only: [:index, :show] do
+    collection do
+      get :podcast
+    end
+  end
+  resource :search, only: [:show]
 
   devise_for :users
   devise_scope :user do
@@ -22,5 +27,7 @@ Rails.application.routes.draw do
     delete '/logout' => 'devise/sessions#destroy'
   end
 
-  root to: 'articles#index'
+  get ':id', to: 'high_voltage/pages#show'
+
+  root to: 'articles#home'
 end

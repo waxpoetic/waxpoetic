@@ -8,4 +8,6 @@ class Article < ActiveRecord::Base
   friendly_id :title
 
   scope :latest, -> { order :created_at }
+
+  alias_method :to_s, :title
 end

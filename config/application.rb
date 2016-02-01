@@ -22,9 +22,7 @@ Bundler.require :default, Rails.env
 require 'wax_poetic'
 
 module WaxPoetic
-  # The Rails application used to power the Wax Poetic Records online
-  # store. This is where we store global configuration which will not
-  # change across environments.
+  # Web application powering WaxPoeticRecords.com.
   class Application < Rails::Application
     # Use EST as our local time zone. (UTC is default).
     config.time_zone = 'Eastern Time (US & Canada)'
@@ -47,11 +45,14 @@ module WaxPoetic
     # Use a local domain name by default.
     config.domain = 'waxpoetic.dev'
 
-    config.facebook_url = 'https://facebook.com/WaxPoeticRecords'
-    config.twitter_url = 'https://twitter.com/WaxPoeticMusic'
-    config.soundcloud_url = 'https://soundcloud.com/WaxPoeticMusic'
-    config.instagram_url = 'https://instagram.com/WaxPoeticMusic'
-    config.spotify_url = 'https://open.spotify.com/user/WaxPoeticMusic'
+    config.social_media_urls = {
+      facebook: 'https://facebook.com/WaxPoeticRecords',
+      twitter: 'https://twitter.com/WaxPoeticMusic',
+      soundcloud: 'https://soundcloud.com/WaxPoeticMusic',
+      instagram: 'https://instagram.com/WaxPoeticMusic',
+      spotify: 'https://open.spotify.com/user/WaxPoeticMusic'
+    }
     config.shop_url = 'https://shop.waxpoeticrecords.com'
+    config.brotherly_url = 'http://brother.ly'
   end
 end

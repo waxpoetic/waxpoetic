@@ -1,14 +1,33 @@
 en:
+  titles:
+    application: Wax Poetic Records
+    releases:
+      index: Releases
+      show: '%{release}'
+    artists:
+      index: Artists
+      show: '%{artist}'
+    articles:
+      index: News
+      show: '%{article}'
   application:
-    nav:
-      releases: Releases
-      artists: Artists
-      shop: Shop
-      podcast: Podcast
-    index:
-      welcome: Welcome to Wax Poetic Records
-      elevator_pitch: An open-source record label for the electronic music community.
-      latest_releases: Latest Releases
+    description: Official site of Wax Poetic Records.
+    releases: Releases
+    artists: Artists
+    shop: Shop
+    podcast: Podcast
+    home: Home
+    news: News
+    merchandise: Merchandise
+    newsletter: Newsletter
+    brotherly: brother.ly
+    publishing: Publishing
+    production: Production
+    demos: Submit Demo
+    about: About
+    contact: Contact
+    legal: Legal
+    search: Search...
   subscribers:
     thanks: Thanks for signing up!
 

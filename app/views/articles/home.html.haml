@@ -1,0 +1,14 @@
+.row
+  - cache articles.carousel_cache_key do
+    .carousel
+      - articles.first(5).each do |article|
+        = attachment_image_tag article, :image, :hero
+.row
+  - cache articles do
+    .large-6.columns
+      %h2= t :news
+      = render articles
+  - cache releases do
+    .large-6.columns
+      %h2= t :latest, scope: 'releases'
+      = render releases

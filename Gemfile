@@ -26,6 +26,7 @@ gem 'draper'
 gem 'simple_form'
 gem 'haml-rails'
 gem 'title'
+gem 'high_voltage'
 
 # services
 gem 'gibbon'

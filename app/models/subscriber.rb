@@ -1,8 +1,6 @@
 class Subscriber < ActiveRecord::Base
   belongs_to :artist
 
-  include ActiveModel::Jobs
-
   validates :email, presence: true, email: true
 
   after_create :add!

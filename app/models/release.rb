@@ -17,6 +17,7 @@ class Release < ActiveRecord::Base
   accepts_nested_attributes_for :tracks
 
   friendly_id :catalog_number
+  alias_method :to_s, :name
 
   delegate :variants, to: :product
 

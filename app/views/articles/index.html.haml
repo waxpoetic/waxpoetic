@@ -1,14 +1,11 @@
 .row
-  - cache articles.carousel_cache_key do
-    .carousel
-      - articles.first(5).each do |article|
-        = attachment_image_tag article, :image, :hero
-.row
   - cache articles do
-    .large-6.columns
-      %h2= t :news
+    %section.large-8.columns
+      %h1 Latest News
       = render articles
-  - cache releases do
-    .large-6.columns
-      %h2= t :latest, scope: 'releases'
-      = render releases
+  .large-4.columns
+    %aside
+      %h2 Join the Mailing List
+      = form_for Subscriber.new do |f|
+        = f.email_field :email
+        = f.submit 'Sign up'

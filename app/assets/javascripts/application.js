@@ -8,9 +8,10 @@
 //= require_self .
 
 // Load foundation before loading all other modules
-module.on('init', function(loadModules, event) {
-  $(document).foundation();
-  loadModules($(event.currentTarget));
+module.on('init', function(modules, event) {
+  var scope = $(event.currentTarget);
+  scope.foundation();
+  modules(scope);
 });
 
 // Send current scope to modules on load

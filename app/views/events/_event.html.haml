@@ -1,0 +1,13 @@
+%article.event{ itemid: event.id, itemscope: true, itemtype: 'https://schema.org/MusicEvent' }
+  %aside.flyer
+    = attachment_image_tag event, :flyer
+  %header
+    = link_to event.url, target: '_blank', title: event.name, itemprop: 'url' do
+      %h1{ itemprop: 'name'}
+        = event.name
+    .location{ itemscope: true, itemtype: 'https://schema.org/MusicVenue' }
+      = event.location
+    %time.date{ datetime: event.starts_at.to_s(:rfc3339), itemprop: 'doorTime' }
+      = event.starts_at
+  %main{ itemprop: 'description' }
+    = event.description

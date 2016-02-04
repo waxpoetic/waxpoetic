@@ -3,6 +3,7 @@ class Artist < ActiveRecord::Base
   include Exportable
 
   has_many :releases
+  has_many :events
 
   validates :name, presence: true
   validates :bio, presence: true
@@ -16,6 +17,10 @@ class Artist < ActiveRecord::Base
 
   def page
     @page ||= Facebook::Page.find facebook_page_id
+  end
+
+  def tracks_event?(event)
+    events.where(facebook_id: event.facebook_id).any?
   end
 end
 

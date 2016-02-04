@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :show] do
     resources :releases, only: [:index]
     resources :subscribers, only: [:new]
+    resources :events, only: [:index, :show]
   end
   resources :releases, only: [:index, :show]
   resources :articles, only: [:index, :show] do

@@ -4,6 +4,7 @@ class CreateArtists < ActiveRecord::Migration
       t.string :name
       t.text :bio
       t.string :avatar
+      t.integer :facebook_page_id
 
       t.timestamps
     end

@@ -8,10 +8,10 @@ gem 'rack-canonical-host'
 gem 'pg'
 gem 'devise'
 gem 'administrate', github: 'thoughtbot/administrate'
+gem 'activejob-scheduler', github: 'tubbo/activejob-scheduler'
 
 # api
 gem 'controller_resources'
-gem 'high_voltage'
 gem 'active_model_serializers'
 gem 'friendly_id'
 

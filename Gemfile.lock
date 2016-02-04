@@ -298,6 +298,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.1)
       sprockets-rails
+    rails-assets-lodash (4.2.1)
     rails-assets-marked (0.3.5)
     rails-assets-trix (0.9.5)
     rails-deprecated_sanitizer (1.0.3)
@@ -486,6 +487,7 @@ DEPENDENCIES
   rack-canonical-host
   rack-timeout
   rails (~> 4.2)
+  rails-assets-lodash!
   rails-assets-marked!
   rails-assets-trix!
   rails_12factor

@@ -33,7 +33,7 @@ module Facebook
       #
       # @return [Facebook::Model]
       def find(by_id)
-        new by_id
+        new id: by_id
       rescue NotFoundError => exception
         Rails.logger.debug exception.message
         nil
@@ -51,8 +51,10 @@ module Facebook
     end
 
     # @param [String] from_id
-    def initialize(from_id)
-      @id = from_id
+    def initialize(params = {})
+      params.each do |attribute, value|
+        instance_variable_set "@#{attribute}", value
+      end
       fail NotFoundError self.class.type, id unless get.present?
     end
 

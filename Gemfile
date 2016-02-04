@@ -48,6 +48,7 @@ gem 'neat'
 source 'https://rails-assets.org' do
   gem 'rails-assets-marked'
   gem 'rails-assets-trix'
+  gem 'rails-assets-lodash'
 end
 
 group :development do

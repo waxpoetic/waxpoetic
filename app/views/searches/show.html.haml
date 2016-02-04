@@ -1,0 +1,7 @@
+= render 'header' unless request.xhr?
+- if search.results.any?
+  - search.results.each do |result|
+    %li= link_to result.name, result
+- else
+  %li= link_to t('.no_results'), '#'
+= render 'footer' unless request.xhr?

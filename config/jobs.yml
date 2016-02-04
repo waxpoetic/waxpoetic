@@ -1,2 +1,4 @@
 pull_events:
   every: '1d'
+daily_report:
+  every: '1d'

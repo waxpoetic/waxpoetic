@@ -22,6 +22,16 @@ GIT
       selectize-rails (~> 0.6)
 
 GIT
+  remote: git://github.com/tubbo/activejob-scheduler.git
+  revision: afd1bbc170d9f37a5d73349626ce276b4822ae9d
+  specs:
+    activejob-scheduler (1.0.0.pre)
+      activejob
+      activesupport
+      rufus-scheduler
+      travis-release
+
+GIT
   remote: git://github.com/tubbo/sprockets-es6.git
   revision: 2cbbb0fef4e8c8d3a2f9293e124ce3a407b34cf1
   branch: loader
@@ -383,6 +393,7 @@ GEM
     ruby-progressbar (1.7.5)
     ruby_parser (3.7.2)
       sexp_processor (~> 4.1)
+    rufus-scheduler (3.2.0)
     sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -428,6 +439,9 @@ GEM
     title (0.0.5)
       i18n
       rails (>= 3.1)
+    travis-release (0.0.3)
+      bundler (~> 1)
+      rake (~> 10.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (1.3.0)
@@ -456,6 +470,7 @@ PLATFORMS
 DEPENDENCIES
   active_model-jobs
   active_model_serializers
+  activejob-scheduler!
   administrate!
   annotate
   autoprefixer-rails

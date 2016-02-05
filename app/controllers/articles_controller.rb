@@ -1,11 +1,11 @@
+# HTTP API and routes for accessing the blog articles and Podcast
+# episodes on WaxPoeticRecords.com. Also serves the homepage with
+# ancillary content such as the latest releases.
 class ArticlesController < ApplicationController
   resource :article, scope: :latest
 
   expose :releases, scope: :latest
-
-  expose :podcast_episodes do
-    articles.where.not audio: nil
-  end
+  expose :episodes, class_name: 'Article', scope: :podcast
 
   # Home page, returns all articles and latest releases.
   #
@@ -19,14 +19,15 @@ class ArticlesController < ApplicationController
     respond_with articles
   end
 
-  # View podcast episodes.
+  # View podcast episodes, which are any +Article+ with an +audio+
+  # enclosure attachment.
   #
-  # @http [GET] /articles/podcast
-  # @http [GET] /articles/podcast.rss
+  # @http [GET] /podcast
+  # @http [GET] /podcast.rss
   def podcast
     respond_to do |format|
-      format.html { render 'podcast' }
-      format.rss  { render rss: podcast_episodes }
+      format.html # podcast.html.haml
+      format.rss  # podcast.rss.builder
     end
   end
 

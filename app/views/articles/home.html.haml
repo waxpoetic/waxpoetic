@@ -1,7 +1,7 @@
 .row
   - cache articles.carousel_cache_key do
     .carousel
-      - articles.first(5).each do |article|
+      - articles.each do |article|
         = attachment_image_tag article, :image, :hero
 .row
   - cache articles do

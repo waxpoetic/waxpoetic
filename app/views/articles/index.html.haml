@@ -1,11 +1,10 @@
-.row
-  - cache articles do
-    %section.large-8.columns
-      %h1 Latest News
-      = render articles
-  .large-4.columns
-    %aside
-      %h2 Join the Mailing List
-      = form_for Subscriber.new do |f|
-        = f.email_field :email
-        = f.submit 'Sign up'
+#home
+  %section.articles
+    = render articles
+  %aside
+    .subscribe
+      %h2= t :join, scope: :subscribers
+      = render 'subscribers/form', subscriber: Subscriber.new
+    .latest-releases
+      %h2= t :latest, scope: :releases
+      = render releases

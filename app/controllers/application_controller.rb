@@ -1,20 +1,22 @@
 # Global controller interface, methods here are active throughout the
-# application.
+# application. Typically used for controller configuration, this class
+# sets up all other controllers for our architecture...such as
+# configuring +DecentExposure+ and +Responders+, exposing a
+# +Release.latest+ call, and rescuing exceptions using standard HTTP
+# error responses.
 class ApplicationController < ActionController::Base
+  include Halt
+
   self.responder = Application::Responder
-  respond_to :html
+  respond_to :html, :json
 
   decent_configuration do
     strategy Application::ExposureStrategy
   end
 
-  # Prevent CSRF attacks by showing a null session.
-  protect_from_forgery with: :null_session
+  protect_from_forgery with: :exception
 
-  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  expose :releases, scope: :latest
 
-  def not_found(exception)
-    logger.error exception.message
-    render :not_found, status: :not_found, error: exception
-  end
+  halt ActiveRecord::RecordNotFound, with: :not_found
 end

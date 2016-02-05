@@ -10,6 +10,7 @@ en:
     articles:
       index: News
       show: '%{article}'
+
   application:
     description: Official site of Wax Poetic Records.
     releases: Releases
@@ -28,8 +29,13 @@ en:
     contact: Contact
     legal: Legal
     search: Search...
+
   subscribers:
+    join: Join The Mailing List
     thanks: Thanks for signing up!
+
+  releases:
+    latest: Latest Releases
 
   gallery:
     empty: "No results."

@@ -21,7 +21,8 @@ class Release < ActiveRecord::Base
 
   delegate :variants, to: :product
 
-  scope :latest, -> { order :released_on }
+  scope :by_release_date, -> { order :released_on }
+  scope :latest, -> { by_release_date.first 5 }
 
   after_create :promote!
 

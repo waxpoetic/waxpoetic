@@ -1,0 +1,17 @@
+#home {
+  @include outer-container;
+
+  section { @include span-columns(9) }
+
+  aside {
+    @include span-columns(3);
+
+    .subscribe {
+      // New subscriber form
+    }
+
+    .releases {
+      // Latest 5 releases
+    }
+  }
+}

@@ -15,11 +15,7 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :show]
   end
   resources :releases, only: [:index, :show]
-  resources :articles, only: [:index, :show] do
-    collection do
-      get :podcast
-    end
-  end
+  resources :articles, only: [:index, :show]
   resource :search, only: [:show]
 
   devise_for :users
@@ -29,6 +25,7 @@ Rails.application.routes.draw do
     delete '/logout' => 'devise/sessions#destroy'
   end
 
+  get 'podcast', to: 'articles#podcast'
   get ':id', to: 'high_voltage/pages#show'
 
   root to: 'articles#home'

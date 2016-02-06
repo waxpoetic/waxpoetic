@@ -12,13 +12,13 @@ engines:
       languages:
       - ruby
       - javascript
-      - python
-      - php
   eslint:
     enabled: true
   fixme:
     enabled: true
   rubocop:
+    enabled: true
+  scss-lint:
     enabled: true
 ratings:
   paths:
@@ -26,15 +26,10 @@ ratings:
   - "**.erb"
   - "**.haml"
   - "**.rb"
-  - "**.rhtml"
-  - "**.slim"
   - "**.css"
-  - "**.inc"
+  - "**.scss"
   - "**.js"
-  - "**.jsx"
-  - "**.module"
-  - "**.php"
-  - "**.py"
+  - "**.es6"
 exclude_paths:
 - config/
 - db/

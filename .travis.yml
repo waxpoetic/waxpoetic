@@ -1,7 +1,16 @@
 language: ruby
 rvm: 2.3.0
 sudo: false
-before_script: ./bin/rake db:setup
 cache: bundler
-# TODO: Deploy to Heroku
-# TODO: Add CodeClimate
+script: ./bin/rake
+deploy:
+  provider: heroku
+  api_key:
+    secure: uVrrNzBE1r4D7gdXobweDQQ2O/8/8wMUu6T8pbkZPov6W5da6Q/URg9NA1r4OC7F6JkpAociLbPIn1iIecNQ9sumNHKgKDER87cxMYZmjV7sFFwsUEiK75yaF4JJXP9oEevk2QL+4OTTUVQHW6k6BmlX27wPfkg4OGrJu1Y8wXWjhjcb1aTvcEMn+B2De2WGTxYOwgA1fR+ClIrC9JgAUqK9bHXi0kPQD11brmM2S9ttGCO/e5akUwT5iY/wrhrOd+7uHC/gsc27byGrNx7AGkEjPElZdBbYCddJlXRJxkkBDfCHBFCnJKyHOqHRN3wdEh90waopQm3FI8kZvrobAboHcjJWO2OqMcTSCO4xgF+rhpUdrYrZK/rWZ78PwgjDIuu5PLRtBr03MFq6y5Z3y7+fMJfFWUryGsKwJHi9tkuQF6Rt77xPZO9Kf83kqXCMJdKxrn6/RfY/FKVwew5xgL393Yk6ixbH6Ppf9R/d5EQhqxb+utDyMdu5It8Vu0NODBslPx7FNSXcN+9XEGSptyiHw7reFNTP4PCILzV+RpD9nbLmxZkbDnQNMJg5quTlTZdfed/sH3VDBHET3uEKwbLF4NhpXi2dec5o4JZU0IW7uWsAnfklj4JH6LeMv4w/Q+UzzyGfXOQy2rUVtQSNmZHhd+nRuILiEUquhCPI0V8=
+  app: waxpoetic-staging
+  on:
+    repo: waxpoetic/waxpoetic
+addons:
+  code_climate:
+    repo_token:
+      secure: JjKduNPiC5RthzQnrn4Awloomfm3P9kyEmW6Bzv2vrGxkpw98xXasTUwR+fCPqxgFxJqwSk1yTe3DHaMH2T63e+JFPre3pV5hHh1uNrnDR966TsVLe1d/0QXGmntRgo5ZVGLosQCKIhV7nFXl4TQ6A40SxcrSO+raMtXF6+KJ/VVbOXOVEGB93TjuVe5K5EsXDZNYZdLrBAUQzHXhkBCQhLhZTgyIvdDWlsgpXmVqDQ9PJMW6E18hZGtWF+9GNTlMtYcuberRllRi4ZNZmerzeD7UDVvkwUpeU/goyKHmgSIi/YkEDPOCKhfzfl9aqq+mFTn/P4WfMY0D7A1yVKInS2A2zHMyVlLJ3/VketRJhdvYD1XkAUa9Fm3ESLMVJaLT7C09ut9gZnQ4tDpjAGQKxUwfr5edcjAuv9Nvk66igCdDamFmmIMBCHEoa8DatNVXECDOhkrosIFF9GXeDiTrzyI+hKKd21fMptR7r9yNoreq2h8fN1k4bHS0CdG8F4ZFDLHOD0cQRrXhKJ5EQZwqpRZe34Xem0xp/fdPCNWiDGDNAv045S0jPvNExqZrCyQlvGZuONbLYEP3NXVI+snnXUDh90r5L4xlL+yVrG/K99XRrUgWeqv0l/bSFlyE+IfhklX8z8q9S7WwMj04JxaSKWg57D9AQnDQZrIq5ye8Rk=

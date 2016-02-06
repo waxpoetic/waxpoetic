@@ -1,5 +1,7 @@
 # WaxPoeticRecords.com
 
+[![Build Status](https://travis-ci.org/waxpoetic/waxpoetic.svg?branch=master)](https://travis-ci.org/waxpoetic/waxpoetic)
+
 The official site of **Wax Poetic Records**, an open-source record label
 from Philadelphia. On the surface, this application powers
 http://www.waxpoeticrecords.com and serves a speedy and simple marketing

@@ -6,7 +6,7 @@ module Facebook
     # @param [Facebook::Page] page
     # @param [Proc] block
     # @return [Array<Facebook::Event>] all events found for this page
-    def self.hosted_by(page, &block)
+    def self.hosted_by(page, &_block)
       Facebook.graph.get_objects('event', page: page.id).map do |params|
         new params
       end

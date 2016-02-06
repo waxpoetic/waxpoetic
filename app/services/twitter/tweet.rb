@@ -11,9 +11,7 @@ module Twitter
     delegate :twitter_account,  to: :artist
 
     def self.create(release)
-      new(release: release).tap do |tweet|
-        tweet.save
-      end
+      new(release: release).tap(&:save)
     end
 
     def save

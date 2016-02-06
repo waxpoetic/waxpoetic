@@ -7,9 +7,9 @@ class Article < ActiveRecord::Base
 
   friendly_id :title
 
-  default_scope   -> { order :created_at }
-  scope :podcast, -> { where.not audio: nil }
-  scope :latest,  -> { limit 5 }
+  scope :by_date, -> { order :created_at }
+  scope :podcast, -> { by_date.where.not audio: nil }
+  scope :latest,  -> { by_date.limit 5 }
 
   alias_method :to_s, :title
 end

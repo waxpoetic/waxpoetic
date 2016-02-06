@@ -18,7 +18,7 @@ class SubscriberDashboard < Administrate::BaseDashboard
     name: Field::String,
     email: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }
 
   # TABLE_ATTRIBUTES

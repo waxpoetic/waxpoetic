@@ -1,2 +1,40 @@
 AllCops:
   RunRailsCops: true
+  Exclude:
+    - vendor/bundle/**/*
+    - bin/**/*
+    - frontend/**/*
+
+inherit_from: .rubocop_todo.yml
+
+# Offense count: 4
+Lint/HandleExceptions:
+  Enabled: false
+
+# Offense count: 73
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Max: 154
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 15
+
+# Offense count: 1
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Offense count: 48
+Style/Documentation:
+  Enabled: false
+
+# Offense count: 1
+# Configuration parameters: MinBodyLength.
+Style/GuardClause:
+  Enabled: false
+
+# Offense count: 3
+Style/MultilineBlockChain:
+  Enabled: false

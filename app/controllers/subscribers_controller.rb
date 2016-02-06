@@ -1,4 +1,4 @@
-# API for subscribing new users to the 
+# API for subscribing new users to the
 class SubscribersController < ApplicationController
   resource :subscriber
 

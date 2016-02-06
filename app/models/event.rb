@@ -27,7 +27,6 @@ class Event < ActiveRecord::Base
     "https://www.facebook.com/event/#{facebook_id}"
   end
 
-
   private
 
   # Load name and location from the +facebook_event+ if one exists.

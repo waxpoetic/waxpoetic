@@ -50,4 +50,3 @@ module Bitly
     end
   end
 end
-

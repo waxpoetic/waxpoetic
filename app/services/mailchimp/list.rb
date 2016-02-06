@@ -12,7 +12,7 @@ module Mailchimp
     def add(subscriber)
       list.subscribers.create(
         email: subscriber.email,
-        params: { NAME: subscriber.name, }
+        params: { NAME: subscriber.name }
       ).success?
     end
 

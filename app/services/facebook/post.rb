@@ -6,9 +6,7 @@ module Facebook
     validates :release, presence: true
 
     def self.create(release)
-      new(release: release).tap do |post|
-        post.save
-      end
+      new(release: release).tap(&:save)
     end
   end
 end

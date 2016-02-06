@@ -18,9 +18,7 @@ module Soundcloud
     #
     # @return [Soundcloud::Track]
     def self.create(from_track)
-      new(track: from_track).tap do |soundcloud_track|
-        soundcloud_track.save
-      end
+      new(track: from_track).tap(&:save)
     end
 
     # Save this track to Soundcloud.

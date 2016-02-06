@@ -20,4 +20,4 @@ begin
 
   desc 'Run all tests'
   RSpec::Core::RakeTask.new :test
-rescue LoadError;end
+rescue LoadError; end

@@ -13,51 +13,44 @@
     = render 'analytics' unless Rails.env =~ /development|test/
   %body
     %header
-      .row
-        #logo.large-8.columns
-          = image_tag 'logo'
-        #social.large-4.columns
-          %nav
-            - social_media_icons.each do |service, page_url|
-              = link_to Rails.configuration.send("#{service}_url"), title: service.titleize do
-                = icon service
-      %nav.top-bar{ data: { topbar: true }, rel: 'navigation' }
-        %section#links.top-bar-section
-          %ul
-            = nav_item :releases
-            = nav_item :artists
-            = nav_item :shop, Rails.configuration.shop_url
-            = nav_item :podcast, podcast_articles_path
-        %section#search.top-bar-section
-          %ul.right
-            %li.has-dropdown
-              = form_for Search.new, method: :get, url: search_path, remote: true do |f|
-                = f.search_field :q, class: 'query', placeholder: t('.search')
-                = f.submit icon(:spyglass)
-              %ul.results.dropdown
+      %section
+        .logo
+          = image_tag 'logo.png', alt: t('.home')
+        .social
+          = t('.social').each do |service, url|
+            = link_to url, title: service.titleize do
+              = icon service
+      %section
+        .navigation
+          %nav{ role: 'navigation' }
+            = link_to t('.releases'), releases_path
+            = link_to t('.artists'),  artists_path
+            = link_to t('.shop'),     shop_url
+            = link_to t('.podcast'),  podcast_articles_path
+        .search
+          = render 'searches/form'
     %main#page
       = yield
     %footer
-      %nav.row
-        .large-4.columns
-          = link_to t('.home'), root_path
-          = link_to t('.news'), articles_path
-          = link_to t('.shop'), shop_path
-          = link_to t('.artists'), artists_path
-          = link_to t('.releases'), releases_path
-          = link_to t('.merchandise'), merchandise_path
-        .large-4.columns
-          = link_to t('.newsletter'), new_subscriber_path
-          - Rails.configuration.social_media_urls.each do |service, page_url|
-            = link_to service.titleize, page_url
-        .large-4.columns
-          = link_to t('.podcast'), podcast_articles_path
-          = link_to t('.brotherly'), Rails.configuration.brotherly_url
-          = link_to t('.publishing'), publishing_page_path
-          = link_to t('.demos'), new_demo_path
-          = link_to t('.about'), about_page_path
-          = link_to t('.contact'), contact_page_path
-          = link_to t('.legal'), legal_page_path
-      %p.row
+      %nav
+        %section
+          = link_to t('.home'),         root_path
+          = link_to t('.news'),         articles_path
+          = link_to t('.shop'),         shop_path
+          = link_to t('.artists'),      artists_path
+        %section
+          = link_to t('.releases'),     releases_path
+          = link_to t('.merchandise'),  shop_url
+          = link_to t('.newsletter'),   new_subscriber_path
+          = link_to t('.podcast'),      podcast_articles_path
+        %section
+          = link_to t('.brotherly'),    brotherly_url
+          = link_to t('.publishing'),   publishing_page_path
+          = link_to t('.demos'),        new_demo_path
+        %section
+          = link_to t('.about'),        about_page_path
+          = link_to t('.contact'),      contact_page_path
+          = link_to t('.legal'),        legal_page_path
+      %p
         &copy; #{Time.zone.now.year} Wax Poetic Music, LLC.
     = javascript_include_tag 'application'

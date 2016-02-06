@@ -1,0 +1,3 @@
+= form_for search, method: :get, remote: true do |f|
+  = f.search_field :q, placeholder: t('.search')
+  = f.submit icon(:spyglass).html_safe

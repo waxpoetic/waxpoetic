@@ -26,4 +26,5 @@ namespace :lint do
   end
 end
 
-task lint: %w(lint:ruby lint:js lint:es6 lint:scss)
+desc 'Run all lint checks'
+task lint: %w(lint:js lint:es6 lint:scss lint:ruby)

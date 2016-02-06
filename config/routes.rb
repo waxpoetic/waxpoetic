@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :events
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource
@@ -11,11 +10,15 @@ Rails.application.routes.draw do
   resources :subscribers, only: [:new, :create, :show]
   resources :artists, only: [:index, :show] do
     resources :releases, only: [:index]
-    resources :subscribers, only: [:new]
+    resources :subscribers, only: [:create, :show]
     resources :events, only: [:index, :show]
   end
   resources :releases, only: [:index, :show]
-  resources :articles, only: [:index, :show]
+  resources :articles, only: [:index, :show] do
+    collection do
+      get :podcast
+    end
+  end
   resource :search, only: [:show]
 
   devise_for :users
@@ -25,8 +28,7 @@ Rails.application.routes.draw do
     delete '/logout' => 'devise/sessions#destroy'
   end
 
-  get 'podcast', to: 'articles#podcast'
-  get ':id', to: 'high_voltage/pages#show'
+  get '/:id', to: 'high_voltage/pages#show'
 
   root to: 'articles#home'
 end

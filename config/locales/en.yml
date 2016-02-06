@@ -1,4 +1,14 @@
 en:
+  contact:
+    title: Send us your demos
+    email: music@waxpoeticrecords.com
+
+  social:
+    facebook: http://facebook.com/waxpoeticrecords
+    twitter: http://twitter.com/waxpoeticmusic
+    soundcloud: http://soundcloud.com/waxpoeticmusic
+    instagram: http://instagram.com/waxpoeticmusic
+
   titles:
     application: Wax Poetic Records
     releases:

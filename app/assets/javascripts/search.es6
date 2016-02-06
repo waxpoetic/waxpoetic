@@ -11,7 +11,7 @@ import debounce from 'lodash/debounce';
  * @param {DOMEvent} event - Ajax success DOM event.
  * @param {String} response - HTML response of the search results.
  */
-export function results(event, response) {
+function results(event, response) {
   let input = $(event.currentTarget),
       results = input.closest('results');
 
@@ -28,7 +28,7 @@ export function results(event, response) {
  *
  * @param {DOMEvent} event
  */
-export function autocomplete(event) {
+function autocomplete(event) {
   let input = $(event.currentTarget),
       form = input.closest('form');
 

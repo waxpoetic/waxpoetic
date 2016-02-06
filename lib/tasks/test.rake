@@ -2,25 +2,22 @@ begin
   require 'rspec/core/rake_task'
 
   namespace :test do
-    desc ''
-    RSpec::Core::RakeTask.new :all
-
     desc 'Run all unit tests'
-    RSpec::Core::RakeTask.new :units do |t|
+    RSpec::Core::RakeTask.new :unit do |t|
       units = Dir['spec/*'].reject do |path|
-        path =~ /features/
+        path =~ /features|integration/
       end.map do |path|
         File.basename(path)
       end.join(',')
       t.files = "spec/{#{units}}/**/*_spec.rb"
     end
 
-    desc 'Run all feature tests'
-    RSpec::Core::RakeTask.new :features do
-      t.files = 'spec/features/**/*_spec.rb'
+    desc 'Run all integration tests'
+    RSpec::Core::RakeTask.new :integration do
+      t.files = 'spec/{features,integration}/**/*_spec.rb'
     end
   end
 
   desc 'Run all tests'
-  task test: %w(test:all)
+  RSpec::Core::RakeTask.new :test
 rescue LoadError;end

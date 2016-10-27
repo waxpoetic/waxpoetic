@@ -12,7 +12,7 @@
   newrelic:wayne
   librato:development
   pingdom:starter
-  airbrake:free_heroku
+  airbrake:free-hrku
 ).each do |addon|
   `heroku addons:create #{addon} --app waxpoetic-staging`
 end
